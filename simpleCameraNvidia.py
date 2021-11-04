@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-# Modified from jetson-interface
-
+# Modified from https://github.com/dusty-nv/jetson-inference/blob/master/python/examples/imagenet.py
 
 import jetson.inference
 import jetson.utils
