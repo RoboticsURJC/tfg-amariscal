@@ -1,0 +1,232 @@
+2021-11-16 23:03:14.533270: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06e92f00 of size 512 by op Identity action_count 222 step 0 next 222
+2021-11-16 23:03:14.533296: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06e93100 of size 589824 by op Identity action_count 223 step 0 next 223
+2021-11-16 23:03:14.533322: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06f23100 of size 512 by op Identity action_count 224 step 0 next 224
+2021-11-16 23:03:14.533347: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06f23300 of size 256 by op Identity action_count 225 step 0 next 225
+2021-11-16 23:03:14.533373: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06f23400 of size 512 by op Identity action_count 226 step 0 next 226
+2021-11-16 23:03:14.533400: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06f23600 of size 512 by op Identity action_count 227 step 0 next 227
+2021-11-16 23:03:14.533426: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06f23800 of size 262144 by op Identity action_count 228 step 0 next 228
+2021-11-16 23:03:14.533452: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06f63800 of size 2048 by op Identity action_count 229 step 0 next 229
+2021-11-16 23:03:14.533479: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06f64000 of size 2048 by op Identity action_count 230 step 0 next 230
+2021-11-16 23:03:14.533506: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06f64800 of size 2048 by op Identity action_count 231 step 0 next 231
+2021-11-16 23:03:14.533532: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06f65000 of size 524288 by op Identity action_count 232 step 0 next 232
+2021-11-16 23:03:14.533558: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06fe5000 of size 1024 by op Identity action_count 233 step 0 next 233
+2021-11-16 23:03:14.533584: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06fe5400 of size 1024 by op Identity action_count 234 step 0 next 234
+2021-11-16 23:03:14.533610: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06fe5800 of size 1024 by op Identity action_count 235 step 0 next 235
+2021-11-16 23:03:14.533636: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06fe5c00 of size 256 by op Identity action_count 236 step 0 next 236
+2021-11-16 23:03:14.533663: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06fe5d00 of size 512 by op Identity action_count 237 step 0 next 237
+2021-11-16 23:03:14.533690: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06fe5f00 of size 512 by op Identity action_count 238 step 0 next 238
+2021-11-16 23:03:14.533716: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06fe6100 of size 2048 by op Identity action_count 239 step 0 next 239
+2021-11-16 23:03:14.533743: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06fe6900 of size 2048 by op Identity action_count 240 step 0 next 240
+2021-11-16 23:03:14.533769: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06fe7100 of size 256 by op Identity action_count 241 step 0 next 241
+2021-11-16 23:03:14.533796: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06fe7200 of size 512 by op Identity action_count 242 step 0 next 242
+2021-11-16 23:03:14.533822: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06fe7400 of size 512 by op Identity action_count 243 step 0 next 243
+2021-11-16 23:03:14.533848: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06fe7600 of size 512 by op Identity action_count 244 step 0 next 244
+2021-11-16 23:03:14.533874: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06fe7800 of size 512 by op Identity action_count 245 step 0 next 245
+2021-11-16 23:03:14.533900: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06fe7a00 of size 2048 by op Identity action_count 246 step 0 next 246
+2021-11-16 23:03:14.533925: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06fe8200 of size 2048 by op Identity action_count 247 step 0 next 247
+2021-11-16 23:03:14.533951: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06fe8a00 of size 512 by op Identity action_count 248 step 0 next 248
+2021-11-16 23:03:14.533978: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06fe8c00 of size 512 by op Identity action_count 249 step 0 next 249
+2021-11-16 23:03:14.534004: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06fe8e00 of size 512 by op Identity action_count 250 step 0 next 250
+2021-11-16 23:03:14.534031: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06fe9000 of size 512 by op Identity action_count 251 step 0 next 251
+2021-11-16 23:03:14.534057: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06fe9200 of size 2048 by op Identity action_count 252 step 0 next 252
+2021-11-16 23:03:14.534084: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06fe9a00 of size 2048 by op Identity action_count 253 step 0 next 253
+2021-11-16 23:03:14.534109: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06fea200 of size 1024 by op Identity action_count 254 step 0 next 254
+2021-11-16 23:03:14.534135: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06fea600 of size 1024 by op Identity action_count 255 step 0 next 255
+2021-11-16 23:03:14.534161: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06feaa00 of size 1024 by op Identity action_count 256 step 0 next 256
+2021-11-16 23:03:14.534187: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06feae00 of size 1024 by op Identity action_count 257 step 0 next 257
+2021-11-16 23:03:14.534213: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06feb200 of size 256 by op Identity action_count 258 step 0 next 258
+2021-11-16 23:03:14.534240: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06feb300 of size 4096 by op Identity action_count 259 step 0 next 259
+2021-11-16 23:03:14.534266: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06fec300 of size 4096 by op Identity action_count 260 step 0 next 260
+2021-11-16 23:03:14.534293: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06fed300 of size 4096 by op Identity action_count 261 step 0 next 261
+2021-11-16 23:03:14.534320: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06fee300 of size 4096 by op Identity action_count 262 step 0 next 262
+2021-11-16 23:03:14.534346: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06fef300 of size 256 by op Identity action_count 263 step 0 next 263
+2021-11-16 23:03:14.534373: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06fef400 of size 1024 by op Identity action_count 264 step 0 next 264
+2021-11-16 23:03:14.534398: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06fef800 of size 1024 by op Identity action_count 265 step 0 next 265
+2021-11-16 23:03:14.534424: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06fefc00 of size 1024 by op Identity action_count 266 step 0 next 266
+2021-11-16 23:03:14.534449: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06ff0000 of size 1024 by op Identity action_count 267 step 0 next 267
+2021-11-16 23:03:14.534476: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06ff0400 of size 4096 by op Identity action_count 268 step 0 next 268
+2021-11-16 23:03:14.534502: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06ff1400 of size 4096 by op Identity action_count 269 step 0 next 269
+2021-11-16 23:03:14.534529: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06ff2400 of size 1024 by op Identity action_count 270 step 0 next 270
+2021-11-16 23:03:14.534555: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06ff2800 of size 1024 by op Identity action_count 271 step 0 next 271
+2021-11-16 23:03:14.534582: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06ff2c00 of size 1024 by op Identity action_count 272 step 0 next 272
+2021-11-16 23:03:14.534608: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06ff3000 of size 1024 by op Identity action_count 273 step 0 next 273
+2021-11-16 23:03:14.534634: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06ff3400 of size 4096 by op Identity action_count 274 step 0 next 274
+2021-11-16 23:03:14.534661: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06ff4400 of size 4096 by op Identity action_count 275 step 0 next 275
+2021-11-16 23:03:14.534686: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06ff5400 of size 1024 by op Identity action_count 276 step 0 next 276
+2021-11-16 23:03:14.534712: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06ff5800 of size 1024 by op Identity action_count 277 step 0 next 277
+2021-11-16 23:03:14.534738: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06ff5c00 of size 1024 by op Identity action_count 278 step 0 next 278
+2021-11-16 23:03:14.534764: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06ff6000 of size 1024 by op Identity action_count 279 step 0 next 279
+2021-11-16 23:03:14.534791: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06ff6400 of size 4096 by op Identity action_count 280 step 0 next 280
+2021-11-16 23:03:14.534817: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06ff7400 of size 4096 by op Identity action_count 281 step 0 next 281
+2021-11-16 23:03:14.534844: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06ff8400 of size 1024 by op Identity action_count 282 step 0 next 282
+2021-11-16 23:03:14.534870: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06ff8800 of size 1024 by op Identity action_count 283 step 0 next 283
+2021-11-16 23:03:14.534896: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06ff8c00 of size 1024 by op Identity action_count 284 step 0 next 284
+2021-11-16 23:03:14.534922: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06ff9000 of size 1024 by op Identity action_count 285 step 0 next 285
+2021-11-16 23:03:14.534947: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06ff9400 of size 4096 by op Identity action_count 286 step 0 next 286
+2021-11-16 23:03:14.534973: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06ffa400 of size 4096 by op Identity action_count 287 step 0 next 287
+2021-11-16 23:03:14.535000: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06ffb400 of size 1024 by op Identity action_count 288 step 0 next 288
+2021-11-16 23:03:14.535026: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06ffb800 of size 1024 by op Identity action_count 289 step 0 next 289
+2021-11-16 23:03:14.535053: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06ffbc00 of size 1024 by op Identity action_count 290 step 0 next 290
+2021-11-16 23:03:14.535080: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06ffc000 of size 1024 by op Identity action_count 291 step 0 next 291
+2021-11-16 23:03:14.535106: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06ffc400 of size 1024 by op Identity action_count 292 step 0 next 292
+2021-11-16 23:03:14.535133: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06ffc800 of size 1024 by op Identity action_count 293 step 0 next 293
+2021-11-16 23:03:14.535159: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06ffcc00 of size 4096 by op Identity action_count 294 step 0 next 294
+2021-11-16 23:03:14.535184: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06ffdc00 of size 4096 by op Identity action_count 295 step 0 next 295
+2021-11-16 23:03:14.535210: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06ffec00 of size 2048 by op Identity action_count 296 step 0 next 296
+2021-11-16 23:03:14.535236: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06fff400 of size 2048 by op Identity action_count 297 step 0 next 297
+2021-11-16 23:03:14.535262: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f06fffc00 of size 2048 by op Identity action_count 298 step 0 next 298
+2021-11-16 23:03:14.535288: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f07000400 of size 2048 by op Identity action_count 299 step 0 next 299
+2021-11-16 23:03:14.535315: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f07000c00 of size 8192 by op Identity action_count 300 step 0 next 300
+2021-11-16 23:03:14.535341: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f07002c00 of size 8192 by op Identity action_count 301 step 0 next 301
+2021-11-16 23:03:14.535368: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f07004c00 of size 1024 by op Identity action_count 302 step 0 next 302
+2021-11-16 23:03:14.535394: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f07005000 of size 8192 by op Identity action_count 303 step 0 next 303
+2021-11-16 23:03:14.535440: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f07007000 of size 8192 by op Identity action_count 304 step 0 next 304
+2021-11-16 23:03:14.535468: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f07009000 of size 2048 by op Identity action_count 305 step 0 next 305
+2021-11-16 23:03:14.535496: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f07009800 of size 2048 by op Identity action_count 306 step 0 next 306
+2021-11-16 23:03:14.535523: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f0700a000 of size 1024 by op Identity action_count 307 step 0 next 307
+2021-11-16 23:03:14.535549: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f0700a400 of size 2048 by op Identity action_count 308 step 0 next 308
+2021-11-16 23:03:14.535574: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f0700ac00 of size 2048 by op Identity action_count 309 step 0 next 309
+2021-11-16 23:03:14.535599: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f0700b400 of size 8192 by op Identity action_count 310 step 0 next 310
+2021-11-16 23:03:14.535626: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f0700d400 of size 8192 by op Identity action_count 311 step 0 next 311
+2021-11-16 23:03:14.535652: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f0700f400 of size 2048 by op Identity action_count 312 step 0 next 312
+2021-11-16 23:03:14.535679: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f0700fc00 of size 2048 by op Identity action_count 313 step 0 next 313
+2021-11-16 23:03:14.535705: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f07010400 of size 2048 by op Identity action_count 314 step 0 next 314
+2021-11-16 23:03:14.535732: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f07010c00 of size 2048 by op Identity action_count 315 step 0 next 315
+2021-11-16 23:03:14.535758: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f07011400 of size 8192 by op Identity action_count 316 step 0 next 316
+2021-11-16 23:03:14.535785: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f07013400 of size 8192 by op Identity action_count 317 step 0 next 317
+2021-11-16 23:03:14.535812: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f07015400 of size 512 by op Identity action_count 318 step 0 next 318
+2021-11-16 23:03:14.535839: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f07015600 of size 512 by op Identity action_count 319 step 0 next 319
+2021-11-16 23:03:14.535866: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f07015800 of size 256 by op Identity action_count 320 step 0 next 320
+2021-11-16 23:03:14.535892: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f07015900 of size 256 by op Identity action_count 321 step 0 next 321
+2021-11-16 23:03:14.535919: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f07015a00 of size 256 by op Identity action_count 322 step 0 next 322
+2021-11-16 23:03:14.535945: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f07015b00 of size 256 by op Identity action_count 323 step 0 next 323
+2021-11-16 23:03:14.535972: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f07015c00 of size 256 by op Identity action_count 324 step 0 next 324
+2021-11-16 23:03:14.535998: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f07015d00 of size 256 by op Identity action_count 325 step 0 next 325
+2021-11-16 23:03:14.536023: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f07015e00 of size 256 by op Identity action_count 326 step 0 next 326
+2021-11-16 23:03:14.536049: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f07015f00 of size 256 by op Identity action_count 327 step 0 next 327
+2021-11-16 23:03:14.536075: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f07016000 of size 256 by op Identity action_count 328 step 0 next 328
+2021-11-16 23:03:14.536102: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f07016100 of size 1024 by op Identity action_count 329 step 0 next 329
+2021-11-16 23:03:14.536128: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f07016500 of size 1024 by op Identity action_count 330 step 0 next 330
+2021-11-16 23:03:14.536155: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f07016900 of size 256 by op Identity action_count 331 step 0 next 331
+2021-11-16 23:03:14.536182: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f07016a00 of size 256 by op Identity action_count 332 step 0 next 332
+2021-11-16 23:03:14.536208: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f07016b00 of size 256 by op Identity action_count 333 step 0 next 333
+2021-11-16 23:03:14.536233: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f07016c00 of size 256 by op Identity action_count 334 step 0 next 334
+2021-11-16 23:03:14.536259: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f07016d00 of size 256 by op Identity action_count 335 step 0 next 335
+2021-11-16 23:03:14.536285: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f07016e00 of size 1024 by op Identity action_count 336 step 0 next 336
+2021-11-16 23:03:14.536312: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f07017200 of size 1024 by op Identity action_count 337 step 0 next 337
+2021-11-16 23:03:14.536338: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f07017600 of size 512 by op Identity action_count 338 step 0 next 338
+2021-11-16 23:03:14.536365: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f07017800 of size 512 by op Identity action_count 339 step 0 next 339
+2021-11-16 23:03:14.536391: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f07017a00 of size 512 by op Identity action_count 340 step 0 next 340
+2021-11-16 23:03:14.536418: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f07017c00 of size 512 by op Identity action_count 341 step 0 next 341
+2021-11-16 23:03:14.536445: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f07017e00 of size 2048 by op Identity action_count 342 step 0 next 342
+2021-11-16 23:03:14.536471: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f07018600 of size 2048 by op Identity action_count 343 step 0 next 343
+2021-11-16 23:03:14.536497: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f07018e00 of size 2048 by op Identity action_count 344 step 0 next 344
+2021-11-16 23:03:14.536523: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f07019600 of size 2048 by op Identity action_count 345 step 0 next 345
+2021-11-16 23:03:14.536549: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f07019e00 of size 512 by op Identity action_count 346 step 0 next 346
+2021-11-16 23:03:14.536575: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f0701a000 of size 512 by op Identity action_count 347 step 0 next 347
+2021-11-16 23:03:14.536601: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f0701a200 of size 1024 by op Identity action_count 348 step 0 next 348
+2021-11-16 23:03:14.536628: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f0701a600 of size 589824 by op Identity action_count 349 step 0 next 349
+2021-11-16 23:03:14.536655: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f070aa600 of size 256 by op Identity action_count 350 step 0 next 350
+2021-11-16 23:03:14.536681: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f070aa700 of size 2048 by op Identity action_count 351 step 0 next 351
+2021-11-16 23:03:14.536708: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f070aaf00 of size 1024 by op Identity action_count 352 step 0 next 352
+2021-11-16 23:03:14.536734: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f070ab300 of size 589824 by op Identity action_count 353 step 0 next 353
+2021-11-16 23:03:14.536762: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f0713b300 of size 256 by op Identity action_count 354 step 0 next 354
+2021-11-16 23:03:14.536788: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f0713b400 of size 2048 by op Identity action_count 355 step 0 next 355
+2021-11-16 23:03:14.536814: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f0713bc00 of size 1024 by op Identity action_count 356 step 0 next 356
+2021-11-16 23:03:14.536840: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f0713c000 of size 589824 by op Identity action_count 357 step 0 next 357
+2021-11-16 23:03:14.536865: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f071cc000 of size 512 by op Identity action_count 358 step 0 next 358
+2021-11-16 23:03:14.536892: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f071cc200 of size 92160 by op Identity action_count 359 step 0 next 359
+2021-11-16 23:03:14.536919: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f071e2a00 of size 3170560 by op ExpandDims action_count 360 step 0 next 360
+2021-11-16 23:03:14.536948: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f074e8b00 of size 256 by op StatefulPartitionedCall/add_7/y action_count 361 step 0 next 361
+2021-11-16 23:03:14.536975: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f074e8c00 of size 256 by op StatefulPartitionedCall/Greater/y action_count 362 step 0 next 362
+2021-11-16 23:03:14.537004: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f074e8d00 of size 256 by op StatefulPartitionedCall/Assert/AssertGuard/pivot_t/_374 action_count 363 step 0 next 363
+2021-11-16 23:03:14.537032: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f074e8e00 of size 256 by op StatefulPartitionedCall/Scale/Cast action_count 364 step 0 next 364
+2021-11-16 23:03:14.537060: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f074e8f00 of size 256 by op ConstantFolding/StatefulPartitionedCall/truediv_1_recip action_count 365 step 0 next 365
+2021-11-16 23:03:14.537088: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f074e9000 of size 256 by op StatefulPartitionedCall/Less/y action_count 366 step 0 next 366
+2021-11-16 23:03:14.537115: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f074e9100 of size 256 by op StatefulPartitionedCall/Const_2 action_count 367 step 0 next 367
+2021-11-16 23:03:14.537141: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f074e9200 of size 256 by op StatefulPartitionedCall/ToNormalizedCoordinates/Greater/y action_count 368 step 0 next 368
+2021-11-16 23:03:14.537170: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f074e9300 of size 256 by op StatefulPartitionedCall/ResizeToRange/cond/else/_363/ResizeToRange/cond/resize/Cast action_count 369 step 0 next 369
+2021-11-16 23:03:14.537198: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f074e9400 of size 256 by op StatefulPartitionedCall/ResizeToRange/cond/then/_362/ResizeToRange/cond/resize/Cast action_count 370 step 0 next 370
+2021-11-16 23:03:14.537225: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f074e9500 of size 256 by op StatefulPartitionedCall/Assert_1/AssertGuard/pivot_t/_383 action_count 371 step 0 next 371
+2021-11-16 23:03:14.537252: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f074e9600 of size 256 by op StatefulPartitionedCall/Assert_2/AssertGuard/pivot_t/_392 action_count 372 step 0 next 372
+2021-11-16 23:03:14.537281: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f074e9700 of size 256 by op StatefulPartitionedCall/Assert_3/AssertGuard/pivot_t/_401 action_count 373 step 0 next 373
+2021-11-16 23:03:14.537309: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f074e9800 of size 256 by op StatefulPartitionedCall/ToNormalizedCoordinates/Assert/AssertGuard/pivot_f/_409 action_count 374 step 0 next 374
+2021-11-16 23:03:14.537337: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f074e9900 of size 256 by op StatefulPartitionedCall/ToNormalizedCoordinates/Assert/AssertGuard/pivot_t/_410 action_count 375 step 0 next 375
+2021-11-16 23:03:14.537365: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f074e9a00 of size 256 by op Func/StatefulPartitionedCall/ToNormalizedCoordinates/Assert/AssertGuard/else/_407/input/_469 action_count 376 step 0 next 376
+2021-11-16 23:03:14.537393: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f074e9b00 of size 256 by op Func/StatefulPartitionedCall/ToNormalizedCoordinates/Assert/AssertGuard/then/_406/output/_466 action_count 377 step 0 next 377
+2021-11-16 23:03:14.537420: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f074e9c00 of size 256 by op Func/StatefulPartitionedCall/ToNormalizedCoordinates/Assert/AssertGuard/else/_407/output/_471 action_count 378 step 0 next 378
+2021-11-16 23:03:14.537449: I tensorflow/core/common_runtime/bfc_allocator.cc:1055] InUse at f074e9d00 of size 17818368 by op StatefulPartitionedCall/Cast action_count 379 step 9416682755049550770 next 18446744073709551615
+2021-11-16 23:03:14.537474: I tensorflow/core/common_runtime/bfc_allocator.cc:1060]      Summary of in-use Chunks by size: 
+2021-11-16 23:03:14.537505: I tensorflow/core/common_runtime/bfc_allocator.cc:1063] 66 Chunks of size 256 totalling 16.5KiB
+2021-11-16 23:03:14.537535: I tensorflow/core/common_runtime/bfc_allocator.cc:1063] 47 Chunks of size 512 totalling 23.5KiB
+2021-11-16 23:03:14.537564: I tensorflow/core/common_runtime/bfc_allocator.cc:1063] 85 Chunks of size 1024 totalling 85.0KiB
+2021-11-16 23:03:14.537593: I tensorflow/core/common_runtime/bfc_allocator.cc:1063] 1 Chunks of size 1280 totalling 1.2KiB
+2021-11-16 23:03:14.537622: I tensorflow/core/common_runtime/bfc_allocator.cc:1063] 57 Chunks of size 2048 totalling 114.0KiB
+2021-11-16 23:03:14.537651: I tensorflow/core/common_runtime/bfc_allocator.cc:1063] 36 Chunks of size 4096 totalling 144.0KiB
+2021-11-16 23:03:14.537680: I tensorflow/core/common_runtime/bfc_allocator.cc:1063] 20 Chunks of size 8192 totalling 160.0KiB
+2021-11-16 23:03:14.537708: I tensorflow/core/common_runtime/bfc_allocator.cc:1063] 1 Chunks of size 16384 totalling 16.0KiB
+2021-11-16 23:03:14.537736: I tensorflow/core/common_runtime/bfc_allocator.cc:1063] 1 Chunks of size 37632 totalling 36.8KiB
+2021-11-16 23:03:14.537764: I tensorflow/core/common_runtime/bfc_allocator.cc:1063] 7 Chunks of size 65536 totalling 448.0KiB
+2021-11-16 23:03:14.537792: I tensorflow/core/common_runtime/bfc_allocator.cc:1063] 1 Chunks of size 92160 totalling 90.0KiB
+2021-11-16 23:03:14.537821: I tensorflow/core/common_runtime/bfc_allocator.cc:1063] 1 Chunks of size 131072 totalling 128.0KiB
+2021-11-16 23:03:14.537849: I tensorflow/core/common_runtime/bfc_allocator.cc:1063] 4 Chunks of size 147456 totalling 576.0KiB
+2021-11-16 23:03:14.537877: I tensorflow/core/common_runtime/bfc_allocator.cc:1063] 8 Chunks of size 262144 totalling 2.00MiB
+2021-11-16 23:03:14.537907: I tensorflow/core/common_runtime/bfc_allocator.cc:1063] 1 Chunks of size 294912 totalling 288.0KiB
+2021-11-16 23:03:14.537935: I tensorflow/core/common_runtime/bfc_allocator.cc:1063] 2 Chunks of size 524288 totalling 1.00MiB
+2021-11-16 23:03:14.537963: I tensorflow/core/common_runtime/bfc_allocator.cc:1063] 7 Chunks of size 589824 totalling 3.94MiB
+2021-11-16 23:03:14.537991: I tensorflow/core/common_runtime/bfc_allocator.cc:1063] 12 Chunks of size 1048576 totalling 12.00MiB
+2021-11-16 23:03:14.538018: I tensorflow/core/common_runtime/bfc_allocator.cc:1063] 1 Chunks of size 1179648 totalling 1.12MiB
+2021-11-16 23:03:14.538046: I tensorflow/core/common_runtime/bfc_allocator.cc:1063] 3 Chunks of size 2097152 totalling 6.00MiB
+2021-11-16 23:03:14.538074: I tensorflow/core/common_runtime/bfc_allocator.cc:1063] 6 Chunks of size 2359296 totalling 13.50MiB
+2021-11-16 23:03:14.538102: I tensorflow/core/common_runtime/bfc_allocator.cc:1063] 1 Chunks of size 3170560 totalling 3.02MiB
+2021-11-16 23:03:14.538130: I tensorflow/core/common_runtime/bfc_allocator.cc:1063] 5 Chunks of size 4194304 totalling 20.00MiB
+2021-11-16 23:03:14.538159: I tensorflow/core/common_runtime/bfc_allocator.cc:1063] 1 Chunks of size 8192000 totalling 7.81MiB
+2021-11-16 23:03:14.538187: I tensorflow/core/common_runtime/bfc_allocator.cc:1063] 1 Chunks of size 8388608 totalling 8.00MiB
+2021-11-16 23:03:14.538216: I tensorflow/core/common_runtime/bfc_allocator.cc:1063] 3 Chunks of size 9437184 totalling 27.00MiB
+2021-11-16 23:03:14.538244: I tensorflow/core/common_runtime/bfc_allocator.cc:1063] 1 Chunks of size 17818368 totalling 16.99MiB
+2021-11-16 23:03:14.538272: I tensorflow/core/common_runtime/bfc_allocator.cc:1067] Sum Total of in-use chunks: 124.47MiB
+2021-11-16 23:03:14.538297: I tensorflow/core/common_runtime/bfc_allocator.cc:1069] total_region_allocated_bytes_: 130514944 memory_limit_: 130514944 available bytes: 0 curr_region_allocation_bytes_: 261029888
+2021-11-16 23:03:14.538335: I tensorflow/core/common_runtime/bfc_allocator.cc:1075] Stats: 
+Limit:                       130514944
+InUse:                       130514944
+MaxInUse:                    130514944
+NumAllocs:                         379
+MaxAllocSize:                 17818368
+Reserved:                            0
+PeakReserved:                        0
+LargestFreeBlock:                    0
+
+2021-11-16 23:03:14.538408: W tensorflow/core/common_runtime/bfc_allocator.cc:473] *************************************************************************************************xxx
+Traceback (most recent call last):
+  File "testT.py", line 30, in <module>
+    boxes, scores, classes, num_detections = detector(rgb_tensor)
+  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/saved_model/load.py", line 670, in _call_attribute
+    return instance.__call__(*args, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/eager/def_function.py", line 889, in __call__
+    result = self._call(*args, **kwds)
+  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/eager/def_function.py", line 957, in _call
+    filtered_flat_args, self._concrete_stateful_fn.captured_inputs)  # pylint: disable=protected-access
+  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/eager/function.py", line 1961, in _call_flat
+    ctx, args, cancellation_manager=cancellation_manager))
+  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/eager/function.py", line 596, in call
+    ctx=ctx)
+  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/eager/execute.py", line 60, in quick_execute
+    inputs, attrs, num_outputs)
+tensorflow.python.framework.errors_impl.ResourceExhaustedError: 2 root error(s) found.
+  (0) Resource exhausted:  SameWorkerRecvDone unable to allocate output tensor. Key: /job:localhost/replica:0/task:0/device:GPU:0;e0e98d21b6071520;/job:localhost/replica:0/task:0/device:GPU:0;edge_384_StatefulPartitionedCall/ResizeToRange/Less;0:0
+	 [[{{node StatefulPartitionedCall/ResizeToRange/Less/_4}}]]
+Hint: If you want to see a list of allocated tensors when OOM happens, add report_tensor_allocations_upon_oom to RunOptions for current allocation info.
+
+	 [[StatefulPartitionedCall/ToNormalizedCoordinates/Assert/AssertGuard/pivot_f/_409/_59]]
+Hint: If you want to see a list of allocated tensors when OOM happens, add report_tensor_allocations_upon_oom to RunOptions for current allocation info.
+
+  (1) Resource exhausted:  SameWorkerRecvDone unable to allocate output tensor. Key: /job:localhost/replica:0/task:0/device:GPU:0;e0e98d21b6071520;/job:localhost/replica:0/task:0/device:GPU:0;edge_384_StatefulPartitionedCall/ResizeToRange/Less;0:0
+	 [[{{node StatefulPartitionedCall/ResizeToRange/Less/_4}}]]
+Hint: If you want to see a list of allocated tensors when OOM happens, add report_tensor_allocations_upon_oom to RunOptions for current allocation info.
+
+0 successful operations.
+0 derived errors ignored. [Op:__inference_restored_function_body_67824]
+
+Function call stack:
+restored_function_body -> restored_function_body
+

@@ -1,0 +1,96 @@
+2021-11-16 23:29:56.069467: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudart.so.10.2
+2021-11-16 23:30:23.584240: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcuda.so.1
+2021-11-16 23:30:23.630419: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1001] ARM64 does not support NUMA - returning NUMA node zero
+2021-11-16 23:30:23.630594: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1734] Found device 0 with properties: 
+pciBusID: 0000:00:00.0 name: NVIDIA Tegra X1 computeCapability: 5.3
+coreClock: 0.9216GHz coreCount: 1 deviceMemorySize: 3.87GiB deviceMemoryBandwidth: 194.55MiB/s
+2021-11-16 23:30:23.630792: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudart.so.10.2
+2021-11-16 23:30:23.794969: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcublas.so.10
+2021-11-16 23:30:23.795409: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcublasLt.so.10
+2021-11-16 23:30:23.869475: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcufft.so.10
+2021-11-16 23:30:23.978549: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcurand.so.10
+2021-11-16 23:30:24.100303: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcusolver.so.10
+2021-11-16 23:30:24.181999: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcusparse.so.10
+2021-11-16 23:30:24.185516: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudnn.so.8
+2021-11-16 23:30:24.185933: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1001] ARM64 does not support NUMA - returning NUMA node zero
+2021-11-16 23:30:24.186314: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1001] ARM64 does not support NUMA - returning NUMA node zero
+2021-11-16 23:30:24.186454: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1872] Adding visible gpu devices: 0
+2021-11-16 23:30:24.189526: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1001] ARM64 does not support NUMA - returning NUMA node zero
+2021-11-16 23:30:24.189664: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1734] Found device 0 with properties: 
+pciBusID: 0000:00:00.0 name: NVIDIA Tegra X1 computeCapability: 5.3
+coreClock: 0.9216GHz coreCount: 1 deviceMemorySize: 3.87GiB deviceMemoryBandwidth: 194.55MiB/s
+2021-11-16 23:30:24.189973: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1001] ARM64 does not support NUMA - returning NUMA node zero
+2021-11-16 23:30:24.190248: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1001] ARM64 does not support NUMA - returning NUMA node zero
+2021-11-16 23:30:24.190324: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1872] Adding visible gpu devices: 0
+2021-11-16 23:30:24.190546: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudart.so.10.2
+2021-11-16 23:30:29.610625: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1258] Device interconnect StreamExecutor with strength 1 edge matrix:
+2021-11-16 23:30:29.610839: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1264]      0 
+2021-11-16 23:30:29.610879: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1277] 0:   N 
+2021-11-16 23:30:29.617408: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1001] ARM64 does not support NUMA - returning NUMA node zero
+2021-11-16 23:30:29.617806: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1001] ARM64 does not support NUMA - returning NUMA node zero
+2021-11-16 23:30:29.618114: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1001] ARM64 does not support NUMA - returning NUMA node zero
+2021-11-16 23:30:29.618323: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1418] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 273 MB memory) -> physical GPU (device: 0, name: NVIDIA Tegra X1, pci bus id: 0000:00:00.0, compute capability: 5.3)
+Traceback (most recent call last):
+  File "testT.py", line 30, in <module>
+    boxes, scores, classes, num_detections = detector(rgb_tensor)
+  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/saved_model/load.py", line 670, in _call_attribute
+    return instance.__call__(*args, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/eager/def_function.py", line 889, in __call__
+    result = self._call(*args, **kwds)
+  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/eager/def_function.py", line 933, in _call
+    self._initialize(args, kwds, add_initializers_to=initializers)
+  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/eager/def_function.py", line 764, in _initialize
+    *args, **kwds))
+  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/eager/function.py", line 3050, in _get_concrete_function_internal_garbage_collected
+    graph_function, _ = self._maybe_define_function(args, kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/eager/function.py", line 3444, in _maybe_define_function
+    graph_function = self._create_graph_function(args, kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/eager/function.py", line 3289, in _create_graph_function
+    capture_by_value=self._capture_by_value),
+  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/framework/func_graph.py", line 999, in func_graph_from_py_func
+    func_outputs = python_func(*func_args, **func_kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/eager/def_function.py", line 672, in wrapped_fn
+    out = weak_wrapped_fn().__wrapped__(*args, **kwds)
+  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/saved_model/function_deserialization.py", line 291, in restored_function_body
+    "\n\n".join(signature_descriptions)))
+ValueError: Could not find matching function to call loaded from the SavedModel. Got:
+  Positional arguments (4 total):
+    * Tensor("inputs:0", shape=(1, 1028, 1028, 3), dtype=uint8)
+    * False
+    * False
+    * 0.99
+  Keyword arguments: {}
+
+Expected these arguments to match one of the following 4 option(s):
+
+Option 1:
+  Positional arguments (4 total):
+    * TensorSpec(shape=(None, None, None, 3), dtype=tf.float32, name='inputs')
+    * False
+    * True
+    * TensorSpec(shape=(), dtype=tf.float32, name='batch_norm_momentum')
+  Keyword arguments: {}
+
+Option 2:
+  Positional arguments (4 total):
+    * TensorSpec(shape=(None, None, None, 3), dtype=tf.float32, name='inputs')
+    * True
+    * True
+    * TensorSpec(shape=(), dtype=tf.float32, name='batch_norm_momentum')
+  Keyword arguments: {}
+
+Option 3:
+  Positional arguments (4 total):
+    * TensorSpec(shape=(None, None, None, 3), dtype=tf.float32, name='inputs')
+    * True
+    * False
+    * TensorSpec(shape=(), dtype=tf.float32, name='batch_norm_momentum')
+  Keyword arguments: {}
+
+Option 4:
+  Positional arguments (4 total):
+    * TensorSpec(shape=(None, None, None, 3), dtype=tf.float32, name='inputs')
+    * False
+    * False
+    * TensorSpec(shape=(), dtype=tf.float32, name='batch_norm_momentum')
+  Keyword arguments: {}
