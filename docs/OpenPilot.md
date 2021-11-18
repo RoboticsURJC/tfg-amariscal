@@ -6,9 +6,9 @@ aunque hay videos donde de demostración donde parece que no hay conductor
 	
 Funciones:
 
-Adaptive Cruise Control (ACC)
+1. Adaptive Cruise Control (ACC)
 
-Automated Lane Centering (ALC)
+2. Automated Lane Centering (ALC)
 
 Forward Collision Warning (FCW) 
 
