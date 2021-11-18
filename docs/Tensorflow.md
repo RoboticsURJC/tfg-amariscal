@@ -54,3 +54,5 @@ Htop en el momento de ejecutar el programa:
 ![](https://github.com/jmvega/tfg-amariscal/blob/main/resources/htop.png)
 
 Vemos que la memoria virtual utilizada por el programa es 13 GB
+
+VIRT stands for the virtual size of a process, which is the sum of memory it is actually using, memory it has mapped into itself (for instance the video card’s RAM for the X server), files on disk that have been mapped into it (most notably shared libraries), and memory shared with other processes. VIRT represents how much memory the program is able to access at the present moment.
