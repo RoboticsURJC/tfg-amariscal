@@ -26,6 +26,9 @@ item {
   display_name: "traffic light"
 }
 
+Probamos TensorFlow con un modelo
+[Programa](https://github.com/jmvega/tfg-amariscal/blob/main/src/object_detection/objectDetectionTensorflow.py)
+
 ![](https://github.com/jmvega/tfg-amariscal/blob/main/resources/savedImage.jpg)
 ![](https://github.com/jmvega/tfg-amariscal/blob/main/resources/city.jpg)
 ![](https://github.com/jmvega/tfg-amariscal/blob/main/resources/time.jpg)
