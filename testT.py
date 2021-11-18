@@ -27,7 +27,8 @@ rgb_tensor = tf.expand_dims(rgb_tensor, 0)
 # # Now you can use rgb_tensor to predict label for exemple :
 # plt.figure(figsize=(10, 10))
 
-boxes, scores, classes, num_detections = detector(rgb_tensor)
+# boxes, scores, classes, num_detections = detector(rgb_tensor)
+detector(rgb)
 
 cv2.imshow('Tensorflow', rgb)
 cv2.waitKey()
