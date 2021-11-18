@@ -26,5 +26,7 @@ item {
   display_name: "traffic light"
 }
 
-![](https://github.com/jmvega/tfg-amariscal/blob/main/object_detection/savedImage2.jpg)
+![](https://github.com/jmvega/tfg-amariscal/blob/main/resources/savedImage.jpg)
+![](https://github.com/jmvega/tfg-amariscal/blob/main/resources/city.jpg)
+![](https://github.com/jmvega/tfg-amariscal/blob/main/resources/time.jpg)
 
