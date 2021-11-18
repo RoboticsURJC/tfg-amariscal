@@ -44,5 +44,6 @@ Vemos el tiempo que tarda:
 
 La mayoría del tiempo se invierte en abrir las librerías de CUDA y TensorFlow
 
+A continuación medimos el tiempo real que tarda únicamente en procesar la imagen, sin contar el tiempo en cargar las librerías:
 
-
+![](https://github.com/jmvega/tfg-amariscal/blob/main/resources/time.png)
