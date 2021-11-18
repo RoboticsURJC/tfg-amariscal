@@ -7,7 +7,10 @@ import os
 import cv2
 import numpy as np
 import tensorflow as tf
+import time
 import sys
+
+start = time.time()
 
 # This is needed since the working directory is the object_detection folder.
 sys.path.append('..')
@@ -111,6 +114,8 @@ filename = 'savedImage2.jpg'
 # Using cv2.imwrite() method
 # Saving the image
 cv2.imwrite(filename, frame)
+
+print("Elapsed time: " + str(time.time() - start))
 
 # Press 'q' to quit
 # cv2.waitKey()
