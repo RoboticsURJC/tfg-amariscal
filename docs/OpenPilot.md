@@ -6,24 +6,24 @@ aunque hay videos donde de demostración donde parece que no hay conductor
 	
 Funciones:
 
-1. Adaptive Cruise Control (ACC)
+* Adaptive Cruise Control (ACC)
 
-2. Automated Lane Centering (ALC)
+* Automated Lane Centering (ALC)
 
-Forward Collision Warning (FCW) 
+* Forward Collision Warning (FCW) 
 
-Lane Departure Warning (LDW) 
+* Lane Departure Warning (LDW) 
 
 Limitaciones:
 
-Baja visibilidad
+* Baja visibilidad
 
-Curvas cerradas
+* Curvas cerradas
 
-Rampas
+* Rampas
 
-Sol de cara
+* Sol de cara
 
-Limitación de aceleración y deceleración
+* Limitación de aceleración y deceleración
 
-Zonas en obras
+* Zonas en obras
