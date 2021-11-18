@@ -17,7 +17,7 @@ sudo pip3 install --pre --extra-index-url https://developer.download.nvidia.com/
 2021-11-17 22:16:42.180100: W tensorflow/core/common_runtime/bfc_allocator.cc:274] Allocator (GPU_0_bfc) ran out of memory trying to allocate 16.00MiB with freed_by_count=0. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
 
 frozen_inference_graph.pb, is a frozen graph that cannot be trained anymore, it defines the graphdef and is actually a serialized graph
-Esta dentro del modulo de detección de objetos ssdlite_mobilenet_v2_coco_2018_05_09
+
 
 mscoco_label_map.pbtxt contiene los objetos que puede detectar en el siguiente formato:
 item {
@@ -26,8 +26,9 @@ item {
   display_name: "traffic light"
 }
 
-Probamos TensorFlow con un [grafo congelado que ya no se puede entrenar](https://github.com/jmvega/tfg-amariscal/blob/main/src/object_detection/ssdlite_mobilenet_v2_coco_2018_05_09/frozen_inference_graph.pb)
+Probamos TensorFlow con un [grafo congelado que ya no se puede entrenar](https://github.com/jmvega/tfg-amariscal/blob/main/src/object_detection/ssdlite_mobilenet_v2_coco_2018_05_09/frozen_inference_graph.pb), dicho grafo se encuentra dentro del módulo de detección de objetos [ssdlite_mobilenet_v2_coco_2018_05_09](https://github.com/jmvega/tfg-amariscal/tree/main/src/object_detection/ssdlite_mobilenet_v2_coco_2018_05_09)
 
+Y las etiquetas se encuentran [aquí](https://github.com/jmvega/tfg-amariscal/blob/main/src/object_detection/data/mscoco_label_map.pbtxt), podemos ver que se encuentran todos objetos que puede detectar.
 
 [Programa](https://github.com/jmvega/tfg-amariscal/blob/main/src/object_detection/objectDetectionTensorflow.py)
 
