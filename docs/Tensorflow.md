@@ -19,16 +19,19 @@ sudo pip3 install --pre --extra-index-url https://developer.download.nvidia.com/
 frozen_inference_graph.pb, is a frozen graph that cannot be trained anymore, it defines the graphdef and is actually a serialized graph
 
 
-mscoco_label_map.pbtxt contiene los objetos que puede detectar en el siguiente formato:
+
+
+Probamos TensorFlow con un [grafo congelado que ya no se puede entrenar](https://github.com/jmvega/tfg-amariscal/blob/main/src/object_detection/ssdlite_mobilenet_v2_coco_2018_05_09/frozen_inference_graph.pb), dicho grafo se encuentra dentro del módulo de detección de objetos [ssdlite_mobilenet_v2_coco_2018_05_09](https://github.com/jmvega/tfg-amariscal/tree/main/src/object_detection/ssdlite_mobilenet_v2_coco_2018_05_09)
+
+Y las etiquetas se encuentran [aquí](https://github.com/jmvega/tfg-amariscal/blob/main/src/object_detection/data/mscoco_label_map.pbtxt), podemos ver que se encuentran todos objetos que puede detectar, en el siguiente formato:
+
+<pre>
 item {
   name: "/m/015qff"
   id: 10
   display_name: "traffic light"
 }
-
-Probamos TensorFlow con un [grafo congelado que ya no se puede entrenar](https://github.com/jmvega/tfg-amariscal/blob/main/src/object_detection/ssdlite_mobilenet_v2_coco_2018_05_09/frozen_inference_graph.pb), dicho grafo se encuentra dentro del módulo de detección de objetos [ssdlite_mobilenet_v2_coco_2018_05_09](https://github.com/jmvega/tfg-amariscal/tree/main/src/object_detection/ssdlite_mobilenet_v2_coco_2018_05_09)
-
-Y las etiquetas se encuentran [aquí](https://github.com/jmvega/tfg-amariscal/blob/main/src/object_detection/data/mscoco_label_map.pbtxt), podemos ver que se encuentran todos objetos que puede detectar.
+</pre>
 
 Hemos realizado el siguiente [programa](https://github.com/jmvega/tfg-amariscal/blob/main/src/object_detection/objectDetectionTensorflow.py) modificado a partir de [este](https://github.com/EdjeElectronics/TensorFlow-Object-Detection-on-the-Raspberry-Pi/master/Object_detection_picamera.py), se trataba de un programa para detectar objetos en Raspberry Pi con la Pi Camera o una cámara USB, lo hemos modificado para utilizar únicamente un frame obtenido por la siguiente imagen de una ciudad:
 
