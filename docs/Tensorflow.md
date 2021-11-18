@@ -30,9 +30,7 @@ Probamos TensorFlow con un [grafo congelado que ya no se puede entrenar](https:/
 
 Y las etiquetas se encuentran [aquí](https://github.com/jmvega/tfg-amariscal/blob/main/src/object_detection/data/mscoco_label_map.pbtxt), podemos ver que se encuentran todos objetos que puede detectar.
 
-[Programa](https://github.com/jmvega/tfg-amariscal/blob/main/src/object_detection/objectDetectionTensorflow.py)
-
-Utilizamos esta imagen de una ciudad para reconocer objetos
+Hemos realizado el siguiente [programa](https://github.com/jmvega/tfg-amariscal/blob/main/src/object_detection/objectDetectionTensorflow.py) modificado a partir de [este](https://github.com/EdjeElectronics/TensorFlow-Object-Detection-on-the-Raspberry-Pi/master/Object_detection_picamera.py), se trataba de un programa para detectar objetos en Raspberry Pi con la Pi Camera o una cámara USB, lo hemos modificado para utilizar únicamente un frame obtenido por la siguiente imagen de una ciudad:
 
 ![](https://github.com/jmvega/tfg-amariscal/blob/main/resources/city.jpg)
 
