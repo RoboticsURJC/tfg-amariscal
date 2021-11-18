@@ -41,5 +41,5 @@ Vemos que detecta los semáforos, las personas y los coches. Las personas las de
 
 Vemos el tiempo que tarda:
 
-![](https://github.com/jmvega/tfg-amariscal/blob/main/resources/time.jpg)
+![](https://github.com/jmvega/tfg-amariscal/blob/main/resources/time.png)
 
