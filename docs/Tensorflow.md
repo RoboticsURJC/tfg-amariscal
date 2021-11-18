@@ -43,3 +43,7 @@ Vemos el tiempo que tarda:
 
 ![](https://github.com/jmvega/tfg-amariscal/blob/main/resources/time.png)
 
+La mayoría del tiempo se invierte en abrir las librerías de CUDA y TensorFlow
+
+
+
