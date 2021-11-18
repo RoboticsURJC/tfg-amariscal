@@ -1,5 +1,5 @@
 # Realizar comparativa entre TensorFlow y PyTorch
 
-TensorFlow:
+# TensorFlow:
 
 ![](https://github.com/jmvega/tfg-amariscal/blob/main/resources/time.png)
