@@ -10,7 +10,6 @@ import tensorflow as tf
 import time
 import sys
 
-start = time.time()
 
 # This is needed since the working directory is the object_detection folder.
 sys.path.append('..')
@@ -40,6 +39,8 @@ label_map = label_map_util.load_labelmap(PATH_TO_LABELS)
 categories = label_map_util.convert_label_map_to_categories(
     label_map, max_num_classes=NUM_CLASSES, use_display_name=True)
 category_index = label_map_util.create_category_index(categories)
+
+start = time.time()
 
 # Load the Tensorflow model into memory.
 detection_graph = tf.Graph()
@@ -87,11 +88,6 @@ frame_expanded = np.expand_dims(frame_rgb, axis=0)
 (boxes, scores, classes, num) = sess.run(
     [detection_boxes, detection_scores, detection_classes, num_detections],
     feed_dict={image_tensor: frame_expanded})
-
-print(boxes)
-print(scores)
-print(classes)
-print(num)
 
 # Draw the results of the detection (aka 'visulaize the results')
 vis_util.visualize_boxes_and_labels_on_image_array(

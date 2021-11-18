@@ -34,14 +34,13 @@ Vemos el tiempo que tarda:
 
 ![](https://github.com/jmvega/tfg-amariscal/blob/main/resources/time.png)
 
-La mayoría del tiempo se invierte en abrir las librerías de CUDA y TensorFlow
+Parte del tiempo se invierte en abrir las librerías de CUDA y TensorFlow
 
 A continuación medimos el tiempo real que tarda únicamente en procesar la imagen, sin contar el tiempo en cargar las librerías:
 
-![](https://github.com/jmvega/tfg-amariscal/blob/main/resources/time.png)
+Elapsed time: 55.96650457382202 segundos
 
-
-Tras ejecutar varias veces el programa me salta el siguiente mensaje:
+Tras ejecutar varias veces el programa salta el siguiente mensaje:
 
 <pre>
 2021-11-17 22:16:42.180100: W tensorflow/core/common_runtime/bfc_allocator.cc:274] Allocator (GPU_0_bfc) ran out of memory trying to allocate 16.00MiB with freed_by_count=0. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
