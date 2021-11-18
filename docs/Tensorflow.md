@@ -26,7 +26,9 @@ item {
   display_name: "traffic light"
 }
 
-Probamos TensorFlow con un modelo
+Probamos TensorFlow con un [grafo congelado que ya no se puede entrenar](https://github.com/jmvega/tfg-amariscal/blob/main/src/object_detection/ssdlite_mobilenet_v2_coco_2018_05_09/frozen_inference_graph.pb)
+
+
 [Programa](https://github.com/jmvega/tfg-amariscal/blob/main/src/object_detection/objectDetectionTensorflow.py)
 
 ![](https://github.com/jmvega/tfg-amariscal/blob/main/resources/savedImage.jpg)
