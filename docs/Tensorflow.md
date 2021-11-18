@@ -31,7 +31,15 @@ Probamos TensorFlow con un [grafo congelado que ya no se puede entrenar](https:/
 
 [Programa](https://github.com/jmvega/tfg-amariscal/blob/main/src/object_detection/objectDetectionTensorflow.py)
 
-![](https://github.com/jmvega/tfg-amariscal/blob/main/resources/savedImage.jpg)
+Utilizamos esta imagen de una ciudad para reconocer objetos
+
 ![](https://github.com/jmvega/tfg-amariscal/blob/main/resources/city.jpg)
+
+Vemos que detecta los semáforos, las personas y los coches. Las personas las detecta con probabilidad baja, alrededor de 50%
+
+![](https://github.com/jmvega/tfg-amariscal/blob/main/resources/savedImage.jpg)
+
+Vemos el tiempo que tarda:
+
 ![](https://github.com/jmvega/tfg-amariscal/blob/main/resources/time.jpg)
 
