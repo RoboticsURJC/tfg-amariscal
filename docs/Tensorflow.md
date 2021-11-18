@@ -25,3 +25,6 @@ item {
   id: 10
   display_name: "traffic light"
 }
+
+![](https://github.com/jmvega/tfg-amariscal/blob/main/object_detection/savedImage2.jpg)
+
