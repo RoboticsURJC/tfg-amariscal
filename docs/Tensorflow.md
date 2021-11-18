@@ -49,3 +49,8 @@ Tras ejecutar varias veces el programa me salta el siguiente mensaje:
 
 Parece que se queda sin memoria o no la libera correctamente
 
+Htop en el momento de ejecutar el programa:
+
+![](https://github.com/jmvega/tfg-amariscal/blob/main/resources/htop.png)
+
+Vemos que la memoria virtual utilizada por el programa es 13 GB
