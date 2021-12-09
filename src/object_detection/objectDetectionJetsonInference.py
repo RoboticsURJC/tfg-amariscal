@@ -150,8 +150,8 @@ while True:
     #     min_score_thresh=0.40)
 
     # render the image
-    #output.Render(frame)
-    cv2.imshow(frame)
+    output.Render(frame)
+    #cv2.imshow(frame)
 
     # exit on input/output EOS
     if not input.IsStreaming() or not output.IsStreaming():
