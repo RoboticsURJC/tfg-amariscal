@@ -11,45 +11,99 @@ ENB = 32
 IN3 = 26
 IN4 = 24
 
+# 50 Hz
 FREQUENCY = 50
+
+
+class Motors:
+    def __init__(self, ENA, IN1, IN2, ENB, IN3, IN4, FRECUENCY):
+        self.motorLeft = ENA
+        self.forwardMotorLeft = IN1
+        self.backwardMotorLeft = IN2
+        self.motorRight = ENB
+        self.forwardMotorRight = IN3
+        self.backwardMotorRight = IN4
+        self.FRECUENCY = FRECUENCY
+
+        GPIO.setmode(GPIO.BOARD)
+        GPIO.setwarnings(False)
+        GPIO.setup(self.motorLeft, GPIO.OUT, initial=GPIO.LOW)
+        GPIO.setup(self.forwardMotorLeft, GPIO.OUT, initial=GPIO.LOW)
+        GPIO.setup(self.backwardMotorLeft, GPIO.OUT, initial=GPIO.LOW)
+        GPIO.setup(self.motorRight, GPIO.OUT, initial=GPIO.LOW)
+        GPIO.setup(self.forwardMotorRight, GPIO.OUT, initial=GPIO.LOW)
+        GPIO.setup(self.backwardMotorRight, GPIO.OUT, initial=GPIO.LOW)
+
+        self.pwmLeft = GPIO.PWM(self.motorLeft, self.FRECUENCY)
+        self.pwmRight = GPIO.PWM(self.motorRight, self.FRECUENCY)
+        self.pwmLeft.start(0)
+        self.pwmRight.start(0)
+
+    def goForward(self):
+        GPIO.output(self.forwardMotorLeft, GPIO.HIGH)
+        GPIO.output(self.backwardMotorLeft, GPIO.LOW)
+        GPIO.output(self.forwardMotorRight, GPIO.HIGH)
+        GPIO.output(self.backwardMotorRight, GPIO.LOW)
+
+    def goBackward(self):
+        GPIO.output(self.forwardMotorLeft, GPIO.LOW)
+        GPIO.output(self.backwardMotorLeft, GPIO.HIGH)
+        GPIO.output(self.forwardMotorRight, GPIO.LOW)
+        GPIO.output(self.backwardMotorRight, GPIO.HIGH)
+
+    def goRight(self):
+        GPIO.output(self.forwardMotorLeft, GPIO.HIGH)
+        GPIO.output(self.backwardMotorLeft, GPIO.LOW)
+        GPIO.output(self.forwardMotorRight, GPIO.LOW)
+        GPIO.output(self.backwardMotorRight, GPIO.LOW)
+
+    def goLeft(self):
+        GPIO.output(self.forwardMotorLeft, GPIO.LOW)
+        GPIO.output(self.backwardMotorLeft, GPIO.LOW)
+        GPIO.output(self.forwardMotorRight, GPIO.HIGH)
+        GPIO.output(self.backwardMotorRight, GPIO.LOW)
+
+    def stop(self):
+        GPIO.output(self.forwardMotorLeft, GPIO.LOW)
+        GPIO.output(self.backwardMotorLeft, GPIO.LOW)
+        GPIO.output(self.forwardMotorRight, GPIO.LOW)
+        GPIO.output(self.backwardMotorRight, GPIO.LOW)
+
+    def setSpeed(self, percentage):
+        if percentage < 20:
+            percentage = 20
+        elif percentage > 100:
+            percentage = 100
+        self.pwmLeft.start(percentage)
+        self.pwmRight.start(percentage)
+        print("Motors running. Press CTRL+C to exit")
+        try:
+            while True:
+                # time.sleep(0.25)
+                a = 0
+                # print("Running")
+                # pwmLeft.ChangeDutyCycle(percentage)
+                # pwmRight.ChangeDutyCycle(percentage)
+        finally:
+            self.__del__()
+
+    def __del__(self):
+        self.stop()
+        self.pwmLeft.stop()
+        self.pwmRight.stop()
+        GPIO.cleanup()
 
 
 def main():
     GPIO.setmode(GPIO.BOARD)
     GPIO.setwarnings(False)
-    GPIO.setup(ENA, GPIO.OUT, initial=GPIO.HIGH)
-    GPIO.setup(IN1, GPIO.OUT, initial=GPIO.LOW)
-    GPIO.setup(IN2, GPIO.OUT, initial=GPIO.LOW)
-    GPIO.setup(ENB, GPIO.OUT, initial=GPIO.HIGH)
-    GPIO.setup(IN3, GPIO.OUT, initial=GPIO.LOW)
-    GPIO.setup(IN4, GPIO.OUT, initial=GPIO.LOW)
-    GPIO.output(IN1, GPIO.HIGH)
-    GPIO.output(IN2, GPIO.LOW)
-    GPIO.output(IN3, GPIO.HIGH)
-    GPIO.output(IN4, GPIO.LOW)
 
-    pwmLeft = GPIO.PWM(ENA, FREQUENCY)
-    pwmRight = GPIO.PWM(ENB, FREQUENCY)
-    percentage = 20
-    pwmLeft.start(percentage)
-    pwmRight.start(percentage)
-
-    print("PWM running. Press CTRL+C to exit")
-    try:
-        while True:
-            # time.sleep(0.25)
-            a = 0
-            # print("Running")
-            # pwmLeft.ChangeDutyCycle(percentage)
-            # pwmRight.ChangeDutyCycle(percentage)
-    finally:
-        pwmLeft.stop()
-        pwmRight.stop()
-        GPIO.output(IN1, GPIO.LOW)
-        GPIO.output(IN2, GPIO.LOW)
-        GPIO.output(IN3, GPIO.LOW)
-        GPIO.output(IN4, GPIO.LOW)
-        GPIO.cleanup()
+    motors = Motors(ENA, IN1, IN2, ENB, IN3, IN4, FREQUENCY)
+    motors.goForward()
+    # motors.goBackward()
+    # motors.goRight()
+    # motors.goLeft()
+    motors.setSpeed(20)
 
 
 if __name__ == '__main__':
