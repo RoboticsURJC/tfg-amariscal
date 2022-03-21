@@ -1,3 +1,4 @@
+from pynput import keyboard
 import Jetson.GPIO as GPIO
 import time
 
@@ -14,100 +15,123 @@ IN4 = 24
 # 50 Hz
 FREQUENCY = 50
 
-
 class Motors:
-    def __init__(self, ENA, IN1, IN2, ENB, IN3, IN4, FRECUENCY):
-        self.motorLeft = ENA
-        self.forwardMotorLeft = IN1
-        self.backwardMotorLeft = IN2
-        self.motorRight = ENB
-        self.forwardMotorRight = IN3
-        self.backwardMotorRight = IN4
-        self.FRECUENCY = FRECUENCY
+	def __init__(self, ENA, IN1, IN2, ENB, IN3, IN4, FRECUENCY):
+		self.motorLeft = ENA
+		self.forwardMotorLeft = IN1
+		self.backwardMotorLeft = IN2
+		self.motorRight = ENB
+		self.forwardMotorRight = IN3
+		self.backwardMotorRight = IN4
+		self.FRECUENCY = FRECUENCY
 
-        GPIO.setmode(GPIO.BOARD)
-        GPIO.setwarnings(False)
-        GPIO.setup(self.motorLeft, GPIO.OUT, initial=GPIO.LOW)
-        GPIO.setup(self.forwardMotorLeft, GPIO.OUT, initial=GPIO.LOW)
-        GPIO.setup(self.backwardMotorLeft, GPIO.OUT, initial=GPIO.LOW)
-        GPIO.setup(self.motorRight, GPIO.OUT, initial=GPIO.LOW)
-        GPIO.setup(self.forwardMotorRight, GPIO.OUT, initial=GPIO.LOW)
-        GPIO.setup(self.backwardMotorRight, GPIO.OUT, initial=GPIO.LOW)
+		GPIO.setmode(GPIO.BOARD)
+		GPIO.setwarnings(False)
+		GPIO.setup(self.motorLeft, GPIO.OUT, initial=GPIO.LOW)
+		GPIO.setup(self.forwardMotorLeft, GPIO.OUT, initial=GPIO.LOW)
+		GPIO.setup(self.backwardMotorLeft, GPIO.OUT, initial=GPIO.LOW)
+		GPIO.setup(self.motorRight, GPIO.OUT, initial=GPIO.LOW)
+		GPIO.setup(self.forwardMotorRight, GPIO.OUT, initial=GPIO.LOW)
+		GPIO.setup(self.backwardMotorRight, GPIO.OUT, initial=GPIO.LOW)
 
-        self.pwmLeft = GPIO.PWM(self.motorLeft, self.FRECUENCY)
-        self.pwmRight = GPIO.PWM(self.motorRight, self.FRECUENCY)
-        self.pwmLeft.start(0)
-        self.pwmRight.start(0)
+		self.pwmLeft = GPIO.PWM(self.motorLeft, self.FRECUENCY)
+		self.pwmRight = GPIO.PWM(self.motorRight, self.FRECUENCY)
+		self.pwmLeft.start(0)
+		self.pwmRight.start(0)
 
-    def goForward(self):
-        GPIO.output(self.forwardMotorLeft, GPIO.HIGH)
-        GPIO.output(self.backwardMotorLeft, GPIO.LOW)
-        GPIO.output(self.forwardMotorRight, GPIO.HIGH)
-        GPIO.output(self.backwardMotorRight, GPIO.LOW)
+	def goForward(self):
+		GPIO.output(self.forwardMotorLeft, GPIO.HIGH)
+		GPIO.output(self.backwardMotorLeft, GPIO.LOW)
+		GPIO.output(self.forwardMotorRight, GPIO.HIGH)
+		GPIO.output(self.backwardMotorRight, GPIO.LOW)
 
-    def goBackward(self):
-        GPIO.output(self.forwardMotorLeft, GPIO.LOW)
-        GPIO.output(self.backwardMotorLeft, GPIO.HIGH)
-        GPIO.output(self.forwardMotorRight, GPIO.LOW)
-        GPIO.output(self.backwardMotorRight, GPIO.HIGH)
+	def goBackward(self):
+		GPIO.output(self.forwardMotorLeft, GPIO.LOW)
+		GPIO.output(self.backwardMotorLeft, GPIO.HIGH)
+		GPIO.output(self.forwardMotorRight, GPIO.LOW)
+		GPIO.output(self.backwardMotorRight, GPIO.HIGH)
 
-    def goRight(self):
-        GPIO.output(self.forwardMotorLeft, GPIO.HIGH)
-        GPIO.output(self.backwardMotorLeft, GPIO.LOW)
-        GPIO.output(self.forwardMotorRight, GPIO.LOW)
-        GPIO.output(self.backwardMotorRight, GPIO.LOW)
+	def goRight(self):
+		GPIO.output(self.forwardMotorLeft, GPIO.LOW)
+		GPIO.output(self.backwardMotorLeft, GPIO.LOW)
+		GPIO.output(self.forwardMotorRight, GPIO.LOW)
+		GPIO.output(self.backwardMotorRight, GPIO.HIGH)
 
-    def goLeft(self):
-        GPIO.output(self.forwardMotorLeft, GPIO.LOW)
-        GPIO.output(self.backwardMotorLeft, GPIO.LOW)
-        GPIO.output(self.forwardMotorRight, GPIO.HIGH)
-        GPIO.output(self.backwardMotorRight, GPIO.LOW)
+	def goLeft(self):
+		GPIO.output(self.forwardMotorLeft, GPIO.LOW)
+		GPIO.output(self.backwardMotorLeft, GPIO.HIGH)
+		GPIO.output(self.forwardMotorRight, GPIO.LOW)
+		GPIO.output(self.backwardMotorRight, GPIO.LOW)
 
-    def stop(self):
-        GPIO.output(self.forwardMotorLeft, GPIO.LOW)
-        GPIO.output(self.backwardMotorLeft, GPIO.LOW)
-        GPIO.output(self.forwardMotorRight, GPIO.LOW)
-        GPIO.output(self.backwardMotorRight, GPIO.LOW)
+	def stop(self):
+		GPIO.output(self.forwardMotorLeft, GPIO.LOW)
+		GPIO.output(self.backwardMotorLeft, GPIO.LOW)
+		GPIO.output(self.forwardMotorRight, GPIO.LOW)
+		GPIO.output(self.backwardMotorRight, GPIO.LOW)
 
-    def setSpeed(self, percentage):
-        if percentage < 20:
-            percentage = 20
-        elif percentage > 100:
-            percentage = 100
-        self.pwmLeft.start(percentage)
-        self.pwmRight.start(percentage)
-        print("Motors running. Press CTRL+C to exit")
-        try:
-            while True:
-                # time.sleep(0.25)
-                a = 0
-                # print("Running")
-                # pwmLeft.ChangeDutyCycle(percentage)
-                # pwmRight.ChangeDutyCycle(percentage)
-        finally:
-            self.__del__()
+	def on_press(self, key):
+		if key == keyboard.Key.esc:
+			self.goBackward()
+			# self.setSpeed(29, 29)
+			print('You Pressed Up Key!')
+		elif key == keyboard.Key.f1:
+			self.goForward()
+			# self.setSpeed(29, 29)
+			print('You Pressed Down Key!')
+		elif key == keyboard.Key.f2:
+			self.goRight()
+			# self.setSpeed(25, 80)
+			print('You Pressed Right Key!')
+		elif key == keyboard.Key.f3:
+			print('You Pressed Left Key!')
+			self.goLeft()
+			# self.setSpeed(80, 25)
+		elif key == keyboard.Key.f4:
+			self.stop()
+			print('You Pressed Stop Key!')
 
-    def __del__(self):
-        self.stop()
-        self.pwmLeft.stop()
-        self.pwmRight.stop()
-        GPIO.cleanup()
+	def setSpeed(self, percentageRight, percentageLeft):
+		if percentageRight < 10:
+			percentageRight = 10
+		if percentageLeft < 10:
+			percentageLeft = 10
+		if percentageRight > 100:
+			percentageRight = 100
+		if percentageLeft > 100:
+			percentageLeft = 100
+		self.pwmLeft.start(percentageLeft)
+		self.pwmRight.start(percentageRight)
+
+	def __del__(self):
+		self.stop()
+		self.pwmLeft.stop()
+		self.pwmRight.stop()
+		GPIO.cleanup()
 
 
 def main():
-    GPIO.setmode(GPIO.BOARD)
-    GPIO.setwarnings(False)
+	GPIO.setmode(GPIO.BOARD)
+	GPIO.setwarnings(False)
 
-    motors = Motors(ENA, IN1, IN2, ENB, IN3, IN4, FREQUENCY)
-    motors.goForward()
-    # motors.goBackward()
-    # motors.goRight()
-    # motors.goLeft()
-    motors.setSpeed(20)
+	motors = Motors(ENA, IN1, IN2, ENB, IN3, IN4, FREQUENCY)
+	# motors.goForward()
+	# motors.goBackward()
+	# motors.goRight()
+	# motors.goLeft()
+	speed = 29
 
+	print("Motors running. Press CTRL+C to exit")
+	while True:
+		try:
+			motors.setSpeed(speed, speed)
+			with keyboard.Listener(
+					on_press=motors.on_press) as listener:
+							listener.join()
+		finally:
+			motors.__del__()
 
 if __name__ == '__main__':
-    main()
+	main()
 
 # sudo busybox devmem 0x700031fc 32 0x45
 # sudo busybox devmem 0x6000d504 32 0x2
