@@ -16,14 +16,14 @@ IN4 = 24
 FREQUENCY = 50
 
 class Motors:
-	def __init__(self, ENA, IN1, IN2, ENB, IN3, IN4, FRECUENCY):
+	def __init__(self, ENA, IN1, IN2, ENB, IN3, IN4, FREQUENCY):
 		self.motorLeft = ENA
 		self.forwardMotorLeft = IN1
 		self.backwardMotorLeft = IN2
 		self.motorRight = ENB
 		self.forwardMotorRight = IN3
 		self.backwardMotorRight = IN4
-		self.FRECUENCY = FRECUENCY
+		self.FREQUENCY = FREQUENCY
 
 		GPIO.setmode(GPIO.BOARD)
 		GPIO.setwarnings(False)
@@ -34,8 +34,8 @@ class Motors:
 		GPIO.setup(self.forwardMotorRight, GPIO.OUT, initial=GPIO.LOW)
 		GPIO.setup(self.backwardMotorRight, GPIO.OUT, initial=GPIO.LOW)
 
-		self.pwmLeft = GPIO.PWM(self.motorLeft, self.FRECUENCY)
-		self.pwmRight = GPIO.PWM(self.motorRight, self.FRECUENCY)
+		self.pwmLeft = GPIO.PWM(self.motorLeft, self.FREQUENCY)
+		self.pwmRight = GPIO.PWM(self.motorRight, self.FREQUENCY)
 		self.pwmLeft.start(0)
 		self.pwmRight.start(0)
 
@@ -72,20 +72,20 @@ class Motors:
 	def on_press(self, key):
 		if key == keyboard.Key.esc:
 			self.goBackward()
-			# self.setSpeed(29, 29)
+			self.setSpeed(29, 29)
 			print('You Pressed Up Key!')
 		elif key == keyboard.Key.f1:
 			self.goForward()
-			# self.setSpeed(29, 29)
+			self.setSpeed(29, 29)
 			print('You Pressed Down Key!')
 		elif key == keyboard.Key.f2:
 			self.goRight()
-			# self.setSpeed(25, 80)
+			self.setSpeed(40, 25)
 			print('You Pressed Right Key!')
 		elif key == keyboard.Key.f3:
 			print('You Pressed Left Key!')
 			self.goLeft()
-			# self.setSpeed(80, 25)
+			self.setSpeed(25, 40)
 		elif key == keyboard.Key.f4:
 			self.stop()
 			print('You Pressed Stop Key!')
@@ -137,3 +137,9 @@ if __name__ == '__main__':
 # sudo busybox devmem 0x6000d504 32 0x2
 # sudo busybox devmem 0x70003248 32 0x46
 # sudo busybox devmem 0x6000d100 32 0x00
+
+# y = ax + b
+
+# a is car.steering_gain
+# b is car.steering_offset
+# x is car.steering
