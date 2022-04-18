@@ -43,22 +43,23 @@ class Motors:
 		self.w = 0.0
 		self.rightSpeed = 0.0
 		self.leftSpeed = 0.0
-		self.minVel = 20
+		self.minVel = 50
+		self.minVelStatic = 23
 		self.factor = 10
 
 	def mySpeed(self):
 		if self.w == 0.0:
 			self.goBackward()
-			self.setSpeed(29, 29)
+			self.setSpeed(33, 33)
 		elif self.w > 0.0:
 			self.rightSpeed = self.minVel + self.w * self.factor
-			self.leftSpeed = self.minVel
-			self.goBackward()
+			self.leftSpeed = self.minVelStatic
+			self.goRight()
 			self.setSpeed(self.rightSpeed, self.leftSpeed)
 		elif self.w < 0.0:
 			self.leftSpeed = self.minVel + abs(self.w) * self.factor
-			self.rightSpeed = self.minVel
-			self.goBackward()
+			self.rightSpeed = self.minVelStatic
+			self.goLeft()
 			self.setSpeed(self.rightSpeed, self.leftSpeed)
 
 	def goForward(self):
@@ -72,9 +73,10 @@ class Motors:
 		GPIO.output(self.backwardMotorLeft, GPIO.HIGH)
 		GPIO.output(self.forwardMotorRight, GPIO.LOW)
 		GPIO.output(self.backwardMotorRight, GPIO.HIGH)
+		
 
 	def goRight(self):
-		GPIO.output(self.forwardMotorLeft, GPIO.LOW)
+		GPIO.output(self.forwardMotorLeft, GPIO.HIGH)
 		GPIO.output(self.backwardMotorLeft, GPIO.LOW)
 		GPIO.output(self.forwardMotorRight, GPIO.LOW)
 		GPIO.output(self.backwardMotorRight, GPIO.HIGH)
@@ -82,7 +84,7 @@ class Motors:
 	def goLeft(self):
 		GPIO.output(self.forwardMotorLeft, GPIO.LOW)
 		GPIO.output(self.backwardMotorLeft, GPIO.HIGH)
-		GPIO.output(self.forwardMotorRight, GPIO.LOW)
+		GPIO.output(self.forwardMotorRight, GPIO.HIGH)
 		GPIO.output(self.backwardMotorRight, GPIO.LOW)
 
 	def stop(self):
@@ -101,7 +103,7 @@ class Motors:
 			self.mySpeed()
 			print("\tRight W: " + str(round(self.w, 2)) + " R: " + str(round(self.rightSpeed, 2)) + " L: " + str(round(self.leftSpeed, 2)))
 		elif key == keyboard.Key.up:
-			self.w == 0.0
+			self.w = 0.0
 			self.mySpeed()
 			print('\tYou Pressed Go Key!')
 		elif key == keyboard.Key.space:
@@ -153,29 +155,14 @@ def main():
 	GPIO.setwarnings(False)
 
 	motors = Motors(ENA, IN1, IN2, ENB, IN3, IN4, FREQUENCY)
-	# motors.goForward()
-	# motors.goBackward()
-	# motors.goRight()
-	# motors.goLeft()
-	# speed = 29
-
-	# print("Motors running. Press CTRL+C to exit")
-	# while True:
-	#     try:
-	#         motors.setSpeed(speed, speed)
-	#         with keyboard.Listener(
-	#                 on_press=motors.on_press) as listener:
-	#             listener.join()
-	#     finally:
-	#         motors.__del__()
 
 	print("Motors running. Press CTRL+C to exit")
 	while True:
 		try:
-			# motors.setSpeed(speed, speed)
 			with keyboard.Listener(
 					on_press=motors.on_press2) as listener:
 				listener.join()
+
 		finally:
 			motors.__del__()
 
