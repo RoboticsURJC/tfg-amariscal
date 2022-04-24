@@ -38,7 +38,7 @@ motors = Motors(ENA, IN1, IN2, ENB, IN3, IN4, FREQUENCY)
 camera = USBCamera(width=224, height=224, capture_width=640,
 				   capture_height=480, capture_device=0)
 
-STEERING_GAIN = 0.75
+STEERING_GAIN = 0.5
 STEERING_BIAS = 0.8
 
 # car.throttle = 0.15
