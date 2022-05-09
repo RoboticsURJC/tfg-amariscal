@@ -113,11 +113,11 @@ class Motors:
 	def on_press(self, key):
 		if key == keyboard.Key.esc:
 			self.goBackward()
-			self.setSpeed(29, 29)
+			self.setSpeed(23, 23)
 			print('You Pressed Up Key!')
 		elif key == keyboard.Key.f1:
 			self.goForward()
-			self.setSpeed(29, 29)
+			self.setSpeed(23, 23)
 			print('You Pressed Down Key!')
 		elif key == keyboard.Key.f2:
 			self.goRight()

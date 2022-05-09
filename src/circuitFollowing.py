@@ -24,7 +24,7 @@ IN4 = 24
 FREQUENCY = 50
 
 model_trt = TRTModule()
-model_trt.load_state_dict(torch.load('../models/road_following_model_trt.pth'))
+model_trt.load_state_dict(torch.load('../models/road_following_model_trt_3.pth'))
 
 # from jetracer.nvidia_racecar import NvidiaRacecar
 # car = NvidiaRacecar()
@@ -39,7 +39,7 @@ camera = USBCamera(width=224, height=224, capture_width=640,
 				   capture_height=480, capture_device=0)
 
 STEERING_GAIN = 0.5
-STEERING_BIAS = 0.8
+STEERING_BIAS = 0.2
 
 # car.throttle = 0.15
 
