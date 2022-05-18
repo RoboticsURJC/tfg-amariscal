@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+
+	<param name="box" command="$(find xacro)/xacro --inorder '$(find
+circuit_simulation)/models/box.urdf'" />
+	<node name="my_box_spawn" pkg="gazebo_ros" type="spawn_model" output="screen" args="-urdf -param box -model box -x 75 -y 15 -z -1 -Y -0.72" />
+
+	<param name="box" command="$(find xacro)/xacro --inorder '$(find
+circuit_simulation)/models/box.urdf'" />
+	<node name="my_box2_spawn" pkg="gazebo_ros" type="spawn_model" output="screen" args="-urdf -param box -model box2 -x 28 -y 67 -z 4 -Y -0.72" />
+
+	<param name="robot_description" command="$(find xacro)/xacro --inorder '$(find
+circuit_simulation)/models/rover.urdf'" />
+	<node name="my_robot_spawn" pkg="gazebo_ros" type="spawn_model" output="screen" args="-urdf -param robot_description -model rover -x -10 -y 45 -z 4 -Y 0" />
+
+	<rosparam file="$(find circuit_simulation)/config/config.yaml" command="load" />
+	<node name="controller_spawner" pkg="controller_manager" type="spawner" ns="/rover" args="joint_wheel_front_right_velocity_controller joint_wheel_front_left_velocity_controller 
+  joint_wheel_back_right_velocity_controller joint_wheel_back_left_velocity_controller 
+  joint_state_controller --shutdown-timeout 3" />
+
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
+		<remap from="/joint_states" to="/rover/joint_states" />
+	</node>
+
+</launch>
