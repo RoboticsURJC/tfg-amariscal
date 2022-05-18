@@ -44,7 +44,7 @@ class AppUI(QMainWindow):
 
         self.window = QWidget()
         self.layout = QGridLayout()
-        self.layout.addWidget(QLabel('Rover Controller'))
+        self.layout.addWidget(QLabel('Vehicle Controller'))
         self.forward = QPushButton('Forward')
         self.forward.clicked.connect(self.forward_clicked)
         self.layout.addWidget(self.forward)
@@ -55,17 +55,19 @@ class AppUI(QMainWindow):
         self.stop.clicked.connect(self.stop_clicked)
         self.layout.addWidget(self.stop)
 
-        self.label = QLabel("First Axis")
-        self.label.setAlignment(Qt.AlignCenter)
-        self.layout.addWidget(self.label, 1, 1)
-        self.sliderFirstAxis = QSlider(Qt.Horizontal)
-        self.sliderFirstAxis.setMinimum(-5)
-        self.sliderFirstAxis.setMaximum(5)
-        self.sliderFirstAxis.setValue(0)
-        self.sliderFirstAxis.setTickPosition(QSlider.TicksBelow)
-        self.sliderFirstAxis.setTickInterval(1)
-        self.layout.addWidget(self.sliderFirstAxis, 1, 2)
-        self.sliderFirstAxis.valueChanged.connect(self.first_axis_slider)
+        self.start = QPushButton('Start')
+        self.layout.addWidget(self.start, 1, 1)
+        # self.label = QLabel("First Axis")
+        # self.label.setAlignment(Qt.AlignCenter)
+        # self.layout.addWidget(self.label, 1, 1)
+        # self.sliderFirstAxis = QSlider(Qt.Horizontal)
+        # self.sliderFirstAxis.setMinimum(-5)
+        # self.sliderFirstAxis.setMaximum(5)
+        # self.sliderFirstAxis.setValue(0)
+        # self.sliderFirstAxis.setTickPosition(QSlider.TicksBelow)
+        # self.sliderFirstAxis.setTickInterval(1)
+        # self.layout.addWidget(self.sliderFirstAxis, 1, 2)
+        # self.sliderFirstAxis.valueChanged.connect(self.first_axis_slider)
 
         self.centralWidget = QWidget()
         self.centralWidget.setObjectName("centralwidget")
@@ -149,10 +151,29 @@ class AppUI(QMainWindow):
     def first_axis_slider(self):
         msg = Float64()
         # msg.data = self.sliderFirstAxis.value() * 0.1
-        # self.pubFirstAxis.publish(msg)
+
+
+def darkMode(app):
+    """Apply dark mode to Application"""
+    app.setStyle('Fusion')
+    palette = QPalette()
+    palette.setColor(QPalette.Window, QColor(53, 53, 53))
+    palette.setColor(QPalette.WindowText, Qt.white)
+    palette.setColor(QPalette.Base, QColor(15, 15, 15))
+    palette.setColor(QPalette.AlternateBase, QColor(53, 53, 53))
+    palette.setColor(QPalette.ToolTipBase, Qt.white)
+    palette.setColor(QPalette.ToolTipText, Qt.white)
+    palette.setColor(QPalette.Text, Qt.white)
+    palette.setColor(QPalette.Button, QColor(53, 53, 53))
+    palette.setColor(QPalette.ButtonText, Qt.white)
+    palette.setColor(QPalette.BrightText, Qt.red)
+    palette.setColor(QPalette.Highlight, QColor(0, 87, 184).lighter())
+    palette.setColor(QPalette.HighlightedText, Qt.black)
+    app.setPalette(palette)        # self.pubFirstAxis.publish(msg)
 
 
 app = QApplication([])
+darkMode(app)
 myAPP = AppUI()
 myAPP.show()
 sys.exit(app.exec_())
