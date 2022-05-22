@@ -22,50 +22,43 @@ Actualmente coches de última generación como \textit{Tesla}, ya incorporan un 
 
 \begin{figure} [h!]
 	\begin{center}
-		\includegraphics[width=12cm]{figs/tesla_object_detection}
+		\includegraphics[width=12cm]{figs/teslaobjectdetection}
 	\end{center}
 	\caption{\textit{Tesla AutoPilot}.}
-	\label{fig:tesla_object_detection}
+	\label{fig:teslaobjectdetection}
 \end{figure}\
 
-Niveles de autonomía \textit{SAE J3016}:
+Atendiendo al estándar \textit{SAE J3016} los niveles de autonomía se pueden dividir en cinco:
 
 \begin{enumerate}
-	\item Sin automatización
-	\item Asistencia a la conducción
-	\item Automatización parcial
-	\item Automatización condicionada
-	\item Automatización elevada
-	\item Automatización completa
+	\item Sin automatización: avisos y asistencia puntualmente
+	\item Asistencia a la conducción: centrado de carril \textbf{o} control de crucero
+	\item Automatización parcial: centrado de carril \textbf{y} control de crucero
+	\item Automatización condicionada: conducción automática en atascos
+	\item Automatización elevada: conducción automática en algunas situaciones
+	\item Automatización completa: conducción automática en cualquier situación
 \end{enumerate}\
-
-\begin{figure} [h!]
-	\begin{center}
-		\includegraphics[width=12cm]{figs/SAEJ3016}
-	\end{center}
-	\caption{Niveles de autonomía \textit{SAE J3016}.}
-	\label{fig:SAEJ3016}
-\end{figure}\
+\cite{saej3016}
 
 \section{AMRs}
-\label{sec:amr} % etiqueta para luego referenciar esta sección
+\label{sec:amr}
 Los  \textit{AMRs} son robots móviles autónomos, capaces de navegar por entornos dinámicos, conviviendo con humanos a su alrededor y sabiendo sobreponerse a situaciones para las que no habían sido programados explícitamente. Son los sucesores de los  \textit{AGVs}, vehículos guiados automatizados, este tipo de vehículos requieren una cierta infraestructura dependiendo del tipo de guiado, ya sea filoguiados, a través de pintura o a través de cualquier otra técnica que haga que ese vehículo sólo pueda funcionar cuando se sabe la infraestructura previa que estará presente en el entorno de trabajo.\\
 
 Además, presentan muchas dificultades para relacionarse con obstáculos o humanos, donde ante un cambio pequeño del entorno, el robot se detendrá por seguridad. A diferencia de estos, los  \textit{AMRs}, son capaces de realizar multitud de tareas en entornos donde la infraestructura necesaria es casi nula, quizá tengan una serie de requisitos en cuanto a conectividad, pero con esa excepción, son robots que pueden ser diseñados para navegar por cualquier tipo de ambiente.\\
 
-Un ejemplo muy representativo de  \textit{AMRs}, es \textit{Kiva Systems}, empresa comprada por \textit{Amazon} para automatizar sus almacenes en tareas de logística a nivel interno, maximizando la producción y el almacenamiento, tanto en profundidad como en altura y minimizando el coste en personal.\\
+Un ejemplo muy representativo de  \textit{AMRs}, es \textit{Kiva Systems}, empresa comprada por \textit{Amazon} para automatizar sus almacenes en tareas de logística a nivel interno, maximizando la productividad y el almacenamiento, tanto en profundidad como en altura y minimizando el coste en personal.\\
 
 \begin{figure} [h!]
 	\begin{center}
-		\includegraphics[width=8cm]{figs/kiva_systems}
+		\includegraphics[width=8cm]{figs/kivasystems}
 	\end{center}
 	\caption{\textit{AMRs Kiva Systems} en almacenes de \textit{Amazon}.}
-	\label{fig:kiva_systems}
+	\label{fig:kivasystems}
 \end{figure}\
 
 \section{Visión como sensor principal}
 \label{sec:vision}
-Gracias a un sensor como la cámara podemos obtener una información muy completa del entorno que rodea al robot y con ello poder actuar en consecuencia. La cámara se presenta como el sensor más interesante que puede equipar un robot, cuentan con un tamaño y peso muy reducido, como es el caso de la \ref{fig:picamera}, además de un coste muy reducido. Sin embargo, presenta algunas dificultades cuando nos disponemos a tratar la imagen recibida; en cuanto a potencia del dispositivo, para procesar una imagen, y dependiendo de su resolución, es necesario un mínimo de requerimientos técnicos a nivel de \textit{hardware}, para poder conseguir un procesamiento con un nivel adecuado de \textit{fps}, por otra parte, la imagen recibida deberá haber sido captada en un entorno con buenas condiciones lumínicas. Para ello existen diferentes tipos de sensores \textit{EO/IR}, como por ejemplo, cámaras de visión noctura, donde el espectro utilizado es \textit{FIR}, con ello se consigue resaltar en la imagen lo que realmente es necesario,
+Gracias a un sensor como la cámara podemos obtener una información muy completa del entorno que rodea al robot y con ello poder actuar en consecuencia. La cámara se presenta como el sensor más interesante que puede equipar un robot, cuentan con un tamaño y peso muy reducido, como es el caso de la \ref{fig:picamera}, además de un coste muy reducido. Sin embargo, presenta algunas dificultades cuando nos disponemos a tratar la imagen recibida; en cuanto a potencia del dispositivo, para procesar una imagen, y dependiendo de su resolución, es necesario un mínimo de requerimientos técnicos a nivel de \textit{hardware}, para poder conseguir un procesamiento con un nivel adecuado de \textit{fps}, por otra parte, la imagen recibida deberá haber sido captada en un entorno con buenas condiciones lumínicas. Para ello existen diferentes tipos de sensores \textit{EO/IR}, como por ejemplo, cámaras de visión noctura, donde el espectro utilizado es \textit{FIR}, con ello se consigue resaltar en la imagen lo que realmente es necesario.\\
 
 \begin{figure} [h!]
 	\begin{center}
@@ -75,41 +68,43 @@ Gracias a un sensor como la cámara podemos obtener una información muy complet
 	\label{fig:picamera}
 \end{figure}\
 
-Un ejemplo es \textit{BMW's FIR-based Autoliv Night Vision System}, trabaja con imagenes de \textit{320x240} y cuenta con un rango de \textit{300 metros}.\\
+Un ejemplo es \textit{BMW's FIR-based Autoliv Night Vision System} \cite{nightvision}, trabaja con imagenes de \textit{320x240} y cuenta con un rango de \textit{300 metros}.\\
 
 \begin{figure} [h!]
 	\begin{center}
-		\includegraphics[width=8cm]{figs/night_vision}
+		\includegraphics[width=8cm]{figs/nightvision}
 	\end{center}
 	\caption{\textit{BMW's FIR-based Autoliv Night Vision System}.}
 	\label{fig:nightvision}
 \end{figure}\
 
-Cuando se realiza el procesamiento de una imagen, es interesante conocer la distancia, por ejemplo, a la que se encuentra un objeto en concreto, para ello existen soluciones para poder conocer dicha información con una cámara tradicional, es el caso de \textit{cite Open Vision System for Low-Cost Robotics Education} o \textit{OpenCV distance}, sin embargo, estos algoritmos se basan en la suposición de que todos los objetos se encuentras situados en un plano imaginario situado en el suelo. Para eliminar esta restricción, y poder conocer distancias de objetos que no se encuentran situados en el suelo, surgen las \textit{cámaras RGBD}, en la que cada píxel de la imagen proporciona además del color RGB, una tercera componente llamada \textit{depth}. Una de las primeras \textit{cámaras RGBD} comerciales es la \textit{Kinect} desarrollada por \textit{Microsoft} para su consola \textit{Xbox 360}.\\
+Cuando se realiza el procesamiento de una imagen, es interesante conocer la distancia, por ejemplo, a la que se encuentra un objeto en concreto, para ello existen soluciones para poder conocer dicha información con una \textbf{única} cámara tradicional, es el caso de \textit{cite Open Vision System for Low-Cost Robotics Education} o \cite{distanceopencv}, sin embargo, estos algoritmos se basan en la suposición de que todos los objetos se encuentras situados en un plano imaginario situado en el suelo. Para eliminar esta restricción, y poder conocer distancias de objetos que no se encuentran situados en el suelo, surgen las \textit{cámaras RGBD}, en las que cada píxel de la imagen proporciona, además del color RGB, una tercera componente llamada \textit{depth}. Una de las primeras \textit{cámaras RGBD} comerciales es la \textit{Kinect} desarrollada por \textit{Microsoft} para su consola \textit{Xbox 360}.\\
 
 \begin{figure} [h!]
 	\begin{center}
-		\includegraphics[width=8cm]{figs/kinect}
+		\begin{minipage}{0.45\textwidth}
+			\begin{center}
+				\includegraphics[width=0.9\textwidth]{figs/kinect}
+			\end{center}
+			\caption{Imagen de profundidad \textit{Kinect}.}
+		\end{minipage}\hfill
+		\begin{minipage}{0.35\textwidth}
+			\begin{center}
+				\includegraphics[width=0.9\textwidth]{figs/depth}
+			\end{center}
+			\caption{\textit{Kinect} desarrollada por \textit{Microsoft}.}
+		\end{minipage}
 	\end{center}
-	\caption{\textit{Kinect} desarrollada por \textit{Microsoft}.}
-	\label{fig:kinect}
 \end{figure}\
 
-\begin{figure} [h!]
-	\begin{center}
-		\includegraphics[width=8cm]{figs/depth}
-	\end{center}
-	\caption{Imagen de profundidad \textit{Kinect}.}
-	\label{fig:depth}
-\end{figure}\
 
 La visión artificial ofrece multitud de posibilidades, no solo en robótica, tiene una gran de aplicaciones en campos tan dispares como la medicina, la realidad aumentada, el procesamiento de señales o la agricultura.\\
 
 \section{Arquitectura}
 \label{sec:arquitectura}
-La decisión de qué arquitectura utilizar en un robot es determinante. Es necesario evaluar multitud de factores; consumo de energía, potencia requerida, tamaño y peso, sistema operativo a utilizar, posibilidad de recibir respuesta en \textit{real time}, precio etc...
+La decisión de qué arquitectura utilizar en un robot es determinante. Es necesario evaluar multitud de factores; consumo de energía, potencia requerida, tamaño y peso, sistema operativo a utilizar, posibilidad de recibir respuesta en \textit{real time}, precio etc...\\
 
-Existen multitud de arquitecturas utilizadas en proyectos robóticos \textit{x86}, \textit{x86-64}, \textit{ARMv6}, \textit{ARMv7} o \textit{AArch64}. Pero, actualmente hay dos arquitecturas predominantes \textit{x86-64} y \textit{AArch64}, ambas de \textit{64 bits}, ya que los 32 bits han quedado desfasados para la gran mayoría de aplicaciones, además de que, los nuevos sistemas operativos comienzan a no soportarlos. \cite{canonical32bits}
+Existen multitud de arquitecturas utilizadas en proyectos robóticos \textit{x86}, \textit{x86\_64}, \textit{ARMv6}, \textit{ARMv7} o \textit{AArch64}. Pero, actualmente hay dos arquitecturas predominantes \textit{x86\_64} y \textit{AArch64}, ambas de \textit{64 bits}, ya que los 32 bits han quedado desfasados para la gran mayoría de aplicaciones, además, los nuevos sistemas operativos comienzan a no soportarlos. \cite{canonical32bits}
 
 Estas dos arquitecturas tienen grandes diferencias en cuanto al diseño de los procesadores y las instrucciones que utilizan:
 \begin{itemize}
@@ -117,93 +112,97 @@ Estas dos arquitecturas tienen grandes diferencias en cuanto al diseño de los p
 	\item Complex Instruction Set Computer (\textit{CISC})
 \end{itemize}\
 
-El conjunto de instrucciones utilizado por \textit{AArch64} es \textit{CISC}, este conjunto se compone de gran cantidad de instrucciones y muchas de ellas complejas para realizar tareas que, el conjunto \textit{RISC}, puede realizar con varias instrucciones. Este último conjunto es utilizado por la arquitectura \textit{x86-64}.\\
+El conjunto de instrucciones utilizado por \textit{AArch64} es \textit{CISC}, este conjunto se compone de gran cantidad de instrucciones y muchas de ellas complejas para realizar tareas que, el conjunto \textit{RISC}, puede realizar con varias instrucciones. Este último conjunto es utilizado por la arquitectura \textit{x86\_64}.
 
-Ejemplos representativos de \textit{AArch64}:
+Ejemplos representativos de \textit{AArch64}:\\
 \begin{figure} [h!]
 	\begin{center}
-		\includegraphics[width=6cm]{figs/raspberrypi}
+		\begin{minipage}{0.45\textwidth}
+			\begin{center}
+				\includegraphics[width=0.9\textwidth]{figs/raspberrypi}
+			\end{center}
+			\caption{\textit{Raspberry Pi 4}.}
+		\end{minipage}\hfill
+		\begin{minipage}{0.45\textwidth}
+			\begin{center}
+				\includegraphics[width=0.9\textwidth]{figs/jetsonnano}
+			\end{center}
+			\caption{\textit{Jetson Nano}.}
+		\end{minipage}
 	\end{center}
-	\caption{\textit{Raspberry Pi 4}.}
-	\label{fig:raspberrypi}
+	\label{fig:aarch64}
 \end{figure}\
 
+Ejemplos representativos de \textit{x86\_64}:\\
 \begin{figure} [h!]
 	\begin{center}
-		\includegraphics[width=6cm]{figs/jetson_nano}
+		\begin{minipage}{0.45\textwidth}
+			\begin{center}
+				\includegraphics[width=0.9\textwidth]{figs/lattepanda}
+			\end{center}
+			\caption{\textit{LattePanda Alpha 864s}.}
+		\end{minipage}\hfill
+		\begin{minipage}{0.45\textwidth}
+			\begin{center}
+				\includegraphics[width=0.9\textwidth]{figs/teslazenrdna2}
+			\end{center}
+			\caption{\textit{AMD Zen} como CPU y \textit{Navi 23} como GPU, usado en Tesla Model S \cite{teslazenrdna2}.}
+		\end{minipage}
 	\end{center}
-	\caption{\textit{Jetson Nano}.}
-	\label{fig:jetsonnano}
+	\label{fig:x86}
 \end{figure}\
 
-Ejemplos representativos de \textit{x86-64}:
-
-\begin{figure} [h!]
-	\begin{center}
-		\includegraphics[width=6cm]{figs/lattepanda}
-	\end{center}
-	\caption{\textit{LattePanda Alpha 864s}.}
-	\label{fig:lattepanda}
-\end{figure}\
-
-\begin{figure} [h!]
-	\begin{center}
-		\includegraphics[width=6cm]{figs/tesla_zen_rdna2}
-	\end{center}
-	\caption{\textit{AMD Zen} como CPU y \textit{Navi 23} como GPU, usado en Tesla Model S.}
-	\label{fig:teslazenrdna2}
-\end{figure}\
 
 \section{Deep Learning}
 \label{sec:deeplearning}
-El \textit{Deep Learning} se basan en redes neuronales que parten del \textit{Machine Learning}, que a su vez surge de la \textit{Inteligencia Artificial} (\textit{IA}). Sus inicios se remontan al año 1979 cuando \textit{Kunihiko Fukushima} desarrolló una red neuronal de entre 5 y 6 capas llamada \textit{neocognitrón}, con el objetivo de reconocer carácteres japoneses 
+El \textit{Deep Learning} se basa en redes neuronales que parten del \textit{Machine Learning}, que a su vez surge de la \textit{Inteligencia Artificial} (\textit{IA}). Sus inicios se remontan al año 1979 cuando \textit{Kunihiko Fukushima} desarrolló una red neuronal de entre 5 y 6 capas llamada \textit{neocognitrón}, con el objetivo de reconocer carácteres japoneses\\
 
 \begin{figure} [h!]
 	\begin{center}
 		\includegraphics[width=4cm]{figs/kuni}
 	\end{center}
-	\caption{\textit{Kunihiko Fukushima}, buscar imagen reconocimiento carácteres japoneses .}
+	\caption{\textit{Kunihiko Fukushima}, buscar imagen reconocimiento carácteres japoneses o eliminar.}
 	\label{fig:kuni}
 \end{figure}\
 
 
-Este tipo de redes neuronales tienen multitud de aplicaciones, pero principalmente todas comparten grandes cantidades de datos, en cualquier formato; vídeo, imagen, sonido. Algunas de ellas son; clasificación de objetos, \textit{Natural language processing} (\textit{NLP}), Big Data, anaĺisis médico, conversiñón de imágenes en blanco y negro a color etc...
-
-\subsection{\textit{Convolutional neural network} (\textit{CNN})}
-\label{sec:cnn}
-
-$1.5Kg$ 1.500\euro.
-
-\subsection{\textit{ResNet}}
-\label{sec:resnet}
+Este tipo de redes neuronales tiene multitud de aplicaciones, pero todas comparten grandes cantidades de datos, conocidos como \textit{datasets}, en cualquier formato; vídeo, imagen, sonido. Algunas de ellas son: clasificación de objetos, procesamiento natural del lenguaje, \textit{Big Data}, anaĺisis médico, conversión de imágenes en blanco y negro a color etc...\\
 
 \subsection{YOLO}
 \label{sec:yolo}
 
-\textit{YOLO}
+Uno de los algoritos más populares, capaz de detectar y clasificar objetos provinientes de una imagen es \textit{YOLO} (\textit{You Only Look Once}). Sus principales ventajas son una gran precisión y la posibilidad, con el hardware adecuado, de ejecutar en tiempo real. Este algoritmo hace honor a su nombre y, por tanto, solo realiza una \textit{propagación hacia delante} en cada ejecución.\\
+
 \begin{figure} [h!]
 	\begin{center}
-		\includegraphics[width=8cm]{figs/yolo}
+		\includegraphics[width=12cm]{figs/yolo}
 	\end{center}
-	\caption{\textit{YOLO}.}
+	\caption{Salida \textit{YOLO}.}
 	\label{fig:yolo}
 \end{figure}\
 
-\paragraph{Referencias bibliográficas}
-\label{sec:referencias}
+Se basa en el uso de redes nueronales convolucionales, \textit{Convolutional neural network}. Se diferencia de una red neuronal tradicional, en que la operación de multiplición de matrices, se sustituye por una operación matemática llamada convolución, consistente en mezclar dos fuentes de información para producir una tercera, en este caso dos funciones.\\
 
-Citas libros, artículos, URLs, tesis, congresos
 
-Las referencias \texttt{bibliografia.bib}. El contenido de estas referencias está en formato \texttt{BibTex}. Obtener de \texttt{Google Scholar} u otros repositorios de recursos científicos.
+\textit{YOLO} hace uso, esencialmente, de tres técnicas para conseguir reconcer objetos:
+\begin{itemize}
+	\item División de la imagen en celdas: de esta forma se pueden detectar multitud de objetos en una imagen
+	\item Creación de \textit{bounding boxes}: cajas \ref{fig:yolo} dibujando el contorno del objeto detectado y fijando la probabilidad de que el objeto detectado sea correcto
+	\item Intersección sobre la únion: consiste en seleccionar el \textit{bounding box} con mayor probabilidad cuando hay varios superpuestos
+\end{itemize}\
 
-\
 
-\
+\begin{figure} [h!]
+	\begin{center}
+		\includegraphics[width=16cm]{figs/yolov353}
+	\end{center}
+	\caption{Arquitectura \textit{YOLOv3} con 53 capas convolucionales.}
+	\label{fig:yololayers}
+\end{figure}\
 
-\
+Uno de los principales problemas de \textit{YOLO} es la baja de probabilidad de detectar objetos de tamaño reducido, debido principalmente a la baja resolución de la red (está permitido incrementarla pero disminuye su rendimiento) que hace muy difícil su detección.\\
 
-En los siguientes capítulos trataremos los objetivos a cumplir ...
-Números páginas
-Barra baja, != dolar
-Imágenes horizontal
-Siglas en inglés?
+Además, existen versiones reducidas de este algoritmo como, Tiny-YOLO y Fast YOLO capaces de ser ejecutados en equipos de bajo coste y reducido tamaño.\\
+
+En los siguientes capítulos trataremos los objetivos a cumplir ...\\
+Solucionar números páginas
