@@ -20,6 +20,6 @@ catkin_package(
 	cv_bridge
 )
 
-catkin_install_python(PROGRAMS src/controller.py
+catkin_install_python(PROGRAMS src/simulatorController.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
