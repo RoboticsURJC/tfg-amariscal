@@ -110,6 +110,7 @@ class AppUI(QMainWindow):
         self.stopButton = QToolButton()
         self.stopButton.setFixedWidth(75)
         self.stopButton.setArrowType(Qt.NoArrow)
+        self.stopButton.setIcon(self.style().standardIcon(QStyle.SP_MediaStop))
         self.stopButton.clicked.connect(self.stop)
         self.layout.addWidget(self.stopButton, 11, 1)
 
