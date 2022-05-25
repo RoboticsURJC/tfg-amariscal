@@ -23,47 +23,47 @@ m2=1&lt;/panel_attributes&gt;&lt;additional_attributes&gt;10;10;10;200;210;200&l
 --
 + _on_steering(steering)
 + _on_throttle(throttle)
-&lt;/panel_attributes&gt;&lt;additional_attributes&gt;&lt;/additional_attributes&gt;&lt;/element&gt;&lt;/diagram&gt;Space for diagram notesss</help_text><element><id>UMLClass</id><coordinates><x>420</x><y>210</y><w>210</w><h>130</h></coordinates><panel_attributes>MyRacecar
+&lt;/panel_attributes&gt;&lt;additional_attributes&gt;&lt;/additional_attributes&gt;&lt;/element&gt;&lt;/diagram&gt;Space for diagram notesss</help_text><element><id>UMLClass</id><coordinates><x>420</x><y>207</y><w>210</w><h>130</h></coordinates><panel_attributes>MyRacecar
 --
-- GPIO_numbers
+- GPIONumbers
 - frequency
-- pwm_right_motors
-- pwm_left_motors
+- pwmRightMotors
+- pwmLeftMotors
 --
-+ _on_steering(steering)
-+ _on_throttle(throttle)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>180</x><y>210</y><w>210</w><h>130</h></coordinates><panel_attributes>USBCamera
++ _steering(steering)
++ _throttle(throttle)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>180</x><y>207</y><w>210</w><h>130</h></coordinates><panel_attributes>USBCamera
 --
-- capture_fps
-- capture_width
-- capture_height
-- capture_device
+- captureFps
+- captureWidth
+- captureHeight
+- captureDevice
 --
-+ _read()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>660</x><y>210</y><w>210</w><h>130</h></coordinates><panel_attributes>LaneFollower
++ _read()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>660</x><y>207</y><w>210</w><h>130</h></coordinates><panel_attributes>LaneFollower
 --
-- trained_model
+- trainedModel
 --
 - preprocess()
-+ _get_lane_center()
++ getLaneCenter()
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>900</x><y>210</y><w>210</w><h>130</h></coordinates><panel_attributes>ObjectDetector
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>900</x><y>207</y><w>210</w><h>130</h></coordinates><panel_attributes>ObjectDetector
 --
 - objects_to_detect
 --
-+ _get_objects()
++ getObjects()
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>550</x><y>470</y><w>210</w><h>130</h></coordinates><panel_attributes>AutonomousVehicle
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>550</x><y>467</y><w>210</w><h>130</h></coordinates><panel_attributes>AutonomousVehicle
 --
 - USBCamera
 - MyRacecar
 - LaneFollower
 - ObjectDetector
 --
-+ _execute()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>270</x><y>330</y><w>300</w><h>230</h></coordinates><panel_attributes>lt=-
-m1=1
-m2=1</panel_attributes><additional_attributes>10;10;10;200;280;200</additional_attributes></element><element><id>Relation</id><coordinates><x>500</x><y>330</y><w>190</w><h>160</h></coordinates><panel_attributes>lt=-
-m1=1
-m2=1</panel_attributes><additional_attributes>10;10;10;80;160;80;160;140</additional_attributes></element><element><id>Relation</id><coordinates><x>750</x><y>330</y><w>50</w><h>200</h></coordinates><panel_attributes>lt=-
-m1=1
-m2=1</panel_attributes><additional_attributes>20;10;20;170;10;170</additional_attributes></element><element><id>Relation</id><coordinates><x>750</x><y>330</y><w>290</w><h>280</h></coordinates><panel_attributes>lt=-
-m1=1
-m2=1</panel_attributes><additional_attributes>260;10;260;250;10;250</additional_attributes></element><element><id>UMLClass</id><coordinates><x>600</x><y>670</y><w>100</w><h>30</h></coordinates><panel_attributes>Main</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>640</x><y>590</y><w>30</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element></diagram>
++ execute()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>270</x><y>327</y><w>300</w><h>220</h></coordinates><panel_attributes>lt=&lt;&lt;-
+m1=
+m2=</panel_attributes><additional_attributes>10;10;10;200;280;200</additional_attributes></element><element><id>Relation</id><coordinates><x>500</x><y>327</y><w>180</w><h>160</h></coordinates><panel_attributes>lt=&lt;&lt;-
+m1=
+m2=</panel_attributes><additional_attributes>10;10;10;80;160;80;160;140</additional_attributes></element><element><id>Relation</id><coordinates><x>750</x><y>327</y><w>40</w><h>190</h></coordinates><panel_attributes>lt=&lt;&lt;-
+m1=
+m2=</panel_attributes><additional_attributes>20;10;20;170;10;170</additional_attributes></element><element><id>Relation</id><coordinates><x>750</x><y>327</y><w>280</w><h>270</h></coordinates><panel_attributes>lt=&lt;&lt;-
+m1=
+m2=</panel_attributes><additional_attributes>260;10;260;250;10;250</additional_attributes></element></diagram>
