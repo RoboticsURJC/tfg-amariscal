@@ -17,7 +17,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 
 
-class DetectObjects:
+class ObjectDetector:
     def __init__(self):
         self.darknetSub = rospy.Subscriber(
             "/darknet_ros/bounding_boxes", BoundingBoxes, self.darknetCallback)
@@ -58,7 +58,7 @@ class Camera:
 
     def update(self, boundingBoxes):  # Update camera
         for boundingBox in boundingBoxes:
-            if boundingBox.Class == "stop sign":
+            if boundingBox.Class == "stop sign" or boundingBox.Class == "traffic light":
                 # print("Stop detected")
                 cv2.rectangle(self.image, (boundingBox.xmin, boundingBox.ymin), (
                     boundingBox.xmax, boundingBox.ymax), (0, 255, 0), 2)
@@ -127,12 +127,12 @@ class AppUI(QMainWindow):
         self.setCentralWidget(self.centralWidget)
         self.layoutWidget = QWidget(self.centralWidget)
 
-        self.detectObjects = DetectObjects()
+        self.objectDetector = ObjectDetector()
 
         self.layoutCamera = QLabel(self.layoutWidget)
         self.camera = Camera("/camera/image_raw",
                              self.layout, self.layoutCamera, 3)
-        self.camera.update(self.detectObjects.getBoundingBoxes())
+        self.camera.update(self.objectDetector.getBoundingBoxes())
 
         rospy.init_node("simulator_controller")
         self.cameraButton = QPushButton("Active Camera")
@@ -174,7 +174,7 @@ class AppUI(QMainWindow):
 
     # Update camera while camera button is pressed
     def updateCameraTimer(self):
-        self.camera.update(self.detectObjects.getBoundingBoxes())
+        self.camera.update(self.objectDetector.getBoundingBoxes())
 
     def getStateRobot(self, msg):
         for i in range(0, len(msg.name)):
@@ -183,7 +183,7 @@ class AppUI(QMainWindow):
                 # print(self.robotOrientation)
 
     def executeSimulation(self):
-        objectsDetected = self.detectObjects.getObjects()
+        objectsDetected = self.objectDetector.getObjects()
 
         if "stop sign" in objectsDetected and not self.stopSignDetected and not self.stopSignTime:
             self.stopSignDetected = True

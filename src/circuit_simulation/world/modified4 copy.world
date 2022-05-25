@@ -1,6 +1,30 @@
 <sdf version='1.7'>
   <world name='default'>
-	<light name='sun' type='directional'>
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose>-55.4742 93.5463 46.6161 0 0.533796 -0.871525</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+    <scene>
+      <grid>0</grid>
+      <origin_visual>0</origin_visual>
+      <ambient>0.85 0.85 0.85 1</ambient>
+      <sky>
+        <clouds>
+          <speed>12</speed>
+        </clouds>
+      </sky>
+      <background>0.35 0.35 0.35 1</background>
+      <shadows>1</shadows>
+    </scene>
+    <physics name='default_physics' default='0' type='ode'>
+      <max_step_size>0.005</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>200</real_time_update_rate>
+    </physics>
+    <light name='sun' type='directional'>
       <pose>0 0 1000 0 -0 0</pose>
       <cast_shadows>1</cast_shadows>
       <diffuse>0.8 0.8 0.8 1</diffuse>
@@ -18,38 +42,6 @@
         <falloff>0</falloff>
       </spot>
     </light>
-	<model name="test_cantilevered_traffic_light">
-      <plugin name="traffic_light_plugin" filename="libgazebo_traffic_light.so" />
-      <include>
-        <uri>model://cantilevered_light</uri>
-        <static>false</static>
-        <pose>0 6 0 0 0 0</pose>
-      </include>
-    </model>
-    <gui fullscreen='0'>
-      <camera name='user_camera'>
-        <pose>-55.4742 93.5463 46.6161 0 0.533796 -0.871525</pose>
-        <view_controller>orbit</view_controller>
-        <projection_type>perspective</projection_type>
-      </camera>
-    </gui>
-    <scene>
-      <grid>0</grid>
-      <origin_visual>0</origin_visual>
-      <ambient>0.4 0.4 0.4 1</ambient>
-      <sky>
-        <clouds>
-          <speed>12</speed>
-        </clouds>
-      </sky>
-      <background>0.7 0.7 0.7 1</background>
-			<shadows>1</shadows>
-    </scene>
-    <physics name='default_physics' default='0' type='ode'>
-      <max_step_size>0.005</max_step_size>
-      <real_time_factor>1</real_time_factor>
-      <real_time_update_rate>200</real_time_update_rate>
-    </physics>
     <model name='ground_plane'>
       <static>1</static>
       <link name='link'>
@@ -5444,6 +5436,9 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
+      <light name='sun'>
+        <pose>0 0 1000 0 -0 0</pose>
+      </light>
     </state>
     <model name='oak_tree_55_clone'>
       <static>1</static>
@@ -5508,7 +5503,6 @@
       </link>
       <pose>-22.8808 -10.4627 0 0 -0 1.55238</pose>
     </model>
-		
     <model name='stop_sign_186'>
       <link name='link'>
         <self_collide>0</self_collide>

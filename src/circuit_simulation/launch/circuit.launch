@@ -4,6 +4,9 @@
 	<arg name="debug" default="false" />
 	<arg name="gui" default="true" />
 	<arg name="pause" default="false" />
+
+	<rosparam ns="test_cantilevered_traffic_light" file="$(find circuit_simulation)/config/light_sequence.yaml" />
+
 	<arg name="world" default="$(find circuit_simulation)/world/modified4.world" />
 
 	<include file="$(find gazebo_ros)/launch/empty_world.launch">
