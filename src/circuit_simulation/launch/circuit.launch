@@ -9,7 +9,9 @@
 
 	<arg name="world" default="$(find circuit_simulation)/world/modified4.world" />
 
+
 	<include file="$(find gazebo_ros)/launch/empty_world.launch">
+		<!-- <env name="GAZEBO_PLUGIN_PATH" value="$(find gazebo-plugin-autonomous-actor)/plugins" /> -->
 		<arg name="world_name" value="$(arg world)" />
 		<arg name="debug" value="$(arg debug)" />
 		<arg name="gui" value="$(arg gui)" />

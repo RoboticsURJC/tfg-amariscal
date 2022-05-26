@@ -8,7 +8,6 @@ find_package(catkin REQUIRED COMPONENTS
 	sensor_msgs
 	gazebo_msgs
 	cv_bridge
-	gazebo
 )
 
 catkin_package(

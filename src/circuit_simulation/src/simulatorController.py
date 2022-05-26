@@ -33,7 +33,7 @@ class ObjectDetector:
 
     def getBoundingBoxes(self):
         boundingBoxes = self.boundingBoxes
-        if random.randrange(0, 9) == 1:
+        if random.randrange(0, 19) == 1:
             self.boundingBoxes = []  # ??
 
         return boundingBoxes
@@ -58,7 +58,7 @@ class Camera:
 
     def update(self, boundingBoxes):  # Update camera
         for boundingBox in boundingBoxes:
-            if boundingBox.Class == "stop sign" or boundingBox.Class == "traffic light":
+            if boundingBox.Class == "stop sign" or boundingBox.Class == "traffic light" or boundingBox.Class == "person":
                 # print("Stop detected")
                 cv2.rectangle(self.image, (boundingBox.xmin, boundingBox.ymin), (
                     boundingBox.xmax, boundingBox.ymax), (0, 255, 0), 2)
