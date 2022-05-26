@@ -5,11 +5,11 @@ import time
 import cv2
 import sys
 
-
 from sensor_msgs.msg import Image as ImageCamera
+from darknet_ros_msgs.msg import BoundingBoxes
+from gazebo_msgs.srv import DeleteModel
 from gazebo_msgs.msg import ModelStates
 from gazebo_msgs.msg import ModelState
-from darknet_ros_msgs.msg import BoundingBoxes
 from std_msgs.msg import Float64
 from cv_bridge import CvBridge
 from PyQt5.QtWidgets import *
@@ -144,9 +144,6 @@ class AppUI(QMainWindow):
         self.cameraTimer = QTimer()
         self.cameraTimer.timeout.connect(self.updateCameraTimer)
 
-        self.simulationTimer = QTimer()
-        self.simulationTimer.timeout.connect(self.executeSimulation)
-
         # 10 ??????????
         # Node frequency ??
         self.pubFrontRight = rospy.Publisher(
@@ -157,7 +154,7 @@ class AppUI(QMainWindow):
             '/rover/joint_wheel_front_right_velocity_controller/command', Float64, queue_size=10)
         self.pubBackLeft = rospy.Publisher(
             '/rover/joint_wheel_front_left_velocity_controller/command', Float64, queue_size=10)
-        self.pubRestart = rospy.Publisher(
+        self.pubModelState = rospy.Publisher(
             '/gazebo/set_model_state', ModelState, queue_size=10)
 
         self.subStateRobot = rospy.Subscriber(
@@ -168,6 +165,7 @@ class AppUI(QMainWindow):
         self.simulationStarted = False
         self.stopSignDetected = False
         self.stopSignTime = False
+        self.GUIStop = False
 
     def onPress(self):
         self.cameraTimer.start(1)
@@ -200,7 +198,7 @@ class AppUI(QMainWindow):
                 self.time = self.time + (time.time() - self.timeStop)
         elif self.stopSignTime and time.time() - self.timeStop > 10:
             self.stopSignTime = False
-        elif not self.stopSignDetected:
+        elif not self.stopSignDetected and not self.GUIStop:
             if time.time() - self.time > 102:
                 self.stop()
                 print("Finished")
@@ -234,9 +232,16 @@ class AppUI(QMainWindow):
 
     def startSimulation(self):
         if not self.simulationStarted:
+            deleteActorMsg = ModelState()
+            deleteActorMsg.model_name = 'actor'
+            deleteActorMsg.pose.position.x = 0.0
+            deleteActorMsg.pose.position.y = 0.0
+            deleteActorMsg.pose.position.z = -100.0
+            self.pubModelState.publish(deleteActorMsg)
             self.time = time.time()
+            self.simulationTimer = QTimer()
+            self.simulationTimer.timeout.connect(self.executeSimulation)
             self.simulationTimer.start(10)
-            self.startSimulationButton.setCheckable(False)
             self.simulationStarted = True
 
     def restartSimulation(self):
@@ -245,7 +250,7 @@ class AppUI(QMainWindow):
         stateMsg.pose.position.x = -10.0
         stateMsg.pose.position.y = 45.0
         stateMsg.pose.position.z = 4.0
-        self.pubRestart.publish(stateMsg)
+        self.pubModelState.publish(stateMsg)
 
     def goForward(self):
         msg = Float64()
@@ -291,6 +296,8 @@ class AppUI(QMainWindow):
         msg = Float64()
         msg.data = 0
         # print("Stop")
+        self.simulationStarted = False
+        self.simulationTimer.stop()
         self.pubFrontRight.publish(msg)
         self.pubFrontLeft.publish(msg)
         self.pubBackRight.publish(msg)
