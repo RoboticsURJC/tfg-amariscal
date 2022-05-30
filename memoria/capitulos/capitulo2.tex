@@ -2,33 +2,59 @@
 \label{cap:capitulo2}
 
 \begin{flushright}
-\begin{minipage}[]{10cm}
-\emph{Quizás algún fragmento de libro inspirador...}\\
-\end{minipage}\\
+	\begin{minipage}[]{10cm}
+		\emph{Quizás algún fragmento de libro inspirador...}\\
+	\end{minipage}\\
 
-Autor, \textit{Título}\\
+	Autor, \textit{Título}\\
 \end{flushright}
 
 \vspace{1cm}
 
-Escribe aquí un párrafo explicando brevemente lo que vas a contar en este capítulo. En este capítulo lo ideal es explicar cuáles han sido los objetivos que te has fijado conseguir con tu trabajo, qué requisitos ha de respetar el resultado final, y cómo lo has llevado a cabo; esto es, cuál ha sido tu plan de trabajo.\\
+En este capítulo se detallarán los objetivos del trabajo realizado, así como, los requisitos que este ha de cumplir, la meotología utilizada y el plan de trabajo seguido para completarlo.\\
 
 \section{Descripción del problema}
 \label{sec:descripcion}
 
-Cuenta aquí el objetivo u objetivos generales y, a continuación, concrétalos mediante objetivos específicos.
+El objetivo del trabajo es implementar un coche autónomo bajo una plataforma de bajo coste y reducido tamaño capaz de circular por un circuito o carretera en un entorno dinámico interactuando con objetos propios de una ciudad, como semáforos, señales de stop o peatones. Para ello se ha dividido el objetivo en general en dos subobjetivos; entorno simulado y entorno real, a su vez, estos dos subobjetivos cuentan con objetivos específicos comunes; seguimiento de carril y detección de objetos.\\
+
+\subsection{Entorno simulado}
+Utilizando el entorno de simulación \textit{Gazebo}, se desarrollará el problema anteriormente descrito con la finanalidad de, posteriormente, realizar lo mismo en un entorno real.\\
+
+\subsection{Entorno real}
+Utilizando un robot real diseñado a partir de la placa \textit{NVIDIA Jetson Nano}, se desarrollará el problema anteriormente descrito sobre un circuito construido a partir de pistas \textit{Scalextric}.\\
+
+Como se dijo anteriormente, en ambos entornos, se ha de completar dos objetivos:
+
+\subsection{Seguimiento de carril}
+El coche autónomo tendrá que ser capaz de realizar un seguimiento del carril utilizando una red neuronal que indicará el centro del carril al que el robot deberá ceñirse.\\
+
+\subsection{Detección de objetos}
+Mientras el robot realiza el seguimiento del carril deber interactuar con objetos del entorno, esto es, reaccionar cuando ve una señal de stop o un semáforo y rojo y detenerse apropiadamente. Está detección deberá ser realizada, preferiblemente, en tiempo real.\\
 
 \section{Requisitos}
 \label{sec:requisitos}
+El trabajo tendrá una serie de requisitos que deberan ser respetados:
+\begin{enumerate}
+	\item El sistema operativo utilizado, para ambos entornos, será \textit{GNU/Linux}, concretamente en la distribución \textit{Ubuntu}.
+	\item El entorno simulado requerirá la presencia de una tarjeta gráfica dedicada de la marca NVIDIA ya que se utilizará la plataforma \textit{CUDA}.
+  \item El entorno real requerirá un robot con la placa de desarrollo \textit{NVIDIA Jetson Nano}
+  \item El lenguaje de programación utilizado será \textit{Python}.
+\end{enumerate}\
 
-Describe los requisitos que ha de cumplir tu trabajo.
 
 \section{Metodología}
 \label{sec:metodologia}
-
-Qué paradigma de desarrollo software has seguido para alcanzar tus objetivos.
+Partiendo de los requisitos y objetivos previamente expuestos, se procedió a evaluar el hardware necesario, a continuación, se realizó un análisis de diversas bibliotecas de código con el objetivo de seleccionar las que fuesen compatibles y tuviesen un mejor rendimiento en la plataforma de hardware elegida. El siguiente paso fue el diseño del software necesario y como integrarlo con las biliotecas escogidas. Por último se realizaron pruebas periódicas tanto en simulador como en un entorno real, con el objetivo de ir afinando el software para conseguir el resultado final.\\
 
 \section{Plan de trabajo}
 \label{sec:plantrabajo}
 
-Qué agenda has seguido. Si has ido manteniendo reuniones semanales, cumplimentando objetivos parciales, si has ido afinando poco a poco un producto final completo, etc.
+El plan de trabajo se ha basado en reuniones semanales o quincenales con el tutor, dependiendo de la carga de trabajo, en las que se iban fijando objetivos específicos y fijando la estrategia para poder completar el proyecto.\\
+
+Todo el trabajo realizado se ha ido subiendo a un repositorio en \textit{GitHub}. De esta forma se podía analizar de forma muy rápida los cambios realizados en el código. También se ha ido desarrollando una \textit{Wiki} en \textit{GitHub} a modo de bitácora en la que se iban detallando los avances del proyecto, explicando también, los problemas y las limitaciones que surgían a medida que se cumplían los objetivos. \\
+
+
+Preguntas: Seguimiento de carril y Detección de objetos como subsecciones ??\\
+Primeras secciones en futuro y metodología y plan de trabajo en pasado ??\\
+aspell --lang=es --mode=tex check capitulos/capitulo1.tex tildes "Introducci  n"??\\
