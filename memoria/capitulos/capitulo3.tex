@@ -15,6 +15,7 @@ En este capítulo, se explica el hardware y software elegido para desarrollar el
 
 \section{Hardware}
 \subsection{\textit{NVIDIA Jetson Nano}}
+\label{subsection:jetsonnanoo}
 La placa de desarrollo \textit{NVIDIA Jetson Nano}\footnote{\url{https://developer.nvidia.com/embedded/jetson-nano}} es una plataforma de bajo coste con grandes capacidades computacionales para implementar técnicas de inteligencia artificial gracias a su \textit{GPU} dedicada \textit{NVIDIA Maxwell}\footnote{\url{https://developer.nvidia.com/maxwell-compute-architecture}} con 128 \textit{NVIDIA CUDA cores}\footnote{\url{https://developer.nvidia.com/cuda-gpus}}, además dispone de una CPU Quad-core basada en la arquitectura Aarch64 lo que permite ejecutar GNU/Linux sin dificultades y ser compatible con numerosas bibliotecas de código. La placa en cuestión, dispone además de pines GPIO lo que permite de forma muy sencilla conectar todo tipo de sensores y actuadores.\\
 
 Los requisitos en lo que a alimentación se refiere no son excesivos, requiere un mínimo de 5 voltios (V) y 3 amperios (A), lo que permite que una simple \textit{powerbank} de reducido tamaño sea capaz de alimentar la placa, si bien es cierto que la batería debe poder ofrecer tres amperios de forma estable, y no solo como intensidad pico. Existen numerosos proyectos en los que esta placa está presente, tales como JetBot\footnote{\url{https://github.com/NVIDIA-AI-IOT/jetbot}} o JetRacer\ref{subsection:jetracer}.\\
@@ -28,6 +29,7 @@ Los requisitos en lo que a alimentación se refiere no son excesivos, requiere u
 \end{figure}\
 
 \subsection{Motores \textit{TT}}
+\label{subsection:motortt}
 Se trata de unos motores\footnote{\url{https://www.verical.com/datasheet/adafruit-brushless-dc-motors-3777-5912007.pdf}} de corriente continua con reductora utilizados en la multitud de proyectos de robótica de muy bajo coste\footnote{\url{https://github.com/grimmpp/tt-motor-mounting}}\footnote{\url{https://github.com/bhabegger/diy-telepresence-robot}}. La tensión de alimentación tiene un rango de 3 a 6 voltios y la velocidad mínima en vacío tiene un rango de 90 a 200 revoluciones por minuto (RPM) dependiendo del voltaje, lo que permite conseguir una velocidad reducida para robots de pequeño tamaño.\\
 
 \begin{figure} [h!]
@@ -39,6 +41,7 @@ Se trata de unos motores\footnote{\url{https://www.verical.com/datasheet/adafrui
 \end{figure}\
 
 \subsection{Controladora de motores \textit{L298N}}
+\label{subsection:l298no}
 Es un módulo\footnote{\url{https://www.luisllamas.es/arduino-motor-corriente-continua-l298n/}} capaz de controlar la dirección y la velocidad de los motores anteriormente citados. La tensión de alimentación es de un mínimo de 6 voltios, lo que hace imposible alimentarla con la placa \textit{NVIDIA Jetson Nano}\ref{fig:jetsonnano} por lo que es necesario una batería externa. Otra posibilidad para utilizar una única batería sería utilizar la salida de 5 voltios (V) que nos ofrece la controladora, sin embargo, dicha salida nunca ofrecerá los 3 amperios (A) requeridos. Este componente permite invertir el sentido de la corriente lo que proporciona un control para mover los motores en el sentido de las agujas del reloj (CW) y en el sentido contrario a las agujas del reloj (CCW). La principal limitación de esta placa es que solo permite controlar dos motores, por lo que si se dispone de 4 motores, se podrán conectar a pares dependiendo del comportamiento deseado. El control se realiza a través de la técnica PWM\footnote{\url{https://circuitdigest.com/tutorial/what-is-pwm-pulse-width-modulation}}, que permite enviar de forma precisa la velocidad deseada a través de una señal digital.\\
 
 \begin{figure} [h!]
@@ -50,6 +53,7 @@ Es un módulo\footnote{\url{https://www.luisllamas.es/arduino-motor-corriente-co
 \end{figure}\
 
 \subsection{Cámara \textit{Xiaomi}}
+\label{subsection:xiaomicamerao}
 Se trata de una cámara USB\ref{fig:xiaomicamera} lo que permite recibir la imagen a través de dicho puerto con una tasa de 30 \textit{frames} por segundo (FPS). Su resolución es 1080p\footnote{\url{https://xiaomiplanets.com/xiaovv-6320s-webcam-5/}} pero permite obtener una imagen de menor resolución a través de su driver.\\
 
 \begin{figure} [h!]
@@ -61,6 +65,7 @@ Se trata de una cámara USB\ref{fig:xiaomicamera} lo que permite recibir la imag
 \end{figure}\
 
 \subsection{Batería 10000mAh}
+\label{subsection:batteryo}
 Su capacidad es de 10000 miliamperios hora (mAh), el voltaje de funcionamiento es 5 voltios (V) y su intensidad teórica es 3 amperios (A) por lo que permite alimentar la placa \textit{NVIDIA Jetson Nano}\ref{fig:jetsonnano}.\\
 
 \begin{figure} [h!]
@@ -72,6 +77,7 @@ Su capacidad es de 10000 miliamperios hora (mAh), el voltaje de funcionamiento e
 \end{figure}\
 
 \subsection{Chasis}
+\label{subsection:chasio}
 Se trata de un chasis\ref{fig:chasis} de bajo coste muy común en proyectos relacionados con Arduino. Dispone de soportes para los Motores \textit{TT}\ref{fig:motorTT}, lo que perimite ensamblarlos de forma muy sencilla. El tamaño es suficiente para alojar todos los componentes elegidos utilizando los agujeros predefinidos en el chasis.\\
 
 \begin{figure} [h!]
@@ -85,9 +91,11 @@ Se trata de un chasis\ref{fig:chasis} de bajo coste muy común en proyectos rela
 \section{Software}
 
 \subsection{\textit{Python}}
+\label{subsection:pythono}
 \textit{Python} es un lenguaje de programación de código abierto, interpretado, orientado a objetos y de alto nivel. En la actualidad es el lenguaje más usado a nivel mundial\footnote{\url{https://pypl.github.io/PYPL.html}}. Está considerado como un lenguaje fácil de aprender gracias a su simple sintáxis, esto le ha llevado a crecer mucho en popularidad durante los últimos años. Además, al ser interpretado, no es necesario utilizar un compilador, lo que provoca un desarrollo mucho más rápido. Python cuenta con una enorme cantidad de bibliotecas y clientes para utilizar software desarrollado en otros lenguajes. Algunas de ellas se describirán a continuación.\\
 
 \subsection{\textit{Blender}}
+\label{subsection:blendero}
 \textit{Blender}\footnote{\url{https://www.blender.org/}} es una plataforma de código abierto dedicada a la creación, simulación, renderizado y animación de modelos 3D con todo tipo de texturas, sombras etc.. Es un desarrollo de la Blender Foundation y está escrito principalmente en \textit{C}. Permite crear diseños de robots desde cero de una forma relativamente rápida.\\
 
 \begin{figure} [h!]
@@ -99,6 +107,7 @@ Se trata de un chasis\ref{fig:chasis} de bajo coste muy común en proyectos rela
 \end{figure}\
 
 \subsection{\textit{Gazebo}}
+\label{subsection:gazeboo}
 \textit{Ignition Gazebo}\footnote{\url{https://github.com/gazebosim/gz-sim}} es un simulador 3D de código abierto desarrollado por la \textit{Open Source Robotics Foundation (OSRF)}\footnote{\url{https://www.openrobotics.org/}}, escrito en \textit{C++}, usado principalmente para simular comportamientos con gran precisión y gráficos de alta calidad en los que intervienen robots en un entorno dinámico\ref{fig:city}. Desde  Utiliza, por defecto, el motor de físicas \textit{ODE}\footnote{\url{https://bitbucket.org/odedevs/ode/src/master/}}, escrito también en \textit{C++}. Permite simular todo tipo de sensores y actuadores. Además, ofrece integración con ROS de forma muy sencilla.\\
 
 \begin{figure} [h!]
@@ -109,17 +118,33 @@ Se trata de un chasis\ref{fig:chasis} de bajo coste muy común en proyectos rela
 	\label{fig:city}
 \end{figure}\
 
+\subsection{\textit{SDF}}
+\label{subsection:sdf}
+El formato \textit{SDF} (\textit{Simulation Description Format})\footnote{\url{https://github.com/gazebosim/sdformat}} o \textit{SDFormat} permite describir entornos, objetos dinámicos o robots de una manera sencilla. Está basado en \textit{XML} y escrito en \textit{C++}. El objetivo de este formato es ejecutar comportamientos en un simulador. Originalmente fue desarrollado como parte de \textit{Gazebo} por lo que existen numerosas bibliotecas donde se encuentran modelos o mundos desarrollados en \textit{SDF} para este simulador\footnote{\url{https://github.com/HuyPhamG/simulatedswarm}}. Cabe destacar también, el formato URDF que, a diferencia de \textit{SDF}, únicamente puede describir un objeto o robot, pero no el mundo en el que vive\footnote{\url{https://newscrewdriver.com/2018/07/31/ros-notes-urdf-vs-gazebo-sdf/}}.\\
+
+\begin{figure} [h!]
+	\begin{center}
+		\includegraphics[width=6cm]{figs/spot}
+	\end{center}
+	\caption{Robot Spot de Boston Dynamics simulado en \textit{Gazebo}.}\footnote{\url{https://github.com/osrf/subt}}
+	\label{fig:spot}
+\end{figure}\
+
 \subsection{\textit{ROS}}
+\label{subsection:ros}
 \textit{Robot Operating System ROS}\footnote{\url{https://ros.org/}} es un middleware róbotico, de código abierto, con multitud de bibliotecas y herramientas desarrollado por la \textit{Open Source Robotics Foundation (OSRF)}\footnote{\url{https://www.openrobotics.org/}}, escrito en \textit{C++} y \textit{Python}. Es considerado actualmente el estándar en robótica. Permite desarrollar aplicaciones complejas en las intervienen diversos procesos llamados nodos\footnote{\url{http://wiki.ros.org/Nodes}}, que se comunican entre ellos mediante \textit{topics}\footnote{\url{http://wiki.ros.org/Topics}} y servicios\footnote{\url{http://wiki.ros.org/Services}}. Una de las principales ventajas de utilizar un middleware como ROS es la capacidad de abstracción que proporciona, de forma que el usuario únicamente programa sobre una interfaz\footnote{\url{http://wiki.ros.org/Client20Libraries}} dada, disponible en \textit{C++} y \textit{Python}, sin preocuparse por lo que pasa por debajo.\\
 
-\subsection{OpenCV}
+\subsection{\textit{OpenCV}}
+\label{subsection:opencv}
 \textit{OpenCV}\footnote{\url{https://github.com/opencv/opencv}} es una librería de visión artificial de código abierto desarrollado por Intel\footnote{\url{https://opencv.org/opencv-platinum-membership/}}. Está escrita en \textit{C/C++} y cuenta con soporte para aceleración por GPU basadas en CUDA\footnote{\url{https://developer.nvidia.com/cuda-zone}} y OpenCL\footnote{\url{https://www.khronos.org/opencl/}} y procesamiento de imagen en tiempo real. Es usada en todo tipo de aplicaciones en las que interviene la visión por ordenador, tales como, detección de objetos, realidad aumentada o reconocimiento de gestos. Además, está disponible en multitud de lenguajes de programación; \textit{C++}, \textit{Python}, \textit{Java}, etc...\\
 
-\subsection{Darknet}
+\subsection{\textit{Darknet}}
+\label{subsection:darknet}
 \textit{Darknet}\footnote{\url{https://pjreddie.com/darknet/}} es un framework de código abierto que permite ejecutar y entrenar redes neuronales en tiempo real, ya que soporta tanto computación por CPU como GPU. Está escrito en C y CUDA, gracias a estar escrito en un lenguaje considerado de bajo nivel, ofrece un rendimiento aceptable en plataformas de bajo coste como \textit{NVIDIA Jetson Nano}\ref{fig:jetsonnano}.\\
 
-\subsection{PyQt}
-\textit{PyQt}\footnote{\url{https://pythonpyqt.com/what-is-pyqt/}} es una plataforma de código abierto que permite crear interfaces gráficas (\textit{GUI}) con el framework \textit{Qt} utilizando \textit{Python}, lo que simplifica mucho el desarrollo. Existen multitud de aplicaciones, desde un navegador\footnote{\url{https://github.com/qutebrowser/qutebrowser}} controlado únicamente con el teclado al estilo \textit{VIM}\footnote{\url{hhttps://github.com/vim/vim}}, hasta un software de impresión 3D como \textit{Cura}\ref{fig:cura}.\\
+\subsection{\textit{PyQt}}
+\label{subsection:pyqt}
+\textit{PyQt}\footnote{\url{https://pythonpyqt.com/what-is-pyqt/}} es una plataforma de código abierto que permite crear interfaces gráficas (\textit{GUI}) con el framework \textit{Qt} utilizando \textit{Python}, lo que simplifica mucho el desarrollo. Existen multitud de aplicaciones, desde un navegador\footnote{\url{https://github.com/qutebrowser/qutebrowser}} controlado únicamente con el teclado al estilo \textit{VIM}\footnote{\url{https://github.com/vim/vim}}, hasta un software de impresión 3D como \textit{Cura}\ref{fig:cura}.\\
 
 \begin{figure} [h!]
 	\begin{center}
@@ -129,9 +154,9 @@ Se trata de un chasis\ref{fig:chasis} de bajo coste muy común en proyectos rela
 	\label{fig:cura}
 \end{figure}\
 
-\subsection{JetRacer}
+\subsection{\textit{JetRacer}}
 \label{subsection:jetracer}
-La biblioteca \textit{JetRacer}\footnote{\url{https://github.com/NVIDIA-AI-IOT/jetracer}} permite entrenar una red neuronal para seguir un circuito o una ruta determinada. Utiliza \textit{notebooks} de \textit{Jupyter} para poder reducir la complejidad en el entrenamiento de la red y en el ajuste del controlador\ref{fig:livejetracer}.
+La biblioteca \textit{JetRacer}\footnote{\url{https://github.com/NVIDIA-AI-IOT/jetracer}} permite entrenar una red neuronal para seguir un circuito o una ruta determinada. Utiliza \textit{notebooks} de \textit{Jupyter} para poder reducir la complejidad en el entrenamiento de la red y en el ajuste del controlador\ref{fig:livejetracer}.\\
 
 A su vez esta librería utiliza otras tres cruciales para poder implementar su software:
 
@@ -143,19 +168,13 @@ A su vez esta librería utiliza otras tres cruciales para poder implementar su s
 
 \begin{figure} [h!]
 	\begin{center}
-		\includegraphics[width=14cm]{figs/livejetracer}
+		\includegraphics[width=3cm]{figs/livejetracer}
 	\end{center}
 	\caption{Interfaz \textit{notebook} para ajustar controlador P.}
 	\label{fig:livejetracer}
 \end{figure}\
 
-.\\
-.\\
-.\\
-.\\
-.\\
-.\\
 Mapa\\
 http://wiki.ros.org/Client%20Libraries
 \\Referencias del capítulo 2 al 3?\\
-h! h!! t!, t!!, T! no compila\\
+h! h!! t!, t!!, T! no compila
