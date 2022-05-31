@@ -15,7 +15,7 @@ En este capítulo, se explica el hardware y software elegido para desarrollar el
 
 \section{Hardware}
 \subsection{\textit{NVIDIA Jetson Nano}}
-\label{subsection:jetsonnanoo}
+\label{subsection:jetsonnano}
 La placa de desarrollo \textit{NVIDIA Jetson Nano}\footnote{\url{https://developer.nvidia.com/embedded/jetson-nano}} es una plataforma de bajo coste con grandes capacidades computacionales para implementar técnicas de inteligencia artificial gracias a su \textit{GPU} dedicada \textit{NVIDIA Maxwell}\footnote{\url{https://developer.nvidia.com/maxwell-compute-architecture}} con 128 \textit{NVIDIA CUDA cores}\footnote{\url{https://developer.nvidia.com/cuda-gpus}}, además dispone de una CPU Quad-core basada en la arquitectura Aarch64 lo que permite ejecutar GNU/Linux sin dificultades y ser compatible con numerosas bibliotecas de código. La placa en cuestión, dispone además de pines GPIO lo que permite de forma muy sencilla conectar todo tipo de sensores y actuadores.\\
 
 Los requisitos en lo que a alimentación se refiere no son excesivos, requiere un mínimo de 5 voltios (V) y 3 amperios (A), lo que permite que una simple \textit{powerbank} de reducido tamaño sea capaz de alimentar la placa, si bien es cierto que la batería debe poder ofrecer tres amperios de forma estable, y no solo como intensidad pico. Existen numerosos proyectos en los que esta placa está presente, tales como JetBot\footnote{\url{https://github.com/NVIDIA-AI-IOT/jetbot}} o JetRacer\ref{subsection:jetracer}.\\
@@ -41,7 +41,7 @@ Se trata de unos motores\footnote{\url{https://www.verical.com/datasheet/adafrui
 \end{figure}\
 
 \subsection{Controladora de motores \textit{L298N}}
-\label{subsection:l298no}
+\label{subsection:l298n}
 Es un módulo\footnote{\url{https://www.luisllamas.es/arduino-motor-corriente-continua-l298n/}} capaz de controlar la dirección y la velocidad de los motores anteriormente citados. La tensión de alimentación es de un mínimo de 6 voltios, lo que hace imposible alimentarla con la placa \textit{NVIDIA Jetson Nano}\ref{fig:jetsonnano} por lo que es necesario una batería externa. Otra posibilidad para utilizar una única batería sería utilizar la salida de 5 voltios (V) que nos ofrece la controladora, sin embargo, dicha salida nunca ofrecerá los 3 amperios (A) requeridos. Este componente permite invertir el sentido de la corriente lo que proporciona un control para mover los motores en el sentido de las agujas del reloj (CW) y en el sentido contrario a las agujas del reloj (CCW). La principal limitación de esta placa es que solo permite controlar dos motores, por lo que si se dispone de 4 motores, se podrán conectar a pares dependiendo del comportamiento deseado. El control se realiza a través de la técnica PWM\footnote{\url{https://circuitdigest.com/tutorial/what-is-pwm-pulse-width-modulation}}, que permite enviar de forma precisa la velocidad deseada a través de una señal digital.\\
 
 \begin{figure} [h!]
@@ -53,7 +53,7 @@ Es un módulo\footnote{\url{https://www.luisllamas.es/arduino-motor-corriente-co
 \end{figure}\
 
 \subsection{Cámara \textit{Xiaomi}}
-\label{subsection:xiaomicamerao}
+\label{subsection:xiaomicamera}
 Se trata de una cámara USB\ref{fig:xiaomicamera} lo que permite recibir la imagen a través de dicho puerto con una tasa de 30 \textit{frames} por segundo (FPS). Su resolución es 1080p\footnote{\url{https://xiaomiplanets.com/xiaovv-6320s-webcam-5/}} pero permite obtener una imagen de menor resolución a través de su driver.\\
 
 \begin{figure} [h!]
@@ -65,7 +65,7 @@ Se trata de una cámara USB\ref{fig:xiaomicamera} lo que permite recibir la imag
 \end{figure}\
 
 \subsection{Batería 10000mAh}
-\label{subsection:batteryo}
+\label{subsection:battery}
 Su capacidad es de 10000 miliamperios hora (mAh), el voltaje de funcionamiento es 5 voltios (V) y su intensidad teórica es 3 amperios (A) por lo que permite alimentar la placa \textit{NVIDIA Jetson Nano}\ref{fig:jetsonnano}.\\
 
 \begin{figure} [h!]
@@ -77,7 +77,7 @@ Su capacidad es de 10000 miliamperios hora (mAh), el voltaje de funcionamiento e
 \end{figure}\
 
 \subsection{Chasis}
-\label{subsection:chasio}
+\label{subsection:chasis}
 Se trata de un chasis\ref{fig:chasis} de bajo coste muy común en proyectos relacionados con Arduino. Dispone de soportes para los Motores \textit{TT}\ref{fig:motorTT}, lo que perimite ensamblarlos de forma muy sencilla. El tamaño es suficiente para alojar todos los componentes elegidos utilizando los agujeros predefinidos en el chasis.\\
 
 \begin{figure} [h!]
@@ -91,12 +91,12 @@ Se trata de un chasis\ref{fig:chasis} de bajo coste muy común en proyectos rela
 \section{Software}
 
 \subsection{\textit{Python}}
-\label{subsection:pythono}
+\label{subsection:python}
 \textit{Python} es un lenguaje de programación de código abierto, interpretado, orientado a objetos y de alto nivel. En la actualidad es el lenguaje más usado a nivel mundial\footnote{\url{https://pypl.github.io/PYPL.html}}. Está considerado como un lenguaje fácil de aprender gracias a su simple sintáxis, esto le ha llevado a crecer mucho en popularidad durante los últimos años. Además, al ser interpretado, no es necesario utilizar un compilador, lo que provoca un desarrollo mucho más rápido. Python cuenta con una enorme cantidad de bibliotecas y clientes para utilizar software desarrollado en otros lenguajes. Algunas de ellas se describirán a continuación.\\
 
 \subsection{\textit{Blender}}
-\label{subsection:blendero}
-\textit{Blender}\footnote{\url{https://www.blender.org/}} es una plataforma de código abierto dedicada a la creación, simulación, renderizado y animación de modelos 3D con todo tipo de texturas, sombras etc.. Es un desarrollo de la Blender Foundation y está escrito principalmente en \textit{C}. Permite crear diseños de robots desde cero de una forma relativamente rápida.\\
+\label{subsection:blender}
+\textit{Blender}\footnote{\url{https://www.blender.org/}} es una plataforma de código abierto dedicada a la creación, simulación, renderizado y animación de modelos 3D con todo tipo de texturas, sombras etc.. Es un desarrollo de la Blender Foundation y está escrito principalmente en \textit{C}. Permite crear diseños de robots desde cero de una forma relativamente rápida y con \textit{add-ons} como \textit{Phobos}, es posible exportar el modelo a \textit{URDF} con el fin de realizar una simulación\cite{phobos}.\\
 
 \begin{figure} [h!]
 	\begin{center}
@@ -107,7 +107,7 @@ Se trata de un chasis\ref{fig:chasis} de bajo coste muy común en proyectos rela
 \end{figure}\
 
 \subsection{\textit{Gazebo}}
-\label{subsection:gazeboo}
+\label{subsection:gazebo}
 \textit{Ignition Gazebo}\footnote{\url{https://github.com/gazebosim/gz-sim}} es un simulador 3D de código abierto desarrollado por la \textit{Open Source Robotics Foundation (OSRF)}\footnote{\url{https://www.openrobotics.org/}}, escrito en \textit{C++}, usado principalmente para simular comportamientos con gran precisión y gráficos de alta calidad en los que intervienen robots en un entorno dinámico\ref{fig:city}. Desde  Utiliza, por defecto, el motor de físicas \textit{ODE}\footnote{\url{https://bitbucket.org/odedevs/ode/src/master/}}, escrito también en \textit{C++}. Permite simular todo tipo de sensores y actuadores. Además, ofrece integración con ROS de forma muy sencilla.\\
 
 \begin{figure} [h!]
