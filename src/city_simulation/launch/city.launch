@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+
+	<arg name="debug" default="false" />
+	<arg name="gui" default="false" />
+	<arg name="pause" default="false" />
+
+	<rosparam ns="test_cantilevered_traffic_light" file="$(find city_simulation)/config/light_sequence.yaml" />
+	<arg name="world" default="$(find city_simulation)/world/city.world" />
+
+	<include file="$(find gazebo_ros)/launch/empty_world.launch">
+		<arg name="world_name" value="$(arg world)" />
+		<arg name="debug" value="$(arg debug)" />
+		<arg name="gui" value="$(arg gui)" />
+		<arg name="paused" value="$(arg pause)" />
+		<arg name="use_sim_time" value="true" />
+	</include>
+
+</launch>

@@ -1,0 +1,16 @@
+autonomous_vehicle:
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 10
+  front_right_wheel_velocity_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: frontRightWheelJoint
+  front_left_wheel_velocity_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: frontLeftWheelJoint
+  back_right_wheel_velocity_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: backRightWheelJoint
+  back_left_wheel_velocity_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: backLeftWheelJoint
