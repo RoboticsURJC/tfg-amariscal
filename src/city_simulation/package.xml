@@ -14,5 +14,7 @@
 	<depend>gazebo_msgs</depend>
 	<depend>cv_bridge</depend>
 	<depend>gazebo_ros</depend>
+	<depend>darknet_ros_msgs</depend>
+	<depend>gazebo_traffic_light</depend>
 
 </package>

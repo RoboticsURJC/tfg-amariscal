@@ -6,7 +6,7 @@ city_simulation)/models/autonomous_vehicle.urdf'" />
 	<node name="autonomous_vehicle_spawn" pkg="gazebo_ros" type="spawn_model" output="screen" args="-urdf -param robot_description -model autonomous_vehicle -x -10 -y 45 -z 4 -Y 1.57" />
 
 	<rosparam file="$(find city_simulation)/config/controllers.yaml" command="load" />
-	<node name="controller_spawner" pkg="controller_manager" type="spawner" ns="/autonomous_vehicle" args="front_right_wheel_velocity_controller front_left_wheel_velocity_controller back_right_wheel_velocity_controller back_left_wheel_velocity_controller joint_state_controller --shutdown-timeout 3" />
+	<node name="controller_spawner" pkg="controller_manager" type="spawner" ns="/autonomous_vehicle" args="front_right_wheel_velocity_controller front_left_wheel_velocity_controller rear_right_wheel_velocity_controller rear_left_wheel_velocity_controller joint_state_controller --shutdown-timeout 3" />
 
 	<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
 		<remap from="/joint_states" to="/autonomous_vehicle/joint_states" />

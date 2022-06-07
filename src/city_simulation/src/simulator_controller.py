@@ -5,9 +5,9 @@ import time
 import cv2
 import sys
 
+from gazebo_msgs.msg import ModelStates, ModelState
 from sensor_msgs.msg import Image as ImageCamera
 from darknet_ros_msgs.msg import BoundingBoxes
-from gazebo_msgs.msg import ModelStates, ModelState
 from std_msgs.msg import Float64
 from cv_bridge import CvBridge
 from PyQt5.QtWidgets import *
@@ -237,12 +237,12 @@ class AppUI(QMainWindow):
 
         # Node frequency ?? # 10 ?????????? # One publisher instead of four??
         self.frontRightVelPublisher = rospy.Publisher(
-            '/autonomous_vehicle/back_right_wheel_velocity_controller/command', Float64, queue_size=10)
+            '/autonomous_vehicle/rear_right_wheel_velocity_controller/command', Float64, queue_size=10)
         self.frontLeftVelPublisher = rospy.Publisher(
-            '/autonomous_vehicle/back_left_wheel_velocity_controller/command', Float64, queue_size=10)
-        self.backRightVelPublisher = rospy.Publisher(
+            '/autonomous_vehicle/rear_left_wheel_velocity_controller/command', Float64, queue_size=10)
+        self.rearRightVelPublisher = rospy.Publisher(
             '/autonomous_vehicle/front_right_wheel_velocity_controller/command', Float64, queue_size=10)
-        self.backLeftVelPublisher = rospy.Publisher(
+        self.rearLeftVelPublisher = rospy.Publisher(
             '/autonomous_vehicle/front_left_wheel_velocity_controller/command', Float64, queue_size=10)
         self.actorPositionPublisher = rospy.Publisher(
             '/gazebo/set_model_state', ModelState, queue_size=10)
@@ -360,47 +360,47 @@ class AppUI(QMainWindow):
 
     def goForward(self):
         rightVelMsg = Float64()
-        rightVelMsg.data = -2
-        leftVelMsg = Float64()
-        leftVelMsg.data = 2
-        self.frontRightVelPublisher.publish(rightVelMsg)
-        self.frontLeftVelPublisher.publish(leftVelMsg)
-        self.backRightVelPublisher.publish(rightVelMsg)
-        self.backLeftVelPublisher.publish(leftVelMsg)
-
-    def goBackward(self):
-        rightVelMsg = Float64()
         rightVelMsg.data = 2.0
         leftVelMsg = Float64()
         leftVelMsg.data = -2.0
         self.frontRightVelPublisher.publish(rightVelMsg)
         self.frontLeftVelPublisher.publish(leftVelMsg)
-        self.backRightVelPublisher.publish(rightVelMsg)
-        self.backLeftVelPublisher.publish(leftVelMsg)
+        self.rearRightVelPublisher.publish(rightVelMsg)
+        self.rearLeftVelPublisher.publish(leftVelMsg)
+
+    def goBackward(self):
+        rightVelMsg = Float64()
+        rightVelMsg.data = -2.0
+        leftVelMsg = Float64()
+        leftVelMsg.data = 2.0
+        self.frontRightVelPublisher.publish(rightVelMsg)
+        self.frontLeftVelPublisher.publish(leftVelMsg)
+        self.rearRightVelPublisher.publish(rightVelMsg)
+        self.rearLeftVelPublisher.publish(leftVelMsg)
 
     def goRight(self):
         rightVelMsg = Float64()
-        rightVelMsg.data = 0.75
+        rightVelMsg.data = -0.75
         self.frontRightVelPublisher.publish(rightVelMsg)
         self.frontLeftVelPublisher.publish(rightVelMsg)
-        self.backRightVelPublisher.publish(rightVelMsg)
-        self.backLeftVelPublisher.publish(rightVelMsg)
+        self.rearRightVelPublisher.publish(rightVelMsg)
+        self.rearLeftVelPublisher.publish(rightVelMsg)
 
     def goLeft(self):
         leftVelMsg = Float64()
-        leftVelMsg.data = -0.75
+        leftVelMsg.data = 0.75
         self.frontRightVelPublisher.publish(leftVelMsg)
         self.frontLeftVelPublisher.publish(leftVelMsg)
-        self.backRightVelPublisher.publish(leftVelMsg)
-        self.backLeftVelPublisher.publish(leftVelMsg)
+        self.rearRightVelPublisher.publish(leftVelMsg)
+        self.rearLeftVelPublisher.publish(leftVelMsg)
 
     def stop(self):
         stopVelMsg = Float64()
         stopVelMsg.data = 0
         self.frontRightVelPublisher.publish(stopVelMsg)
         self.frontLeftVelPublisher.publish(stopVelMsg)
-        self.backRightVelPublisher.publish(stopVelMsg)
-        self.backLeftVelPublisher.publish(stopVelMsg)
+        self.rearRightVelPublisher.publish(stopVelMsg)
+        self.rearLeftVelPublisher.publish(stopVelMsg)
 
 
 rospy.init_node("simulator_controller")

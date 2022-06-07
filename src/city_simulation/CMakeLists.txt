@@ -8,6 +8,8 @@ find_package(catkin REQUIRED COMPONENTS
 	sensor_msgs
 	gazebo_msgs
 	cv_bridge
+	darknet_ros_msgs
+	gazebo_traffic_light
 )
 
 catkin_package(
@@ -18,6 +20,8 @@ catkin_package(
 	sensor_msgs
 	gazebo_msgs
 	cv_bridge
+	darknet_ros_msgs
+	gazebo_traffic_light
 )
 
 catkin_install_python(PROGRAMS src/simulator_controller.py
