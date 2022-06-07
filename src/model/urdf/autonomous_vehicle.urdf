@@ -1,0 +1,301 @@
+<?xml version="1.0"?>
+<robot name="autonomous_vehicle">
+	<link name="frontLeftWheelLink">
+		<inertial>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<mass value="10" />
+			<inertia ixx="10" ixy="10" ixz="10" iyy="10" iyz="10" izz="10" />
+		</inertial>
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<mesh filename="/home/alvaro/github/Programas-Modelado/Blender/Entrega/meshes/dae/chas-Cut.003.dae" scale="0.02678 0.02678 0.02678" />
+			</geometry>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<mesh filename="/home/alvaro/github/Programas-Modelado/Blender/Entrega/meshes/dae/chas-Cut.004.dae" scale="1.0 1.0 1.0" />
+			</geometry>
+		</collision>
+	</link>
+
+	<link name="frontRightWheelLink">
+		<inertial>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<mass value="10" />
+			<inertia ixx="10" ixy="10" ixz="10" iyy="10" iyz="10" izz="10" />
+		</inertial>
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<mesh filename="/home/alvaro/github/Programas-Modelado/Blender/Entrega/meshes/dae/chas-Cut.dae" scale="0.02678 0.02678 0.02678" />
+			</geometry>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<mesh filename="/home/alvaro/github/Programas-Modelado/Blender/Entrega/meshes/dae/chas-Cut.006.dae" scale="1.0 1.0 1.0" />
+			</geometry>
+		</collision>
+	</link>
+
+	<link name="rearRightWheelLink">
+		<inertial>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<mass value="10" />
+			<inertia ixx="10" ixy="10" ixz="10" iyy="10" iyz="10" izz="10" />
+		</inertial>
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<mesh filename="/home/alvaro/github/Programas-Modelado/Blender/Entrega/meshes/dae/chas-Cut.001.dae" scale="0.02678 0.02678 0.02678" />
+			</geometry>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<mesh filename="/home/alvaro/github/Programas-Modelado/Blender/Entrega/meshes/dae/chas-Cut.007.dae" scale="1.0 1.0 1.0" />
+			</geometry>
+		</collision>
+	</link>
+
+	<link name="rearLeftWheelLink">
+		<inertial>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<mass value="10" />
+			<inertia ixx="10" ixy="10" ixz="10" iyy="10" iyz="10" izz="10" />
+		</inertial>
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<mesh filename="/home/alvaro/github/Programas-Modelado/Blender/Entrega/meshes/dae/chas-Cut.002.dae" scale="0.02678 0.02678 0.02678" />
+			</geometry>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<mesh filename="/home/alvaro/github/Programas-Modelado/Blender/Entrega/meshes/dae/chas-Cut.005.dae" scale="1.0 1.0 1.0" />
+			</geometry>
+		</collision>
+	</link>
+
+	<link name="chassisLink">
+		<inertial>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<mass value="6" />
+			<inertia ixx="10" ixy="10" ixz="10" iyy="10" iyz="10" izz="10" />
+		</inertial>
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<mesh filename="/home/alvaro/github/Programas-Modelado/Blender/Entrega/meshes/dae/Bottom.002.dae" scale="0.01431 0.01431 0.01431" />
+			</geometry>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<mesh filename="/home/alvaro/github/Programas-Modelado/Blender/Entrega/meshes/dae/Bottom.003.dae" scale="1.0 1.0 1.0" />
+			</geometry>
+		</collision>
+	</link>
+
+	<link name="onboardCameraLink">
+		<inertial>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<mass value="0.1" />
+			<inertia ixx="10" ixy="10" ixz="10" iyy="10" iyz="10" izz="10" />
+		</inertial>
+	</link>
+
+	<link name="mapCameraLink" />
+
+	<joint name="onboardCameraJoint" type="fixed">
+		<origin xyz="0 -2.9 0.4" rpy="0 0 -1.57" />
+		<parent link="chassisLink" />
+		<child link="onboardCameraLink" />
+		<axis xyz="0 0 1.0" />
+	</joint>
+
+	<joint name="mapCameraJoint" type="fixed">
+		<origin xyz="0 0 20" rpy="0 1.57 -1.57" />
+		<parent link="chassisLink" />
+		<child link="mapCameraLink" />
+		<axis xyz="0 0 1.0" />
+	</joint>
+
+
+	<joint name="frontLeftWheelJoint" type="continuous">
+		<origin xyz="2.02598 -1.53082 -0.05739" rpy="1.5708 0 -1.5708" />
+		<parent link="chassisLink" />
+		<child link="frontLeftWheelLink" />
+		<axis xyz="0 0 1.0" />
+	</joint>
+
+	<joint name="frontRightWheelJoint" type="continuous">
+		<origin xyz="-2.01372 -1.51765 -0.05451" rpy="1.5708 0 1.5708" />
+		<parent link="chassisLink" />
+		<child link="frontRightWheelLink" />
+		<axis xyz="0 0 1.0" />
+	</joint>
+
+	<joint name="rearRightWheelJoint" type="continuous">
+		<origin xyz="-2.04563 0.93075 -0.04897" rpy="1.5708 0 1.5708" />
+		<parent link="chassisLink" />
+		<child link="rearRightWheelLink" />
+		<axis xyz="0 0 1.0" />
+	</joint>
+
+	<joint name="rearLeftWheelJoint" type="continuous">
+		<origin xyz="2.03577 0.86208 -0.06106" rpy="1.5708 0 -1.5708" />
+		<parent link="chassisLink" />
+		<child link="rearLeftWheelLink" />
+		<axis xyz="0 0 1.0" />
+	</joint>
+
+	<gazebo>
+		<plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+			<robotNamespace>/autonomous_vehicle</robotNamespace>
+		</plugin>
+	</gazebo>
+
+	<gazebo reference="onboardCameraLink">
+		<sensor name='cam_sensor' type='camera'>
+			<pose>1.8 0.5 0.75 0 0 -1.57</pose>
+			<update_rate>20.000000</update_rate>
+			<camera name='onboardCameraLink'>
+				<horizontal_fov>1.570000</horizontal_fov>
+				<image>
+					<width>320</width>
+					<height>240</height>
+					<format>R8G8B8</format>
+				</image>
+				<clip>
+					<near>0.100000</near>
+					<far>99.000000</far>
+				</clip>
+			</camera>
+			<plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+				<alwaysOn>true</alwaysOn>
+				<updateRate>0.0</updateRate>
+				<cameraName>onboard_camera</cameraName>
+				<imageTopicName>image_raw</imageTopicName>
+				<cameraInfoTopicName>camera_info</cameraInfoTopicName>
+				<frameName>camera_top_body</frameName>
+				<hackBaseline>0.07</hackBaseline>
+				<distortionK1>0.0</distortionK1>
+				<distortionK2>0.0</distortionK2>
+				<distortionK3>0.0</distortionK3>
+				<distortionT1>0.0</distortionT1>
+				<distortionT2>0.0</distortionT2>
+			</plugin>
+		</sensor>
+	</gazebo>
+
+	<gazebo reference="mapCameraLink">
+		<sensor name='cam_sensor' type='camera'>
+			<pose>0 0 20 0 1.57 -1.57</pose>
+			<update_rate>30.000000</update_rate>
+			<camera name='mapCameraLink'>
+				<horizontal_fov>1.570000</horizontal_fov>
+				<image>
+					<width>320</width>
+					<height>240</height>
+					<format>R8G8B8</format>
+				</image>
+				<clip>
+					<near>0.100000</near>
+					<far>60.000000</far>
+				</clip>
+			</camera>
+			<plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+				<alwaysOn>true</alwaysOn>
+				<updateRate>0.0</updateRate>
+				<cameraName>map_camera</cameraName>
+				<imageTopicName>image_raw</imageTopicName>
+				<cameraInfoTopicName>camera_info</cameraInfoTopicName>
+				<frameName>camera_top_body</frameName>
+				<hackBaseline>0.07</hackBaseline>
+				<distortionK1>0.0</distortionK1>
+				<distortionK2>0.0</distortionK2>
+				<distortionK3>0.0</distortionK3>
+				<distortionT1>0.0</distortionT1>
+				<distortionT2>0.0</distortionT2>
+			</plugin>
+		</sensor>
+	</gazebo>
+
+
+	<transmission name="frontRightWheelTransmission">
+		<type>transmission_interface/SimpleTransmission</type>
+		<actuator name="frontRightMotor">
+			<mechanicalReduction>1</mechanicalReduction>
+		</actuator>
+		<joint name="frontRightWheelJoint">
+			<hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+		</joint>
+	</transmission>
+
+	<transmission name="frontLeftWheelTransmission">
+		<type>transmission_interface/SimpleTransmission</type>
+		<actuator name="frontLeftMotor">
+			<mechanicalReduction>1</mechanicalReduction>
+			<hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+		</actuator>
+		<joint name="frontLeftWheelJoint">
+			<hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+		</joint>
+	</transmission>
+
+	<transmission name="backRigthWheelTransmission">
+		<type>transmission_interface/SimpleTransmission</type>
+		<actuator name="rearRightMotor">
+			<mechanicalReduction>1</mechanicalReduction>
+			<hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+		</actuator>
+		<joint name="rearRightWheelJoint">
+			<hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+		</joint>
+	</transmission>
+
+	<transmission name="backLeftWheelTransmission">
+		<type>transmission_interface/SimpleTransmission</type>
+		<actuator name="rearLeftMotor">
+			<mechanicalReduction>1</mechanicalReduction>
+			<hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+		</actuator>
+		<joint name="rearLeftWheelJoint">
+			<hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+		</joint>
+	</transmission>
+
+	<gazebo reference="chassisLink">
+		<material>Gazebo/Gray</material>
+	</gazebo>
+
+	<gazebo reference="frontRightWheelLink">
+		<material>Gazebo/Black</material>
+	</gazebo>
+
+	<gazebo reference="frontLeftWheelLink">
+		<material>Gazebo/Black</material>
+	</gazebo>
+
+	<gazebo reference="rearRightWheelLink">
+		<material>Gazebo/Black</material>
+	</gazebo>
+
+	<gazebo reference="rearLeftWheelLink">
+		<material>Gazebo/Black</material>
+	</gazebo>
+
+	<gazebo reference="onboardCameraLink">
+		<material>Gazebo/Green</material>
+	</gazebo>
+
+	<gazebo reference="mapCameraLink">
+		<material>Gazebo/Green</material>
+	</gazebo>
+
+
+</robot>

@@ -1,24 +1,61 @@
 \chapter{Diseño}
 \label{cap:capitulo4}
 
-\begin{flushright}
-\begin{minipage}[]{10cm}
-\emph{Quizás algún fragmento de libro inspirador...}\\
-\end{minipage}\\
+En este capítulo se describe el trabajo realizado y los experimentos llevados a cabo para validar el desarrollo.\\
 
-Autor, \textit{Título}\\
-\end{flushright}
+El trabajo, como se explicó en el capítulo 2, se ha dividio en dos fases; primero se realiza una simulación del coche autónomo en una ciudad simplificada, para a continuación, reproducir ese mismo entorno en un escenario real.
 
-\vspace{1cm}
+\section{Entorno simulado}
+Para poder simular el comportamiento deseado en un entorno simulado es necesario disponer de dos elementos; un modelo del coche autónomo y un mundo dinámico con el que el vehículo interactuará, todo ello ejecutado dentro de un simulador, en este caso, como se explicó anteriormente, en \textit{Gazebo}.
 
-Escribe aquí un párrafo explicando brevemente lo que vas a contar en este capítulo. En este capítulo (y quizás alguno más) es donde, por fin, describes detalladamente qué has hecho y qué experimentos has llevado a cabo para validar tus desarrollos.
+\subsection{Modelo del coche autónomo}
+
+
+
+
+
+\subsection{Seguimiento de carril}
+
+
+
+
+
+
+
+\subsection{Detección de objetos}
+
+
+
+
+
+
+
+
+
+
+\section{Entorno real}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \section{Snippets}
 
 Puede resultar interesante, para clarificar la descripción, mostrar fragmentos de código (o \textit{snippets}) ilustrativos. En el Código \ref{cod:codejemplo} vemos un ejemplo escrito en \texttt{C++}.
 
 \begin{code}[h]
-\begin{lstlisting}[language=C++]
+	\begin{lstlisting}[language=C++]
 void Memory::hypothesizeParallelograms () {
   for(it1 = this->controller->segmentMemory.begin(); it1++) {
     squareFound = false; it2 = it1; it2++;
@@ -29,14 +66,14 @@ void Memory::hypothesizeParallelograms () {
       }
     // [...]
 \end{lstlisting}
-\caption[Función para buscar elementos 3D en la imagen]{Función para buscar elementos 3D en la imagen}
-\label{cod:codejemplo}
+	\caption[Función para buscar elementos 3D en la imagen]{Función para buscar elementos 3D en la imagen}
+	\label{cod:codejemplo}
 \end{code}
 
 En el Código \ref{cod:codejemplo2} vemos un ejemplo escrito en \texttt{Python}.
 
 \begin{code}[h]
-\begin{lstlisting}[language=Python]
+	\begin{lstlisting}[language=Python]
 def mostrarValores():
     print (w1.get(), w2.get())
 
@@ -49,8 +86,8 @@ Button(master, text='Show', command=mostrarValores).pack()
 
 mainloop()
 \end{lstlisting}
-\caption[Cómo usar un Slider]{Cómo usar un Slider}
-\label{cod:codejemplo2}
+	\caption[Cómo usar un Slider]{Cómo usar un Slider}
+	\label{cod:codejemplo2}
 \end{code}
 
 \section{Verbatim}
@@ -68,26 +105,26 @@ void Memory::hypothesizeParallelograms () {
 Si necesitas insertar alguna ecuación, puedes hacerlo. Al igual que las figuras, no te olvides de referenciarlas. A continuación se exponen algunas ecuaciones de ejemplo: Ecuación \ref{ec:ec1} y Ecuación \ref{ec:ec2}.
 
 \begin{myequation}[h]
-\begin{equation}
-H = 1 - \frac{\sum_{i=0}^{N}\frac{(\frac{d_{j_s} + d_{j_e}}{2})}{N}}{M}
-\nonumber
-\label{ec:ec1}
-\end{equation}
-\caption[Ejemplo de ecuación con fracciones]{Ejemplo de ecuación con fracciones}
-\end{myequation} 
+	\begin{equation}
+		H = 1 - \frac{\sum_{i=0}^{N}\frac{(\frac{d_{j_s} + d_{j_e}}{2})}{N}}{M}
+		\nonumber
+		\label{ec:ec1}
+	\end{equation}
+	\caption[Ejemplo de ecuación con fracciones]{Ejemplo de ecuación con fracciones}
+\end{myequation}
 
 \begin{myequation}[h]
-\begin{equation}
-v(entrada)= \left\{
-	\begin{array}{lcc}
-		0 & \mbox{if} & \epsilon_t < 0.1\\
-		K_p\cdot{(T_{t}-T)} & \mbox{if}& 0.1 \leq \epsilon_t < M_t\\
-		K_p \cdot M_t & \mbox{if}& M_t < \epsilon_t
-	\end{array}
-\right.
-\label{ec:ec2}
-\end{equation}
-\caption[Ejemplo de ecuación con array y letras y símbolos especiales]{Ejemplo de ecuación con array y letras y símbolos especiales}
+	\begin{equation}
+		v(entrada)= \left\{
+		\begin{array}{lcc}
+			0                   & \mbox{if} & \epsilon_t < 0.1          \\
+			K_p\cdot{(T_{t}-T)} & \mbox{if} & 0.1 \leq \epsilon_t < M_t \\
+			K_p \cdot M_t       & \mbox{if} & M_t < \epsilon_t
+		\end{array}
+		\right.
+		\label{ec:ec2}
+	\end{equation}
+	\caption[Ejemplo de ecuación con array y letras y símbolos especiales]{Ejemplo de ecuación con array y letras y símbolos especiales}
 \end{myequation}
 
 \section{Tablas o cuadros}
@@ -95,22 +132,22 @@ v(entrada)= \left\{
 Si necesitas insertar una tabla, hazlo dígnamente usando las propias tablas de \LaTeX, no usando pantallazos e insertándolas como figuras... En el Cuadro \ref{cuadro:ejemplo} vemos un ejemplo.
 
 \begin{table}[H]
-\begin{center}
-\begin{tabular}{|c|c|}
-\hline
-\textbf{Parámetros} & \textbf{Valores} \\
-\hline
-Tipo de sensor & Sony IMX219PQ[7] CMOS 8-Mpx \\
-Tamaño del sensor & 3.674 x 2.760 mm (1/4" format) \\
-Número de pixels & 3280 x 2464 (active pixels) \\
-Tamaño de pixel & 1.12 x 1.12 um \\
-Lente & f=3.04 mm, f/2.0 \\
-Ángulo de visión & 62.2 x 48.8 degrees \\
-Lente SLR equivalente & 29 mm \\
-\hline
-\end{tabular}
-\caption{Parámetros intrínsecos de la cámara}
-\label{cuadro:ejemplo}
-\end{center}
+	\begin{center}
+		\begin{tabular}{|c|c|}
+			\hline
+			\textbf{Parámetros}   & \textbf{Valores}               \\
+			\hline
+			Tipo de sensor        & Sony IMX219PQ[7] CMOS 8-Mpx    \\
+			Tamaño del sensor     & 3.674 x 2.760 mm (1/4" format) \\
+			Número de pixels      & 3280 x 2464 (active pixels)    \\
+			Tamaño de pixel       & 1.12 x 1.12 um                 \\
+			Lente                 & f=3.04 mm, f/2.0               \\
+			Ángulo de visión      & 62.2 x 48.8 degrees            \\
+			Lente SLR equivalente & 29 mm                          \\
+			\hline
+		\end{tabular}
+		\caption{Parámetros intrínsecos de la cámara}
+		\label{cuadro:ejemplo}
+	\end{center}
 \end{table}
 
