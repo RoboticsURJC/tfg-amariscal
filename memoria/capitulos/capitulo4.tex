@@ -3,23 +3,32 @@
 
 En este capítulo se describe el trabajo realizado y los experimentos llevados a cabo para validar el desarrollo.\\
 
-El trabajo, como se explicó en el capítulo 2, se ha dividio en dos fases; primero se realiza una simulación del coche autónomo en una ciudad simplificada, para a continuación, reproducir ese mismo escenario en un entorno real.\\
+El trabajo, como se explicó en el capítulo 2, se ha dividido en dos fases; primero se realiza una simulación del coche autónomo en una ciudad simplificada, para a continuación,
+reproducir ese mismo escenario en un entorno real.\\
 
 \section{Entorno simulado}
-Para poder simular el comportamiento deseado en un entorno simulado es necesario disponer de dos elementos; un modelo del coche autónomo y un mundo dinámico con el que el vehículo interactuará, todo ello ejecutado dentro de un simulador, en este caso, como se explicó anteriormente, en \textit{Gazebo}.\\
+Para poder simular el comportamiento deseado en un entorno simulado es necesario disponer de dos elementos; un modelo del coche autónomo y un mundo dinámico con el que el vehículo
+interactuará, todo ello ejecutado dentro de un simulador, en este caso, como se explicó anteriormente, en \textit{Gazebo}.\\
 
 \subsection{Modelo de la ciudad}
-Existen numerosos mundos diseñados para Gazebo disponibles en repositiorios de GitHub\footnote{\url{https://github.com/chaolmu/gazebo_models_worlds_collection}}\footnote{\url{https://github.com/mlherd/Dataset-of-Gazebo-Worlds-Models-and-Maps}}. En el caso que se plantea, es necesario una ciudad, por lo que partiendo de una ciudad\footnote{\url{https://github.com/chaolmu/gazebo_models_worlds_collection/blob/master/worlds/small_city.world}} de gran tamaño se reduce su tamaño con el objetivo de, posteriormente, poder reproducir ese escenario en el mundo real. En la figura \ref{fig:city} se observan ambas ciudades.\\
+Existen numerosos mundos diseñados para \textit{Gazebo} disponibles en repositorios de
+\textit{GitHub}\footnote{\url{https://github.com/chaolmu/gazebo_models_worlds_collection}}\footnote{\url{https://github.com/mlherd/Dataset-of-Gazebo-Worlds-Models-and-Maps}}. En
+el caso que se plantea, es necesario una ciudad, por lo que partiendo de una
+ciudad\footnote{\url{https://github.com/chaolmu/gazebo_models_worlds_collection/blob/master/worlds/small_city.world}} de gran tamaño se reduce su tamaño con el objetivo de,
+posteriormente, poder reproducir ese escenario en el mundo real. En la figura \ref{fig:city} se observan ambas ciudades.\\
 
 \begin{figure} [h!]
 	\begin{center}
-		\includegraphics[width=8cm]{figs/city}\includegraphics[width=8cm]{figs/simulator}
+		\includegraphics[width=8cm]{figs/city2}\includegraphics[width=8cm]{figs/smallcity}
 	\end{center}
 	\caption{Modelo de la ciudad original y la ciudad modificada en \textit{Gazebo}.}
 	\label{fig:city}
 \end{figure}\
 
-El modelo de esta ciudad es estático, es decir, no contiene elementos dinámicos, por lo que es necesario añadir dos tipos de elementos; un semáforo y un peatón que cruce un paso de peatones. Para ello, es necesario añadir dos plugins para \textit{Gazebo}. En primer lugar, y usando un modelo \textit{SDF} que integra el \textit{plugin} de cambio de color en el semáforo\footnote{\url{https://github.com/robustify/gazebo_traffic_light}}. Dicho plugin tiene asociado un fichero de configuración en formato YAML, código  \ref{cod:trafficlight}, en el que se especifica la secuencia de estados del semáforo y su duración en el tiempo.\\
+El modelo de esta ciudad es estático, es decir, no contiene elementos dinámicos, por lo que es necesario añadir dos tipos de elementos; un semáforo y un peatón que cruce un paso
+de peatones. Para ello, es necesario añadir dos \textit{plugins} para \textit{Gazebo}. En primer lugar, y usando un modelo \textit{SDF} que integra el \textit{plugin} de cambio de
+color en el semáforo\footnote{\url{https://github.com/robustify/gazebo_traffic_light}}. Dicho \textit{plugin} tiene asociado un fichero de configuración en formato \textit{YAML},
+código \ref{cod:trafficlight}, en el que se especifica la secuencia de estados del semáforo y su duración en el tiempo.\\
 
 \begin{code}[h]
 	\begin{lstlisting}
@@ -28,12 +37,15 @@ El modelo de esta ciudad es estático, es decir, no contiene elementos dinámico
   - { color: "yellow", duration: 1, flashing: false }
   - { color: "red", duration: 50, flashing: false }
 	\end{lstlisting}
-	\caption[Definición de estados y duraciones del semáforo]{Definición de estados y duraciones del semáforo}
+	\caption[Definición de estados y duraciones del semáforo.]{Definición de estados y duraciones del semáforo.}
 	\label{cod:trafficlight}
 \end{code}
 
-
-El segundo plugin proporciona movimiento a un modelo de un humano llamado actor. Está disponible en otro repositiorio\footnote{\url{https://github.com/BruceChanJianLe/gazebo-plugin-autonomous-actor}} de GitHub y permite que el humano se desplace en el mundo de forma realista. El plugin citado también permite configuración para especificar la ruta de puntos o \textit{waypoints} que el peatón ha de seguir, así como, su velocidad o la distancia mínima a la que debe situarse respecto a un obstáculo. Dicha configuración se realiza directamente en el fichero SDF, como muestra el código \ref{cod:pedestrianconfiguration}.\\
+El segundo \textit{plugin} proporciona movimiento a un modelo de un humano llamado actor. Está disponible en otro
+repositiorio\footnote{\url{https://github.com/BruceChanJianLe/gazebo-plugin-autonomous-actor}} de \textit{GitHub} y permite que el humano se desplace en el mundo de forma
+realista. El \textit{plugin} citado también permite configuración para especificar la ruta de puntos o \textit{waypoints} que el peatón ha de seguir, así como, su velocidad o la
+distancia mínima a la que debe situarse respecto a un obstáculo. Dicha configuración se realiza directamente en el fichero \textit{SDF}, como muestra el código
+\ref{cod:pedestrianconfiguration}.\\
 
 \begin{code}[h]
 	\begin{lstlisting}
@@ -52,7 +64,8 @@ El segundo plugin proporciona movimiento a un modelo de un humano llamado actor.
 				</plugin>
 			</actor>
 	\end{lstlisting}
-	\caption[Configuración de \textit{waypoints}, velocidad y distancia a obstáculos del peatón]{Configuración de \textit{waypoints}, velocidad y distancia a obstáculos del peatón}
+	\caption[Configuración de \textit{waypoints}, velocidad y distancia a obstáculos del peatón.]{Configuración de \textit{waypoints}, velocidad y distancia a obstáculos del
+		peatón.}
 	\label{cod:pedestrianconfiguration}
 \end{code}
 
@@ -62,27 +75,32 @@ Ambos modelos se sitúan en una paso de peatones, creado a partir de láminas bl
 	\begin{center}
 		\includegraphics[width=8cm]{figs/trafficlightpedestrian}
 	\end{center}
-	\caption{Semáforo y peatón usando plugins para \textit{Gazebo}.}
+	\caption{Semáforo y peatón usando \textit{plugins} para \textit{Gazebo}.}
 	\label{fig:trafficlightpedestrian}
 \end{figure}\
 
-
 \subsection{Modelo del coche autónomo}
-El primer paso para desarrollar un modelo es diseñar las piezas a utilizar, para ello, como se explicó en el capítulo 2, se utilizará \textit{FreeCAD}. El segundo paso es ensamblar el robot con \textit{Blender} utilizando el \textit{add-on} \textit{Phobos} para definir los links y joints del robot con el objetivo de dotar al robot de movimiento, generando un fichero \textit{URDF}. Por último, es necesario modificar el \textit{URDF} para añadir cámaras y controladores para los motores que serán usados en el simulador \textit{Gazebo}.\\
+El primer paso para desarrollar un modelo es diseñar las piezas a utilizar, para ello, como se explicó en el capítulo 2, se utilizará \textit{FreeCAD}. El segundo paso es
+ensamblar el robot con \textit{Blender} utilizando el \textit{add-on} \textit{Phobos} para definir los \textit{links} y \textit{joints} del robot con el objetivo de dotar al robot
+de movimiento, generando un fichero \textit{URDF}. Por último, es necesario modificar el \textit{URDF} para añadir cámaras y controladores para los motores que serán usados en el
+simulador \textit{Gazebo}.\\
 
 \subsubsection{Diseño de las piezas en \textit{FreeCAD}}
 
-A través de la herramienta \textit{Sketcher}\footnote{\url{https://wiki.freecadweb.org/Sketcher_Workbench}}, disponible en \textit{FreeCAD}, es posible realizar un diseño de piezas en 2D con restricciones de horizontalidad, verticalidad, igualdad entre rectas, medidas, ángulos etc y después convertir dicha pieza en 3D proporcionando un volumen a la pieza. Utilizando dicha herramienta se diseña el chasis y las ruedas del vehículo tomando las medidas reales, lo que da como resultado el diseño de las piezas en 2D de la figura \ref{fig:design2Dfreecad}.\\
+A través de la herramienta \textit{Sketcher}\footnote{\url{https://wiki.freecadweb.org/Sketcher_Workbench}}, disponible en \textit{FreeCAD}, es posible realizar un diseño de
+piezas en 2D con restricciones de horizontalidad, verticalidad, igualdad entre rectas, medidas, ángulos etc y después convertir dicha pieza en 3D proporcionando un volumen a la
+pieza. Utilizando dicha herramienta se diseña el chasis y las ruedas del vehículo tomando las medidas reales, lo que da como resultado el diseño de las piezas en 2D de la figura
+\ref{fig:design2Dfreecad}.\\
 
 \begin{figure} [h!]
 	\begin{center}
-		\includegraphics[width=8cm]{figs/freecad}
+		\includegraphics[width=8cm]{figs/sketchFreecad}
 	\end{center}
-	\caption{Diseño de las piezas 2D en \textit{FreeCAD}.}
+	\caption{Diseño del chasis 2D en \textit{FreeCAD}.}
 	\label{fig:design2Dfreecad}
 \end{figure}\
 
-A continuación se proporciona una anchura al chasis de 3mm y a las ruedas de xmm, obteniendo el modelo 3D de la figura \ref{fig:design3Dfreecad}.\\
+A continuación se proporciona un grosor al chasis de 3mm y a las ruedas de xmm, obteniendo el modelo 3D de la figura \ref{fig:design3Dfreecad}.\\
 
 \begin{figure} [h!]
 	\begin{center}
@@ -96,7 +114,9 @@ El siguiente paso es exportar las piezas diseñadas en formato \textit{STL} para
 
 \subsubsection{Ensamblado del robot en \textit{Blender}}
 
-Una vez importadas las piezas diseñadas en \textit{FreeCAD}, se crean dos unidades del chasis y cuatro ruedas, a continuación se mueven y rotan en el espacio para situarlas correctamente. Con el objetivo de dotar de mayor realismo al modelo, se importan modelos de los motores y la placa utilizados, disponibles en y en. Y se diseñan dos piezas para emular la batería y la cámara del robot. Con todo ello se conforma el modelo estático del robot, figura \ref{fig:blendermodel}.\\
+Una vez importadas las piezas diseñadas en \textit{FreeCAD}, se crean dos unidades del chasis y cuatro ruedas, a continuación se mueven y rotan en el espacio para situarlas
+correctamente. Con el objetivo de dotar de mayor realismo al modelo, se importan modelos de los motores y la placa utilizados, disponibles en y en. Y se diseñan dos piezas para
+emular la batería y la cámara del robot. Con todo ello se conforma el modelo estático del robot, figura \ref{fig:blendermodel}.\\
 
 \begin{figure} [h!]
 	\begin{center}
@@ -106,14 +126,19 @@ Una vez importadas las piezas diseñadas en \textit{FreeCAD}, se crean dos unida
 	\label{fig:blendermodel}
 \end{figure}\
 
-Este modelo es estático, es decir, no es posible simular un movimiento. Para ello es necesario un \textit{add-on} para \textit{Blender} como \textit{Phobos}, que como se explicó anteriormente, permite crear links y \textit{joints} y definir una jerarquía entre ellos.\\
+Este modelo es estático, es decir, no es posible simular un movimiento. Para ello es necesario un \textit{add-on} para \textit{Blender} como \textit{Phobos}, que como se explicó
+anteriormente, permite crear \textit{links} y \textit{joints} y definir una jerarquía entre ellos.\\
 
-En primer lugar, es necesario definir los elementos visuales que compondrán el modelo, en este caso serán todas las piezas del robot, dichas piezas serán del tipo \textit{mesh}, ya que no son objetos primitivos, como cajas o esferas.\\
+En primer lugar, es necesario definir los elementos visuales que compondrán el modelo, en este caso serán todas las piezas del robot, dichas piezas serán del tipo \textit{mesh},
+ya que no son objetos primitivos, como cajas o esferas.\\
 
-A continuación, se define un \textit{link} principal que será el cuerpo delrobot, de este \textit{link} dependerán las cuatro ruedas del vehículo. Con el objetivo de simular colisiones, se crea un modelo de colisión de cada una de
+A continuación, se define un \textit{link} principal que será el cuerpo del robot, de este \textit{link} dependerán las cuatro ruedas del vehículo. Con el objetivo de simular
+colisiones, se crea un modelo de colisión de cada una de
 las piezas y un modelo inercial, que estará relacionado con el peso simulado de cada pieza.\\
 
-Por último, se definen los \textit{joints} de cada rueda. A través de está funcionalidad es posible aplicar fuerza o velocidad a las ruedas del robot. Existen diferentes tipos de \textit{joints} en \textit{Phobos}; \textit{fixed}, \textit{revolute}, \textit{continuous}, \textit{prismatic}, en este caso, son necesarios \textit{joints} de tipo \textit{continuous}, ya que las ruedas realizan un giro sin un límite fijado, y no un movimiento transversal.\\
+Por último, se definen los \textit{joints} de cada rueda. A través de está funcionalidad es posible aplicar fuerza o velocidad a las ruedas del robot. Existen diferentes tipos de
+\textit{joints} en \textit{Phobos}; \textit{fixed}, \textit{revolute}, \textit{continuous}, \textit{prismatic}, en este caso, son necesarios \textit{joints} de tipo
+\textit{continuous}, ya que las ruedas realizan un giro sin un límite fijado, y no un movimiento transversal.\\
 
 Una vez definidos todos los elementos del modelo y su jerarquía, en el menú lateral de \textit{Blender} se encontrará el diagrama del modelo, figura \ref{fig:blenderdiagram}.\\
 
@@ -125,12 +150,13 @@ Una vez definidos todos los elementos del modelo y su jerarquía, en el menú la
 	\label{fig:blenderdiagram}
 \end{figure}\
 
-El siguiente paso es exportar el modelo a formato \textit{URDF}, que como se explicó anteriormente, es el aceptado por \textit{Gazebo} para simular modelos de robots. Las mallas, que componen el modelo visual y de colisiones, se exportan en formato \textit{DAE}, y se cargan desde el modelo \textit{URDF}.\\
-
+El siguiente paso es exportar el modelo a formato \textit{URDF}, que como se explicó anteriormente, es el aceptado por \textit{Gazebo} para simular modelos de robots. Las mallas,
+que componen el modelo visual y de colisiones, se exportan en formato \textit{DAE}, y se cargan desde el modelo \textit{URDF}.\\
 
 \subsubsection{Adición de plugins para Gazebo}
 
-Con el objetivo de mover el robot utilizando el middleware ROS, es necesario cargar el plugin \textit{Gazebo ROS Control} mediante el código \ref{cod:gazeboroscontrol}.\\
+Con el objetivo de mover el robot utilizando el \textit{middleware ROS}, es necesario cargar el \textit{plugin} \textit{Gazebo ROS Control} mediante el código
+\ref{cod:gazeboroscontrol}.\\
 
 \begin{code}[h]
 	\begin{lstlisting}[language=XML]
@@ -140,11 +166,12 @@ Con el objetivo de mover el robot utilizando el middleware ROS, es necesario car
 		</plugin>
 		</gazebo>
 	\end{lstlisting}
-	\caption[Código para cargar el plugin \textit{Gazebo ROS Control}]{Código para cargar el plugin \textit{Gazebo ROS Control}}
+	\caption[Carga del \textit{plugin} \textit{Gazebo ROS Control}.]{Carga del \textit{plugin} \textit{Gazebo ROS Control}.}
 	\label{cod:gazeboroscontrol}
 \end{code}
 
-Otro elemento a añadir en el fichero URDF, es la existencia de dos cámaras; una cámara onboard y otra situada encima del robot que proporcionará una visión de la ruta realizada. Dichas cámaras simuladas publicarán su imagen en un topic de ROS con una resolución y un formato fijado meidante el código \ref{cod:gazebocamera}.\\
+Otro elemento a añadir en el fichero \textit{URDF}, es la existencia de dos cámaras; una cámara \textit{onboard} y otra situada encima del robot que proporcionará una visión de la
+ruta realizada. Dichas cámaras simuladas publicarán su imagen en un \textit{topic} de \textit{ROS} con una resolución y un formato fijado mediante el código \ref{cod:gazebocamera}.\\
 
 \begin{code}[h]
 	\begin{lstlisting}[language=XML]
@@ -164,11 +191,11 @@ Otro elemento a añadir en el fichero URDF, es la existencia de dos cámaras; un
 		</sensor>
 	</gazebo>
 	\end{lstlisting}
-	\caption[Código para crear cámara simulada en \textit{Gazebo}]{Código para crear cámara simulada en \textit{Gazebo}}
+	\caption[Crear cámara simulada en \textit{Gazebo}.]{Crear cámara simulada en \textit{Gazebo}.}
 	\label{cod:gazebocamera}
 \end{code}
 
-Para mover el robot simulado también será necesario un fichero \textit{YAML}, en el que se especifiquen los controladores de los \textit{joints} y el nombre de los \textit{topics} en los que se publicarán los mensajes mendiante el código \ref{cod:controllers}.\\
+Para mover el robot simulado también será necesario un fichero \textit{YAML}, en el que se especifiquen los controladores de los \textit{joints} y el nombre de los \textit{topics} en los que se publicarán los mensajes mediante el código \ref{cod:controllers}.\\
 
 \begin{code}[h]
 	\begin{lstlisting}
@@ -189,11 +216,11 @@ Para mover el robot simulado también será necesario un fichero \textit{YAML}, 
 			type: velocity_controllers/JointVelocityController
 			joint: rearLeftWheelJoint
 	\end{lstlisting}
-	\caption[Definición de los controladores de los \textit{joints} del robot]{Definición de los controladores de los \textit{joints} del robot}
+	\caption[Definición de los controladores de los \textit{joints} del robot.]{Definición de los controladores de los \textit{joints} del robot.}
 	\label{cod:controllers}
 \end{code}
 
-Con todo ello, se implementa un \textit{launcher} \footnote{\url{https://github.com/jmvega/tfg-amariscal/src/launcher......}} que lanza el modelo dińamico del robot y se muestra en la ciudad simulada, figura \ref{fig:modelGazebo}.
+Con todo ello, se implementa un \textit{launcher}\footnote{\url{https://github.com/jmvega/tfg-amariscal/src/launcher......}} que lanza el modelo dińamico del robot y se muestra en la ciudad simulada tal y como se representa en la figura \ref{fig:modelGazebo}.\\
 
 \begin{figure} [h!]
 	\begin{center}
@@ -204,51 +231,47 @@ Con todo ello, se implementa un \textit{launcher} \footnote{\url{https://github.
 \end{figure}\
 
 \subsection{Seguimiento de carril}
+\footnote{\url{https://github.com/jmvega/tfg-amariscal/src/......... interactive_regression_ros}}
+Como se explicó en el capítulo 2, la biblioteca elegida para realizar el seguimiento de carril, es \textit{JetRacer}\ref{subsection:jetracer}. Dicha biblioteca se basa en la utilización de una red \textit{resnet18} preentrenada, consistente en una red neuronal convolucional de 18 capas, sobre la que a su vez, se entrena con un \textit{dataset} de un escaso mínimo número de imágenes. Proporciona diversos \textit{notebooks} de \textit{Jupyter} que hacen más la sencilla la obtención del \textit{dataset}, el entrenamiento y el ajuste del controlador.\\
+
+El primer paso es la obtención del \textit{dataset} para posteriormente entrenar la red. Para ello, es necesario asociar cada imagen con el centro del carril, definido a partir de una coordenada en x y otra en y. La librería utiliza un widget para \textit{Jupyter} llamado \textit{Jupyter Clickable Image Widget\footnote{\url{https://github.com/jaybdub/jupyter_clickable_image_widget}}} lo que permite que al hacer click sobre la imagen recibida a partir de un flujo de vídeo, esta se guarde con un nombre atendiendo al siguiente formato: \textit{x\_y\_identificador\_unico.jpg}.\\
+
+mover el robot dentro del simulador utilizando los controladores de los motores anteriormente desarrollados.
+
+Una vez obtenido el \textit{dataset}, se descarga el modelo preentrenado \textit{resnet18} utilizando la librería \textit{Torchvision} y se realiza una conversión para aprovechar los núcleos de la tarjeta gráfica mediante la plataforma \textit{CUDA} a través de la función \verb|to(device)| donde \verb|device| es \verb|torch.device('cuda')|.\\ 
+
+
+El siguiente paso es el entrenamiento de la red. Para ello, en cada \textit{epoch} se calcula el error cuadrático medio, \textit{mean squared error (MSE loss)} entre una de las imágenes del \textit{dataset} y la salida actual de la red. Una vez calculado este error se realiza la propagación hacia detrás, \textit{backpropagation}, consistente en la propagación de los errores desde la capa de salida hasta la primera capa. Además se realiza una optimización de los pesos a través del algoritmo \textit{Adam} \cite{adam}, el cual es un método de optimización estocástica basado en el cálculo de las tasas individuales adaptables de entrenamiento, \textit{individual adaptive learning rates} a partir de estimaciones del primer y segundo momento del gradiente.\\
+
+Para realizar el entrenamiento hay que fijar un número de \textit{epochs} que será el momento en el que el entrenamiento finalizará. En cada \textit{epoch} el error va bajando hasta llegar a un valor cercano a 0, dependiendo del número de imágenes del \textit{dataset} el tiempo invertido en realizar una \textit{epoch} será mayor o menor. En el caso del entrenamiento realizado, en 10 \textit{epochs} el error alcanzó el valor de 0.0117 tal y como representa la figura \ref{fig:epochsimulator}.\\
+
+\begin{figure} [h!]
+	\begin{center}
+		\includegraphics[width=6cm]{figs/epochSimulator}
+	\end{center}
+	\caption{Valor del error al finalizar el entramiento con 10 \textit{epochs}.}
+	\label{fig:epochsimulator}
+\end{figure}\
+
+
+Tanto el entrenamiento como la ejecución de la red neuronal recibe imágenes de una baja resolución, \textit{240x240}, ya que está diseñada para funcionar en placas de bajas prestaciones. Tras realizar el entrenamiento se genera un modelo \textit{.pth}. Para poder obtener la salida de la red es necesario pasar como argumento al modelo, el resultado de la función \verb|preprocess(image)|, que devuelve un tensor a partir de una imagen en formato \verb|numpy.ndarray|. Tras obtener la salida es posible representar el centro del carril con el resultado de la figura \ref{fig:outputnnsim}.
+
+\begin{figure} [h!]
+	\begin{center}
+		\includegraphics[width=6cm]{figs/outputNNsim}
+	\end{center}
+	\caption{Salida de la red neuronal en el simulador \textit{Gazebo}.}
+	\label{fig:outputnnsim}
+\end{figure}\
+
+En el caso del simulador y al ser una plataforma de pruebas, el objetivo principal es entrenar la red y probar su efectividad en un entorno simulado, y no desarrollar un controlador a partir de la salida de la red. Por lo que el seguimiento del carril se realizará mediante un automáta.
 
 \subsection{Detección de objetos}
 
 \section{Entorno real}
 
-\section{Snippets}
 
-Puede resultar interesante, para clarificar la descripción, mostrar fragmentos de código (o \textit{snippets}) ilustrativos. En el Código \ref{cod:codejemplo} vemos un ejemplo escrito en \texttt{C++}.
-
-\begin{code}[h]
-	\begin{lstlisting}[language=C++]
-void Memory::hypothesizeParallelograms () {
-  for(it1 = this->controller->segmentMemory.begin(); it1++) {
-    squareFound = false; it2 = it1; it2++;
-    while ((it2 != this->controller->segmentMemory.end()) && (!squareFound)) {
-      if (geometry::haveACommonVertex((*it1),(*it2),&square)) {
-        dist1 = geometry::distanceBetweenPoints3D ((*it1).start, (*it1).end);
-        dist2 = geometry::distanceBetweenPoints3D ((*it2).start, (*it2).end);
-      }
-    // [...]
-\end{lstlisting}
-	\caption[Función para buscar elementos 3D en la imagen]{Función para
-		buscar elementos 3D en la imagen}
-	\label{cod:codejemplo}
-\end{code}
-
-En el Código \ref{cod:codejemplo2} vemos un ejemplo escrito en \texttt{Python}.
-
-\begin{code}[h]
-	\begin{lstlisting}[language=Python]
-def mostrarValores():
-    print (w1.get(), w2.get())
-
-master = Tk()
-w1 = Scale(master, from_=0, to=42)
-w1.pack()
-w2 = Scale(master, from_=0, to=200, orient=HORIZONTAL)
-w2.pack()
-Button(master, text='Show', command=mostrarValores).pack()
-
-mainloop()
-\end{lstlisting}
-	\caption[Cómo usar un Slider]{Cómo usar un Slider}
-	\label{cod:codejemplo2}
-\end{code}
+% language=Python
 
 \section{Verbatim}
 
@@ -333,5 +356,10 @@ Si necesitas insertar una tabla, hazlo dígnamente usando las propias tablas de
 	\end{center}
 \end{table}
 
-
 Language YAML, XML?
+Width: includegraphics includegraphics %\includegraphics[width=8cm]{figs/city2}\includegraphics[width=8cm]{figs/smallcity}
+Tabla cámara
+....
+JetRacer\ref{subsection:jetracer}
+Grafico dataset darknet barras
+Gráfica entrenamiento error no sube ni baja, estable
