@@ -94,7 +94,7 @@ La visión artificial ofrece multitud de posibilidades, no solo en robótica, ti
 \label{sec:arquitectura}
 La decisión de qué arquitectura utilizar en un robot es determinante. Es necesario evaluar multitud de factores; consumo de energía, potencia requerida, tamaño y peso, sistema operativo a utilizar, posibilidad de recibir respuesta en \textit{real time}, precio etc...\\
 
-Existen multitud de arquitecturas utilizadas en proyectos robóticos \textit{x86}, \textit{x86\_64}, \textit{ARMv6}, \textit{ARMv7} o \textit{AArch64}. Pero, actualmente hay dos arquitecturas predominantes \textit{x86\_64} y \textit{AArch64}, ambas de \textit{64 bits}, ya que los 32 bits han quedado desfasados para la gran mayoría de aplicaciones, además, los nuevos sistemas operativos comienzan a no soportarlos. \cite{canonical32bits}
+Existen multitud de arquitecturas utilizadas en proyectos robóticos \textit{x86}, \textit{x86\_64}, \textit{ARMv6}, \textit{ARMv7} o \textit{AArch64}. Pero, actualmente hay dos arquitecturas predominantes \textit{x86\_64} y \textit{AArch64}, ambas de \textit{64 bits}, ya que los 32 bits han quedado desfasados para la gran mayoría de aplicaciones, además, los nuevos sistemas operativos comienzan a no soportarlos.\\ \cite{canonical32bits}
 
 Estas dos arquitecturas tienen grandes diferencias en cuanto al diseño de los procesadores y las instrucciones que utilizan:
 \begin{itemize}
@@ -102,9 +102,9 @@ Estas dos arquitecturas tienen grandes diferencias en cuanto al diseño de los p
 	\item Complex Instruction Set Computer (\textit{CISC})
 \end{itemize}\
 
-El conjunto de instrucciones utilizado por \textit{AArch64} es \textit{CISC}, este conjunto se compone de gran cantidad de instrucciones y muchas de ellas complejas para realizar tareas que, el conjunto \textit{RISC}, puede realizar con varias instrucciones. Este último conjunto es utilizado por la arquitectura \textit{x86\_64}.
+El conjunto de instrucciones utilizado por \textit{AArch64} es \textit{CISC}, este conjunto se compone de gran cantidad de instrucciones y muchas de ellas complejas para realizar tareas que, el conjunto \textit{RISC}, puede realizar con varias instrucciones. Este último conjunto es utilizado por la arquitectura \textit{x86\_64}.\\
 
-Ejemplos representativos de \textit{AArch64}:\\
+Ejemplos representativos de \textit{AArch64}:
 \begin{figure} [h!]
 	\begin{center}
 		\begin{minipage}{0.45\textwidth}
@@ -123,7 +123,7 @@ Ejemplos representativos de \textit{AArch64}:\\
 	\label{fig:aarch64}
 \end{figure}\
 
-Ejemplos representativos de \textit{x86\_64}:\\
+Ejemplos representativos de \textit{x86\_64}:
 \begin{figure} [h!]
 	\begin{center}
 		\begin{minipage}{0.45\textwidth}
@@ -147,43 +147,6 @@ Ejemplos representativos de \textit{x86\_64}:\\
 \label{sec:deeplearning}
 El \textit{Deep Learning} se basa en redes neuronales que parten del \textit{Machine Learning}, que a su vez surge de la \textit{Inteligencia Artificial} (\textit{IA}). Sus inicios se remontan al año 1979 cuando \textit{Kunihiko Fukushima} desarrolló una red neuronal de entre 5 y 6 capas llamada \textit{neocognitrón}\cite{neocognitron}, con el objetivo de reconocer carácteres japoneses.\\
 
-
 Este tipo de redes neuronales tiene multitud de aplicaciones, pero todas comparten grandes cantidades de datos, conocidos como \textit{datasets}, en cualquier formato; vídeo, imagen, sonido. Algunas de ellas son: clasificación de objetos, procesamiento natural del lenguaje, \textit{Big Data}, anaĺisis médico, conversión de imágenes en blanco y negro a color etc...\\
-
-\subsection{YOLO}
-\label{sec:yolo}
-
-Uno de los algoritos más populares, capaz de detectar y clasificar objetos provinientes de una imagen es \textit{YOLO} (\textit{You Only Look Once}). Sus principales ventajas son una gran precisión y la posibilidad, con el hardware adecuado, de ejecutar en tiempo real. Este algoritmo hace honor a su nombre y, por tanto, solo realiza una \textit{propagación hacia delante} en cada ejecución.\\
-
-\begin{figure} [h!]
-	\begin{center}
-		\includegraphics[width=12cm]{figs/yolo}
-	\end{center}
-	\caption{Objetos detectados por \textit{YOLO} en una carretera.}
-	\label{fig:yolo}
-\end{figure}\
-
-Se basa en el uso de redes nueronales convolucionales, \textit{Convolutional neural network}. Se diferencia de una red neuronal tradicional, en que la operación de multiplición de matrices, se sustituye por una operación matemática llamada convolución, consistente en mezclar dos fuentes de información para producir una tercera, en este caso dos funciones.\\
-
-
-\textit{YOLO} hace uso, esencialmente, de tres técnicas para conseguir reconcer objetos:
-\begin{itemize}
-	\item División de la imagen en celdas: de esta forma se pueden detectar multitud de objetos en una imagen
-	\item Creación de \textit{bounding boxes}: cajas \ref{fig:yolo} dibujando el contorno del objeto detectado y fijando la probabilidad de que el objeto detectado sea correcto
-	\item Intersección sobre la únion: consiste en seleccionar el \textit{bounding box} con mayor probabilidad cuando hay varios superpuestos
-\end{itemize}\
-
-
-\begin{figure} [h!]
-	\begin{center}
-		\includegraphics[width=16cm]{figs/yolov353}
-	\end{center}
-	\caption{Arquitectura \textit{YOLOv3} con 53 capas convolucionales.}
-	\label{fig:yololayers}
-\end{figure}\
-
-Uno de los principales problemas de \textit{YOLO} es la baja de probabilidad de detectar objetos de tamaño reducido, debido principalmente a la baja resolución de la red (está permitido incrementarla pero disminuye su rendimiento) que hace muy difícil su detección.\\
-
-Además, existen versiones reducidas de este algoritmo como, Tiny-YOLO y Fast YOLO capaces de ser ejecutados en equipos de bajo coste y reducido tamaño.\\
 
 En los siguientes capítulos trataremos los objetivos a cumplir ...\\

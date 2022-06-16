@@ -128,6 +128,40 @@ El formato \textit{SDF} (\textit{Simulation Description Format})\footnote{\url{h
 \label{subsection:opencv}
 \textit{OpenCV}\footnote{\url{https://github.com/opencv/opencv}} es una librería de visión artificial de código abierto desarrollado por Intel\footnote{\url{https://opencv.org/opencv-platinum-membership/}}. Está escrita en \textit{C/C++} y cuenta con soporte para aceleración por GPU basadas en CUDA\footnote{\url{https://developer.nvidia.com/cuda-zone}} y OpenCL\footnote{\url{https://www.khronos.org/opencl/}} y procesamiento de imagen en tiempo real. Es usada en todo tipo de aplicaciones en las que interviene la visión por ordenador, tales como, detección de objetos, realidad aumentada o reconocimiento de gestos. Además, está disponible en multitud de lenguajes de programación; \textit{C++}, \textit{Python}, \textit{Java}, etc...\\
 
+\subsection{YOLO}
+\label{sec:yolo}
+
+Uno de los algoritos más populares, capaz de detectar y clasificar objetos provinientes de una imagen es \textit{YOLO} (\textit{You Only Look Once})\cite{yolov3}. Sus principales ventajas son una gran precisión y la posibilidad, con el hardware adecuado, de ejecutar en tiempo real. Este algoritmo hace honor a su nombre y, por tanto, solo realiza una \textit{propagación hacia delante} en cada ejecución.\\
+
+\begin{figure} [h!]
+	\begin{center}
+		\includegraphics[width=12cm]{figs/yolo}
+	\end{center}
+	\caption{Objetos detectados por \textit{YOLO} en una carretera.}
+	\label{fig:yolo}
+\end{figure}\
+
+Se basa en el uso de redes nueronales convolucionales, \textit{Convolutional neural network}. Se diferencia de una red neuronal tradicional, en que la operación de multiplición de matrices, se sustituye por una operación matemática llamada convolución, consistente en mezclar dos fuentes de información para producir una tercera, en este caso dos funciones.\\
+
+\textit{YOLO} hace uso, esencialmente, de tres técnicas para conseguir reconcer objetos:\\
+\begin{itemize}
+	\item División de la imagen en celdas: de esta forma se pueden detectar multitud de objetos en una imagen
+	\item Creación de \textit{bounding boxes}: cajas \ref{fig:yolo} dibujando el contorno del objeto detectado y fijando la probabilidad de que el objeto detectado sea correcto
+	\item Intersección sobre la únion: consiste en seleccionar el \textit{bounding box} con mayor probabilidad cuando hay varios superpuestos
+\end{itemize}\
+
+\begin{figure} [h!]
+	\begin{center}
+		\includegraphics[width=16cm]{figs/yolov353}
+	\end{center}
+	\caption{Arquitectura \textit{YOLOv3} con 53 capas convolucionales.}
+	\label{fig:yololayers}
+\end{figure}\
+
+Uno de los principales problemas de \textit{YOLO} es la baja de probabilidad de detectar objetos de tamaño reducido, debido principalmente a la baja resolución de la red (está permitido incrementarla pero disminuye su rendimiento) que hace muy difícil su detección.\\
+
+Además, existen versiones reducidas de este algoritmo como, Tiny-YOLO y Fast YOLO capaces de ser ejecutados en equipos de bajo coste y reducido tamaño.\\
+
 \subsection{\textit{Darknet}}
 \label{subsection:darknet}
 \textit{Darknet}\footnote{\url{https://pjreddie.com/darknet/}} es un framework de código abierto que permite ejecutar y entrenar redes neuronales en tiempo real, ya que soporta tanto computación por CPU como GPU. Está escrito en C y CUDA, gracias a estar escrito en un lenguaje considerado de bajo nivel, ofrece un rendimiento aceptable en plataformas de bajo coste como \textit{NVIDIA Jetson Nano}\ref{fig:jetsonnano}.\\
