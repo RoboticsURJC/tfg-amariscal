@@ -381,7 +381,7 @@ El robot se detiene al detectar el semáforo en rojo y en el momento que cambie 
 
 \subsection{Interfaz de usuario}
 \label{subsection:interface}
-Con el objetivo de realizar un control sencillo de la simulación se ha realizado una interfaz gráfica desarrollada con la biblioteca PyQT. Dicha interfaz dispone de una cruceta para realizar un control manual del robot. Incluye también un botón para iniciar la simulación y otro para reiniciarla, de modo que, el robot vuelve al punto inicial. Así como un botón para activar las dos cámaras. Dispone de una cámara alojada en el propio robot llamada \textit{onboard} y otra que se desplaza cuando el robot avanza de modo que aporta una visión del recorrido que realiza el robot. La interfaz descrita se puede observar en la figura \ref{fig:gui}.\\ 
+Con el objetivo de realizar un control sencillo de la simulación se ha realizado una interfaz gráfica desarrollada con la biblioteca \textit{PyQT}. Dicha interfaz dispone de una cruceta para realizar un control manual del robot. Incluye también un botón para iniciar la simulación y otro para reiniciarla, de modo que, el robot vuelve al punto inicial. Así como un botón para activar las dos cámaras. Dispone de una cámara alojada en el propio robot llamada \textit{onboard} y otra que se desplaza cuando el robot avanza de modo que aporta una visión del recorrido que realiza el robot. La interfaz descrita se puede observar en la Figura \ref{fig:gui}.\\ 
 
 \begin{figure} [h!]
 	\begin{center}
@@ -393,7 +393,7 @@ Con el objetivo de realizar un control sencillo de la simulación se ha realizad
 
 \section{Entorno real}
 \label{section:real}
-En esta sección se exponen los elementos utilizados para componer un entorno real en el que un robot equipado con una placa \textit{NVIDIA Jetson Nano} y una cámara como sensor principal circula reaccionando ante objetos estáticos y dinámicos. Así como las particularidades del sistema a la hora de realizar la transición desde el entorno simulado al real.
+En esta sección se exponen los elementos utilizados para componer un entorno real en el que un robot equipado con una cámara como sensor principal circula reaccionando ante objetos estáticos y dinámicos. Así como las particularidades del sistema a la hora de realizar la transición desde el entorno simulado al real.
 
 \begin{figure} [h!]
 	\begin{center}
@@ -417,7 +417,9 @@ En esta sección se exponen los elementos utilizados para componer un entorno re
 
 \subsection{Objetos}
 
+
 \subsubsection{Semáforo}
+
 
 \begin{figure} [h!]
 	\begin{center}
@@ -454,7 +456,7 @@ En esta sección se exponen los elementos utilizados para componer un entorno re
 El entrenamiento de la red neuronal \textit{ResNet-18} se realiza de igual forma que en el entorno simulado, la principal diferencia a tener en cuenta es la luz ambiente.
 
 \subsection{Transformación del modelo de PyTorch a TensorRT}
-
+Como se expuso en el Capítulo 3, existe una librería llamada PyTorch to TensorRT que permite convertir modelos de PyTorch a modelos optimizados aprovechando los tensores de las gráficas dedicadas y realizando inferencia utilizando operaciones con \textit{FP16} y \textit{FP32}.
 
 \section{Entrenamiento a partir de YOLO para detección de objetos propios}
 El objetivo es entrenar nuestra propia red de YOLO con el objetivo de poder detectar objetos propios o mejorar la detección de objetos ya detectados por la red, pero mejorando la probabilidad de detección, ya que podemos entrenar la red con los objetos reales que vamos a usar.

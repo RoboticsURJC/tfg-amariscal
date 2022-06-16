@@ -6,9 +6,9 @@ En este capítulo, se explica el hardware y software elegido para desarrollar el
 \section{Hardware}
 \subsection{\textit{NVIDIA Jetson Nano}}
 \label{subsection:jetsonnano}
-La placa de desarrollo \textit{NVIDIA Jetson Nano}\footnote{\url{https://developer.nvidia.com/embedded/jetson-nano}} es una plataforma de bajo coste con grandes capacidades computacionales para implementar técnicas de inteligencia artificial gracias a su \textit{GPU} dedicada \textit{NVIDIA Maxwell}\footnote{\url{https://developer.nvidia.com/maxwell-compute-architecture}} con 128 \textit{NVIDIA CUDA cores}\footnote{\url{https://developer.nvidia.com/cuda-gpus}}, además dispone de una CPU Quad-core basada en la arquitectura Aarch64 lo que permite ejecutar GNU/Linux sin dificultades y ser compatible con numerosas bibliotecas de código. La placa en cuestión, dispone además de pines GPIO lo que permite de forma muy sencilla conectar todo tipo de sensores y actuadores.\\
+La placa de desarrollo \textit{NVIDIA Jetson Nano}\footnote{\url{https://developer.nvidia.com/embedded/jetson-nano}} es una plataforma de bajo coste con grandes capacidades computacionales para implementar técnicas de inteligencia artificial gracias a su \textit{GPU} dedicada \textit{NVIDIA Maxwell}\footnote{\url{https://developer.nvidia.com/maxwell-compute-architecture}} con 128 \textit{NVIDIA CUDA cores}\footnote{\url{https://developer.nvidia.com/cuda-gpus}}, además dispone de una CPU \textit{Quad-core} basada en la arquitectura Aarch64 lo que permite ejecutar \textit{GNU/Linux} sin dificultades y ser compatible con numerosas bibliotecas de código. La placa en cuestión, dispone además de pines \textit{GPIO} lo que permite de forma muy sencilla conectar todo tipo de sensores y actuadores.\\
 
-Los requisitos en lo que a alimentación se refiere no son excesivos, requiere un mínimo de 5 voltios (V) y 3 amperios (A), lo que permite que una simple \textit{powerbank} de reducido tamaño sea capaz de alimentar la placa, si bien es cierto que la batería debe poder ofrecer tres amperios de forma estable, y no solo como intensidad pico. Existen numerosos proyectos en los que esta placa está presente, tales como JetBot\footnote{\url{https://github.com/NVIDIA-AI-IOT/jetbot}} o JetRacer, que se detallará en la Sección \ref{subsection:jetracer}.\\
+Los requisitos en lo que a alimentación se refiere no son excesivos, requiere un mínimo de 5 voltios (V) y 3 amperios (A), lo que permite que una simple \textit{powerbank} de reducido tamaño sea capaz de alimentar la placa, si bien es cierto que la batería debe poder ofrecer tres amperios de forma estable, y no solo como intensidad pico. Existen numerosos proyectos en los que esta placa está presente, tales como \textit{JetBot\footnote{\url{https://github.com/NVIDIA-AI-IOT/jetbot}}} o \textit{JetRacer}, que se detallará en la Sección \ref{subsection:jetracer}.\\
 
 \begin{figure} [h!]
 	\begin{center}
@@ -32,7 +32,7 @@ Se trata de unos motores\footnote{\url{https://www.verical.com/datasheet/adafrui
 
 \subsection{Controladora de motores \textit{L298N}}
 \label{subsection:l298n}
-Es un módulo\footnote{\url{https://www.luisllamas.es/arduino-motor-corriente-continua-l298n/}} capaz de controlar la dirección y la velocidad de los motores anteriormente citados. La tensión de alimentación es de un mínimo de 6 voltios, lo que hace imposible alimentarla con la placa \textit{NVIDIA Jetson Nano} por lo que es necesario una batería externa. Otra posibilidad para utilizar una única batería sería utilizar la salida de 5 voltios (V) que nos ofrece la controladora, sin embargo, dicha salida nunca ofrecerá los 3 amperios (A) requeridos. Este componente permite invertir el sentido de la corriente lo que proporciona un control para mover los motores en el sentido de las agujas del reloj (CW) y en el sentido contrario a las agujas del reloj (CCW). La principal limitación de esta placa es que solo permite controlar dos motores, por lo que si se dispone de 4 motores, se podrán conectar a pares dependiendo del comportamiento deseado. El control se realiza a través de la técnica PWM\footnote{\url{https://circuitdigest.com/tutorial/what-is-pwm-pulse-width-modulation}}, que permite enviar de forma precisa la velocidad deseada a través de una señal digital.\\
+Es un módulo\footnote{\url{https://www.luisllamas.es/arduino-motor-corriente-continua-l298n/}} capaz de controlar la dirección y la velocidad de los motores anteriormente citados. La tensión de alimentación es de un mínimo de 6 voltios, lo que hace imposible alimentarla con la placa \textit{NVIDIA Jetson Nano} por lo que es necesario una batería externa. Otra posibilidad para utilizar una única batería sería utilizar la salida de 5 voltios (V) que nos ofrece la controladora, sin embargo, dicha salida nunca ofrecerá los 3 amperios (A) requeridos. Este componente permite invertir el sentido de la corriente lo que proporciona un control para mover los motores en el sentido de las agujas del reloj (CW) y en el sentido contrario a las agujas del reloj (CCW). La principal limitación de esta placa es que solo permite controlar dos motores, por lo que si se dispone de 4 motores, se podrán conectar a pares dependiendo del comportamiento deseado. El control se realiza a través de la técnica modulación por ancho de pulso, \textit{pulse with modulation (PWM)}\footnote{\url{https://circuitdigest.com/tutorial/what-is-pwm-pulse-width-modulation}}, que permite enviar de forma precisa la velocidad deseada a través de una señal digital.\\
 
 \begin{figure} [h!]
 	\begin{center}
@@ -82,11 +82,11 @@ Se trata de un chasis de bajo coste muy común en proyectos relacionados con Ard
 
 \subsection{\textit{Python}}
 \label{subsection:python}
-\textit{Python} es un lenguaje de programación de código abierto, interpretado, orientado a objetos y de alto nivel. En la actualidad es el lenguaje más usado a nivel mundial\footnote{\url{https://pypl.github.io/PYPL.html}}. Está considerado como un lenguaje fácil de aprender gracias a su simple sintaxis, esto le ha llevado a crecer mucho en popularidad durante los últimos años. Además, al ser interpretado, no es necesario utilizar un compilador, lo que provoca un desarrollo mucho más rápido. Python cuenta con una enorme cantidad de bibliotecas y clientes para utilizar software desarrollado en otros lenguajes. Algunas de ellas se describirán a continuación.\\
+\textit{Python} es un lenguaje de programación de código abierto, interpretado, orientado a objetos y de alto nivel. En la actualidad es el lenguaje más usado a nivel mundial\footnote{\url{https://pypl.github.io/PYPL.html}}. Está considerado como un lenguaje fácil de aprender gracias a su simple sintaxis, esto le ha llevado a crecer mucho en popularidad durante los últimos años. Además, al ser interpretado, no es necesario utilizar un compilador, lo que provoca un desarrollo mucho más rápido.\textit{Python} cuenta con una enorme cantidad de bibliotecas y clientes para utilizar software desarrollado en otros lenguajes. Algunas de ellas se describirán a continuación.\\
 
 \subsection{\textit{Blender}}
 \label{subsection:blender}
-\textit{Blender}\footnote{\url{https://www.blender.org/}} es una plataforma de código abierto dedicada a la creación, simulación, renderizado y animación de modelos 3D con todo tipo de texturas, sombras etc.. Es un desarrollo de la Blender Foundation y está escrito principalmente en \textit{C}. Permite crear diseños de robots desde cero de una forma relativamente rápida y con \textit{add-ons} como \textit{Phobos}, es posible exportar el modelo a \textit{URDF} con el fin de realizar una simulación\cite{phobos}.\\
+\textit{Blender}\footnote{\url{https://www.blender.org/}} es una plataforma de código abierto dedicada a la creación, simulación, renderizado y animación de modelos 3D con todo tipo de texturas, sombras etc.. Es un desarrollo de la \textit{Blender Foundation} y está escrito principalmente en \textit{C}. Permite crear diseños de robots desde cero de una forma relativamente rápida y con \textit{add-ons} como \textit{Phobos}, es posible exportar el modelo a \textit{URDF} con el fin de realizar una simulación\cite{phobos}.\\
 
 \begin{figure} [h!]
 	\begin{center}
@@ -98,7 +98,7 @@ Se trata de un chasis de bajo coste muy común en proyectos relacionados con Ard
 
 \subsection{\textit{Gazebo}}
 \label{subsection:gazebo}
-\textit{Ignition Gazebo}\footnote{\url{https://github.com/gazebosim/gz-sim}} es un simulador 3D de código abierto desarrollado por la \textit{Open Source Robotics Foundation (OSRF)}\footnote{\url{https://www.openrobotics.org/}}, escrito en \textit{C++}, usado principalmente para simular comportamientos con gran precisión y gráficos de alta calidad en los que intervienen robots en un entorno dinámico, un ejemplo de ello se puede observar en la Figura \ref{fig:city}. Desde  Utiliza, por defecto, el motor de físicas \textit{ODE}\footnote{\url{https://bitbucket.org/odedevs/ode/src/master/}}, escrito también en \textit{C++}. Permite simular todo tipo de sensores y actuadores. Además, ofrece integración con ROS de forma muy sencilla.\\
+\textit{Ignition Gazebo}\footnote{\url{https://github.com/gazebosim/gz-sim}} es un simulador 3D de código abierto desarrollado por la \textit{Open Source Robotics Foundation (OSRF)}\footnote{\url{https://www.openrobotics.org/}}, escrito en \textit{C++}, usado principalmente para simular comportamientos con gran precisión y gráficos de alta calidad en los que intervienen robots en un entorno dinámico, un ejemplo de ello se puede observar en la Figura \ref{fig:city}. Desde  Utiliza, por defecto, el motor de físicas \textit{ODE}\footnote{\url{https://bitbucket.org/odedevs/ode/src/master/}}, escrito también en \textit{C++}. Permite simular todo tipo de sensores y actuadores. Además, ofrece integración con \textit{ROS} de forma muy sencilla.\\
 
 \begin{figure} [h!]
 	\begin{center}
@@ -110,7 +110,7 @@ Se trata de un chasis de bajo coste muy común en proyectos relacionados con Ard
 
 \subsection{\textit{SDF}}
 \label{subsection:sdf}
-El formato \textit{SDF} (\textit{Simulation Description Format})\footnote{\url{https://github.com/gazebosim/sdformat}} o \textit{SDFormat} permite describir entornos, objetos dinámicos o robots de una manera sencilla. Está basado en \textit{XML} y escrito en \textit{C++}. El objetivo de este formato es ejecutar comportamientos en un simulador. Originalmente fue desarrollado como parte de \textit{Gazebo} por lo que existen numerosas bibliotecas donde se encuentran modelos o mundos desarrollados en \textit{SDF} para este simulador\footnote{\url{https://github.com/HuyPhamG/simulatedswarm}}. Cabe destacar también, el formato URDF que, a diferencia de \textit{SDF}, únicamente puede describir un objeto o robot, pero no el mundo en el que vive\footnote{\url{https://newscrewdriver.com/2018/07/31/ros-notes-urdf-vs-gazebo-sdf/}}.\\
+El formato \textit{SDF} (\textit{Simulation Description Format})\footnote{\url{https://github.com/gazebosim/sdformat}} o \textit{SDFormat} permite describir entornos, objetos dinámicos o robots de una manera sencilla. Está basado en \textit{XML} y escrito en \textit{C++}. El objetivo de este formato es ejecutar comportamientos en un simulador. Originalmente fue desarrollado como parte de \textit{Gazebo} por lo que existen numerosas bibliotecas donde se encuentran modelos o mundos desarrollados en \textit{SDF} para este simulador\footnote{\url{https://github.com/HuyPhamG/simulatedswarm}}. Cabe destacar también, el formato \textit{SURDF} que, a diferencia de \textit{SDF}, únicamente puede describir un objeto o robot, pero no el mundo en el que vive\footnote{\url{https://newscrewdriver.com/2018/07/31/ros-notes-urdf-vs-gazebo-sdf/}}.\\
 
 \begin{figure} [h!]
 	\begin{center}
@@ -126,7 +126,7 @@ El formato \textit{SDF} (\textit{Simulation Description Format})\footnote{\url{h
 
 \subsection{\textit{OpenCV}}
 \label{subsection:opencv}
-\textit{OpenCV}\footnote{\url{https://github.com/opencv/opencv}} es una librería de visión artificial de código abierto desarrollado por Intel\footnote{\url{https://opencv.org/opencv-platinum-membership/}}. Está escrita en \textit{C/C++} y cuenta con soporte para aceleración por GPU basadas en CUDA\footnote{\url{https://developer.nvidia.com/cuda-zone}} y OpenCL\footnote{\url{https://www.khronos.org/opencl/}} y procesamiento de imagen en tiempo real. Es usada en todo tipo de aplicaciones en las que interviene la visión por ordenador, tales como, detección de objetos, realidad aumentada o reconocimiento de gestos. Además, está disponible en multitud de lenguajes de programación; \textit{C++}, \textit{Python}, \textit{Java}, etc...\\
+\textit{OpenCV}\footnote{\url{https://github.com/opencv/opencv}} es una librería de visión artificial de código abierto desarrollado por Intel\footnote{\url{https://opencv.org/opencv-platinum-membership/}}. Está escrita en \textit{C/C++} y cuenta con soporte para aceleración por GPU basadas en \textit{CUDA\footnote{\url{https://developer.nvidia.com/cuda-zone}}} y \textit{OpenCL\footnote{\url{https://www.khronos.org/opencl/}}} y procesamiento de imagen en tiempo real. Es usada en todo tipo de aplicaciones en las que interviene la visión por ordenador, tales como, detección de objetos, realidad aumentada o reconocimiento de gestos. Además, está disponible en multitud de lenguajes de programación; \textit{C++}, \textit{Python}, \textit{Java}, etc...\\
 
 \subsection{YOLO}
 \label{sec:yolo}
@@ -160,11 +160,11 @@ Se basa en el uso de redes nueronales convolucionales, \textit{Convolutional neu
 
 Uno de los principales problemas de \textit{YOLO} es la baja de probabilidad de detectar objetos de tamaño reducido, debido principalmente a la baja resolución de la red (está permitido incrementarla pero disminuye su rendimiento) que hace muy difícil su detección.\\
 
-Además, existen versiones reducidas de este algoritmo como, Tiny-YOLO y Fast YOLO capaces de ser ejecutados en equipos de bajo coste y reducido tamaño.\\
+Además, existen versiones reducidas de este algoritmo como, \textit{Tiny-YOLO} y \textit{Fast YOLO} capaces de ser ejecutados en equipos de bajo coste y reducido tamaño.\\
 
 \subsection{\textit{Darknet}}
 \label{subsection:darknet}
-\textit{Darknet}\footnote{\url{https://pjreddie.com/darknet/}} es un framework de código abierto que permite ejecutar y entrenar redes neuronales en tiempo real, ya que soporta tanto computación por CPU como GPU. Está escrito en C y CUDA, gracias a estar escrito en un lenguaje considerado de bajo nivel, ofrece un rendimiento aceptable en plataformas de bajo coste como \textit{NVIDIA Jetson Nano}.\\
+\textit{Darknet}\footnote{\url{https://pjreddie.com/darknet/}} es un framework de código abierto que permite ejecutar y entrenar redes neuronales en tiempo real, ya que soporta tanto computación por CPU como GPU. Está escrito en \textit{C} y \textit{CUDA}, gracias a estar escrito en un lenguaje considerado de bajo nivel, ofrece un rendimiento aceptable en plataformas de bajo coste como \textit{NVIDIA Jetson Nano}.\\
 
 \subsection{\textit{LabelIMG}}
 \textit{LabelIMG}\footnote{\url{https://github.com/tzutalin/labelImg}} es una herramienta gráfica de código abierto que permite etiquetar objetos presentes en una imagen a través de la creación de cajas o \textit{bounding boxes} tal y como se observa en la Figura \ref{fig:labelimg}. Resulta muy útil para el entramiento de redes neuronales en las que se necesita una archivo txt asociado a cada imagen donde se indique las coordenadas de cada objeto.
@@ -198,8 +198,8 @@ A su vez esta librería utiliza otras tres cruciales para poder implementar su s
 
 \begin{itemize}
 	\item PyTorch\footnote{\url{https://github.com/pytorch/pytorch}}: es una librería de código abierto con multitud de herramientas para implementar algoritmos de \textit{Deep Learning} basada en \textit{Python}\cite{autopilottesla}. Es un desarrollo de \textit{Facebook's AI Research Lab}. Soporta aceleración por GPU, lo que es esencial para poder ejecutar redes neuronales. Junto a \textit{Tensorflow} y \textit{Keras}, son los tres \textit{frameworks} de referencia en lo que a \textit{Deep Learning} se refiere.
-	\item PyTorch to TensorRT\footnote{\url{https://github.com/NVIDIA-AI-IOT/torch2trt}}: permite convertir modelos de PyTorch a modelos optimizados aprovechando los tensores de las gráficas dedicadas y realizando inferencia utilizando operaciones con \textit{FP16} y \textit{FP32}.
-	\item Torchvision\footnote{\url{https://github.com/pytorch/vision}}: contiene multitud de \textit{datasets}, modelos preentrenados y algoritmos relacionados con el procesamiento de imagen.
+	\item \textit{PyTorch to TensorRT\footnote{\url{https://github.com/NVIDIA-AI-IOT/torch2trt}}}: permite convertir modelos de \textit{PyTorch} a modelos optimizados aprovechando los tensores de las gráficas dedicadas y realizando inferencia utilizando operaciones con \textit{FP16} y \textit{FP32}.
+	\item \textit{Torchvision\footnote{\url{https://github.com/pytorch/vision}}}: contiene multitud de \textit{datasets}, modelos preentrenados y algoritmos relacionados con el procesamiento de imagen.
 \end{itemize}\
 
 \begin{figure} [h!]
@@ -210,4 +210,4 @@ A su vez esta librería utiliza otras tres cruciales para poder implementar su s
 	\label{fig:livejetracer}
 \end{figure}\
 
-Referencias del capítulo 2 al 3?\\
+% Referencias del capítulo 2 al 3?
