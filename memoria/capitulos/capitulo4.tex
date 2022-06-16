@@ -393,7 +393,7 @@ Con el objetivo de realizar un control sencillo de la simulación se ha realizad
 
 \section{Entorno real}
 \label{section:real}
-En sta sección se exponen los elementos utilizados para componer un entorno real en el que un robot c. Así como las particularidades del sistema a la hora de realizar la transición desde el entorno simulado al real.
+En esta sección se exponen los elementos utilizados para componer un entorno real en el que un robot equipado con una placa \textit{NVIDIA Jetson Nano} y una cámara como sensor principal circula reaccionando ante objetos estáticos y dinámicos. Así como las particularidades del sistema a la hora de realizar la transición desde el entorno simulado al real.
 
 \begin{figure} [h!]
 	\begin{center}
@@ -403,21 +403,114 @@ En sta sección se exponen los elementos utilizados para componer un entorno rea
 	\label{fig:realrobot}
 \end{figure}\
 
+
+
 \subsection{Circuito}
+
+\begin{figure} [h!]
+	\begin{center}
+		\includegraphics[width=8cm]{figs/circuit}
+	\end{center}
+	\caption{Circuito inicial construido a partir de pistas Scalextric.}
+	\label{fig:circuit}
+\end{figure}\
 
 \subsection{Objetos}
 
 \subsubsection{Semáforo}
 
+\begin{figure} [h!]
+	\begin{center}
+		\includegraphics[width=2cm]{figs/trafficlightreal}
+	\end{center}
+	\caption{Semáforo real dinámico con cambio de color automático.}
+	\label{fig:trafficlightreal}
+\end{figure}\
+
 \subsubsection{Señal de stop}
+
+\begin{figure} [h!]
+	\begin{center}
+		\includegraphics[width=4cm]{figs/stopsign}
+	\end{center}
+	\caption{Señal de stop real.}
+	\label{fig:stopsign}
+\end{figure}\
 
 \subsubsection{Peatón}
 
+\begin{figure} [h!]
+	\begin{center}
+		\includegraphics[width=4cm]{figs/pedestrian}
+	\end{center}
+	\caption{Peatón.}
+	\label{fig:pedestrian}
+\end{figure}\
+
 \section{Redes neuronales en el entorno real}
+
+
+
 El entrenamiento de la red neuronal \textit{ResNet-18} se realiza de igual forma que en el entorno simulado, la principal diferencia a tener en cuenta es la luz ambiente.
+
+\subsection{Transformación del modelo de PyTorch a TensorRT}
 
 
 \section{Entrenamiento a partir de YOLO para detección de objetos propios}
+El objetivo es entrenar nuestra propia red de YOLO con el objetivo de poder detectar objetos propios o mejorar la detección de objetos ya detectados por la red, pero mejorando la probabilidad de detección, ya que podemos entrenar la red con los objetos reales que vamos a usar.
+
+Para ello necesitamos un dataset, en este caso vamos a usar los siguientes:
+
+URL
+
+El dataset de personas se ha obtenido a partir de COCO dataset. LabelIMGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
+
+Se compone de personas, vehículos y señales de tráfico
+
+Instrucciones:
+Clonamos el repositorio de darknet y lo compilamos con CUDA, CUDNN, CUDNN\_HALF y OpenCV.
+
+Obtenemos los pesos preentrenados yolov3-tiny.conv.15
+
+./darknet partial cfg/yolov3-tiny\_obj.cfg yolov3-tiny.weights yolov3-tiny.conv.15 15
+
+Modificamos el archivo yolov3-tiny\_obj.cfg:
+Modificamos batch=1 a batch=64
+Modificamos subdivisions=1 a subdivisions=2
+Modificamos max\_batches=500200 a max\_batches=classes*2000 El número de batches no debe ser inferior del número total de imágenes
+Modificamos steps=400000,450000a 80% y 90% de max_batches
+Mantenemos width=416 height=416
+Buscamos [yolo] y en cada classes=80 previo lo cambiamos al número de objetos distintos a detectar
+Modificamos filters=255 a filters=(classes + 5) x 3 antes de cada [yolo]
+Verificamos que cada imagen tiene asociado un fichero con el mismo nombre pero con extensión txt, con el siguiente formato: 1 0.716797 0.395833 0.216406 0.147222 En el que el primer número es el número de clases, los dos siguientes son la coordenada en x e y del bounding box, y los dos últimos la altura y anchura del mismo
+
+Creamos los ficheros train.txt y test.txt donde deben estar las rutas absolutas a cada txt asociado a su imagen correspondiente para poder entrenar, el porcentaje de test es 20%
+
+Creamos el fichero obj.names con los nombres de los distintos objetos, teniendo en cuenta el orden, ya que cada txt asociado a una imagen tendrá un número de clase Resultado:
+
+Creamos el directorio backup, ya que allí se irán guardando los pesos a medida que la red vaya entrenando.
+
+Creamos el fichero obj.data con las rutas a los archivos necesarios:
+
+classes = 9
+train  = data/train.txt
+valid  = data/test.txt
+names = data/obj.names
+backup = backup/
+Ejecutamos el entrnamiento ./darknet detector train data/obj.data yolov3-tiny\_obj.cfg yolov3.conv.15
+
+Cuando terminar el entrenamiento: Over-fitting
+
+Veremos una gráfica como esta cuando acabe el entrenamiento, capturaaaaa:
+
+
+layers = 54 a layers=23 16x16
+
+stride = 2 a stride=4 16x16
+
+Si los objetos a detectar son muy pequeños habría que subir hasta width=608 height=608 o incluso width=832 height=832
+
+
 
 % Tabla cámara
 % Buscar ....

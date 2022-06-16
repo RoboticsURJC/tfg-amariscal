@@ -8,7 +8,7 @@ En este capítulo, se explica el hardware y software elegido para desarrollar el
 \label{subsection:jetsonnano}
 La placa de desarrollo \textit{NVIDIA Jetson Nano}\footnote{\url{https://developer.nvidia.com/embedded/jetson-nano}} es una plataforma de bajo coste con grandes capacidades computacionales para implementar técnicas de inteligencia artificial gracias a su \textit{GPU} dedicada \textit{NVIDIA Maxwell}\footnote{\url{https://developer.nvidia.com/maxwell-compute-architecture}} con 128 \textit{NVIDIA CUDA cores}\footnote{\url{https://developer.nvidia.com/cuda-gpus}}, además dispone de una CPU Quad-core basada en la arquitectura Aarch64 lo que permite ejecutar GNU/Linux sin dificultades y ser compatible con numerosas bibliotecas de código. La placa en cuestión, dispone además de pines GPIO lo que permite de forma muy sencilla conectar todo tipo de sensores y actuadores.\\
 
-Los requisitos en lo que a alimentación se refiere no son excesivos, requiere un mínimo de 5 voltios (V) y 3 amperios (A), lo que permite que una simple \textit{powerbank} de reducido tamaño sea capaz de alimentar la placa, si bien es cierto que la batería debe poder ofrecer tres amperios de forma estable, y no solo como intensidad pico. Existen numerosos proyectos en los que esta placa está presente, tales como JetBot\footnote{\url{https://github.com/NVIDIA-AI-IOT/jetbot}} o JetRacer\ref{subsection:jetracer}.\\
+Los requisitos en lo que a alimentación se refiere no son excesivos, requiere un mínimo de 5 voltios (V) y 3 amperios (A), lo que permite que una simple \textit{powerbank} de reducido tamaño sea capaz de alimentar la placa, si bien es cierto que la batería debe poder ofrecer tres amperios de forma estable, y no solo como intensidad pico. Existen numerosos proyectos en los que esta placa está presente, tales como JetBot\footnote{\url{https://github.com/NVIDIA-AI-IOT/jetbot}} o JetRacer, que se detallará en la Sección \ref{subsection:jetracer}.\\
 
 \begin{figure} [h!]
 	\begin{center}
@@ -32,7 +32,7 @@ Se trata de unos motores\footnote{\url{https://www.verical.com/datasheet/adafrui
 
 \subsection{Controladora de motores \textit{L298N}}
 \label{subsection:l298n}
-Es un módulo\footnote{\url{https://www.luisllamas.es/arduino-motor-corriente-continua-l298n/}} capaz de controlar la dirección y la velocidad de los motores anteriormente citados. La tensión de alimentación es de un mínimo de 6 voltios, lo que hace imposible alimentarla con la placa \textit{NVIDIA Jetson Nano}\ref{fig:jetsonnano} por lo que es necesario una batería externa. Otra posibilidad para utilizar una única batería sería utilizar la salida de 5 voltios (V) que nos ofrece la controladora, sin embargo, dicha salida nunca ofrecerá los 3 amperios (A) requeridos. Este componente permite invertir el sentido de la corriente lo que proporciona un control para mover los motores en el sentido de las agujas del reloj (CW) y en el sentido contrario a las agujas del reloj (CCW). La principal limitación de esta placa es que solo permite controlar dos motores, por lo que si se dispone de 4 motores, se podrán conectar a pares dependiendo del comportamiento deseado. El control se realiza a través de la técnica PWM\footnote{\url{https://circuitdigest.com/tutorial/what-is-pwm-pulse-width-modulation}}, que permite enviar de forma precisa la velocidad deseada a través de una señal digital.\\
+Es un módulo\footnote{\url{https://www.luisllamas.es/arduino-motor-corriente-continua-l298n/}} capaz de controlar la dirección y la velocidad de los motores anteriormente citados. La tensión de alimentación es de un mínimo de 6 voltios, lo que hace imposible alimentarla con la placa \textit{NVIDIA Jetson Nano} por lo que es necesario una batería externa. Otra posibilidad para utilizar una única batería sería utilizar la salida de 5 voltios (V) que nos ofrece la controladora, sin embargo, dicha salida nunca ofrecerá los 3 amperios (A) requeridos. Este componente permite invertir el sentido de la corriente lo que proporciona un control para mover los motores en el sentido de las agujas del reloj (CW) y en el sentido contrario a las agujas del reloj (CCW). La principal limitación de esta placa es que solo permite controlar dos motores, por lo que si se dispone de 4 motores, se podrán conectar a pares dependiendo del comportamiento deseado. El control se realiza a través de la técnica PWM\footnote{\url{https://circuitdigest.com/tutorial/what-is-pwm-pulse-width-modulation}}, que permite enviar de forma precisa la velocidad deseada a través de una señal digital.\\
 
 \begin{figure} [h!]
 	\begin{center}
@@ -44,7 +44,7 @@ Es un módulo\footnote{\url{https://www.luisllamas.es/arduino-motor-corriente-co
 
 \subsection{Cámara \textit{Xiaomi}}
 \label{subsection:xiaomicamera}
-Se trata de una cámara USB\ref{fig:xiaomicamera} lo que permite recibir la imagen a través de dicho puerto con una tasa de 30 \textit{frames} por segundo (FPS). Su resolución es 1080p\footnote{\url{https://xiaomiplanets.com/xiaovv-6320s-webcam-5/}} pero permite obtener una imagen de menor resolución a través de su driver.\\
+Se trata de una cámara USB, disponible en la Figura \ref{fig:xiaomicamera}, que permite recibir la imagen a través de dicho puerto con una tasa de 30 \textit{frames} por segundo (FPS). Su resolución es 1080p\footnote{\url{https://xiaomiplanets.com/xiaovv-6320s-webcam-5/}} pero permite obtener una imagen de menor resolución a través de su driver.\\
 
 \begin{figure} [h!]
 	\begin{center}
@@ -56,7 +56,7 @@ Se trata de una cámara USB\ref{fig:xiaomicamera} lo que permite recibir la imag
 
 \subsection{Batería 10000mAh}
 \label{subsection:battery}
-Su capacidad es de 10000 miliamperios hora (mAh), el voltaje de funcionamiento es 5 voltios (V) y su intensidad teórica es 3 amperios (A) por lo que permite alimentar la placa \textit{NVIDIA Jetson Nano}\ref{fig:jetsonnano}.\\
+Su capacidad es de 10000 miliamperios hora (mAh), el voltaje de funcionamiento es 5 voltios (V) y su intensidad teórica es 3 amperios (A) por lo que permite alimentar la placa \textit{NVIDIA Jetson Nano}.\\
 
 \begin{figure} [h!]
 	\begin{center}
@@ -68,7 +68,7 @@ Su capacidad es de 10000 miliamperios hora (mAh), el voltaje de funcionamiento e
 
 \subsection{Chasis}
 \label{subsection:chasis}
-Se trata de un chasis\ref{fig:chasis} de bajo coste muy común en proyectos relacionados con Arduino. Dispone de soportes para los Motores \textit{TT}\ref{fig:motorTT}, lo que permite ensamblarlos de forma muy sencilla. El tamaño es suficiente para alojar todos los componentes elegidos utilizando los agujeros predefinidos en el chasis.\\
+Se trata de un chasis de bajo coste muy común en proyectos relacionados con Arduino. Está representado en la Figura \ref{fig:chasis}. Dispone de soportes para los Motores \textit{TT}, lo que permite ensamblarlos de forma muy sencilla. El tamaño es suficiente para alojar todos los componentes elegidos utilizando los agujeros predefinidos en el chasis.\\
 
 \begin{figure} [h!]
 	\begin{center}
@@ -98,7 +98,7 @@ Se trata de un chasis\ref{fig:chasis} de bajo coste muy común en proyectos rela
 
 \subsection{\textit{Gazebo}}
 \label{subsection:gazebo}
-\textit{Ignition Gazebo}\footnote{\url{https://github.com/gazebosim/gz-sim}} es un simulador 3D de código abierto desarrollado por la \textit{Open Source Robotics Foundation (OSRF)}\footnote{\url{https://www.openrobotics.org/}}, escrito en \textit{C++}, usado principalmente para simular comportamientos con gran precisión y gráficos de alta calidad en los que intervienen robots en un entorno dinámico\ref{fig:city}. Desde  Utiliza, por defecto, el motor de físicas \textit{ODE}\footnote{\url{https://bitbucket.org/odedevs/ode/src/master/}}, escrito también en \textit{C++}. Permite simular todo tipo de sensores y actuadores. Además, ofrece integración con ROS de forma muy sencilla.\\
+\textit{Ignition Gazebo}\footnote{\url{https://github.com/gazebosim/gz-sim}} es un simulador 3D de código abierto desarrollado por la \textit{Open Source Robotics Foundation (OSRF)}\footnote{\url{https://www.openrobotics.org/}}, escrito en \textit{C++}, usado principalmente para simular comportamientos con gran precisión y gráficos de alta calidad en los que intervienen robots en un entorno dinámico, un ejemplo de ello se puede observar en la Figura \ref{fig:city}. Desde  Utiliza, por defecto, el motor de físicas \textit{ODE}\footnote{\url{https://bitbucket.org/odedevs/ode/src/master/}}, escrito también en \textit{C++}. Permite simular todo tipo de sensores y actuadores. Además, ofrece integración con ROS de forma muy sencilla.\\
 
 \begin{figure} [h!]
 	\begin{center}
@@ -146,7 +146,7 @@ Se basa en el uso de redes nueronales convolucionales, \textit{Convolutional neu
 \textit{YOLO} hace uso, esencialmente, de tres técnicas para conseguir reconcer objetos:\\
 \begin{itemize}
 	\item División de la imagen en celdas: de esta forma se pueden detectar multitud de objetos en una imagen
-	\item Creación de \textit{bounding boxes}: cajas \ref{fig:yolo} dibujando el contorno del objeto detectado y fijando la probabilidad de que el objeto detectado sea correcto
+	\item Creación de \textit{bounding boxes}: cajas dibujando el contorno del objeto detectado y fijando la probabilidad de que el objeto detectado sea correcto
 	\item Intersección sobre la únion: consiste en seleccionar el \textit{bounding box} con mayor probabilidad cuando hay varios superpuestos
 \end{itemize}\
 
@@ -164,11 +164,23 @@ Además, existen versiones reducidas de este algoritmo como, Tiny-YOLO y Fast YO
 
 \subsection{\textit{Darknet}}
 \label{subsection:darknet}
-\textit{Darknet}\footnote{\url{https://pjreddie.com/darknet/}} es un framework de código abierto que permite ejecutar y entrenar redes neuronales en tiempo real, ya que soporta tanto computación por CPU como GPU. Está escrito en C y CUDA, gracias a estar escrito en un lenguaje considerado de bajo nivel, ofrece un rendimiento aceptable en plataformas de bajo coste como \textit{NVIDIA Jetson Nano}\ref{fig:jetsonnano}.\\
+\textit{Darknet}\footnote{\url{https://pjreddie.com/darknet/}} es un framework de código abierto que permite ejecutar y entrenar redes neuronales en tiempo real, ya que soporta tanto computación por CPU como GPU. Está escrito en C y CUDA, gracias a estar escrito en un lenguaje considerado de bajo nivel, ofrece un rendimiento aceptable en plataformas de bajo coste como \textit{NVIDIA Jetson Nano}.\\
+
+\subsection{\textit{LabelIMG}}
+\textit{LabelIMG}\footnote{\url{https://github.com/tzutalin/labelImg}} es una herramienta gráfica de código abierto que permite etiquetar objetos presentes en una imagen a través de la creación de cajas o \textit{bounding boxes} tal y como se observa en la Figura \ref{fig:labelimg}. Resulta muy útil para el entramiento de redes neuronales en las que se necesita una archivo txt asociado a cada imagen donde se indique las coordenadas de cada objeto.
+
+\begin{figure} [h!]
+	\begin{center}
+		\includegraphics[width=8cm]{figs/labelimg}
+	\end{center}
+	\caption{Etiquetado de imágenes mediante la biblioteca \textit{LabelIMG}.}
+	\label{fig:labelimg}
+\end{figure}\
+
 
 \subsection{\textit{PyQt}}
 \label{subsection:pyqt}
-\textit{PyQt}\footnote{\url{https://pythonpyqt.com/what-is-pyqt/}} es una plataforma de código abierto que permite crear interfaces gráficas (\textit{GUI}) con el framework \textit{Qt} utilizando \textit{Python}, lo que simplifica mucho el desarrollo. Existen multitud de aplicaciones, desde un navegador\footnote{\url{https://github.com/qutebrowser/qutebrowser}} controlado únicamente con el teclado al estilo \textit{VIM}\footnote{\url{https://github.com/vim/vim}}, hasta un software de impresión 3D como \textit{Cura}\ref{fig:cura}.\\
+\textit{PyQt}\footnote{\url{https://pythonpyqt.com/what-is-pyqt/}} es una plataforma de código abierto que permite crear interfaces gráficas (\textit{GUI}) con el framework \textit{Qt} utilizando \textit{Python}, lo que simplifica mucho el desarrollo. Existen multitud de aplicaciones, desde un navegador\footnote{\url{https://github.com/qutebrowser/qutebrowser}} controlado únicamente con el teclado al estilo \textit{VIM}\footnote{\url{https://github.com/vim/vim}}, hasta un software de impresión 3D como \textit{Cura}.\\
 
 \begin{figure} [h!]
 	\begin{center}
@@ -180,7 +192,7 @@ Además, existen versiones reducidas de este algoritmo como, Tiny-YOLO y Fast YO
 
 \subsection{\textit{JetRacer}}
 \label{subsection:jetracer}
-La biblioteca \textit{JetRacer}\footnote{\url{https://github.com/NVIDIA-AI-IOT/jetracer}} permite entrenar una red neuronal para seguir un circuito o una ruta determinada. Utiliza \textit{notebooks} de \textit{Jupyter} para poder reducir la complejidad en el entrenamiento de la red y en el ajuste del controlador\ref{fig:livejetracer}.\\
+La biblioteca \textit{JetRacer}\footnote{\url{https://github.com/NVIDIA-AI-IOT/jetracer}} permite entrenar una red neuronal para seguir un circuito o una ruta determinada. Utiliza \textit{notebooks} de \textit{Jupyter} para poder reducir la complejidad en el entrenamiento de la red y en el ajuste del controlador tal y como representa la Figura \ref{fig:livejetracer}.\\
 
 A su vez esta librería utiliza otras tres cruciales para poder implementar su software:
 
