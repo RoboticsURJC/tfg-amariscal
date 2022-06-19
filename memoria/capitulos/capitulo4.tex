@@ -252,7 +252,7 @@ elevado, tal y como muestra la Figura \ref{fig:traineddifficult} ya que de esa f
 
 \begin{figure} [h!]
 	\begin{center}
-		\includegraphics[width=8cm]{figs/trainedDifficult}
+		\includegraphics[width=6cm]{figs/trainedDifficult}
 	\end{center}
 	\caption{Imagen del \textit{dataset} donde el ángulo de giro necesario es elevado.}
 	\label{fig:traineddifficult}
@@ -278,7 +278,7 @@ entrenamiento realizado, en 10 \textit{epochs} el error alcanzó el valor de 0.0
 	\begin{center}
 		\includegraphics[width=8cm]{figs/epochSimulator}
 	\end{center}
-	\caption{Valor del error al finalizar el entrenamiento con 10 \textit{epochs}.}
+	\caption{Valor del error al finalizar el entrenamiento en el entorno simulado.}
 	\label{fig:epochsimulator}
 \end{figure}\
 
@@ -299,7 +299,7 @@ la salida es posible representar el centro del carril con el resultado de la Fig
 
 \begin{figure} [h!]
 	\begin{center}
-		\includegraphics[width=8cm, height=7cm]{figs/outputNNsim}
+		\includegraphics[width=6cm, height=5cm]{figs/outputNNsim}
 	\end{center}
 	\caption{Salida de la red neuronal \textit{ResNet-18} en el simulador \textit{Gazebo}.}
 	\label{fig:outputnnsim}
@@ -322,7 +322,6 @@ La detección de objetos se ha llevado a cabo mediante una red neuronal convoluc
 			\hline
 			NVIDIA Jetson Nano & 15                    & 7.8
 			\\
-
 			NVIDIA Jetson TX2  & 19                    & 11.5
 			\\
 			NVIDIA AGX Xavier  & 32                    & 22
@@ -378,7 +377,7 @@ De esta forma se pueden detectar objetos como semáforos, personas o coches tal 
 
 \begin{figure} [h!]
 	\begin{center}
-		\includegraphics[width=8cm]{figs/darknetSimulator}
+		\includegraphics[width=6cm]{figs/darknetSimulator}
 	\end{center}
 	\caption{Salida de la red neuronal \textit{YOLO V3 Tiny} en el simulador \textit{Gazebo}.}
 	\label{fig:darknetsimulator}
@@ -437,19 +436,18 @@ En esta sección se exponen los elementos utilizados para componer un entorno re
 \end{figure}\
 
 \subsection{Objetos}
-El entorno real se compone de diversos objetos; un circuito elaborado con pistas Scalextric sobre el que se sitúan objetos como un semáforo dinámico que cambia de color en un modo autómatico cada cierto tiempo, una señal de stop y un peatón. Dichos objetos se pueden observar en la Figura \ref{fig:objects}.\\
+El entorno real se compone de diversos objetos; un circuito elaborado con pistas Scalextric sobre el que se sitúan objetos como un semáforo dinámico que cambia de color en un modo automático cada cierto tiempo, una señal de stop y un peatón. Dichos objetos se pueden observar en la Figura \ref{fig:objects}.\\
 
 \begin{figure} [h!]
 	\begin{center}
-		\includegraphics[width=2cm, height=5cm]{figs/trafficlightreal}\hspace{0.1cm}\includegraphics[width=4cm,
-			height=5cm]{figs/stopsign}\hspace{0.1cm}\includegraphics[width=4cm, height=5cm]{figs/pedestrian}
+		\includegraphics[width=4cm, height=5cm]{figs/realstopsign}\hspace{0.5cm}\includegraphics[width=4cm]{figs/realtrafficlight}\hspace{0.5cm}\includegraphics[width=4cm, height=5cm]{figs/realpedestrian}
 	\end{center}
 	\caption{Objetos reales dinámicos y estáticos.}
 	\label{fig:objects}
 \end{figure}\
 
 \subsection{Circuito}
-En principio se construyó un circuito inicial, represtentado en la Figura \ref{fig:circuit}, en el que se entrenó la red neuronal de seguimiento de carril. Posteriormente se fue agrandando en el espacio introduciendo rectas más largas para poder interactuar mejor con objetos.\\
+En principio se construyó un circuito inicial, representado en la Figura \ref{fig:circuit}, en el que se entrenó la red neuronal de seguimiento de carril. Posteriormente se fue agrandando en el espacio introduciendo rectas más largas para poder interactuar mejor con objetos.\\
 
 \begin{figure} [h!]
 	\begin{center}
@@ -470,16 +468,15 @@ Tras ubicar todos los objetos alrededor del circuito, da como resultado la image
 \end{figure}\
 
 \section{Redes neuronales en el entorno real}
-El entrenamiento de la red neuronal \textit{ResNet-18} se realiza de igual forma que en el entorno simulado, la principal diferencia a tener en cuenta es la luz ambiente y los colores, que a diferencia del simulador, cambian dependiendo de como incida la luz. Por ello, es interesante comprobar el comportamiento de la red neuronal cuando hay cambios de luz. Además, existen multitud de diferencias entre una luz artificial y la luz natural, cuando se trabaja con luz natural es necesario tener en cuenta la incidencia que los rayos del sol pueden hacer sobre la lente de la cámara. Por ello se decidió entrenar la red con luz artificial, con imágenes como la que representa la Figura \ref{fig:imagedataset}. La librería \textit{JetRacer} recomienda entrenar la red con un mínimo de 50 imágenes\footnote{\url{https://github.com/NVIDIA-AI-IOT/jetracer/blob/master/docs/examples.md}}, por lo que se decidió entrenar con 100 imágenes para que el tiempo de entrenamiento no fuese demasiado elevado y no provocara un aumento muy grande de temperatura en la placa \textit{NVIDIA Jetson Nano}, que al no disponer de disipador activo, alcanza tempertaturas muy elevadas.\\
+El entrenamiento de la red neuronal \textit{ResNet-18} se realiza de igual forma que en el entorno simulado, la principal diferencia a tener en cuenta es la luz ambiente y los colores, que a diferencia del simulador, cambian dependiendo de como incida la luz. Por ello, es interesante comprobar el comportamiento de la red neuronal cuando hay cambios de luz. Además, existen multitud de diferencias entre una luz artificial y la luz natural, cuando se trabaja con luz natural es necesario tener en cuenta la incidencia que los rayos del sol pueden hacer sobre la lente de la cámara. Por ello se decidió entrenar la red con luz artificial, con imágenes como la que representa la Figura \ref{fig:imagedataset}, obteniendo el valor de 0.0034 como error. La librería \textit{JetRacer} recomienda entrenar la red con un mínimo de 50 imágenes\footnote{\url{https://github.com/NVIDIA-AI-IOT/jetracer/blob/master/docs/examples.md}}, por lo que se decidió entrenar con 100 imágenes para que el tiempo de entrenamiento no fuese demasiado elevado y no provocara un aumento muy grande de temperatura en la placa \textit{NVIDIA Jetson Nano}, que al no disponer de disipador activo, alcanza temperaturas muy elevadas.\\
 
 \begin{figure} [h!]
 	\begin{center}
-		\includegraphics[width=6cm]{figs/imagedataset}
+		\includegraphics[width=4cm]{figs/imagedataset}\hspace{1cm}\includegraphics[width=6cm]{figs/epoch}
 	\end{center}
-	\caption{Imagen del dataset utilizado entrenado con luz artificial.}
+	\caption{Imagen del \textit{dataset} utilizado entrenado con luz artificial y error al finalizar el entrenamiento.}
 	\label{fig:imagedataset}
 \end{figure}\
-
 
 Una vez probada la red neuronal \textit{YOLO V3 Tiny} utilizada en el entorno simulado, se comprobó que era necesario bajar demasiado el límite o \textit{threshold} de detección, hasta 0.3, para poder detectar los objetos elegidos. A diferencia del entorno de simulación ,en el que dicho límite se fijó a 0.8. Esto provocaba falsos positivos y por tanto una detección poco fiable. Dicha circunstancia puede ser debida, entre otros motivos, a unos objetos reales algo distintos respecto a los que la red fue entrenada o una luz ambiental baja. Por ello se decidió entrenar la red con los objetos utilizados en el entorno real. Para ello, es necesario una tarjeta gráfica potente. Por lo que se realizó una comparativa entre las tarjetas gráficas disponibles para realizar el entrenamiento en el menor tiempo posible. Dicha comparativa está representada en el Cuadro \ref{table:versusnvidia}.\\
 
@@ -504,10 +501,10 @@ Una vez probada la red neuronal \textit{YOLO V3 Tiny} utilizada en el entorno si
 	\end{center}
 \end{table}
 
-\subsection{Entrenamiento a partir de YOLO para detección de objetos propios}
+\subsection{Entrenamiento de la red \textit{YOLO V3 Tiny} para detección de objetos propios}
 El objetivo es entrenar la red \textit{YOLO V3 Tiny} con el objetivo de poder detectar objetos propios o mejorar la probabilidad de detección de objetos ya detectados por la red.\\
 
-Para ello, es pertinente saber qué dataset se ha utilizado para generar los pesos actualmente usados. Atendiendo a la página oficial de \textit{YOLO\footnote{\url{https://pjreddie.com/darknet/yolo/}}}, el dataset utilizado es \textit{COCO}. Por lo que será necesario obtener las imágenes y sus ficheros de etiquetado donde se asocian los objetos presentes en las imágenes. Existe un respositorio\footnote{\url{https://github.com/KaranJagtiani/YOLO-Coco-Dataset-Custom-Classes-Extractor}} que permite la extracción, a partir del dataset mencionado, de las clases de objetos deseadas.\\
+Para ello, es pertinente saber qué \textit{dataset} se ha utilizado para generar los pesos actualmente usados. Atendiendo a la página oficial de \textit{YOLO\footnote{\url{https://pjreddie.com/darknet/yolo/}}}, el \textit{dataset} utilizado es \textit{COCO}. Por lo que será necesario obtener las imágenes y sus ficheros de etiquetado donde se asocian los objetos presentes en las imágenes. Existe un repositorio\footnote{\url{https://github.com/KaranJagtiani/YOLO-Coco-Dataset-Custom-Classes-Extractor}} que permite la extracción, a partir del \textit{dataset} mencionado, de las clases de objetos deseadas.\\
 
 El formato del archivo de etiquetado de los objetos es muy relevante. El formato por defecto de \textit{COCO} es el contenido en el Código \ref{cod:formatcoco}\footnote{\url{https://cocodataset.org/\#format-data}}. Y el utilizado en \textit{YOLO} es el contenido en el Código \ref{cod:formatyolo}\footnote{\url{https://github.com/AlexeyAB/darknet\#how-to-train-to-detect-your-custom-objects}}. Por lo que es necesario realizar la conversión de un formato a otro. Este proceso también lo realiza el programa contenido en el repositorio anteriormente mencionado.\\
 
@@ -541,26 +538,36 @@ El formato del archivo de etiquetado de los objetos es muy relevante. El formato
 	\label{cod:formatyolo}
 \end{code}
 
-El gŕafico representado en la Figura \ref{fig:graphcoco}, extraído de la siguiente fuente\cite{graphcoco}, muestra el número de imágenes??????? de cada tipo de objeto. Se puede observar que el la clase persona está presente en imágenes, seis veces más que cualquier otro tipo de objeto. Causassssssssssssssssssssssssssssssssssssssssssssssssssss. Esto es determinante a la hora del entrenamiento, ya que al ser tan elevado el número de imágenes, el tiempo de entrenamiento será considerablemente grande.\\
+Como se mencionó en el Capítulo 2, se ha utilizado la librería \textit{LabelIMG} para realizar el etiquetado de los objetos y generar el archivo en formato compatible con \textit{YOLO}. En la Figura \ref{fig:customlabelimg} se representa el etiquetado de uno de los objetos reales con dicha librería.\\
+
+\begin{figure} [h!]
+	\begin{center}
+		\includegraphics[width=12cm]{figs/customlabelimg}
+	\end{center}
+	\caption{Etiquetado de objetos propios con la herramienta \textit{LabelIMG}.}
+	\label{fig:customlabelimg}
+\end{figure}\
+
+El gráfico representado en la Figura \ref{fig:graphcoco}, extraído de la siguiente fuente\cite{graphcoco}, muestra el número de imágenes de cada tipo de objeto. Se puede observar que el la clase persona está presente en imágenes, seis veces más que cualquier otro tipo de objeto. Esto se debe a que existen multitud de personas con distinto aspecto y por ello es necesario una cantidad muy grande de imágenes para obtener una detección fiable. Esto es determinante a la hora del entrenamiento, ya que al ser tan elevado el número de imágenes, el tiempo de entrenamiento será considerablemente grande.\\
 
 \begin{figure} [h!]
 	\begin{center}
 		\includegraphics[width=14cm]{figs/graphcoco}
 	\end{center}
-	\caption{Distribución de las clases de objetos del dataset COCO.}
+	\caption{Distribución de las clases de objetos del \textit{dataset} COCO.}
 	\label{fig:graphcoco}
 \end{figure}\
 
-Para proceder al entrenamiento, además del \textit{dataset} y sus ficheros de etiquetado, es necesario utlizar el framework \textit{Darknet\footnote{\url{https://github.com/pjreddie/darknet}}} y hacer uso del comando \verb|partial| para obtener los pesos preentrenados sobre los cuales, se entrenará la red con el \textit{dataset} elegido.\\
+Para proceder al entrenamiento, además del \textit{dataset} y sus ficheros de etiquetado, es necesario utilizar el \textit{framework} \textit{Darknet\footnote{\url{https://github.com/pjreddie/darknet}}} y hacer uso del comando \verb|partial| para obtener los pesos preentrenados sobre los cuales, se entrenará la red con el \textit{dataset} elegido.\\
 
 También es necesario modificar una serie de archivos entre los que se encuentra el \textit{cfg} que contiene los parámetros de la red. Las principales modificaciones a realizar son las siguientes:
 \begin{itemize}
 	\item El número de \textit{batch} deberá ser 64
-	\item El nñúmero de \textit{subdivisions} deberá ser 2
-	\item El número de \textit{max\_batches} deberá ser el número de classes multiplicado por 2000. Y este número no debe ser inferior al número total de imágenes
-	\item El número de \textit{steps} deberá ser fijado al 80\% y al 90\% de max\_batches
+	\item El número de \textit{subdivisions} deberá ser 2
+	\item El número de \textit{max\_batches} deberá ser el número de clases multiplicado por 2000. Y este número no debe ser inferior al número total de imágenes
+	\item El número de \textit{steps} deberá ser fijado al 80\% y al 90\% de \textit{max\_batches}
 	\item La anchura y altura de la imagen con la que entrena la red deberá ser como mínimo 416. En el caso de querer detectar objetos muy pequeños dicho parámetro deberá ser modificado a 608 o 832
-	\item En cada parámetro \textit{[yolo]} el número de clases de objetos a detectar deberá ser fijado y el número de filters deberá fijarse atendiendo a la siguiente fórmula: \textit{(classes + 5) x 3}
+	\item En cada parámetro \textit{[yolo]} el número de clases de objetos a detectar deberá ser fijado y el número de \textit{filters} deberá fijarse atendiendo a la siguiente fórmula: \textit{(classes + 5) x 3}
 \end{itemize}\
 
 Se deberán crear los ficheros \textit{train.txt} y \textit{test.txt} donde deben estar las rutas absolutas a cada fichero de etiquetado. Y otro fichero llamado \textit{obj.data} que contenga las rutas de los archivos anteriormente descritos, dicho contenido está presente en el Código \ref{cod:objdata}.\\
@@ -573,16 +580,21 @@ Se deberán crear los ficheros \textit{train.txt} y \textit{test.txt} donde debe
 		names = data/obj.names
 		backup = backup/
 	\end{lstlisting}
-	\caption[Contenido del archivo obj.data con las rutas de los archivos necesarios.]{Contenido del archivo obj.data con las rutas de los archivos necesarios.}
+	\caption[Contenido del archivo \textit{obj.data} con las rutas de los archivos necesarios.]{Contenido del archivo \textit{obj.data} con las rutas de los archivos necesarios.}
 	\label{cod:objdata}
 \end{code}
 
 Otro factor importante es el porcentaje de imágenes con el que no se entrena la red pero sí prueba para comprobar la validez de la misma. Estas imágenes componen el \textit{dataset} de validación y debe estar compuesto por un 20\% de las imágenes totales del \textit{dataset}.\\
 
-Durante el entrenamiento se irá mostrando una gráfica que indica el progreso, representada en la Figura tal. En dicha gráfica se muestra el error loss y mAP.
+Durante el entrenamiento se irá mostrando una gráfica que indica el progreso, representada en la Figura \ref{fig:chart}. En dicha gráfica se muestra el error de la red, se puede observar que el error final tras terminar el entrenamiento es de 0.663. Atendiendo a la guía\footnote{\url{https://github.com/AlexeyAB/darknet\#how-to-train-to-detect-your-custom-objects}} utilizada para entrenar la red, el error deberá estar entre 0.05 en el caso de un \textit{dataset} pequeño y simple a 3.0 en el caso de un \textit{dataset} grande y difícil, como es el caso de la clase persona.\\
 
-Es importante saber cuando finalizar el entrenamiento, esto está determinado por el \textit{Over-fitting}. Cuando el error de validación? sube pero el de entrenamiento sigue bajando??
-
+\begin{figure} [h!]
+	\begin{center}
+		\includegraphics[width=12cm]{figs/chart}
+	\end{center}
+	\caption{Gráfica de entrenamiento mostrando el error de la red \textit{YOLO V3 Tiny}.}
+	\label{fig:chart}
+\end{figure}\
 
 \subsection{Controlador diseñado para el seguimiento de carril a partir de la salida de la red neuronal}
 Una vez obtenida la salida de la red neuronal que indica el centro del carril, es necesario elaborar un controlador que comande velocidades lineales y angulares al robot. Para ello se ha realizado un controlador proporcional (P) con una serie de constantes para lograr un comportamiento adecuado, dicho controlador está disponible en el Código \ref{cod:controller}.\\ 
@@ -626,8 +638,18 @@ Como se expuso en el Capítulo 3, existe una librería llamada \textit{PyTorch t
 	\label{cod:torch2trt}
 \end{code}
 
+En la Figura \ref{fig:screenshotsreal} están representadas capturas de la ejecución en el entorno real desde la perspectiva de la visión del robot.\\
+
+\begin{figure} [h!]
+	\begin{center}
+		\includegraphics[width=6cm]{figs/screenshottrafficlight}\hspace{0.5cm}\includegraphics[width=6cm]{figs/screenshotstopsign}
+	\end{center}
+	\caption{Visión del robot durante la ejecución en el entorno real.}
+	\label{fig:screenshotsreal}
+\end{figure}\
+
 \section{Diseño del software a partir de un diagrama de clases}
-El diseño del software se ha realizado a partir de un diagrama de clases, utilizando la herramienta \textit{UMLET\footnote{\url{hhttps://www.umlet.com/}}}, que permite estructurar crear clases, dependencias entre ellas y los atributos y funciones que contiene. El presente diseño, representado en la Figura \ref{fig:diagram}, contiene una clase principal llamada \textit{AutonomousVehicle} que tiene instancias de la clase \textit{LaneFollower} que implementa el seguimiento de carril, de la clase \textit{JetRacer} que implementa el controlador del vehículo y la comunicación con los motores del mismo. También contiene una instancia de la clase \textit{ObjectDetector} que implementa la detección de objetos y, a su vez, la clase \textit{ObjectDetector} hace uso del flujo de vídeo proviniente de un \textit{topic} de \textit{ROS}.\\
+El diseño del software se ha realizado a partir de un diagrama de clases, utilizando la herramienta \textit{UMLET\footnote{\url{hhttps://www.umlet.com/}}}, que permite estructurar crear clases, dependencias entre ellas y los atributos y funciones que contiene. El presente diseño, representado en la Figura \ref{fig:diagram}, contiene una clase principal llamada \textit{AutonomousVehicle} que tiene instancias de la clase \textit{LaneFollower} que implementa el seguimiento de carril, de la clase \textit{JetRacer} que implementa el controlador del vehículo y la comunicación con los motores del mismo. También contiene una instancia de la clase \textit{ObjectDetector} que implementa la detección de objetos y, a su vez, la clase \textit{ObjectDetector} hace uso del flujo de vídeo proveniente de un \textit{topic} de \textit{ROS}.\\
 
 \begin{figure} [h!]
 	\begin{center}
@@ -639,11 +661,13 @@ El diseño del software se ha realizado a partir de un diagrama de clases, utili
 
 % Tabla cámara
 % Buscar ....
-% Grafico dataset darknet barras
-% Gráfica entrenamiento error no sube ni baja, estable
+% Gráfica entrenamiento error no sube ni baja, estable carril
 % Resnet
 % NN siempre yxy?
 % .yaml stop or stop sign?
 % Tesnor cores
-% yolov3-tiny.conv.15 15
+% yolov3-tiny.conv.15 15 convolución 15
 % singlestone
+% \textit{Over-fitting}
+% muestra el número de imágenes??????? y causas
+% Salir de sección screenshotsreal
