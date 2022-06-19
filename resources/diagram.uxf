@@ -23,47 +23,40 @@ m2=1&lt;/panel_attributes&gt;&lt;additional_attributes&gt;10;10;10;200;210;200&l
 --
 + _on_steering(steering)
 + _on_throttle(throttle)
-&lt;/panel_attributes&gt;&lt;additional_attributes&gt;&lt;/additional_attributes&gt;&lt;/element&gt;&lt;/diagram&gt;Space for diagram notesss</help_text><element><id>UMLClass</id><coordinates><x>900</x><y>207</y><w>210</w><h>130</h></coordinates><panel_attributes>MyRacecar
+&lt;/panel_attributes&gt;&lt;additional_attributes&gt;&lt;/additional_attributes&gt;&lt;/element&gt;&lt;/diagram&gt;Space for diagram notesss</help_text><element><id>UMLClass</id><coordinates><x>760</x><y>202</y><w>210</w><h>130</h></coordinates><panel_attributes>JetRacer
 --
 - GPIONumbers
 - frequency
 - pwmRightMotors
 - pwmLeftMotors
 --
-+ steering(steering)
-+ throttle(throttle)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>140</x><y>207</y><w>210</w><h>130</h></coordinates><panel_attributes>USBCamera
---
-- captureFps
-- captureWidth
-- captureHeight
-- captureDevice
---
-+ read()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>660</x><y>207</y><w>210</w><h>130</h></coordinates><panel_attributes>LaneFollower
++ setSteering(steering)
++ setThrottle(throttle)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>520</x><y>202</y><w>210</w><h>130</h></coordinates><panel_attributes>LaneFollower
 --
 - trainedModel
 --
 - preprocess()
 + getLaneCenter()
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>420</x><y>207</y><w>210</w><h>130</h></coordinates><panel_attributes>ObjectDetector
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>280</x><y>202</y><w>210</w><h>130</h></coordinates><panel_attributes>ObjectDetector
 --
-- USBCamera
+- VideoStream
 - objectsToDetect
 --
 + getObjects()
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>550</x><y>467</y><w>210</w><h>130</h></coordinates><panel_attributes>AutonomousVehicle
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>410</x><y>462</y><w>210</w><h>130</h></coordinates><panel_attributes>AutonomousVehicle
 --
 - MyRacecar
 - LaneFollower
 - ObjectDetector
 --
-+ execute()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>340</x><y>267</y><w>100</w><h>30</h></coordinates><panel_attributes>lt=&lt;-
++ execute()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>200</x><y>262</y><w>100</w><h>30</h></coordinates><panel_attributes>lt=&lt;-
 m1=
-m2=</panel_attributes><additional_attributes>10;10;80;10</additional_attributes></element><element><id>Relation</id><coordinates><x>500</x><y>327</y><w>180</w><h>160</h></coordinates><panel_attributes>lt=&lt;-
+m2=</panel_attributes><additional_attributes>10;10;80;10</additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>322</y><w>180</w><h>160</h></coordinates><panel_attributes>lt=&lt;-
 m1=
-m2=</panel_attributes><additional_attributes>10;10;10;80;160;80;160;140</additional_attributes></element><element><id>Relation</id><coordinates><x>750</x><y>327</y><w>40</w><h>190</h></coordinates><panel_attributes>lt=&lt;-
+m2=</panel_attributes><additional_attributes>10;10;10;80;160;80;160;140</additional_attributes></element><element><id>Relation</id><coordinates><x>610</x><y>322</y><w>40</w><h>190</h></coordinates><panel_attributes>lt=&lt;-
 m1=
-m2=</panel_attributes><additional_attributes>20;10;20;170;10;170</additional_attributes></element><element><id>Relation</id><coordinates><x>750</x><y>327</y><w>280</w><h>220</h></coordinates><panel_attributes>lt=&lt;-
+m2=</panel_attributes><additional_attributes>20;10;20;170;10;170</additional_attributes></element><element><id>Relation</id><coordinates><x>610</x><y>322</y><w>280</w><h>220</h></coordinates><panel_attributes>lt=&lt;-
 m1=
-m2=</panel_attributes><additional_attributes>260;10;260;200;10;200</additional_attributes></element></diagram>
+m2=</panel_attributes><additional_attributes>260;10;260;200;10;200</additional_attributes></element><element><id>UMLClass</id><coordinates><x>110</x><y>257</y><w>100</w><h>30</h></coordinates><panel_attributes>VideoStream</panel_attributes><additional_attributes></additional_attributes></element></diagram>

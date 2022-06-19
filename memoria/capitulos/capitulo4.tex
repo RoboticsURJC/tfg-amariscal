@@ -17,14 +17,14 @@ Existen numerosos mundos diseñados para \textit{Gazebo} disponibles en reposito
 \textit{GitHub}\footnote{\url{https://github.com/chaolmu/gazebo_models_worlds_collection}}\footnote{\url{https://github.com/mlherd/Dataset-of-Gazebo-Worlds-Models-and-Maps}}. En
 el caso que se plantea, es necesario una ciudad, por lo que partiendo de una
 ciudad\footnote{\url{https://github.com/chaolmu/gazebo_models_worlds_collection/blob/master/worlds/small_city.world}} de gran tamaño se reduce su tamaño con el objetivo de,
-posteriormente, poder reproducir ese escenario en el mundo real. En la Figura \ref{fig:city} se observan ambas ciudades.\\
+posteriormente, poder reproducir ese escenario en el mundo real. En la Figura \ref{fig:cityversus} se observan ambas ciudades.\\
 
 \begin{figure} [h!]
 	\begin{center}
 		\includegraphics[width=7cm]{figs/city2}\hspace{1cm}\includegraphics[width=7cm]{figs/smallcity}
 	\end{center}
 	\caption{Modelo de la ciudad original y la ciudad modificada en \textit{Gazebo}.}
-	\label{fig:city}
+	\label{fig:cityversus}
 \end{figure}\
 
 El modelo de esta ciudad es estático, es decir, no contiene elementos dinámicos, por lo que es necesario añadir dos tipos de elementos; un semáforo y un peatón que cruce un paso
@@ -48,7 +48,7 @@ repositorio\footnote{\url{https://github.com/BruceChanJianLe/gazebo-plugin-auton
 realista. El \textit{plugin} citado también permite configuración para especificar la ruta de puntos o \textit{waypoints} que el peatón ha de seguir, así como, su velocidad o la
 distancia mínima a la que debe situarse respecto a un obstáculo. Dicha configuración se realiza directamente en el fichero \textit{SDF}, como muestra el Código
 \ref{cod:pedestrianconfiguration}.\\
-i
+
 \begin{code}[h]
 	\begin{lstlisting}
 		<actor name="actor">
@@ -311,13 +311,7 @@ comportamiento de la red neuronal.\\
 
 \subsection{Detección de objetos}
 \label{subsection:objectdetector}
-La detección de objetos se ha llevado a cabo mediante una red neuronal convolucional llamada \textit{YOLO V3 Tiny} debido a su gran rendimiento en placas de reducida potencia. La
-versión \textit{Tiny-YOLO} reduce el número de capas y precisión de detección pero aumenta la tasa de \textit{FPS} por lo que es muy conveniente su uso en dispositivos como
-\textit{NVIDIA Jetson Nano}. Existen distintas versiones de \textit{Tiny-YOLO}. La tercera versión cuenta con 15 capas
-convolucionales\footnote{\url{https://github.com/pjreddie/darknet/blob/master/cfg/yolov3-tiny.cfg}} a diferencia de la cuarta que cuenta con 29
-capas\footnote{\url{https://github.com/AlexeyAB/darknet/blob/master/cfg/yolov4-tiny.cfg}}. En el Cuadro \ref{table:v3vsv4} se puede observar una comparación entre ambas versiones
-de la red con una resolución de 416 píxeles, extraída de la siguiente fuente\cite{versus}, que arroja como resultado un mejor rendimiento en la tercera versión, si bien es cierto
-que atendiendo al artículo de \textit{YOLO V4} \cite{yolov4} la precisión de la red ha sido incrementada en un 10\% en decremento de la tasa de \textit{FPS}.\\
+La detección de objetos se ha llevado a cabo mediante una red neuronal convolucional llamada \textit{YOLO V3 Tiny} debido a su gran rendimiento en placas de reducida potencia. La versión \textit{Tiny-YOLO} reduce el número de capas y precisión de detección pero aumenta la tasa de \textit{FPS} por lo que es muy conveniente su uso en dispositivos como \textit{NVIDIA Jetson Nano}. Existen distintas versiones de \textit{Tiny-YOLO}. La tercera versión cuenta con 15 capas convolucionales\footnote{\url{https://github.com/pjreddie/darknet/blob/master/cfg/yolov3-tiny.cfg}} a diferencia de la cuarta que cuenta con 29 capas\footnote{\url{https://github.com/AlexeyAB/darknet/blob/master/cfg/yolov4-tiny.cfg}}. En el Cuadro \ref{table:v3vsv4} se puede observar una comparación entre ambas versiones de la red con una resolución de 416 píxeles, extraída de la siguiente fuente\cite{versus}, que arroja como resultado un mejor rendimiento en la tercera versión, si bien es cierto que atendiendo al artículo de \textit{YOLO V4} \cite{yolov4} la precisión de la red ha sido incrementada en un 10\% en decremento de la tasa de \textit{FPS}.\\
 
 \begin{table}[H]
 	\begin{center}
@@ -364,10 +358,7 @@ portátiles. En cuanto a la decisión de la resolución de la imagen con la que 
 	\end{center}
 \end{table}
 
-Se ha utilizado la red \textit{YOLO V3 Tiny} sobre \textit{Darknet ROS\footnote{\url{https://github.com/leggedrobotics/darknet_ros}}}. Se trata de un paquete que implementa
-\textit{Darknet} utilizando el \textit{framework ROS}. Su funcionamiento se basa en la recepción de la imagen a través de un \textit{topic} fijado en el fichero de configuración
-\textit{ros.yaml} y la publicación de objetos detectados mediante \textit{bounding boxes} en un \textit{topic} llamado \textit{/darknet\_ros/bounding\_boxes} en el que se publican
-mensajes con los datos del Código \ref{cod:boundingboxes}. De esa forma se puede extraer las coordenadas del \textit{bounding box}, el objeto detectado y su probabilidad.\\
+Se ha utilizado la red \textit{YOLO V3 Tiny} sobre \textit{Darknet ROS\footnote{\url{https://github.com/leggedrobotics/darknet_ros}}}. Se trata de un paquete que implementa \textit{Darknet} utilizando el \textit{framework ROS}. Su funcionamiento se basa en la recepción de la imagen a través de un \textit{topic} fijado en el fichero de configuración \textit{ros.yaml} y la publicación de objetos detectados mediante \textit{bounding boxes} en un \textit{topic} llamado \textit{/darknet\_ros/bounding\_boxes} en el que se publican mensajes con los datos del Código \ref{cod:boundingboxes}. De esa forma se puede extraer las coordenadas del \textit{bounding box}, el objeto detectado y su probabilidad. Existe un fichero \textit{YAML} en el que se especifican los objetos a detectar y en el que es necesario especificar límite o \textit{threshold} debajo del cual el objeto detectado será descartado. En el caso del entorno simulado los colores son fijos y los objetos son muy genéricos por lo que el \textit{threshold} se pudo subir hasta 0.8. De esta forma se evitan falsos positivos y se consigue una detección mucho más fiable.\\
 
 \begin{code}[h]
 	\begin{lstlisting}
@@ -427,7 +418,7 @@ aporta una visión del recorrido que realiza el robot. La interfaz descrita se p
 
 \begin{figure} [h!]
 	\begin{center}
-		\includegraphics[width=14cm]{figs/GUI}
+		\includegraphics[width=10cm]{figs/GUI}
 	\end{center}
 	\caption{Interfaz de usuario desarrollada para controlar la simulación.}
 	\label{fig:gui}
@@ -435,19 +426,18 @@ aporta una visión del recorrido que realiza el robot. La interfaz descrita se p
 
 \section{Entorno real}
 \label{section:real}
-En esta sección se exponen los elementos utilizados para componer un entorno real en el que un robot, representado en la Figura \ref{fig:robot}, equipado con una cámara como sensor principal circula reaccionando ante objetos estáticos y dinámicos. Así como las particularidades del sistema a la hora de realizar la transición desde el entorno simulado al real.\\
+En esta sección se exponen los elementos utilizados para componer un entorno real en el que un robot, representado en la Figura \ref{fig:realrobot}, equipado con una cámara como sensor principal circula reaccionando ante objetos estáticos y dinámicos. Así como las particularidades del sistema a la hora de realizar la transición desde el entorno simulado al real.\\
 
 \begin{figure} [h!]
 	\begin{center}
-		\includegraphics[width=8cm]{figs/robot}
+		\includegraphics[width=10cm]{figs/robot}
 	\end{center}
 	\caption{Robot con \textit{NVIDIA Jetson Nano}.}
 	\label{fig:realrobot}
 \end{figure}\
 
-El entorno real se compone de diversos objetos. En primer lugar un circuito elaborado con pistas Scalextric sobre el que se sitúan objetos como un semáforo dinámico que cambia de color en un modo autómatico cada cierto tiempo, una señal de stop y un peatón. Dichos objetos se pueden observar en la Figura \ref{fig:objects}.\\
-
 \subsection{Objetos}
+El entorno real se compone de diversos objetos; un circuito elaborado con pistas Scalextric sobre el que se sitúan objetos como un semáforo dinámico que cambia de color en un modo autómatico cada cierto tiempo, una señal de stop y un peatón. Dichos objetos se pueden observar en la Figura \ref{fig:objects}.\\
 
 \begin{figure} [h!]
 	\begin{center}
@@ -459,7 +449,7 @@ El entorno real se compone de diversos objetos. En primer lugar un circuito elab
 \end{figure}\
 
 \subsection{Circuito}
-Circuito inicial en el que se entrenó la red neuronal de seguimiento de carril que posteriormente se fue agrandando en el espacio introduciendo rectas más largas para poder interactuar mejor con objetos.\\
+En principio se construyó un circuito inicial, represtentado en la Figura \ref{fig:circuit}, en el que se entrenó la red neuronal de seguimiento de carril. Posteriormente se fue agrandando en el espacio introduciendo rectas más largas para poder interactuar mejor con objetos.\\
 
 \begin{figure} [h!]
 	\begin{center}
@@ -480,69 +470,100 @@ Tras ubicar todos los objetos alrededor del circuito, da como resultado la image
 \end{figure}\
 
 \section{Redes neuronales en el entorno real}
-El entrenamiento de la red neuronal \textit{ResNet-18} se realiza de igual forma que en el entorno simulado, la principal diferencia a tener en cuenta es la luz ambiente.\\
+El entrenamiento de la red neuronal \textit{ResNet-18} se realiza de igual forma que en el entorno simulado, la principal diferencia a tener en cuenta es la luz ambiente y los colores, que a diferencia del simulador, cambian dependiendo de como incida la luz. Por ello, es interesante comprobar el comportamiento de la red neuronal cuando hay cambios de luz. Además, existen multitud de diferencias entre una luz artificial y la luz natural, cuando se trabaja con luz natural es necesario tener en cuenta la incidencia que los rayos del sol pueden hacer sobre la lente de la cámara. Por ello se decidió entrenar la red con luz artificial, con imágenes como la que representa la Figura \ref{fig:imagedataset}. La librería \textit{JetRacer} recomienda entrenar la red con un mínimo de 50 imágenes\footnote{\url{https://github.com/NVIDIA-AI-IOT/jetracer/blob/master/docs/examples.md}}, por lo que se decidió entrenar con 100 imágenes para que el tiempo de entrenamiento no fuese demasiado elevado y no provocara un aumento muy grande de temperatura en la placa \textit{NVIDIA Jetson Nano}, que al no disponer de disipador activo, alcanza tempertaturas muy elevadas.\\
 
-\subsection{Transformación del modelo de \textit{PyTorch a TensorRT}}
-Como se expuso en el Capítulo 3, existe una librería llamada \textit{PyTorch to TensorRT} capaz de convertir modelos de \textit{PyTorch} a modelos optimizados aprovechando los tensores de las gráficas dedicadas, si bien la placa \textit{NVIDIA Jetson Nano} no dispone de una GPU con tensores\footnote{\url{https://connecttech.com/jetson/jetson-module-comparison/}}, sí permite realizar inferencia utilizando operaciones con \textit{FP16} lo que aumenta el rendimiento en gran medida. Esta conversión se realiza de forma muy sencilla llamando a la función \verb|torch2trt()| tal y como representa el Código \ref{cod:torch2trt}.\\
+\begin{figure} [h!]
+	\begin{center}
+		\includegraphics[width=6cm]{figs/imagedataset}
+	\end{center}
+	\caption{Imagen del dataset utilizado entrenado con luz artificial.}
+	\label{fig:imagedataset}
+\end{figure}\
 
-\begin{code}[h]
-	\begin{lstlisting}[language=Python]
-		data = torch.zeros((1, 3, 224, 224)).cuda().half()
-		model_trt = torch2trt(model, [data], fp16_mode=True)
-		torch.save(model_trt.state_dict(), 'model_tensor.pth')
-	\end{lstlisting}
-	\caption[Conversión del modelo para realizar optimización y aumentar el rendimiento.]{Conversión del modelo para realizar optimización y aumentar el rendimiento.}
-	\label{cod:torch2trt}
-\end{code}
+
+Una vez probada la red neuronal \textit{YOLO V3 Tiny} utilizada en el entorno simulado, se comprobó que era necesario bajar demasiado el límite o \textit{threshold} de detección, hasta 0.3, para poder detectar los objetos elegidos. A diferencia del entorno de simulación ,en el que dicho límite se fijó a 0.8. Esto provocaba falsos positivos y por tanto una detección poco fiable. Dicha circunstancia puede ser debida, entre otros motivos, a unos objetos reales algo distintos respecto a los que la red fue entrenada o una luz ambiental baja. Por ello se decidió entrenar la red con los objetos utilizados en el entorno real. Para ello, es necesario una tarjeta gráfica potente. Por lo que se realizó una comparativa entre las tarjetas gráficas disponibles para realizar el entrenamiento en el menor tiempo posible. Dicha comparativa está representada en el Cuadro \ref{table:versusnvidia}.\\
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}{|c|c|c|c|c|}
+			\hline
+			\textbf{Placa}	& \textbf{Arquitectura} & \textbf{C.C\makebox[0pt][l]{$^*$}} & \textbf{GPU Cores}				& \textbf{RAM}
+			\\
+			\hline
+			NVIDIA Jetson Nano		& Maxwell								& 5.3														& 128												& 4 GB
+			\\
+			NVIDIA MX330					& Pascal								& 6.1														& 384												& 2 GB
+			\\
+			NVIDIA AGX Xavier			& Volta									& 7.2														& 384 con 48 Tensor Cores		& 64 GB
+			\\
+			\hline
+		\end{tabular}
+		\parbox[t]{\textwidth}{\footnotesize C.C$^*$: capacidad de cómputo.}  
+		\caption{Comparación entre las tarjetas gráficas disponibles para entrenar la red \textit{YOLO V3 Tiny}.}
+		\label{table:versusnvidia}
+	\end{center}
+\end{table}
 
 \subsection{Entrenamiento a partir de YOLO para detección de objetos propios}
-El objetivo es entrenar nuestra propia red de YOLO con el objetivo de poder detectar objetos propios o mejorar la detección de objetos ya detectados por la red, pero mejorando la probabilidad de detección, ya que podemos entrenar la red con los objetos reales que vamos a usar.\\
+El objetivo es entrenar la red \textit{YOLO V3 Tiny} con el objetivo de poder detectar objetos propios o mejorar la probabilidad de detección de objetos ya detectados por la red.\\
 
-Para ello necesitamos un dataset, en este caso vamos a usar los siguientes:
+Para ello, es pertinente saber qué dataset se ha utilizado para generar los pesos actualmente usados. Atendiendo a la página oficial de \textit{YOLO\footnote{\url{https://pjreddie.com/darknet/yolo/}}}, el dataset utilizado es \textit{COCO}. Por lo que será necesario obtener las imágenes y sus ficheros de etiquetado donde se asocian los objetos presentes en las imágenes. Existe un respositorio\footnote{\url{https://github.com/KaranJagtiani/YOLO-Coco-Dataset-Custom-Classes-Extractor}} que permite la extracción, a partir del dataset mencionado, de las clases de objetos deseadas.\\
 
-URL
+El formato del archivo de etiquetado de los objetos es muy relevante. El formato por defecto de \textit{COCO} es el contenido en el Código \ref{cod:formatcoco}\footnote{\url{https://cocodataset.org/\#format-data}}. Y el utilizado en \textit{YOLO} es el contenido en el Código \ref{cod:formatyolo}\footnote{\url{https://github.com/AlexeyAB/darknet\#how-to-train-to-detect-your-custom-objects}}. Por lo que es necesario realizar la conversión de un formato a otro. Este proceso también lo realiza el programa contenido en el repositorio anteriormente mencionado.\\
 
-El dataset de personas se ha obtenido a partir de COCO dataset. LabelIMG.
-
-Se compone de personas, vehículos y señales de tráfico
-
-Instrucciones:
-Clonamos el repositorio de darknet y lo compilamos con CUDA, CUDNN, CUDNN\_HALF y OpenCV.
-
-Obtenemos los pesos preentrenados yolov3-tiny.conv.15
-
-./darknet partial cfg/yolov3-tiny\_obj.cfg yolov3-tiny.weights yolov3-tiny.conv.15 15
-
-Modificamos el archivo yolov3-tiny\_obj.cfg:
-
-\begin{itemize}
-	\item batch=1 a batch=64
-	\item subdivisions=1 a subdivisions=2
-	\item max\_batches=500200 a max\_batches=classes*2000 El número de batches no debe ser inferior del número total de imágenes
-	\item steps=400000,450000 a 80\% y 90\% de max\_batches
-	\item width=416 height=416 Si los objetos a detectar son muy pequeños habría que subir hasta width=608 height=608 o incluso width=832 height=832
-	\item Buscamos [yolo] y en cada classes=80 previo lo cambiamos al número de objetos distintos a detectar
-	\item Modificamos filters=255 a filters=(classes + 5) x 3 antes de cada [yolo]
-\end{itemize}\
-
-Verificamos que cada imagen tiene asociado un fichero con el mismo nombre pero con extensión txt, con el siguiente formato:
 \begin{code}[h]
 	\begin{lstlisting}
-		1 0.716797 0.395833 0.216406 0.147222 
+		annotation{
+			"id": int, 
+			"image_id": int, 
+			"category_id": int, 
+			"segmentation": RLE or [polygon], 
+			"area": float, 
+			"bbox": [x,y,width,height], 
+			"iscrowd": 0 or 1,
+		}
+
+		categories[{
+			"id": int, 
+			"name": str, 
+			"supercategory": str,
+		}]
 	\end{lstlisting}
-	\caption[Contenido de un archivo txt que contiene las coordenadas de un \textit{bounding box}.]{Contenido de un archivo txt que contiene las coordenadas de un
-		\textit{bounding box}.}
-	\label{cod:txtboundingbox}
+	\caption[Formato de etiquetado de objetos utilizado por \textit{COCO}.]{Formato de etiquetado de objetos utilizado por \textit{COCO}.}
+	\label{cod:formatcoco}
 \end{code}
 
-En el que el primer número es el número de clases, los dos siguientes son las coordenadas \textit{x} e \textit{y} del \textit{bounding box}, y los dos últimos la altura y anchura del mismo.\\
+\begin{code}[h]
+	\begin{lstlisting}
+		<object-class> <x_center> <y_center> <width> <height>
+	\end{lstlisting}
+	\caption[Formato de etiquetado de objetos utilizado por \textit{YOLO}.]{Formato de etiquetado de objetos utilizado por \textit{YOLO}.}
+	\label{cod:formatyolo}
+\end{code}
 
-Creamos los ficheros train.txt y test.txt donde deben estar las rutas absolutas a cada txt asociado a su imagen correspondiente para poder entrenar, el porcentaje de test es
-20\%.\\
+El gŕafico representado en la Figura \ref{fig:graphcoco}, extraído de la siguiente fuente\cite{graphcoco}, muestra el número de imágenes??????? de cada tipo de objeto. Se puede observar que el la clase persona está presente en imágenes, seis veces más que cualquier otro tipo de objeto. Causassssssssssssssssssssssssssssssssssssssssssssssssssss. Esto es determinante a la hora del entrenamiento, ya que al ser tan elevado el número de imágenes, el tiempo de entrenamiento será considerablemente grande.\\
 
-Creamos el fichero obj.names con los nombres de los distintos objetos, teniendo en cuenta el orden, ya que cada txt asociado a una imagen tendrá un número de clase Resultado:
+\begin{figure} [h!]
+	\begin{center}
+		\includegraphics[width=14cm]{figs/graphcoco}
+	\end{center}
+	\caption{Distribución de las clases de objetos del dataset COCO.}
+	\label{fig:graphcoco}
+\end{figure}\
 
-Creamos el fichero obj.data con las rutas a los archivos necesarios:
+Para proceder al entrenamiento, además del \textit{dataset} y sus ficheros de etiquetado, es necesario utlizar el framework \textit{Darknet\footnote{\url{https://github.com/pjreddie/darknet}}} y hacer uso del comando \verb|partial| para obtener los pesos preentrenados sobre los cuales, se entrenará la red con el \textit{dataset} elegido.\\
+
+También es necesario modificar una serie de archivos entre los que se encuentra el \textit{cfg} que contiene los parámetros de la red. Las principales modificaciones a realizar son las siguientes:
+\begin{itemize}
+	\item El número de \textit{batch} deberá ser 64
+	\item El nñúmero de \textit{subdivisions} deberá ser 2
+	\item El número de \textit{max\_batches} deberá ser el número de classes multiplicado por 2000. Y este número no debe ser inferior al número total de imágenes
+	\item El número de \textit{steps} deberá ser fijado al 80\% y al 90\% de max\_batches
+	\item La anchura y altura de la imagen con la que entrena la red deberá ser como mínimo 416. En el caso de querer detectar objetos muy pequeños dicho parámetro deberá ser modificado a 608 o 832
+	\item En cada parámetro \textit{[yolo]} el número de clases de objetos a detectar deberá ser fijado y el número de filters deberá fijarse atendiendo a la siguiente fórmula: \textit{(classes + 5) x 3}
+\end{itemize}\
+
+Se deberán crear los ficheros \textit{train.txt} y \textit{test.txt} donde deben estar las rutas absolutas a cada fichero de etiquetado. Y otro fichero llamado \textit{obj.data} que contenga las rutas de los archivos anteriormente descritos, dicho contenido está presente en el Código \ref{cod:objdata}.\\
 
 \begin{code}[h]
 	\begin{lstlisting}
@@ -552,14 +573,15 @@ Creamos el fichero obj.data con las rutas a los archivos necesarios:
 		names = data/obj.names
 		backup = backup/
 	\end{lstlisting}
-	\caption[Contenido del archivo obj.data que contiene las rutas de los archivos necesarios.]{Contenido del archivo obj.data que contiene las rutas de los archivos
-		necesarios.}
+	\caption[Contenido del archivo obj.data con las rutas de los archivos necesarios.]{Contenido del archivo obj.data con las rutas de los archivos necesarios.}
 	\label{cod:objdata}
 \end{code}
 
-Cuando terminar el entrenamiento: Over-fitting
+Otro factor importante es el porcentaje de imágenes con el que no se entrena la red pero sí prueba para comprobar la validez de la misma. Estas imágenes componen el \textit{dataset} de validación y debe estar compuesto por un 20\% de las imágenes totales del \textit{dataset}.\\
 
-Veremos una gráfica como esta cuando acabe el entrenamiento, capturaaaaa:
+Durante el entrenamiento se irá mostrando una gráfica que indica el progreso, representada en la Figura tal. En dicha gráfica se muestra el error loss y mAP.
+
+Es importante saber cuando finalizar el entrenamiento, esto está determinado por el \textit{Over-fitting}. Cuando el error de validación? sube pero el de entrenamiento sigue bajando??
 
 
 \subsection{Controlador diseñado para el seguimiento de carril a partir de la salida de la red neuronal}
@@ -591,7 +613,29 @@ Una vez obtenida la salida de la red neuronal que indica el centro del carril, e
 	\label{cod:controller}
 \end{code}
 
+\subsection{Transformación del modelo de \textit{PyTorch a TensorRT}}
+Como se expuso en el Capítulo 3, existe una librería llamada \textit{PyTorch to TensorRT} capaz de convertir modelos de \textit{PyTorch} a modelos optimizados aprovechando los tensores de las gráficas dedicadas, si bien la placa \textit{NVIDIA Jetson Nano} no dispone de una GPU con tensores\footnote{\url{https://connecttech.com/jetson/jetson-module-comparison/}}, sí permite realizar inferencia utilizando operaciones con \textit{FP16} lo que aumenta el rendimiento en gran medida. Esta conversión se realiza de forma muy sencilla llamando a la función \verb|torch2trt()| tal y como representa el Código \ref{cod:torch2trt}.\\
+
+\begin{code}[h]
+	\begin{lstlisting}[language=Python]
+		data = torch.zeros((1, 3, 224, 224)).cuda().half()
+		model_trt = torch2trt(model, [data], fp16_mode=True)
+		torch.save(model_trt.state_dict(), 'model_tensor.pth')
+	\end{lstlisting}
+	\caption[Conversión del modelo para realizar optimización y aumentar el rendimiento.]{Conversión del modelo para realizar optimización y aumentar el rendimiento.}
+	\label{cod:torch2trt}
+\end{code}
+
 \section{Diseño del software a partir de un diagrama de clases}
+El diseño del software se ha realizado a partir de un diagrama de clases, utilizando la herramienta \textit{UMLET\footnote{\url{hhttps://www.umlet.com/}}}, que permite estructurar crear clases, dependencias entre ellas y los atributos y funciones que contiene. El presente diseño, representado en la Figura \ref{fig:diagram}, contiene una clase principal llamada \textit{AutonomousVehicle} que tiene instancias de la clase \textit{LaneFollower} que implementa el seguimiento de carril, de la clase \textit{JetRacer} que implementa el controlador del vehículo y la comunicación con los motores del mismo. También contiene una instancia de la clase \textit{ObjectDetector} que implementa la detección de objetos y, a su vez, la clase \textit{ObjectDetector} hace uso del flujo de vídeo proviniente de un \textit{topic} de \textit{ROS}.\\
+
+\begin{figure} [h!]
+	\begin{center}
+		\includegraphics[width=14cm]{figs/diagram5}
+	\end{center}
+	\caption{Diagrama de clases.}
+	\label{fig:diagram}
+\end{figure}\
 
 % Tabla cámara
 % Buscar ....
@@ -599,3 +643,7 @@ Una vez obtenida la salida de la red neuronal que indica el centro del carril, e
 % Gráfica entrenamiento error no sube ni baja, estable
 % Resnet
 % NN siempre yxy?
+% .yaml stop or stop sign?
+% Tesnor cores
+% yolov3-tiny.conv.15 15
+% singlestone
