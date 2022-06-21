@@ -98,7 +98,7 @@ El siguiente paso es exportar las piezas diseñadas en formato \textit{STL} para
 
 \subsubsection{Ensamblado del robot en \textit{Blender}}
 
-Una vez importadas las piezas diseñadas en \textit{FreeCAD}, se crean dos unidades del chasis y cuatro ruedas, a continuación se mueven y rotan en el espacio para situarlas correctamente. Con el objetivo de dotar de mayor realismo al modelo, se importan modelos de los motores y la placa utilizados, disponibles en y en. Y se diseñan dos piezas para emular la batería y la cámara del robot. Con todo ello se conforma el modelo estático del robot, Figura \ref{fig:blendermodel}.\\
+Una vez importadas las piezas diseñadas en \textit{FreeCAD}, se crean dos unidades del chasis y cuatro ruedas, a continuación se mueven y rotan en el espacio para situarlas correctamente. Con el objetivo de dotar de mayor realismo al modelo, se importan modelos de los motores\footnote{\url{https://grabcad.com/library/tt-motor-1}} y la placa\footnote{\url{https://github.com/57Bravo/jetson_nano_enc}} utilizados. Y se diseñan dos piezas para emular la batería y la cámara del robot. Con todo ello se conforma el modelo estático del robot, Figura \ref{fig:blendermodel}.\\
 
 \begin{figure} [h!]
 	\begin{center}
@@ -590,8 +590,7 @@ En la Figura \ref{fig:screenshotsreal} están representadas capturas de la ejecu
 \end{figure}\
 
 \section{Diseño del software a partir de un diagrama de clases}
-El diseño del software se ha realizado a partir de un diagrama de clases, utilizando la herramienta \textit{UMLET\footnote{\url{hhttps://www.umlet.com/}}}, que permite estructurar crear clases, dependencias entre ellas y los atributos y funciones que contiene. El presente diseño, representado en la Figura \ref{fig:diagram}, contiene una clase principal llamada \textit{AutonomousVehicle} que tiene instancias de la clase \textit{LaneFollower} que implementa el seguimiento de carril, de la clase \textit{JetRacer} que implementa el controlador del vehículo y la comunicación con los motores del mismo. También contiene una instancia de la clase \textit{ObjectDetector} que implementa la detección de objetos y, a su vez, la clase \textit{ObjectDetector} hace uso del flujo de vídeo proveniente de un \textit{topic} de \textit{ROS}.\\
-
+El diseño del software se ha realizado a partir de un diagrama de clases, utilizando la herramienta \textit{UMLET\footnote{\url{hhttps://www.umlet.com/}}}, que permite estructurar crear clases, dependencias entre ellas y los atributos y funciones que contiene. El presente diseño, representado en la Figura \ref{fig:diagram}, contiene una clase principal llamada \textit{AutonomousVehicle} que tiene instancias de la clase \textit{LaneFollower} que implementa el seguimiento de carril, de la clase \textit{JetRacer} que implementa el controlador del vehículo y la comunicación con los motores del mismo. También contiene una instancia de la clase \textit{ObjectDetector} que implementa la detección de objetos y, a su vez, la clase \textit{ObjectDetector} hace uso del flujo de vídeo proveniente de un \textit{topic} de \textit{ROS}.
 \begin{figure} [h!]
 	\begin{center}
 		\includegraphics[width=14cm]{figs/diagram5}
@@ -599,7 +598,6 @@ El diseño del software se ha realizado a partir de un diagrama de clases, utili
 	\caption{Diagrama de clases.}
 	\label{fig:diagram}
 \end{figure}\
-
 % Tabla cámara
 % Buscar ....
 % Gráfica entrenamiento error no sube ni baja, estable carril

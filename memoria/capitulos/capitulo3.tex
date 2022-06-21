@@ -110,7 +110,7 @@ Se trata de un chasis de bajo coste muy común en proyectos relacionados con Ard
 
 \subsection{\textit{SDF}}
 \label{subsection:sdf}
-El formato \textit{SDF} (\textit{Simulation Description Format})\footnote{\url{https://github.com/gazebosim/sdformat}} o \textit{SDFormat} permite describir entornos, objetos dinámicos o robots de una manera sencilla. Está basado en \textit{XML} y escrito en \textit{C++}. El objetivo de este formato es ejecutar comportamientos en un simulador. Originalmente fue desarrollado como parte de \textit{Gazebo} por lo que existen numerosas bibliotecas donde se encuentran modelos o mundos desarrollados en \textit{SDF} para este simulador\footnote{\url{https://github.com/HuyPhamG/simulatedswarm}}. Cabe destacar también, el formato \textit{SURDF} que, a diferencia de \textit{SDF}, únicamente puede describir un objeto o robot, pero no el mundo en el que vive\footnote{\url{https://newscrewdriver.com/2018/07/31/ros-notes-urdf-vs-gazebo-sdf/}}.\\
+El formato \textit{SDF} (\textit{Simulation Description Format})\footnote{\url{https://github.com/gazebosim/sdformat}} o \textit{SDFormat} permite describir entornos, objetos dinámicos o robots de una manera sencilla. Está basado en \textit{XML} y escrito en \textit{C++}. El objetivo de este formato es ejecutar comportamientos en un simulador. Originalmente fue desarrollado como parte de \textit{Gazebo} por lo que existen numerosas bibliotecas donde se encuentran modelos o mundos desarrollados en \textit{SDF} para este simulador\footnote{\url{https://github.com/HuyPhamG/simulatedswarm}}. Cabe destacar también, el formato \textit{URDF} que, a diferencia de \textit{SDF}, únicamente puede describir un objeto o robot, pero no el mundo en el que vive\footnote{\url{https://newscrewdriver.com/2018/07/31/ros-notes-urdf-vs-gazebo-sdf/}}.\\
 
 \begin{figure} [h!]
 	\begin{center}
@@ -122,16 +122,16 @@ El formato \textit{SDF} (\textit{Simulation Description Format})\footnote{\url{h
 
 \subsection{\textit{ROS}}
 \label{subsection:ros}
-\textit{Robot Operating System ROS}\footnote{\url{https://ros.org/}} es un middleware robótico, de código abierto, con multitud de bibliotecas y herramientas desarrollado por la \textit{Open Source Robotics Foundation (OSRF)}\footnote{\url{https://www.openrobotics.org/}}, escrito en \textit{C++} y \textit{Python}. Es considerado actualmente el estándar en robótica. Permite desarrollar aplicaciones complejas en las intervienen diversos procesos llamados nodos\footnote{\url{http://wiki.ros.org/Nodes}}, que se comunican entre ellos mediante \textit{topics}\footnote{\url{http://wiki.ros.org/Topics}} y servicios\footnote{\url{http://wiki.ros.org/Services}}. Una de las principales ventajas de utilizar un middleware como ROS es la capacidad de abstracción que proporciona, de forma que el usuario únicamente programa sobre una interfaz\footnote{\url{http://wiki.ros.org/Client\%20Libraries}} dada, disponible en \textit{C++} y \textit{Python}, sin preocuparse por lo que pasa por debajo.\\
+\textit{Robot Operating System ROS}\footnote{\url{https://ros.org/}} es un \textit{middleware} robótico, de código abierto, con multitud de bibliotecas y herramientas desarrollado por la \textit{Open Source Robotics Foundation (OSRF)}\footnote{\url{https://www.openrobotics.org/}}, escrito en \textit{C++} y \textit{Python}. Es considerado actualmente el estándar en robótica. Permite desarrollar aplicaciones complejas en las intervienen diversos procesos llamados nodos\footnote{\url{http://wiki.ros.org/Nodes}}, que se comunican entre ellos mediante \textit{topics}\footnote{\url{http://wiki.ros.org/Topics}} y servicios\footnote{\url{http://wiki.ros.org/Services}}. Una de las principales ventajas de utilizar un \textit{middleware} como ROS es la capacidad de abstracción que proporciona, de forma que el usuario únicamente programa sobre una interfaz\footnote{\url{http://wiki.ros.org/Client\%20Libraries}} dada, disponible en \textit{C++} y \textit{Python}, sin preocuparse por lo que pasa por debajo.\\
 
 \subsection{\textit{OpenCV}}
 \label{subsection:opencv}
-\textit{OpenCV}\footnote{\url{https://github.com/opencv/opencv}} es una librería de visión artificial de código abierto desarrollado por Intel\footnote{\url{https://opencv.org/opencv-platinum-membership/}}. Está escrita en \textit{C/C++} y cuenta con soporte para aceleración por GPU basadas en \textit{CUDA\footnote{\url{https://developer.nvidia.com/cuda-zone}}} y \textit{OpenCL\footnote{\url{https://www.khronos.org/opencl/}}} y procesamiento de imagen en tiempo real. Es usada en todo tipo de aplicaciones en las que interviene la visión por ordenador, tales como, detección de objetos, realidad aumentada o reconocimiento de gestos. Además, está disponible en multitud de lenguajes de programación; \textit{C++}, \textit{Python}, \textit{Java}, etc...\\
+\textit{OpenCV}\footnote{\url{https://github.com/opencv/opencv}} es una librería de visión artificial de código abierto desarrollado por \textit{Intel\footnote{\url{https://opencv.org/opencv-platinum-membership/}}}. Está escrita en \textit{C/C++} y cuenta con soporte para aceleración por GPU basadas en \textit{CUDA\footnote{\url{https://developer.nvidia.com/cuda-zone}}} y \textit{OpenCL\footnote{\url{https://www.khronos.org/opencl/}}} y procesamiento de imagen en tiempo real. Es usada en todo tipo de aplicaciones en las que interviene la visión por ordenador, tales como, detección de objetos, realidad aumentada o reconocimiento de gestos. Además, está disponible en multitud de lenguajes de programación; \textit{C++}, \textit{Python}, \textit{Java}, etc...\\
 
 \subsection{YOLO}
 \label{sec:yolo}
 
-Uno de los algoritos más populares, capaz de detectar y clasificar objetos provinientes de una imagen es \textit{YOLO} (\textit{You Only Look Once})\cite{yolov3}. Sus principales ventajas son una gran precisión y la posibilidad, con el hardware adecuado, de ejecutar en tiempo real. Este algoritmo hace honor a su nombre y, por tanto, solo realiza una \textit{propagación hacia delante} en cada ejecución.\\
+Uno de los algoritmos más populares, capaz de detectar y clasificar objetos provenientes de una imagen es \textit{YOLO} (\textit{You Only Look Once})\cite{yolov3}. Sus principales ventajas son una gran precisión y la posibilidad, con el hardware adecuado, de ejecutar en tiempo real. Este algoritmo hace honor a su nombre y, por tanto, solo realiza una \textit{propagación hacia delante} en cada ejecución.\\
 
 \begin{figure} [h!]
 	\begin{center}
@@ -141,13 +141,13 @@ Uno de los algoritos más populares, capaz de detectar y clasificar objetos prov
 	\label{fig:yolo}
 \end{figure}\
 
-Se basa en el uso de redes nueronales convolucionales, \textit{Convolutional neural network}. Se diferencia de una red neuronal tradicional, en que la operación de multiplición de matrices, se sustituye por una operación matemática llamada convolución, consistente en mezclar dos fuentes de información para producir una tercera, en este caso dos funciones.\\
+Se basa en el uso de redes neuronales convolucionales, \textit{Convolutional neural network} (CNN). Se diferencia de una red neuronal tradicional, en que la operación de multiplicación de matrices, se sustituye por una operación matemática llamada convolución, consistente en mezclar dos fuentes de información para producir una tercera, en este caso dos funciones.\\
 
-\textit{YOLO} hace uso, esencialmente, de tres técnicas para conseguir reconcer objetos:\\
+\textit{YOLO} hace uso, esencialmente, de tres técnicas para conseguir reconocer objetos:\\
 \begin{itemize}
 	\item División de la imagen en celdas: de esta forma se pueden detectar multitud de objetos en una imagen
 	\item Creación de \textit{bounding boxes}: cajas dibujando el contorno del objeto detectado y fijando la probabilidad de que el objeto detectado sea correcto
-	\item Intersección sobre la únion: consiste en seleccionar el \textit{bounding box} con mayor probabilidad cuando hay varios superpuestos
+	\item Intersección sobre la unión: consiste en seleccionar el \textit{bounding box} con mayor probabilidad cuando hay varios superpuestos
 \end{itemize}\
 
 \begin{figure} [h!]
@@ -164,10 +164,10 @@ Además, existen versiones reducidas de este algoritmo como, \textit{Tiny-YOLO} 
 
 \subsection{\textit{Darknet}}
 \label{subsection:darknet}
-\textit{Darknet}\footnote{\url{https://pjreddie.com/darknet/}} es un framework de código abierto que permite ejecutar y entrenar redes neuronales en tiempo real, ya que soporta tanto computación por CPU como GPU. Está escrito en \textit{C} y \textit{CUDA}, gracias a estar escrito en un lenguaje considerado de bajo nivel, ofrece un rendimiento aceptable en plataformas de bajo coste como \textit{NVIDIA Jetson Nano}.\\
+\textit{Darknet}\footnote{\url{https://pjreddie.com/darknet/}} es un \textit{framework} de código abierto que permite ejecutar y entrenar redes neuronales en tiempo real, ya que soporta tanto computación por CPU como GPU. Está escrito en \textit{C} y \textit{CUDA}, gracias a estar escrito en un lenguaje considerado de bajo nivel, ofrece un rendimiento aceptable en plataformas de bajo coste como \textit{NVIDIA Jetson Nano}.\\
 
 \subsection{\textit{LabelIMG}}
-\textit{LabelIMG}\footnote{\url{https://github.com/tzutalin/labelImg}} es una herramienta gráfica de código abierto que permite etiquetar objetos presentes en una imagen a través de la creación de cajas o \textit{bounding boxes} tal y como se observa en la Figura \ref{fig:labelimg}. Resulta muy útil para el entramiento de redes neuronales en las que se necesita una archivo txt asociado a cada imagen donde se indique las coordenadas de cada objeto.
+\textit{LabelIMG}\footnote{\url{https://github.com/tzutalin/labelImg}} es una herramienta gráfica de código abierto que permite etiquetar objetos presentes en una imagen a través de la creación de cajas o \textit{bounding boxes} tal y como se observa en la Figura \ref{fig:labelimg}. Resulta muy útil para el entrenamiento de redes neuronales en las que se necesita una archivo de texto asociado a cada imagen donde se indique las coordenadas de cada objeto.
 
 \begin{figure} [h!]
 	\begin{center}
@@ -180,7 +180,7 @@ Además, existen versiones reducidas de este algoritmo como, \textit{Tiny-YOLO} 
 
 \subsection{\textit{PyQt}}
 \label{subsection:pyqt}
-\textit{PyQt}\footnote{\url{https://pythonpyqt.com/what-is-pyqt/}} es una plataforma de código abierto que permite crear interfaces gráficas (\textit{GUI}) con el framework \textit{Qt} utilizando \textit{Python}, lo que simplifica mucho el desarrollo. Existen multitud de aplicaciones, desde un navegador\footnote{\url{https://github.com/qutebrowser/qutebrowser}} controlado únicamente con el teclado al estilo \textit{VIM}\footnote{\url{https://github.com/vim/vim}}, hasta un software de impresión 3D como \textit{Cura}.\\
+\textit{PyQt}\footnote{\url{https://pythonpyqt.com/what-is-pyqt/}} es una plataforma de código abierto que permite crear interfaces gráficas (\textit{GUI}) con el \textit{framework Qt} utilizando \textit{Python}, lo que simplifica mucho el desarrollo. Existen multitud de aplicaciones, desde un navegador\footnote{\url{https://github.com/qutebrowser/qutebrowser}} controlado únicamente con el teclado al estilo \textit{VIM}\footnote{\url{https://github.com/vim/vim}}, hasta un software de impresión 3D como \textit{Cura}.\\
 
 \begin{figure} [h!]
 	\begin{center}
