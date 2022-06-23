@@ -1,15 +1,12 @@
 \chapter{Plataforma de desarrollo}
 \label{cap:capitulo3}
-
-En este capítulo, se explica el hardware y software elegido para desarrollar el trabajo y los motivos de dicha elección.
+En este capítulo, se explica el hardware y software elegido para desarrollar el trabajo y los motivos de dicha elección.\\
 
 \section{Hardware}
-
-\section{Arquitectura}
 \label{sec:arquitectura}
 La decisión de qué arquitectura utilizar en un robot es determinante. Es necesario evaluar multitud de factores; consumo de energía, potencia requerida, tamaño y peso, sistema operativo a utilizar, posibilidad de recibir respuesta en \textit{real time}, precio etc...\\
 
-Existen multitud de arquitecturas utilizadas en proyectos robóticos \textit{x86}, \textit{x86\_64}, \textit{ARMv6}, \textit{ARMv7} o \textit{AArch64}. Pero, actualmente hay dos arquitecturas predominantes \textit{x86\_64} y \textit{AArch64}, ambas de \textit{64 bits}, ya que los 32 bits han quedado desfasados para la gran mayoría de aplicaciones, además, los nuevos sistemas operativos comienzan a no soportarlos.\\ \cite{canonical32bits}
+Existen multitud de arquitecturas utilizadas en proyectos robóticos \textit{x86}, \textit{x86\_64}, \textit{ARMv6}, \textit{ARMv7} o \textit{AArch64}. Pero, actualmente hay dos arquitecturas predominantes \textit{x86\_64} y \textit{AArch64}, ambas de 64 \textit{bits}, ya que los 32 \textit{bits} han quedado desfasados para la gran mayoría de aplicaciones, además, los nuevos sistemas operativos comienzan a no soportarlos \cite{canonical32bits}.\\ 
 
 Estas dos arquitecturas tienen grandes diferencias en cuanto al diseño de los procesadores y las instrucciones que utilizan:
 \begin{itemize}
@@ -17,31 +14,29 @@ Estas dos arquitecturas tienen grandes diferencias en cuanto al diseño de los p
 	\item Complex Instruction Set Computer (\textit{CISC}).
 \end{itemize}\
 
-El conjunto de instrucciones utilizado por \textit{AArch64} es \textit{CISC}, este conjunto se compone de gran cantidad de instrucciones y muchas de ellas complejas para realizar tareas que, el conjunto \textit{RISC}, puede realizar con varias instrucciones. Este último conjunto es utilizado por la arquitectura \textit{x86\_64}.\\
+El conjunto de instrucciones utilizado por \textit{AArch64} es \textit{CISC}, este conjunto se compone de gran cantidad de instrucciones y muchas de ellas complejas para realizar tareas que, el conjunto \textit{RISC}, puede realizar con varias instrucciones. Este último conjunto es utilizado por la arquitectura \textit{x86\_64}. En el mercado actual existen multitud de placas de desarrollo disponibles para realizar equipar a todo tipo de robots, algunas de ellas se encuentran en las Figuras \ref{fig:aarch64} y \ref{fig:x86}.\\
 
-Ejemplos representativos de \textit{AArch64}:
 \begin{figure} [h!]
 	\begin{center}
-		\includegraphics[width=0.9\textwidth]{figs/raspberrypi}\hspace{0.5cm}\includegraphics[width=0.9\textwidth]{figs/jetsonnano}
-		\caption{Equipos \textit{AArch64}: \textit{Raspberry Pi 4} y \textit{NVIDIA Jetson Nano}.}
+		\includegraphics[width=6cm]{figs/raspberrypi}\hspace{0.5cm}\includegraphics[width=6cm]{figs/jetsonnano}
 	\end{center}
+	\caption{Equipos \textit{AArch64}: \textit{Raspberry Pi 4} y \textit{NVIDIA Jetson Nano}.}
 	\label{fig:aarch64}
 \end{figure}\
 
-Ejemplos representativos de \textit{x86\_64}:
 \begin{figure} [h!]
 	\begin{center}
-		\includegraphics[width=0.9\textwidth]{figs/lattepanda}\hspace{0.5cm}\includegraphics[width=0.9\textwidth]{figs/teslazenrdna2}
-		\caption{Equipos  \textit{x86\_64}: \textit{LattePanda Alpha 864s} y \textit{AMD Zen} como CPU y \textit{Navi 23} como GPU, usado en Tesla Model S \cite{teslazenrdna2}.}
+		\includegraphics[width=6cm]{figs/lattepanda}\hspace{0.5cm}\includegraphics[width=6cm]{figs/teslazenrdna2}
 	\end{center}
+	\caption{Equipos \textit{x86\_64}: \textit{LattePanda Alpha 864s} y \textit{AMD Zen} (CPU) y \textit{Navi 23} (GPU), usado en Tesla Model S \cite{teslazenrdna2}.}
 	\label{fig:x86}
 \end{figure}\
 
 \subsection{\textit{NVIDIA Jetson Nano}}
 \label{subsection:jetsonnano}
-La placa de desarrollo \textit{NVIDIA Jetson Nano}\footnote{\url{https://developer.nvidia.com/embedded/jetson-nano}} (Figura \ref{fig:jetsonnano}) es una plataforma de bajo coste con grandes capacidades computacionales para implementar técnicas de inteligencia artificial gracias a su \textit{GPU} dedicada \textit{NVIDIA Maxwell}\footnote{\url{https://developer.nvidia.com/maxwell-compute-architecture}} con 128 \textit{NVIDIA CUDA cores}\footnote{\url{https://developer.nvidia.com/cuda-gpus}}, además dispone de una CPU \textit{Quad-core} basada en la arquitectura Aarch64 lo que permite ejecutar \textit{GNU/Linux} sin dificultades y ser compatible con numerosas bibliotecas de código. La placa en cuestión, dispone además de pines \textit{GPIO} lo que permite de forma muy sencilla conectar todo tipo de sensores y actuadores.\\
+La placa de desarrollo \textit{NVIDIA Jetson Nano}\footnote{\url{https://developer.nvidia.com/embedded/jetson-nano}} (Figura \ref{fig:jetsonnano}) es una plataforma de bajo coste con grandes capacidades computacionales para implementar técnicas de inteligencia artificial gracias a su \textit{GPU} dedicada, \textit{NVIDIA Maxwell}\footnote{\url{https://developer.nvidia.com/maxwell-compute-architecture}}, con 128 \textit{NVIDIA CUDA cores}\footnote{\url{https://developer.nvidia.com/cuda-gpus}}; además, dispone de una CPU \textit{Quad-core} basada en la arquitectura \textit{Aarch64} (o \textit{ARM64}), lo que permite ejecutar \textit{GNU/Linux} sin dificultades y ser compatible con numerosas bibliotecas de código. La placa dispone además de pines \textit{GPIO, General Purpose Input/Output} lo que permite de forma muy sencilla conectar todo tipo de sensores y actuadores.\\
 
-Los requisitos en lo que a alimentación se refiere no son excesivos, requiere un mínimo de 5 voltios (V) y 3 amperios (A), lo que permite que una simple \textit{powerbank} de reducido tamaño sea capaz de alimentar la placa, si bien es cierto que la batería debe poder ofrecer tres amperios de forma estable, y no solo como intensidad pico. Existen numerosos proyectos en los que esta placa está presente, tales como \textit{JetBot\footnote{\url{https://github.com/NVIDIA-AI-IOT/jetbot}}} o \textit{JetRacer}, que se detallará en la Sección \ref{subsection:jetracer}.\\
+Los requisitos en cuanto a alimentación no son excesivos; requiere un mínimo de 5 voltios (V) y 3 amperios (A), lo que permite que una simple \textit{powerbank} de reducido tamaño sea capaz de alimentar la placa, si bien es cierto que la batería debe poder ofrecer tres amperios de forma estable, y no solo como intensidad pico. Existen numerosos proyectos en los que esta placa está presente, tales como \textit{JetBot\footnote{\url{https://github.com/NVIDIA-AI-IOT/jetbot}}} o \textit{JetRacer}, que se detallará en la Sección \ref{subsection:jetracer}.\\
 
 \begin{figure} [h!]
 	\begin{center}
@@ -131,7 +126,7 @@ Se trata de un chasis de bajo coste muy común en proyectos relacionados con Ard
 
 \subsection{\textit{Gazebo}}
 \label{subsection:gazebo}
-\textit{Ignition Gazebo}\footnote{\url{https://github.com/gazebosim/gz-sim}} es un simulador 3D de código abierto desarrollado por la \textit{Open Source Robotics Foundation (OSRF)}\footnote{\url{https://www.openrobotics.org/}}, escrito en \textit{C++}, usado principalmente para simular comportamientos con gran precisión y gráficos de alta calidad en los que intervienen robots en un entorno dinámico, un ejemplo de ello se puede observar en la Figura \ref{fig:city}. Desde  Utiliza, por defecto, el motor de físicas \textit{ODE}\footnote{\url{https://bitbucket.org/odedevs/ode/src/master/}}, escrito también en \textit{C++}. Permite simular todo tipo de sensores y actuadores. Además, ofrece integración con \textit{ROS} de forma muy sencilla.\\
+\textit{Ignition Gazebo}\footnote{\url{https://github.com/gazebosim/gz-sim}} es un simulador 3D de código abierto desarrollado por la \textit{Open Source Robotics Foundation (OSRF)}\footnote{\url{https://www.openrobotics.org/}}, escrito en \textit{C++}, usado principalmente para simular comportamientos con gran precisión y gráficos de alta calidad en los que intervienen robots en un entorno dinámico, un ejemplo de ello se puede observar en la Figura \ref{fig:city}. Utiliza, por defecto, el motor de físicas \textit{ODE}\footnote{\url{https://bitbucket.org/odedevs/ode/src/master/}}, escrito también en \textit{C++}. Permite simular todo tipo de sensores y actuadores. Además, ofrece integración con \textit{ROS} de forma muy sencilla.\\
 
 \begin{figure} [h!]
 	\begin{center}
@@ -242,5 +237,3 @@ A su vez esta librería utiliza otras tres cruciales para poder implementar su s
 	\caption{Interfaz \textit{notebook} para ajustar controlador P.}
 	\label{fig:livejetracer}
 \end{figure}\
-
-% Referencias del capítulo 2 al 3?

@@ -6,7 +6,7 @@ En la actualidad, los vehículos autónomos están en auge; cada vez tenemos má
 
 \section{Inteligencia artificial}
 \label{sec:ia}
-La inteligencia artificial (o \textit{Artifical Intelligence}, (\textit{IA})) es la disciplina que intenta entender y emular el comportamiento humano. Tiene como objetivo dotar a sistemas, entre los que se encuentran los robots, de cierta inteligencia y de la capacidad de aprender. Existen multitud de ramas que parten de la inteligencia artificial, como por ejemplo, la visión artificial, el aprendizaje autómatico o el aprendizaje profundo. Estas técnicas permiten tomar decisiones o clasificar datos en base a una información de entrada que, en algunos casos, requiere de un entrenamiento previo mediante un conjunto grande de datos conocidos como \textit{datasets}. A través de esta información, los algoritmos que integran este tipo de técnicas obtienen lo necesario para poder inferir, por ejemplo, los objetos presentes en una imagen.\\  
+La inteligencia artificial (o \textit{Artifical Intelligence}, (\textit{IA})) es la disciplina que intenta entender y emular el comportamiento humano. Tiene como objetivo dotar a sistemas, entre los que se encuentran los robots, de cierta inteligencia y de la capacidad de aprender. Existen multitud de ramas que parten de la inteligencia artificial, como por ejemplo, la visión artificial, el aprendizaje automático o el aprendizaje profundo. Estas técnicas permiten tomar decisiones o clasificar datos en base a una información de entrada que, en algunos casos, requiere de un entrenamiento previo mediante un conjunto grande de datos conocidos como \textit{datasets}. A través de esta información, los algoritmos que integran este tipo de técnicas obtienen lo necesario para poder inferir, por ejemplo, los objetos presentes en una imagen.\\  
 
 \section{Visión artificial}
 \label{sec:vision}
@@ -26,11 +26,11 @@ Un ejemplo de \textit{FIR} es \textit{BMW's FIR-based Autoliv Night Vision Syste
 	\begin{center}
 		\includegraphics[width=8cm]{figs/nightvision}
 	\end{center}
-	\caption{\textit{BMW's FIR-based Autoliv Night Vision System}.}
+	\caption{Sistema de visión nocturna desarrollado por \textit{BMW}.}
 	\label{fig:nightvision}
 \end{figure}\
 
-Una información de la imagen que puede resultar de interés es la distancia a la que se encuentra un objeto en concreto. Para calcularla, existen diversas soluciones. Por ejemplo, encontamos una solución con una única cámara, basada en la suposición de que todos los objetos se encuentran situados en el suelo en \cite{vega19d} o \cite{distanceopencv}. Para eliminar esta restricción y poder conocer distancias de objetos que no se encuentran situados en el suelo surgen las \textit{cámaras RGBD}, en las que cada píxel de la imagen proporciona, además del color RGB, una tercera componente, la profundidad o \textit{depth}. Una de las primeras cámaras \textit{RGBD} comerciales es la \textit{Kinect}, desarrollada por \textit{Microsoft} para su consola \textit{Xbox 360} (Figura \ref{fig:kinect}).\\
+Una información de la imagen que puede resultar de interés es la distancia a la que se encuentra un objeto en concreto. Para calcularla, existen diversas soluciones. Por ejemplo, encontramos una solución con una única cámara, basada en la suposición de que todos los objetos se encuentran situados en el suelo en \cite{vega19d} o \cite{distanceopencv}. Para eliminar esta restricción y poder conocer distancias de objetos que no se encuentran situados en el suelo surgen las \textit{cámaras RGBD}, en las que cada píxel de la imagen proporciona, además del color RGB, una tercera componente, la profundidad o \textit{depth}. Una de las primeras cámaras \textit{RGBD} comerciales es la \textit{Kinect}, desarrollada por \textit{Microsoft} para su consola \textit{Xbox 360} (Figura \ref{fig:kinect}).\\
 
 \begin{figure} [h!]
 	\begin{center}
@@ -44,7 +44,7 @@ La visión artificial ofrece multitud de posibilidades, más allá de la robóti
 
 \section{Deep Learning}
 \label{sec:deeplearning}
-El Aprendizaje Profundo, se basa en el uso de redes neuronales artificales (o {\textit{Artificial Neural Network}}, (\textit{ANN})) que parten del aprendizaje automático, \textit{Machine Learning} que a su vez surge de la Inteligencia Artificial, \textit{Artificial Intelligence} (\textit{AI}). Las red neuronales está inspiradas en el cerebro humano donde una neurona se comunica con otra mediante señales. En el caso de su abstracción al mundo de la computación, una red está formada por una capa de entrada, una o más capas internas y una capa de salida (Figura \ref{fig:neuralnetwork}\footnote{\url{https://www.ibm.com/cloud/learn/neural-networks}}). Estas redes neuronales necesitan ser entrenadas mediante el concepto anteriormente introducido, de \textit{dataset}. A partir de este entrenamiento, la red es capaz de aprender y aumentar su precisión para que el resultado obtenido tenga fiabilidad.\\
+El Aprendizaje Profundo, se basa en el uso de redes neuronales artificiales (o {\textit{Artificial Neural Network}}, (\textit{ANN})) que parten del aprendizaje automático, \textit{Machine Learning} que a su vez surge de la Inteligencia Artificial, \textit{Artificial Intelligence} (\textit{AI}). Las red neuronales está inspiradas en el cerebro humano donde una neurona se comunica con otra mediante señales. En el caso de su abstracción al mundo de la computación, una red está formada por una capa de entrada, una o más capas internas y una capa de salida (Figura \ref{fig:neuralnetwork}\footnote{\url{https://www.ibm.com/cloud/learn/neural-networks}}). Estas redes neuronales necesitan ser entrenadas mediante el concepto anteriormente introducido, de \textit{dataset}. A partir de este entrenamiento, la red es capaz de aprender y aumentar su precisión para que el resultado obtenido tenga fiabilidad.\\
 
 \begin{figure} [h!]
 	\begin{center}
