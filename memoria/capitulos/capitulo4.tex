@@ -1,17 +1,26 @@
 \chapter{Diseño}
 \label{cap:capitulo4}
-
 En este capítulo se describe el trabajo realizado y los experimentos llevados a cabo para validar el desarrollo.\\
 
-El trabajo, como se explicó en el Capítulo 2, se ha dividido en dos fases; primero se realiza una simulación del coche autónomo en una ciudad simplificada, para a continuación, reproducir ese mismo escenario en un entorno real.\\
+El trabajo, como se explicó en el Capítulo 2, se ha dividido en dos fases: primero se realiza una simulación del coche autónomo en una ciudad simplificada para, a continuación, reproducir ese mismo escenario en un entorno real. En la siguiente sección se detalla el diseño del software implementado de forma común (con ligeras diferencias) en los dos entornos.\\
+
+\section{Diseño del software a partir de un diagrama de clases}
+El diseño del software se ha realizado a partir de un diagrama de clases, utilizando la herramienta \textit{UMLET\footnote{\url{hhttps://www.umlet.com/}}}, que permite crear clases, dependencias entre ellas, y los atributos y funciones que contiene. El presente diseño, representado en la Figura \ref{fig:diagram}, contiene una clase principal llamada \textit{AutonomousVehicle}, que tiene instancias de la clase \textit{LaneFollower}, la cual implementa el seguimiento de carril. La clase \textit{JetRacer}, que implementa el controlador del vehículo y la comunicación con los motores del mismo. También contiene una instancia de la clase \textit{ObjectDetector} que implementa la detección de objetos y, a su vez, la clase \textit{ObjectDetector}, que hace uso del flujo de vídeo proveniente de un \textit{topic} de \textit{ROS}.
+\begin{figure} [h!]
+	\begin{center}
+		\includegraphics[width=16cm]{figs/diagram5}
+	\end{center}
+	\caption{Diagrama de clases.}
+	\label{fig:diagram}
+\end{figure}\
 
 \section{Entorno simulado}
 \label{section:simulation}
-Para poder simular el comportamiento deseado en un entorno simulado es necesario disponer de dos elementos; un modelo del coche autónomo y un mundo dinámico con el que el vehículo interactuará, todo ello ejecutado dentro de un simulador, en este caso, como se explicó anteriormente, en \textit{Gazebo}.\\
+Para poder probar el comportamiento deseado en un entorno simulado es necesario disponer de dos elementos: un modelo del coche autónomo, y un mundo dinámico con el que el vehículo interactuará. Todo ello se ejecuta dentro de un simulador, en este caso, como se explicó anteriormente, en \textit{Gazebo}.\\
 
 \subsection{Modelo de la ciudad}
 \label{subsection:citymodel}
-Existen numerosos mundos diseñados para \textit{Gazebo} disponibles en repositorios de \textit{GitHub}\footnote{\url{https://github.com/chaolmu/gazebo_models_worlds_collection}}\footnote{\url{https://github.com/mlherd/Dataset-of-Gazebo-Worlds-Models-and-Maps}}. En el caso que se plantea, es necesario una ciudad, por lo que partiendo de una ciudad\footnote{\url{https://github.com/chaolmu/gazebo_models_worlds_collection/blob/master/worlds/small_city.world}} de gran tamaño se reduce su tamaño con el objetivo de, posteriormente, poder reproducir ese escenario en el mundo real. En la Figura \ref{fig:cityversus} se observan ambas ciudades.\\
+Existen numerosos mundos diseñados para \textit{Gazebo} disponibles en repositorios de \textit{GitHub}\footnote{\url{https://github.com/chaolmu/gazebo_models_worlds_collection}}\footnote{\url{https://github.com/mlherd/Dataset-of-Gazebo-Worlds-Models-and-Maps}}. En el caso que se plantea en este trabajo, es necesario una ciudad, pero no de tamaño natural, por lo que, partiendo de una ciudad\footnote{\url{https://github.com/chaolmu/gazebo_models_worlds_collection/blob/master/worlds/small_city.world}} de tamaño natural se reduce su tamaño para, posteriormente, poder reproducir ese mismo escenario en el mundo real. En la Figura \ref{fig:cityversus} se observan ambas ciudades.\\
 
 \begin{figure} [h!]
 	\begin{center}
@@ -21,7 +30,7 @@ Existen numerosos mundos diseñados para \textit{Gazebo} disponibles en reposito
 	\label{fig:cityversus}
 \end{figure}\
 
-El modelo de esta ciudad es estático, es decir, no contiene elementos dinámicos, por lo que es necesario añadir dos tipos de elementos; un semáforo y un peatón que cruce un paso de peatones. Para ello, es necesario añadir dos \textit{plugins} para \textit{Gazebo}. En primer lugar, y usando un modelo \textit{SDF} que integra el \textit{plugin} de cambio de color en el semáforo\footnote{\url{https://github.com/robustify/gazebo_traffic_light}}. Dicho \textit{plugin} tiene asociado un fichero de configuración en formato \textit{YAML}, Código \ref{cod:trafficlight}, en el que se especifica la secuencia de estados del semáforo y su duración en el tiempo.\\
+El modelo de esta ciudad es estático, es decir, no contiene elementos dinámicos, por lo que es necesario añadir dos tipos de elementos: un semáforo y un peatón que cruce un paso de peatones. Para ello, es necesario añadir dos \textit{plugins} para \textit{Gazebo}. El primero de estos se obtiene usando un modelo \textit{SDF} que integra el \textit{plugin} de cambio de color en el semáforo\footnote{\url{https://github.com/robustify/gazebo_traffic_light}}. Dicho \textit{plugin} tiene asociado un fichero de configuración en formato \textit{YAML} (Código \ref{cod:trafficlight}), en el que se especifica la secuencia de estados del semáforo y su duración en el tiempo.\\
 
 \begin{code}[h]
 	\begin{lstlisting}
@@ -34,7 +43,7 @@ El modelo de esta ciudad es estático, es decir, no contiene elementos dinámico
 	\label{cod:trafficlight}
 \end{code}
 
-El segundo \textit{plugin} proporciona movimiento a un modelo de un humano llamado actor. Está disponible en otro repositorio\footnote{\url{https://github.com/BruceChanJianLe/gazebo-plugin-autonomous-actor}} de \textit{GitHub} y permite que el humano se desplace en el mundo de forma realista. El \textit{plugin} citado también permite configuración para especificar la ruta de puntos o \textit{waypoints} que el peatón ha de seguir, así como, su velocidad o la distancia mínima a la que debe situarse respecto a un obstáculo. Dicha configuración se realiza directamente en el fichero \textit{SDF}, como muestra el Código \ref{cod:pedestrianconfiguration}.\\
+El segundo \textit{plugin} proporciona movimiento a un modelo de un humano(que se denomina actor). Este está disponible en otro repositorio\footnote{\url{https://github.com/BruceChanJianLe/gazebo-plugin-autonomous-actor}} de \textit{GitHub} y permite que el humano se desplace en el mundo de forma realista. Este \textit{plugin} se puede configurar para especificar la ruta de puntos o \textit{waypoints} que el peatón ha de seguir, así como su velocidad o la distancia mínima a la que debe situarse respecto a un obstáculo. Dicha configuración se realiza directamente en el fichero \textit{SDF}, como muestra el Código \ref{cod:pedestrianconfiguration}.\\
 
 \begin{code}[h]
 	\begin{lstlisting}
@@ -70,35 +79,25 @@ Ambos modelos se sitúan en una paso de peatones, creado a partir de láminas bl
 
 \subsection{Modelo del coche autónomo}
 \label{subsection:vehiclemodel}
-El primer paso para desarrollar un modelo es diseñar las piezas a utilizar, para ello, como se explicó en el Capítulo 2, se utilizará \textit{FreeCAD}. El segundo paso es ensamblar el robot con \textit{Blender} utilizando el \textit{add-on} \textit{Phobos} para definir los \textit{links} y \textit{joints} del robot con el objetivo de dotar al robot de movimiento, generando un fichero \textit{URDF}. Por último, es necesario modificar el \textit{URDF} para añadir cámaras y controladores para los motores que serán usados en el simulador \textit{Gazebo}.\\
+El primer paso para desarrollar un modelo es diseñar las piezas a utilizar; para ello, como se explicó en el Capítulo 2, se utilizará \textit{FreeCAD}. El segundo paso es ensamblar el robot con \textit{Blender} utilizando el \textit{add-on} \textit{Phobos} para definir los \textit{links} y \textit{joints} del robot con el objetivo de dotar al robot de movimiento, generando un fichero \textit{URDF}. Por último, es necesario modificar el \textit{URDF} para añadir cámaras y controladores para los motores que serán usados en el simulador \textit{Gazebo}.\\
 
 \subsubsection{Diseño de las piezas en \textit{FreeCAD}}
-
-A través de la herramienta \textit{Sketcher}\footnote{\url{https://wiki.freecadweb.org/Sketcher_Workbench}}, disponible en \textit{FreeCAD}, es posible realizar un diseño de piezas en 2D con restricciones de horizontalidad, verticalidad, igualdad entre rectas, medidas, ángulos etc y después convertir dicha pieza en 3D proporcionando un volumen a la pieza. Utilizando dicha herramienta se diseña el chasis y las ruedas del vehículo tomando las medidas reales, lo que da como resultado el diseño de las piezas en 2D de la Figura \ref{fig:design2Dfreecad}.\\
-
-\begin{figure} [h!]
-	\begin{center}
-		\includegraphics[width=8cm]{figs/sketchFreecad}
-	\end{center}
-	\caption{Diseño del chasis 2D en \textit{FreeCAD}.}
-	\label{fig:design2Dfreecad}
-\end{figure}\
-
-A continuación se proporciona un grosor al chasis de 3mm y a las ruedas de xmm, obteniendo el modelo 3D de la Figura \ref{fig:design3Dfreecad}.\\
+A través de la herramienta \textit{Sketcher}\footnote{\url{https://wiki.freecadweb.org/Sketcher_Workbench}}, disponible en \textit{FreeCAD}, es posible realizar un diseño de piezas en 2D con restricciones de horizontalidad, verticalidad, igualdad entre rectas, medidas, ángulos, etc. Y después convertir dicha pieza en 3D proporcionando un volumen a la pieza. Utilizando dicha herramienta se diseña el chasis y las ruedas del vehículo tomando las medidas reales, lo que da como resultado el diseño de las piezas en 2D de la Figura \ref{fig:designfreecad}.\\
 
 \begin{figure} [h!]
 	\begin{center}
-		\includegraphics[width=8cm]{figs/freecad}
+		\includegraphics[width=7cm]{figs/sketchFreecad}\hspace{0.1cm}\includegraphics[width=7cm]{figs/freecad}
 	\end{center}
-	\caption{Diseño de las piezas 3D en \textit{FreeCAD}.}
-	\label{fig:design3Dfreecad}
+	\caption{Diseño del chasis 2D y 3D en \textit{FreeCAD}.}
+	\label{fig:designfreecad}
 \end{figure}\
 
-El siguiente paso es exportar las piezas diseñadas en formato \textit{STL} para utilizarlas en \textit{Blender}.\\
+A continuación se proporciona un grosor al chasis de 3mm y a las ruedas de 26mm, obteniendo el modelo 3D de la Figura \ref{fig:designfreecad}.\\
+
+El siguiente paso es exportar las piezas diseñadas a formato \textit{STL}, para poder ser utilizadas en \textit{Blender}.\\
 
 \subsubsection{Ensamblado del robot en \textit{Blender}}
-
-Una vez importadas las piezas diseñadas en \textit{FreeCAD}, se crean dos unidades del chasis y cuatro ruedas, a continuación se mueven y rotan en el espacio para situarlas correctamente. Con el objetivo de dotar de mayor realismo al modelo, se importan modelos de los motores\footnote{\url{https://grabcad.com/library/tt-motor-1}} y la placa\footnote{\url{https://github.com/57Bravo/jetson_nano_enc}} utilizados. Y se diseñan dos piezas para emular la batería y la cámara del robot. Con todo ello se conforma el modelo estático del robot, Figura \ref{fig:blendermodel}.\\
+Una vez importadas las piezas diseñadas en \textit{FreeCAD}, se crean dos unidades del chasis y cuatro ruedas, a continuación se mueven y rotan en el espacio para situarlas correctamente. Con el objetivo de dotar de mayor realismo al modelo, se importan modelos de los motores\footnote{\url{https://grabcad.com/library/tt-motor-1}} y la placa\footnote{\url{https://github.com/57Bravo/jetson_nano_enc}} utilizados. Finalmente, se diseñan dos piezas para emular la batería y la cámara del robot. Con todo ello se conforma el modelo estático del robot(Figura \ref{fig:blendermodel}).\\
 
 \begin{figure} [h!]
 	\begin{center}
@@ -108,16 +107,16 @@ Una vez importadas las piezas diseñadas en \textit{FreeCAD}, se crean dos unida
 	\label{fig:blendermodel}
 \end{figure}\
 
-Este modelo es estático, es decir, no es posible simular un movimiento. Para ello es necesario un \textit{add-on} para \textit{Blender} como \textit{Phobos}, que como se explicó anteriormente, permite crear \textit{links} y \textit{joints} y definir una jerarquía entre ellos.\\
+Este modelo es estático, es decir, no es posible simular un movimiento. Para ello es necesario un \textit{add-on} para \textit{Blender}, como \textit{Phobos} que -como se explicó anteriormente- permite crear \textit{links} y \textit{joints} y definir una jerarquía entre ellos.\\
 
-En primer lugar, es necesario definir los elementos visuales que compondrán el modelo, en este caso serán todas las piezas del robot, dichas piezas serán del tipo \textit{mesh}, ya que no son objetos primitivos, como cajas o esferas.\\
+En primer lugar, es necesario definir los elementos visuales que compondrán el modelo; en este caso, serán todas las piezas del robot, que serán del tipo \textit{mesh}, ya que no son objetos primitivos como cajas o esferas.\\
 
-A continuación, se define un \textit{link} principal que será el cuerpo del robot, de este \textit{link} dependerán las cuatro ruedas del vehículo. Con el objetivo de simular colisiones, se crea un modelo de colisión de cada una de las piezas y un modelo inercial, que estará relacionado con el peso simulado de cada pieza.\\
+A continuación, se define un \textit{link} principal que será el cuerpo del robot; de este \textit{link} dependerán las cuatro ruedas del vehículo. Con el objetivo de simular colisiones, se crea un modelo de colisión de cada una de las piezas y un modelo inercial, que estará relacionado con el peso simulado de cada pieza.\\
 
-Por último, se definen los \textit{joints} de cada rueda. A través de está funcionalidad es posible aplicar fuerza o velocidad a las ruedas del robot. Existen diferentes tipos de
-\textit{joints} en \textit{Phobos}; \textit{fixed}, \textit{revolute}, \textit{continuous}, \textit{prismatic}, en este caso, son necesarios \textit{joints} de tipo \textit{continuous}, ya que las ruedas realizan un giro sin un límite fijado, y no un movimiento transversal.\\
+Por último, se definen los \textit{joints} de cada rueda. A través de está funcionalidad se puede aplicar fuerza o velocidad a las ruedas del robot. Existen diferentes tipos de
+\textit{joints} en \textit{Phobos}: \textit{fixed}, \textit{revolute}, \textit{continuous}, \textit{prismatic}, etc. En este caso, son necesarios \textit{joints} de tipo \textit{continuous}, ya que las ruedas realizan un giro sin un límite fijado, y no un movimiento transversal.\\
 
-Una vez definidos todos los elementos del modelo y su jerarquía, en el menú lateral de \textit{Blender} se encontrará el diagrama del modelo, Figura \ref{fig:blenderdiagram}.\\
+Una vez definidos todos los elementos del modelo y su jerarquía, en el menú lateral de \textit{Blender} se encontrará el diagrama del modelo (Figura \ref{fig:blenderdiagram}).\\
 
 \begin{figure} [h!]
 	\begin{center}
@@ -127,7 +126,7 @@ Una vez definidos todos los elementos del modelo y su jerarquía, en el menú la
 	\label{fig:blenderdiagram}
 \end{figure}\
 
-El siguiente paso es exportar el modelo a formato \textit{URDF}, que como se explicó anteriormente, es el aceptado por \textit{Gazebo} para simular modelos de robots. Las mallas, que componen el modelo visual y de colisiones, se exportan en formato \textit{DAE}, y se cargan desde el modelo \textit{URDF}.\\
+El siguiente paso es exportar el modelo a formato \textit{URDF} que, como se explicó anteriormente, es el aceptado por \textit{Gazebo} para simular modelos de robots. Las mallas, que componen el modelo visual y de colisiones, se exportan en formato \textit{DAE}, y se cargan desde el modelo \textit{URDF}.\\
 
 \subsubsection{Adición de plugins para \textit{Gazebo}}
 
@@ -145,7 +144,7 @@ Con el objetivo de mover el robot utilizando el \textit{middleware ROS}, es nece
 	\label{cod:gazeboroscontrol}
 \end{code}
 
-Otro elemento a añadir en el fichero \textit{URDF}, es la existencia de dos cámaras; una cámara \textit{onboard} y otra situada encima del robot que proporcionará una visión de la ruta realizada. Dichas cámaras simuladas publicarán su imagen en un \textit{topic} de \textit{ROS} con una resolución y un formato fijado mediante el Código \ref{cod:gazebocamera}.\\
+Otro elemento a añadir en el fichero \textit{URDF} es la existencia de dos cámaras: una cámara \textit{onboard} y otra situada encima del robot que proporcionará una visión de la ruta realizada. Dichas cámaras simuladas publicarán su imagen en un \textit{topic} de \textit{ROS} con una resolución y un formato fijado mediante el Código \ref{cod:gazebocamera}.\\
 
 \begin{code}[h]
 	\begin{lstlisting}[language=XML]
@@ -169,7 +168,7 @@ Otro elemento a añadir en el fichero \textit{URDF}, es la existencia de dos cá
 	\label{cod:gazebocamera}
 \end{code}
 
-Para mover el robot simulado también será necesario un fichero \textit{YAML}, en el que se especifiquen los controladores de los \textit{joints} y el nombre de los \textit{topics} en los que se publicarán los mensajes mediante el Código \ref{cod:controllers}.\\
+Para mover el robot simulado también será necesario un fichero \textit{YAML} en el que se especifiquen los controladores de los \textit{joints} y el nombre de los \textit{topics} en los que se publicarán los mensajes mediante el Código \ref{cod:controllers}.\\
 
 \begin{code}[h]
 	\begin{lstlisting}
@@ -194,7 +193,7 @@ Para mover el robot simulado también será necesario un fichero \textit{YAML}, 
 	\label{cod:controllers}
 \end{code}
 
-Con todo ello, se implementa un \textit{launcher}\footnote{\url{https://github.com/jmvega/tfg-amariscal/src/launcher......}} que lanza el modelo dińamico del robot y se muestra en la ciudad simulada tal y como se representa en la Figura \ref{fig:modelGazebo}.\\
+Con todo ello, se implementa un \textit{launcher} que lanza el modelo dińamico del robot y se muestra en la ciudad simulada, tal y como se representa en la Figura \ref{fig:modelGazebo}.\\
 
 \begin{figure} [h!]
 	\begin{center}
@@ -206,10 +205,9 @@ Con todo ello, se implementa un \textit{launcher}\footnote{\url{https://github.c
 
 \subsection{Seguimiento de carril}
 \label{subsection:lanefollower}
-\footnote{\url{https://github.com/jmvega/tfg-amariscal/src/......... interactive_regression_ros}}
-Como se explicó en el Capítulo 2, la biblioteca elegida para realizar el seguimiento de carril, es \textit{JetRacer} tal y como se expuso en la Sección \ref{subsection:jetracer}. Dicha biblioteca se basa en la utilización de una red \textit{ResNet-18} preentrenada, consistente en una red neuronal convolucional de 18 capas, sobre la que a su vez, se entrena con un \textit{dataset} de un escaso mínimo número de imágenes. Proporciona diversos \textit{notebooks} de \textit{Jupyter} que hacen más la sencilla la obtención del \textit{dataset}, el entrenamiento y el ajuste del controlador.\\
+Como se explicó en el Capítulo 2, la biblioteca elegida para realizar el seguimiento de carril es \textit{JetRacer}, tal y como se expuso en la Sección \ref{subsection:jetracer}. Dicha biblioteca se basa en la utilización de una red \textit{ResNet-18} preentrenada, consistente en una red neuronal convolucional de 18 capas sobre la que, a su vez, se entrena con un \textit{dataset} con un reducido número de imágenes. Esta proporciona diversos \textit{notebooks}\footnote{\url{https://github.com/NVIDIA-AI-IOT/jetracer/tree/master/notebooks}} de \textit{Jupyter} que hacen más la sencilla la obtención del \textit{dataset}, el entrenamiento y el ajuste del controlador.\\
 
-El primer paso es la obtención del \textit{dataset} para posteriormente entrenar la red. Para ello, es necesario asociar cada imagen con el centro del carril, definido a partir de una coordenada en x y otra en y. La librería utiliza un \textit{widget} para \textit{Jupyter} llamado \textit{Jupyter Clickable Image Widget\footnote{\url{https://github.com/jaybdub/jupyter_clickable_image_widget}}} lo que permite que al hacer click sobre la imagen recibida a partir de un flujo de vídeo, esta se guarde con un nombre atendiendo al siguiente formato: \textit{x\_y\_identificador\_unico.jpg}. Es importante entrenar también con imágenes donde el ángulo del giro del robot sea elevado, tal y como muestra la Figura \ref{fig:traineddifficult} ya que de esa forma el robot sabrá reaccionar ante situaciones difíciles.\\
+El primer paso es la obtención del \textit{dataset} para posteriormente entrenar la red. Para ello, es necesario asociar cada imagen con el centro del carril, definido a partir de una coordenada en el eje x y otra en eje y. La librería utiliza un \textit{widget} para \textit{Jupyter} llamado \textit{Jupyter Clickable Image Widget\footnote{\url{https://github.com/jaybdub/jupyter_clickable_image_widget}}}, lo que permite que al hacer click sobre la imagen recibida a partir de un flujo de vídeo, esta se guarde con un nombre atendiendo al siguiente formato: \textit{x\_y\_identificador\_unico.jpg}. Es importante entrenar también con imágenes donde el ángulo del giro del robot sea elevado, tal y como muestra la Figura \ref{fig:traineddifficult} ya que de esa forma el robot sabrá reaccionar ante situaciones difíciles.\\
 
 \begin{figure} [h!]
 	\begin{center}
@@ -219,23 +217,24 @@ El primer paso es la obtención del \textit{dataset} para posteriormente entrena
 	\label{fig:traineddifficult}
 \end{figure}\
 
-Para mover el robot dentro del simulador es necesario utilizar los controladores de los motores anteriormente desarrollados y para mayor comodidad, se realizó un control manual a través de una interfaz con \textit{PyQT} que se detallará en la Sección \ref{subsection:interface}.\\
+Para mover el robot dentro del simulador es necesario utilizar los controladores de los motores anteriormente desarrollados y, para mayor comodidad, se realizó un control manual a través de una interfaz con \textit{PyQT}, que se detallará en la Sección \ref{subsection:interface}.\\
 
-Una vez obtenido el \textit{dataset}, se descarga el modelo preentrenado \textit{ResNet-18} utilizando la librería \textit{Torchvision} y se realiza una conversión para aprovechar los núcleos de la tarjeta gráfica mediante la plataforma \textit{CUDA} a través de la función \verb|to(device)| donde \verb|device| es \verb|torch.device('cuda')|.\\
+Una vez obtenido el \textit{dataset} se descarga el modelo preentrenado \textit{ResNet-18}, utilizando para ello la librería \textit{Torchvision}, y se realiza una conversión para aprovechar los núcleos de la tarjeta gráfica mediante la plataforma \textit{CUDA} a través de la función \verb|to(device)|, donde \verb|device| es \verb|torch.device('cuda')|.\\
 
-El siguiente paso es el entrenamiento de la red. Para ello, en cada \textit{epoch} se calcula el error cuadrático medio, \textit{mean squared error (MSE loss)} entre una de las imágenes del \textit{dataset} y la salida actual de la red. Una vez calculado este error se realiza la propagación hacia detrás, \textit{backpropagation}, consistente en la propagación de los errores desde la capa de salida hasta la primera capa. Además se realiza una optimización de los pesos a través del algoritmo \textit{Adam} \cite{adam}, el cual es un método de optimización estocástica basado en el cálculo de las tasas individuales adaptables de entrenamiento, \textit{individual adaptive learning rates} a partir de estimaciones del primer y segundo momento del gradiente.\\
+El siguiente paso es el entrenamiento de la red. Para ello, en cada \textit{epoch} se calcula el error cuadrático medio (\textit{Mean Squared Error, MSE loss}) entre una de las imágenes del \textit{dataset} y la salida actual de la red. Una vez calculado este \textit{loss} se realiza la propagación hacia detrás (o \textit{backpropagation}), consistente en la propagación de los errores desde la capa de salida hasta la primera capa. Además, se realiza una optimización de los pesos a través del algoritmo \textit{Adam} \cite{adam}, el cual es un método de optimización estocástica basado en el cálculo de las tasas individuales adaptables de entrenamiento, (\textit{individual adaptive learning rates}) a partir de estimaciones del primer y segundo momento del gradiente.\\
 
-Para realizar el entrenamiento hay que fijar un número de \textit{epochs} que será el momento en el que el entrenamiento finalizará. En cada \textit{epoch} el error va bajando hasta llegar a un valor cercano a 0, dependiendo del número de imágenes del \textit{dataset} el tiempo invertido en realizar una \textit{epoch} será mayor o menor. En el caso del entrenamiento realizado, en 10 \textit{epochs} el error alcanzó el valor de 0.0117 tal y como representa la Figura \ref{fig:epochsimulator}.\\
+Para realizar el entrenamiento hay que fijar un número de \textit{epochs}, que será el momento en el que el entrenamiento finalizará. En cada \textit{epoch} el error va bajando hasta llegar a un valor cercano a 0; dependiendo del número de imágenes del \textit{dataset}, el tiempo invertido en realizar una \textit{epoch} será mayor o menor. En el caso del entrenamiento realizado, en 7 \textit{epochs} el \textit{loss} alcanzó el valor de 0.0068, tal y como se muestra en la Figura \ref{fig:simgraphepoch}.\\
 
 \begin{figure} [h!]
 	\begin{center}
-		\includegraphics[width=8cm]{figs/epochSimulator}
+		\includegraphics[width=14cm]{figs/simgraphepoch}
 	\end{center}
-	\caption{Valor del error al finalizar el entrenamiento en el entorno simulado.}
-	\label{fig:epochsimulator}
+	\caption{Representación del descenso del \textit{loss} durante el entrenamiento.}
+	\label{fig:simgraphepoch}
 \end{figure}\
 
-Tanto el entrenamiento como la ejecución de la red neuronal recibe imágenes de una baja resolución, 240 píxeles, ya que está diseñada para funcionar en placas de bajas prestaciones. Tras realizar el entrenamiento se genera un modelo \textit{.pth}. Para poder obtener la salida de la red es necesario pasar como argumento al modelo, el resultado de la función \verb|preprocess(image)|, que devuelve un tensor a partir de una imagen en formato \verb|numpy.ndarray|, tal y como se observa en el Código \ref{cod:lane}. Tras obtener la salida es posible representar el centro del carril con el resultado de la Figura \ref{fig:outputnnsim}.\\
+
+Tanto el entrenamiento como la ejecución de la red neuronal recibe imágenes de una baja resolución, 240 píxeles, ya que está diseñada para funcionar en placas de bajas prestaciones. Tras realizar el entrenamiento se genera un modelo \textit{.pth}. Para poder obtener la salida de la red es necesario pasar como argumento al modelo el resultado de la función \verb|preprocess(image)|, que devuelve un tensor a partir de una imagen en formato \verb|numpy.ndarray|, tal y como se observa en el Código \ref{cod:lane}. Tras obtener la salida es posible representar el centro del carril con el resultado de la Figura \ref{fig:outputnnsim}.\\
 
 \begin{code}[h]
 	\begin{lstlisting}[language=Python]
@@ -255,11 +254,11 @@ Tanto el entrenamiento como la ejecución de la red neuronal recibe imágenes de
 	\label{fig:outputnnsim}
 \end{figure}\
 
-En el caso del simulador y al ser una plataforma de pruebas, el objetivo principal es entrenar la red y probar su efectividad en un entorno simulado, y no desarrollar un controlador a partir de la salida de la red. Por lo que el seguimiento del carril se realizará mediante un autómata que recorrerá la ciudad de forma que se pueda observar el comportamiento de la red neuronal.\\
+En el caso del simulador, y al ser una plataforma de pruebas, el objetivo principal es entrenar la red y probar su efectividad en un entorno simulado, y no desarrollar un controlador a partir de la salida de la red, por lo que el seguimiento del carril se realizará mediante un autómata que recorrerá la ciudad, de forma que se pueda observar el comportamiento de la red neuronal.\\
 
 \subsection{Detección de objetos}
 \label{subsection:objectdetector}
-La detección de objetos se ha llevado a cabo mediante una red neuronal convolucional llamada \textit{YOLO V3 Tiny} debido a su gran rendimiento en placas de reducida potencia. La versión \textit{Tiny-YOLO} reduce el número de capas y precisión de detección pero aumenta la tasa de \textit{FPS} por lo que es muy conveniente su uso en dispositivos como \textit{NVIDIA Jetson Nano}. Existen distintas versiones de \textit{Tiny-YOLO}. La tercera versión cuenta con 15 capas convolucionales\footnote{\url{https://github.com/pjreddie/darknet/blob/master/cfg/yolov3-tiny.cfg}} a diferencia de la cuarta que cuenta con 29 capas\footnote{\url{https://github.com/AlexeyAB/darknet/blob/master/cfg/yolov4-tiny.cfg}}. En el Cuadro \ref{table:v3vsv4} se puede observar una comparación entre ambas versiones de la red con una resolución de 416 píxeles, extraída de la siguiente fuente\cite{versus}, que arroja como resultado un mejor rendimiento en la tercera versión, si bien es cierto que atendiendo al artículo de \textit{YOLO V4} \cite{yolov4} la precisión de la red ha sido incrementada en un 10\% en decremento de la tasa de \textit{FPS}.\\
+La detección de objetos se ha llevado a cabo mediante una red neuronal convolucional llamada \textit{YOLO V3 Tiny}, debido a su gran rendimiento en placas de reducida potencia. La versión \textit{Tiny-YOLO} reduce el número de capas y precisión de detección pero aumenta la tasa de \textit{FPS}, por lo que es muy conveniente su uso en dispositivos como \textit{NVIDIA Jetson Nano}. Existen distintas versiones de \textit{Tiny-YOLO}; la tercera versión cuenta con 15 capas convolucionales\footnote{\url{https://github.com/pjreddie/darknet/blob/master/cfg/yolov3-tiny.cfg}}, a diferencia de la cuarta que cuenta con 29 capas\footnote{\url{https://github.com/AlexeyAB/darknet/blob/master/cfg/yolov4-tiny.cfg}}. En el Cuadro \ref{table:v3vsv4} se puede observar una comparación entre ambas versiones de la red con una resolución de 416 píxeles \cite{versus}, que arroja como resultado un mejor rendimiento en la tercera versión, si bien es cierto que atendiendo al artículo de \textit{YOLO V4} \cite{yolov4} la precisión de la red ha sido incrementada en un 10\% en decremento de la tasa de \textit{FPS}.\\
 
 \begin{table}[H]
 	\begin{center}
@@ -303,7 +302,7 @@ La ejecución de la simulación se ha realizado utilizando una tarjeta gráfica 
 	\end{center}
 \end{table}
 
-Se ha utilizado la red \textit{YOLO V3 Tiny} sobre \textit{Darknet ROS\footnote{\url{https://github.com/leggedrobotics/darknet_ros}}}. Se trata de un paquete que implementa \textit{Darknet} utilizando el \textit{framework ROS}. Su funcionamiento se basa en la recepción de la imagen a través de un \textit{topic} fijado en el fichero de configuración \textit{ros.yaml} y la publicación de objetos detectados mediante \textit{bounding boxes} en un \textit{topic} llamado \textit{/darknet\_ros/bounding\_boxes} en el que se publican mensajes con los datos del Código \ref{cod:boundingboxes}. De esa forma se puede extraer las coordenadas del \textit{bounding box}, el objeto detectado y su probabilidad. Existe un fichero \textit{YAML} en el que se especifican los objetos a detectar y en el que es necesario especificar límite o \textit{threshold} debajo del cual el objeto detectado será descartado. En el caso del entorno simulado los colores son fijos y los objetos son muy genéricos por lo que el \textit{threshold} se pudo subir hasta 0.8. De esta forma se evitan falsos positivos y se consigue una detección mucho más fiable.\\
+Se ha utilizado la red \textit{YOLO V3 Tiny} sobre \textit{Darknet ROS\footnote{\url{https://github.com/leggedrobotics/darknet_ros}}}. Se trata de un paquete que implementa \textit{Darknet} utilizando el \textit{framework ROS}. Su funcionamiento se basa en la recepción de la imagen a través de un \textit{topic} fijado en el fichero de configuración \textit{ros.yaml} y la publicación de objetos detectados mediante \textit{bounding boxes} en un \textit{topic} llamado \textit{/darknet\_ros/bounding\_boxes} en el que se publican mensajes con los datos del Código \ref{cod:boundingboxes}. De esa forma se puede extraer las coordenadas del \textit{bounding box}, el objeto detectado y su probabilidad. Existe un fichero \textit{YAML} en el que se especifican los objetos a detectar y en el que es necesario especificar límite o \textit{threshold} debajo del cual el objeto detectado será descartado. En el caso del entorno simulado, los colores son fijos y los objetos son muy genéricos, por lo que el \textit{threshold} se pudo subir hasta 0.8. De esta forma se evitan falsos positivos y se consigue una detección mucho más fiable, y así se pueden detectar de forma plausible objetos como semáforos, personas o coches (\ref{fig:darknetsimulator}).\\
 
 \begin{code}[h]
 	\begin{lstlisting}
@@ -319,8 +318,6 @@ Se ha utilizado la red \textit{YOLO V3 Tiny} sobre \textit{Darknet ROS\footnote{
 	\label{cod:boundingboxes}
 \end{code}
 
-De esta forma se pueden detectar objetos como semáforos, personas o coches tal y como se puede observar en la Figura \ref{fig:darknetsimulator}.\\
-
 \begin{figure} [h!]
 	\begin{center}
 		\includegraphics[width=6cm]{figs/darknetSimulator}
@@ -329,8 +326,8 @@ De esta forma se pueden detectar objetos como semáforos, personas o coches tal 
 	\label{fig:darknetsimulator}
 \end{figure}\
 
-En el caso de la detección del semáforo es necesario tratar la imagen para detectar el color. Para ello, se extrae la imagen del \textit{bounding box} mediante sus coordenadas, contenidas en el mensaje tal y como consta en el Código \ref{cod:boundingboxes}, se transforma al espectro \textit{HSV} con el objetivo de posteriormente realizar un filtro de color. Al aplicar la máscara sobre una imagen en \textit{HSV} y no en \textit{RGB} obtenemos una detección de mayor fiabilidad, tal y como se puede observar en la Figura
-\ref{fig:detector}.\\
+En el caso de la detección del semáforo, es necesario tratar la imagen para detectar el color. Para ello, se extrae la imagen del \textit{bounding box} mediante sus coordenadas, contenidas en el mensaje (Código \ref{cod:boundingboxes}), se transforma al espectro \textit{HSV} con el objetivo de posteriormente realizar un filtro de color. Al aplicar la máscara sobre una imagen en \textit{HSV}, y no en \textit{RGB}, obtenemos una detección de mayor fiabilidad (Figura
+\ref{fig:detector}).\\
 
 \begin{figure} [h!]
 	\begin{center}
@@ -341,7 +338,7 @@ En el caso de la detección del semáforo es necesario tratar la imagen para det
 	\label{fig:detector}
 \end{figure}\
 
-El robot se detiene al detectar el semáforo en rojo y en el momento que cambie a verde reanuda la marcha. En el caso de detectar una señal de stop se parará durante 5 segundos.
+El robot se detiene al detectar el semáforo en rojo y, en el momento que cambie a verde, reanuda la marcha. En el caso de detectar una señal de stop, se parará durante 5 segundos.
 Todo ello se puede observar en capturas de la ejecución representadas en la Figura \ref{fig:simexecution}.\\
 
 \begin{figure} [h!]
@@ -354,8 +351,7 @@ Todo ello se puede observar en capturas de la ejecución representadas en la Fig
 
 \subsection{Interfaz de usuario}
 \label{subsection:interface}
-Con el objetivo de realizar un control sencillo de la simulación se ha realizado una interfaz gráfica desarrollada con la biblioteca \textit{PyQT}. Dicha interfaz dispone de una cruceta para realizar un control manual del robot. Incluye también un botón para iniciar la simulación y otro para reiniciarla, de modo que, el robot vuelve al punto inicial. Así como un botón para activar las dos cámaras. Dispone de una cámara alojada en el propio robot llamada \textit{onboard} y otra que se desplaza cuando el robot avanza de modo que aporta una visión del recorrido que realiza el robot. La interfaz descrita se puede observar en la Figura \ref{fig:gui}.\\
-
+Con el objetivo de realizar un control sencillo de la simulación, se ha realizado una interfaz gráfica desarrollada con la biblioteca \textit{PyQT}. Dicha interfaz dispone de un manipulador que permite realizar un control manual del robot. Incluye también un botón para iniciar la simulación y, otro, para reiniciarla, volviendo el robot al punto inicial, así como un botón para activar las dos cámaras. Dispone de una cámara alojada en el propio robot llamada \textit{onboard}, y otra que se desplaza cuando el robot avanza, de modo que aporta una visión del recorrido que realiza el robot. La interfaz descrita se puede observar en la Figura \ref{fig:gui}.\\
 \begin{figure} [h!]
 	\begin{center}
 		\includegraphics[width=10cm]{figs/GUI}
@@ -366,18 +362,18 @@ Con el objetivo de realizar un control sencillo de la simulación se ha realizad
 
 \section{Entorno real}
 \label{section:real}
-En esta sección se exponen los elementos utilizados para componer un entorno real en el que un robot, representado en la Figura \ref{fig:realrobot}, equipado con una cámara como sensor principal circula reaccionando ante objetos estáticos y dinámicos. Así como las particularidades del sistema a la hora de realizar la transición desde el entorno simulado al real.\\
+En esta sección se exponen los elementos utilizados para componer un entorno real en el que el robot, representado en la Figura \ref{fig:realrobot}, equipado con una cámara como sensor principal, circula reaccionando ante objetos estáticos y dinámicos, así como las particularidades del sistema a la hora de realizar la transición desde el entorno simulado al real.
 
 \begin{figure} [h!]
 	\begin{center}
-		\includegraphics[width=10cm]{figs/robot}
+		\includegraphics[width=8cm]{figs/robot}
 	\end{center}
 	\caption{Robot con \textit{NVIDIA Jetson Nano}.}
 	\label{fig:realrobot}
 \end{figure}\
 
-\subsection{Objetos}
-El entorno real se compone de diversos objetos; un circuito elaborado con pistas Scalextric sobre el que se sitúan objetos como un semáforo dinámico que cambia de color en un modo automático cada cierto tiempo, una señal de stop y un peatón. Dichos objetos se pueden observar en la Figura \ref{fig:objects}.\\
+\subsection{Elementos del entorno}
+El entorno real se compone de diversos objetos: un circuito elaborado con pistas Scalextric, sobre el que se sitúan objetos, como un semáforo dinámico que cambia de color en un modo automático cada cierto tiempo, una señal de stop, y un peatón. Dichos objetos se pueden observar en la Figura \ref{fig:objects}.\\
 
 \begin{figure} [h!]
 	\begin{center}
@@ -387,8 +383,7 @@ El entorno real se compone de diversos objetos; un circuito elaborado con pistas
 	\label{fig:objects}
 \end{figure}\
 
-\subsection{Circuito}
-En principio se construyó un circuito inicial, representado en la Figura \ref{fig:circuit}, en el que se entrenó la red neuronal de seguimiento de carril. Posteriormente se fue agrandando en el espacio introduciendo rectas más largas para poder interactuar mejor con objetos.\\
+Al comienzo del desarrollo se construyó un circuito inicial, representado en la Figura \ref{fig:circuit}, en el que se entrenó la red neuronal de seguimiento de carril. Posteriormente, se fue agrandando en el espacio, introduciendo rectas más largas para poder interactuar mejor con los objetos.\\
 
 \begin{figure} [h!]
 	\begin{center}
@@ -398,28 +393,28 @@ En principio se construyó un circuito inicial, representado en la Figura \ref{f
 	\label{fig:circuit}
 \end{figure}\
 
-Tras ubicar todos los objetos alrededor del circuito, da como resultado la imagen representada en la Figura \ref{fig:circuitwithobjects}.\\
+Tras ubicar todos los objetos alrededor del circuito, el resultado final se puede apreciar en la Figura \ref{fig:circuitwithobjects2}.\\
 
 \begin{figure} [h!]
 	\begin{center}
-		\includegraphics[width=12cm]{figs/circuitwithobjects}
+		\includegraphics[width=12cm]{figs/circuitwithobjects2}
 	\end{center}
 	\caption{Circuito con objetos.}
-	\label{fig:circuitwithobjects}
+	\label{fig:circuitwithobjects2}
 \end{figure}\
 
 \section{Redes neuronales en el entorno real}
-El entrenamiento de la red neuronal \textit{ResNet-18} se realiza de igual forma que en el entorno simulado, la principal diferencia a tener en cuenta es la luz ambiente y los colores, que a diferencia del simulador, cambian dependiendo de como incida la luz. Por ello, es interesante comprobar el comportamiento de la red neuronal cuando hay cambios de luz. Además, existen multitud de diferencias entre una luz artificial y la luz natural, cuando se trabaja con luz natural es necesario tener en cuenta la incidencia que los rayos del sol pueden hacer sobre la lente de la cámara. Por ello se decidió entrenar la red con luz artificial, con imágenes como la que representa la Figura \ref{fig:imagedataset}, obteniendo el valor de 0.0034 como error. La librería \textit{JetRacer} recomienda entrenar la red con un mínimo de 50 imágenes\footnote{\url{https://github.com/NVIDIA-AI-IOT/jetracer/blob/master/docs/examples.md}}, por lo que se decidió entrenar con 100 imágenes para que el tiempo de entrenamiento no fuese demasiado elevado y no provocara un aumento muy grande de temperatura en la placa \textit{NVIDIA Jetson Nano}, que al no disponer de disipador activo, alcanza temperaturas muy elevadas.\\
+El entrenamiento de la red neuronal \textit{ResNet-18} se realiza de igual forma que en el entorno simulado, la principal diferencia a tener en cuenta es la luz ambiental y los colores, que a diferencia del simulador, cambian dependiendo de cómo incida la luz. Por ello, es interesante comprobar el comportamiento de la red neuronal cuando hay cambios de luz. Además, existen multitud de diferencias entre la luz artificial y la luz natural; cuando se trabaja con luz natural es necesario tener en cuenta la incidencia que los rayos del sol pueden hacer sobre la lente de la cámara. Por ello, se decidió entrenar la red con luz artificial, con imágenes como la que representa la Figura \ref{fig:imagedataset}, obteniendo el valor de 0.0034 como \textit{loss}. La librería \textit{JetRacer} recomienda entrenar la red con un mínimo de 50 imágenes\footnote{\url{https://github.com/NVIDIA-AI-IOT/jetracer/blob/master/docs/examples.md}}, por lo que se decidió entrenar con 100 imágenes para que el tiempo de entrenamiento no fuese demasiado elevado y no provocara un aumento muy grande de temperatura en la placa \textit{NVIDIA Jetson Nano} que, al no disponer de disipador activo, alcanza temperaturas muy elevadas.\\
 
 \begin{figure} [h!]
 	\begin{center}
 		\includegraphics[width=4cm]{figs/imagedataset}\hspace{1cm}\includegraphics[width=6cm]{figs/epoch}
 	\end{center}
-	\caption{Imagen del \textit{dataset} utilizado entrenado con luz artificial y error al finalizar el entrenamiento.}
+	\caption{Imagen del \textit{dataset} utilizado entrenado con luz artificial y \textit{loss} al finalizar el entrenamiento.}
 	\label{fig:imagedataset}
 \end{figure}\
 
-Una vez probada la red neuronal \textit{YOLO V3 Tiny} utilizada en el entorno simulado, se comprobó que era necesario bajar demasiado el límite o \textit{threshold} de detección, hasta 0.3, para poder detectar los objetos elegidos. A diferencia del entorno de simulación ,en el que dicho límite se fijó a 0.8. Esto provocaba falsos positivos y por tanto una detección poco fiable. Dicha circunstancia puede ser debida, entre otros motivos, a unos objetos reales algo distintos respecto a los que la red fue entrenada o una luz ambiental baja. Por ello se decidió entrenar la red con los objetos utilizados en el entorno real. Para ello, es necesario una tarjeta gráfica potente. Por lo que se realizó una comparativa entre las tarjetas gráficas disponibles para realizar el entrenamiento en el menor tiempo posible. Dicha comparativa está representada en el Cuadro \ref{table:versusnvidia}.\\
+Una vez probada la red neuronal \textit{YOLO V3 Tiny} utilizada en el entorno simulado, se comprobó que era necesario bajar en gran medida el límite o \textit{threshold} de detección hasta 0.3 para poder detectar los objetos elegidos, a diferencia del entorno de simulación, en el que dicho límite se fijó a 0.8. Esto provocaba falsos positivos y por tanto una detección poco fiable. Dicha circunstancia puede ser debida, entre otros motivos, a unos objetos reales algo distintos respecto a los que la red fue entrenada o una luz ambiental baja. Por ello, se decidió entrenar la red con los objetos utilizados en el entorno real. Para ello, es necesario una tarjeta gráfica potente. Por lo que se realizó una comparativa entre las tarjetas gráficas disponibles para realizar el entrenamiento en el menor tiempo posible. Dicha comparativa está representada en el Cuadro \ref{table:versusnvidia}.\\
 
 \begin{table}[H]
 	\begin{center}
@@ -436,14 +431,14 @@ Una vez probada la red neuronal \textit{YOLO V3 Tiny} utilizada en el entorno si
 			\\
 			\hline
 		\end{tabular}
-		\parbox[t]{\textwidth}{\footnotesize C.C$^*$: capacidad de cómputo.}  
+		\parbox[t]{\textwidth}{\footnotesize C.C$^*$: capacidad de cómputo.}
 		\caption{Comparación entre las tarjetas gráficas disponibles para entrenar la red \textit{YOLO V3 Tiny}.}
 		\label{table:versusnvidia}
 	\end{center}
 \end{table}
 
 \subsection{Entrenamiento de la red \textit{YOLO V3 Tiny} para detección de objetos propios}
-El objetivo es entrenar la red \textit{YOLO V3 Tiny} con el objetivo de poder detectar objetos propios o mejorar la probabilidad de detección de objetos ya detectados por la red.\\
+El objetivo es entrenar la red \textit{YOLO V3 Tiny} para poder detectar objetos propios o mejorar la probabilidad de detección de objetos ya detectados por la red.\\
 
 Para ello, es pertinente saber qué \textit{dataset} se ha utilizado para generar los pesos actualmente usados. Atendiendo a la página oficial de \textit{YOLO\footnote{\url{https://pjreddie.com/darknet/yolo/}}}, el \textit{dataset} utilizado es \textit{COCO}. Por lo que será necesario obtener las imágenes y sus ficheros de etiquetado donde se asocian los objetos presentes en las imágenes. Existe un repositorio\footnote{\url{https://github.com/KaranJagtiani/YOLO-Coco-Dataset-Custom-Classes-Extractor}} que permite la extracción, a partir del \textit{dataset} mencionado, de las clases de objetos deseadas.\\
 
@@ -483,13 +478,13 @@ Como se mencionó en el Capítulo 2, se ha utilizado la librería \textit{LabelI
 
 \begin{figure} [h!]
 	\begin{center}
-		\includegraphics[width=12cm]{figs/customlabelimg}
+		\includegraphics[width=14cm]{figs/customlabelimg}
 	\end{center}
 	\caption{Etiquetado de objetos propios con la herramienta \textit{LabelIMG}.}
 	\label{fig:customlabelimg}
 \end{figure}\
 
-El gráfico representado en la Figura \ref{fig:graphcoco}, extraído de la siguiente fuente\cite{graphcoco}, muestra el número de imágenes de cada tipo de objeto. Se puede observar que el la clase persona está presente en imágenes, seis veces más que cualquier otro tipo de objeto. Esto se debe a que existen multitud de personas con distinto aspecto y por ello es necesario una cantidad muy grande de imágenes para obtener una detección fiable. Esto es determinante a la hora del entrenamiento, ya que al ser tan elevado el número de imágenes, el tiempo de entrenamiento será considerablemente grande.\\
+El gráfico representado en la Figura \ref{fig:graphcoco} \cite{graphcoco}, muestra el número de imágenes de cada tipo de objeto. Se puede observar que la clase persona está presente en las imágenes seis veces más que cualquier otro tipo de objeto. Esto se debe a que existen multitud de personas con distinto aspecto y, por ello, es necesario una cantidad elevada de imágenes para obtener una detección fiable. Esto es determinante a la hora del entrenamiento, ya que al ser tan elevado el número de imágenes, el tiempo de entrenamiento será considerablemente grande.\\
 
 \begin{figure} [h!]
 	\begin{center}
@@ -499,9 +494,9 @@ El gráfico representado en la Figura \ref{fig:graphcoco}, extraído de la sigui
 	\label{fig:graphcoco}
 \end{figure}\
 
-Para proceder al entrenamiento, además del \textit{dataset} y sus ficheros de etiquetado, es necesario utilizar el \textit{framework} \textit{Darknet\footnote{\url{https://github.com/pjreddie/darknet}}} y hacer uso del comando \verb|partial| para obtener los pesos preentrenados sobre los cuales, se entrenará la red con el \textit{dataset} elegido.\\
+Para proceder al entrenamiento, además del \textit{dataset} y sus ficheros de etiquetado, es necesario utilizar el \textit{framework} \textit{Darknet\footnote{\url{https://github.com/pjreddie/darknet}}} y hacer uso del comando \verb|partial| para obtener los pesos preentrenados, sobre los cuales se entrenará la red con el \textit{dataset} elegido.\\
 
-También es necesario modificar una serie de archivos entre los que se encuentra el \textit{cfg} que contiene los parámetros de la red. Las principales modificaciones a realizar son las siguientes:
+También es necesario modificar una serie de archivos, entre los que se encuentra el \textit{cfg} que contiene los parámetros de la red. Las principales modificaciones a realizar son las siguientes:
 \begin{itemize}
 	\item El número de \textit{batch} deberá ser 64.
 	\item El número de \textit{subdivisions} deberá ser 2.
@@ -511,7 +506,7 @@ También es necesario modificar una serie de archivos entre los que se encuentra
 	\item En cada parámetro \textit{[yolo]} el número de clases de objetos a detectar deberá ser fijado y el número de \textit{filters} deberá fijarse atendiendo a la siguiente fórmula: \textit{(classes + 5) x 3}.
 \end{itemize}\
 
-Se deberán crear los ficheros \textit{train.txt} y \textit{test.txt} donde deben estar las rutas absolutas a cada fichero de etiquetado. Y otro fichero llamado \textit{obj.data} que contenga las rutas de los archivos anteriormente descritos, dicho contenido está presente en el Código \ref{cod:objdata}.\\
+Se deberán crear los ficheros \textit{train.txt} y \textit{test.txt}, donde deben estar las rutas absolutas a cada fichero de etiquetado. Y otro fichero llamado \textit{obj.data} que contenga las rutas de los archivos anteriormente descritos. Dicho contenido está presente en el Código \ref{cod:objdata}.\\
 
 \begin{code}[h]
 	\begin{lstlisting}
@@ -525,20 +520,20 @@ Se deberán crear los ficheros \textit{train.txt} y \textit{test.txt} donde debe
 	\label{cod:objdata}
 \end{code}
 
-Otro factor importante es el porcentaje de imágenes con el que no se entrena la red pero sí prueba para comprobar la validez de la misma. Estas imágenes componen el \textit{dataset} de validación y debe estar compuesto por un 20\% de las imágenes totales del \textit{dataset}.\\
+Otro factor importante es el porcentaje de imágenes con el que no se entrena la red pero sí es utilizado para comprobar la validez de la misma. Estas imágenes componen el \textit{dataset} de validación, y debe estar compuesto por un 20\% de las imágenes totales del \textit{dataset}.\\
 
-Durante el entrenamiento se irá mostrando una gráfica que indica el progreso, representada en la Figura \ref{fig:chart}. En dicha gráfica se muestra el error de la red, se puede observar que el error final tras terminar el entrenamiento es de 0.663. Atendiendo a la guía\footnote{\url{https://github.com/AlexeyAB/darknet\#how-to-train-to-detect-your-custom-objects}} utilizada para entrenar la red, el error deberá estar entre 0.05 en el caso de un \textit{dataset} pequeño y simple a 3.0 en el caso de un \textit{dataset} grande y difícil, como es el caso de la clase persona.\\
+Durante el entrenamiento, se irá mostrando una gráfica que indica el progreso, representada en la Figura \ref{fig:chart}. En dicha gráfica se muestra el \textit{current avg loss} de la red; se puede observar que al finalizar el entrenamiento es de 0.663. Atendiendo a la guía\footnote{\url{https://github.com/AlexeyAB/darknet\#how-to-train-to-detect-your-custom-objects}} utilizada para entrenar la red, el \textit{loss} deberá estar entre 0.05 -en el caso de un \textit{dataset} pequeño y simple- a 3.0, en el caso de un \textit{dataset} grande y difícil, como es el caso de la clase persona.\\
 
 \begin{figure} [h!]
 	\begin{center}
 		\includegraphics[width=12cm]{figs/chart}
 	\end{center}
-	\caption{Gráfica de entrenamiento mostrando el error de la red \textit{YOLO V3 Tiny}.}
+	\caption{Gráfica de entrenamiento mostrando el \textit{loss} de la red \textit{YOLO V3 Tiny}.}
 	\label{fig:chart}
 \end{figure}\
 
 \subsection{Controlador diseñado para el seguimiento de carril a partir de la salida de la red neuronal}
-Una vez obtenida la salida de la red neuronal que indica el centro del carril, es necesario elaborar un controlador que comande velocidades lineales y angulares al robot. Para ello se ha realizado un controlador proporcional (P) con una serie de constantes para lograr un comportamiento adecuado, dicho controlador está disponible en el Código \ref{cod:controller}.\\ 
+Una vez obtenida la salida de la red neuronal que indica el centro del carril, es necesario elaborar un controlador que comande velocidades lineales y angulares al robot. Para ello, se ha realizado un controlador proporcional (P) con una serie de constantes para lograr un comportamiento adecuado. Dicho controlador se muestra en el Código \ref{cod:controller}.\\ 
 
 \begin{code}[h]
 	\begin{lstlisting}[language=Python]
@@ -567,7 +562,7 @@ Una vez obtenida la salida de la red neuronal que indica el centro del carril, e
 \end{code}
 
 \subsection{Transformación del modelo de \textit{PyTorch a TensorRT}}
-Como se expuso en el Capítulo 3, existe una librería llamada \textit{PyTorch to TensorRT} capaz de convertir modelos de \textit{PyTorch} a modelos optimizados aprovechando los tensores de las gráficas dedicadas, si bien la placa \textit{NVIDIA Jetson Nano} no dispone de una GPU con tensores\footnote{\url{https://connecttech.com/jetson/jetson-module-comparison/}}, sí permite realizar inferencia utilizando operaciones con \textit{FP16} lo que aumenta el rendimiento en gran medida. Esta conversión se realiza de forma muy sencilla llamando a la función \verb|torch2trt()| tal y como representa el Código \ref{cod:torch2trt}.\\
+Como se expuso en el Capítulo 3, existe una librería llamada \textit{PyTorch to TensorRT} capaz de convertir modelos de \textit{PyTorch} a modelos optimizados aprovechando los tensores de las gráficas dedicadas. Si bien la placa \textit{NVIDIA Jetson Nano} no dispone de una GPU con tensores\footnote{\url{https://connecttech.com/jetson/jetson-module-comparison/}}, sí permite realizar inferencia utilizando operaciones con \textit{FP16}, lo que aumenta el rendimiento en gran medida. Esta conversión se realiza de forma muy sencilla llamando a la función \verb|torch2trt()|, tal y como se representa en el Código \ref{cod:torch2trt}.\\
 
 \begin{code}[h]
 	\begin{lstlisting}[language=Python]
@@ -589,25 +584,15 @@ En la Figura \ref{fig:screenshotsreal} están representadas capturas de la ejecu
 	\label{fig:screenshotsreal}
 \end{figure}\
 
-\section{Diseño del software a partir de un diagrama de clases}
-El diseño del software se ha realizado a partir de un diagrama de clases, utilizando la herramienta \textit{UMLET\footnote{\url{hhttps://www.umlet.com/}}}, que permite estructurar crear clases, dependencias entre ellas y los atributos y funciones que contiene. El presente diseño, representado en la Figura \ref{fig:diagram}, contiene una clase principal llamada \textit{AutonomousVehicle} que tiene instancias de la clase \textit{LaneFollower} que implementa el seguimiento de carril, de la clase \textit{JetRacer} que implementa el controlador del vehículo y la comunicación con los motores del mismo. También contiene una instancia de la clase \textit{ObjectDetector} que implementa la detección de objetos y, a su vez, la clase \textit{ObjectDetector} hace uso del flujo de vídeo proveniente de un \textit{topic} de \textit{ROS}.
-\begin{figure} [h!]
-	\begin{center}
-		\includegraphics[width=14cm]{figs/diagram5}
-	\end{center}
-	\caption{Diagrama de clases.}
-	\label{fig:diagram}
-\end{figure}\
-% Tabla cámara
 % Buscar ....
-% Gráfica entrenamiento error no sube ni baja, estable carril
 % Resnet
 % NN siempre yxy?
-% .yaml stop or stop sign?
 % Tesnor cores
-% yolov3-tiny.conv.15 15 convolución 15
+% yolov3-tiny.conv.15 15 convolución 15 preentrenada por qué? y con qué dataset?
+% \textit{Over-fitting}, current avg loss incluye el error del set de entrenamiento y el de validación?
 % singlestone
-% \textit{Over-fitting}
 % muestra el número de imágenes??????? y causas
 % Salir de sección screenshotsreal
-% screenshot red hsv traffic light
+% xmm eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+% luz artificial
+% como solo

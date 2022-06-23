@@ -6,7 +6,7 @@ En la actualidad, los vehículos autónomos están en auge; cada vez tenemos má
 
 \section{Inteligencia artificial}
 \label{sec:ia}
-La inteligencia artificial (o \textit{Artifical Intelligence}, (\textit{IA})) es la disciplina que intenta entender y emular el comportamiento humano. Tiene como objetivo dotar a sistemas, entre los que se encuentran los robots, de cierta inteligencia y de la capacidad de aprender. Existen multitud de ramas que parten de la inteligencia artificial, como por ejemplo, la visión artificial, el aprendizaje automático o el aprendizaje profundo. Estas técnicas permiten tomar decisiones o clasificar datos en base a una información de entrada que, en algunos casos, requiere de un entrenamiento previo mediante un conjunto grande de datos conocidos como \textit{datasets}. A través de esta información, los algoritmos que integran este tipo de técnicas obtienen lo necesario para poder inferir, por ejemplo, los objetos presentes en una imagen.\\  
+La inteligencia artificial (o \textit{Artifical Intelligence}, (\textit{IA})) es la disciplina que intenta entender y emular el comportamiento humano. Tiene como objetivo dotar a sistemas, entre los que se encuentran los robots, de cierta inteligencia y de la capacidad de aprender. Existen multitud de ramas que parten de la inteligencia artificial, como por ejemplo, la visión artificial, el aprendizaje automático o el aprendizaje profundo. Estas técnicas permiten tomar decisiones o clasificar datos en base a una información de entrada que, en algunos casos, requiere de un entrenamiento previo mediante un conjunto grande de datos conocidos como \textit{datasets}. A través de esta información, los algoritmos que integran este tipo de técnicas obtienen lo necesario para poder inferir, por ejemplo, los objetos presentes en una imagen.\\
 
 \section{Visión artificial}
 \label{sec:vision}
@@ -30,7 +30,7 @@ Un ejemplo de \textit{FIR} es \textit{BMW's FIR-based Autoliv Night Vision Syste
 	\label{fig:nightvision}
 \end{figure}\
 
-Una información de la imagen que puede resultar de interés es la distancia a la que se encuentra un objeto en concreto. Para calcularla, existen diversas soluciones. Por ejemplo, encontramos una solución con una única cámara, basada en la suposición de que todos los objetos se encuentran situados en el suelo en \cite{vega19d} o \cite{distanceopencv}. Para eliminar esta restricción y poder conocer distancias de objetos que no se encuentran situados en el suelo surgen las \textit{cámaras RGBD}, en las que cada píxel de la imagen proporciona, además del color RGB, una tercera componente, la profundidad o \textit{depth}. Una de las primeras cámaras \textit{RGBD} comerciales es la \textit{Kinect}, desarrollada por \textit{Microsoft} para su consola \textit{Xbox 360} (Figura \ref{fig:kinect}).\\
+Una información de la imagen que puede resultar de interés es la distancia a la que se encuentra un objeto en concreto. Para calcularla, existen diversas soluciones. Por ejemplo, encontramos una solución con una única cámara, basada en la suposición de que todos los objetos se encuentran situados en el suelo en \cite{vega19d} o \cite{distanceopencv}. Para eliminar esta restricción y poder conocer distancias de objetos que no se encuentran situados en el suelo surgen las \textit{cámaras RGBD}, en las que cada píxel de la imagen proporciona, además del color \textit{RGB}, una tercera componente, la profundidad o \textit{depth}. Una de las primeras cámaras \textit{RGBD} comerciales es la \textit{Kinect}, desarrollada por \textit{Microsoft} para su consola \textit{Xbox 360} (Figura \ref{fig:kinect}).\\
 
 \begin{figure} [h!]
 	\begin{center}
@@ -54,9 +54,9 @@ El Aprendizaje Profundo, se basa en el uso de redes neuronales artificiales (o {
 	\label{fig:neuralnetwork}
 \end{figure}\
 
-Los inicios del \textit{Deep Learning} se remontan al año 1979 cuando \textit{Kunihiko Fukushima} desarrolló una red neuronal de entre 5 y 6 capas llamada \textit{neocognitrón}\cite{neocognitron}, con el objetivo de reconocer caracteres japoneses.\\
+Los inicios del \textit{Deep Learning} se remontan al año 1979 cuando \textit{Kunihiko Fukushima} desarrolló una red neuronal de entre 5 y 6 capas llamada \textit{neocognitrón} \cite{neocognitron}, con el objetivo de reconocer caracteres japoneses.\\
 
-Este tipo de redes neuronales tiene multitud de aplicaciones, pero todas comparten grandes cantidades de datos, en cualquier formato; vídeo, imagen, sonido. Algunas de ellas son: clasificación de objetos, procesamiento natural del lenguaje, \textit{Big Data}, análisis médico, conversión de imágenes en blanco y negro a color etc...\\
+Este tipo de redes neuronales tiene multitud de aplicaciones, pero todas comparten grandes cantidades de datos, en cualquier formato; vídeo, imagen, sonido. Algunas de ellas son: clasificación de objetos, procesamiento natural del lenguaje, \textit{Big Data}, análisis médico, conversión de imágenes en blanco y negro a color etc.\\
 
 \section{Coches autónomos}
 \label{sec:cochesautonomos}
@@ -84,7 +84,7 @@ Atendiendo al estándar \textit{SAE J3016} \cite{saej3016} los niveles de autono
 
 \subsection{AMRs}
 \label{sec:amr}
-Los robots móviles autónomos (o \textit{Autonomous Mobile Robot}, \textit{AMR}) son aquellos capaces de navegar por entornos dinámicos, conviviendo con humanos a su alrededor y sabiendo sobreponerse a situaciones para las que no habían sido programados explícitamente. Son los sucesores de los vehículos de guiado automático (o \textit{Automated Guided Vehicle}, \textit{AGV}), los cuales requieren una cierta infraestructura dependiendo del tipo de guiado, ya sea filo-guiados, a través de pintura o a través de cualquier otra técnica que haga que ese vehículo sólo pueda funcionar cuando se sabe la infraestructura previa que estará presente en el entorno de trabajo.\\
+Los robots móviles autónomos (o \textit{Autonomous Mobile Robot}, \textit{AMR}) son aquellos capaces de navegar por entornos dinámicos, conviviendo con humanos a su alrededor y sabiendo sobreponerse a situaciones para las que no habían sido programados explícitamente. Son los sucesores de los vehículos de guiado automático (o \textit{Automated Guided Vehicle}, \textit{AGV}), los cuales requieren una cierta infraestructura dependiendo del tipo de guiado, ya sea filo-guiados, a través de pintura o a través de cualquier otra técnica que haga que ese vehículo solo pueda funcionar cuando se sabe la infraestructura previa que estará presente en el entorno de trabajo.\\
 
 Por otro lados, estos \textit{AGVs} presentan muchas dificultades para relacionarse con obstáculos o humanos, donde ante un cambio pequeño del entorno, el robot se detendrá por seguridad. A diferencia de estos, los \textit{AMRs} son capaces de realizar multitud de tareas en entornos donde la infraestructura necesaria es casi nula, quitando alguna necesidad de conectividad. Salvo por esa excepción, son robots que pueden ser diseñados para navegar por cualquier tipo de ambiente.\\
 
@@ -99,5 +99,3 @@ Un ejemplo muy representativo de \textit{AMRs}, son los robots de \textit{Kiva S
 \end{figure}\
 
 El presente trabajo se enmarca dentro del campo de la robótica y la visión artificial. En estas disciplinas se hace uso de todas estas tecnologías con el objetivo de dotar a robots de una cierta inteligencia. En los próximos capítulos se detallarán los objetivos a cumplir, las plataformas utilizadas y el diseño implementado.\\
-
-%Mapa
