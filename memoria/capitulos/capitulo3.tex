@@ -4,9 +4,42 @@
 En este capítulo, se explica el hardware y software elegido para desarrollar el trabajo y los motivos de dicha elección.
 
 \section{Hardware}
+
+\section{Arquitectura}
+\label{sec:arquitectura}
+La decisión de qué arquitectura utilizar en un robot es determinante. Es necesario evaluar multitud de factores; consumo de energía, potencia requerida, tamaño y peso, sistema operativo a utilizar, posibilidad de recibir respuesta en \textit{real time}, precio etc...\\
+
+Existen multitud de arquitecturas utilizadas en proyectos robóticos \textit{x86}, \textit{x86\_64}, \textit{ARMv6}, \textit{ARMv7} o \textit{AArch64}. Pero, actualmente hay dos arquitecturas predominantes \textit{x86\_64} y \textit{AArch64}, ambas de \textit{64 bits}, ya que los 32 bits han quedado desfasados para la gran mayoría de aplicaciones, además, los nuevos sistemas operativos comienzan a no soportarlos.\\ \cite{canonical32bits}
+
+Estas dos arquitecturas tienen grandes diferencias en cuanto al diseño de los procesadores y las instrucciones que utilizan:
+\begin{itemize}
+	\item Reduced Instruction Set Computer (\textit{RISC}).
+	\item Complex Instruction Set Computer (\textit{CISC}).
+\end{itemize}\
+
+El conjunto de instrucciones utilizado por \textit{AArch64} es \textit{CISC}, este conjunto se compone de gran cantidad de instrucciones y muchas de ellas complejas para realizar tareas que, el conjunto \textit{RISC}, puede realizar con varias instrucciones. Este último conjunto es utilizado por la arquitectura \textit{x86\_64}.\\
+
+Ejemplos representativos de \textit{AArch64}:
+\begin{figure} [h!]
+	\begin{center}
+		\includegraphics[width=0.9\textwidth]{figs/raspberrypi}\hspace{0.5cm}\includegraphics[width=0.9\textwidth]{figs/jetsonnano}
+		\caption{Equipos \textit{AArch64}: \textit{Raspberry Pi 4} y \textit{NVIDIA Jetson Nano}.}
+	\end{center}
+	\label{fig:aarch64}
+\end{figure}\
+
+Ejemplos representativos de \textit{x86\_64}:
+\begin{figure} [h!]
+	\begin{center}
+		\includegraphics[width=0.9\textwidth]{figs/lattepanda}\hspace{0.5cm}\includegraphics[width=0.9\textwidth]{figs/teslazenrdna2}
+		\caption{Equipos  \textit{x86\_64}: \textit{LattePanda Alpha 864s} y \textit{AMD Zen} como CPU y \textit{Navi 23} como GPU, usado en Tesla Model S \cite{teslazenrdna2}.}
+	\end{center}
+	\label{fig:x86}
+\end{figure}\
+
 \subsection{\textit{NVIDIA Jetson Nano}}
 \label{subsection:jetsonnano}
-La placa de desarrollo \textit{NVIDIA Jetson Nano}\footnote{\url{https://developer.nvidia.com/embedded/jetson-nano}} es una plataforma de bajo coste con grandes capacidades computacionales para implementar técnicas de inteligencia artificial gracias a su \textit{GPU} dedicada \textit{NVIDIA Maxwell}\footnote{\url{https://developer.nvidia.com/maxwell-compute-architecture}} con 128 \textit{NVIDIA CUDA cores}\footnote{\url{https://developer.nvidia.com/cuda-gpus}}, además dispone de una CPU \textit{Quad-core} basada en la arquitectura Aarch64 lo que permite ejecutar \textit{GNU/Linux} sin dificultades y ser compatible con numerosas bibliotecas de código. La placa en cuestión, dispone además de pines \textit{GPIO} lo que permite de forma muy sencilla conectar todo tipo de sensores y actuadores.\\
+La placa de desarrollo \textit{NVIDIA Jetson Nano}\footnote{\url{https://developer.nvidia.com/embedded/jetson-nano}} (Figura \ref{fig:jetsonnano}) es una plataforma de bajo coste con grandes capacidades computacionales para implementar técnicas de inteligencia artificial gracias a su \textit{GPU} dedicada \textit{NVIDIA Maxwell}\footnote{\url{https://developer.nvidia.com/maxwell-compute-architecture}} con 128 \textit{NVIDIA CUDA cores}\footnote{\url{https://developer.nvidia.com/cuda-gpus}}, además dispone de una CPU \textit{Quad-core} basada en la arquitectura Aarch64 lo que permite ejecutar \textit{GNU/Linux} sin dificultades y ser compatible con numerosas bibliotecas de código. La placa en cuestión, dispone además de pines \textit{GPIO} lo que permite de forma muy sencilla conectar todo tipo de sensores y actuadores.\\
 
 Los requisitos en lo que a alimentación se refiere no son excesivos, requiere un mínimo de 5 voltios (V) y 3 amperios (A), lo que permite que una simple \textit{powerbank} de reducido tamaño sea capaz de alimentar la placa, si bien es cierto que la batería debe poder ofrecer tres amperios de forma estable, y no solo como intensidad pico. Existen numerosos proyectos en los que esta placa está presente, tales como \textit{JetBot\footnote{\url{https://github.com/NVIDIA-AI-IOT/jetbot}}} o \textit{JetRacer}, que se detallará en la Sección \ref{subsection:jetracer}.\\
 
@@ -20,7 +53,7 @@ Los requisitos en lo que a alimentación se refiere no son excesivos, requiere u
 
 \subsection{Motores \textit{TT}}
 \label{subsection:motortt}
-Se trata de unos motores\footnote{\url{https://www.verical.com/datasheet/adafruit-brushless-dc-motors-3777-5912007.pdf}} de corriente continua con reductora utilizados en la multitud de proyectos de robótica de muy bajo coste\footnote{\url{https://github.com/grimmpp/tt-motor-mounting}}\footnote{\url{https://github.com/bhabegger/diy-telepresence-robot}}. La tensión de alimentación tiene un rango de 3 a 6 voltios y la velocidad mínima en vacío tiene un rango de 90 a 200 revoluciones por minuto (RPM) dependiendo del voltaje, lo que permite conseguir una velocidad reducida para robots de pequeño tamaño.\\
+Se trata de unos motores\footnote{\url{https://www.verical.com/datasheet/adafruit-brushless-dc-motors-3777-5912007.pdf}} (Figura \ref{fig:motorTT}) de corriente continua con reductora utilizados en la multitud de proyectos de robótica de muy bajo coste\footnote{\url{https://github.com/grimmpp/tt-motor-mounting}}\footnote{\url{https://github.com/bhabegger/diy-telepresence-robot}}. La tensión de alimentación tiene un rango de 3 a 6 voltios y la velocidad mínima en vacío tiene un rango de 90 a 200 revoluciones por minuto (RPM) dependiendo del voltaje, lo que permite conseguir una velocidad reducida para robots de pequeño tamaño.\\
 
 \begin{figure} [h!]
 	\begin{center}
@@ -32,7 +65,7 @@ Se trata de unos motores\footnote{\url{https://www.verical.com/datasheet/adafrui
 
 \subsection{Controladora de motores \textit{L298N}}
 \label{subsection:l298n}
-Es un módulo\footnote{\url{https://www.luisllamas.es/arduino-motor-corriente-continua-l298n/}} capaz de controlar la dirección y la velocidad de los motores anteriormente citados. La tensión de alimentación es de un mínimo de 6 voltios, lo que hace imposible alimentarla con la placa \textit{NVIDIA Jetson Nano} por lo que es necesario una batería externa. Otra posibilidad para utilizar una única batería sería utilizar la salida de 5 voltios (V) que nos ofrece la controladora, sin embargo, dicha salida nunca ofrecerá los 3 amperios (A) requeridos. Este componente permite invertir el sentido de la corriente lo que proporciona un control para mover los motores en el sentido de las agujas del reloj (CW) y en el sentido contrario a las agujas del reloj (CCW). La principal limitación de esta placa es que solo permite controlar dos motores, por lo que si se dispone de 4 motores, se podrán conectar a pares dependiendo del comportamiento deseado. El control se realiza a través de la técnica modulación por ancho de pulso, \textit{pulse with modulation (PWM)}\footnote{\url{https://circuitdigest.com/tutorial/what-is-pwm-pulse-width-modulation}}, que permite enviar de forma precisa la velocidad deseada a través de una señal digital.\\
+Es un módulo\footnote{\url{https://www.luisllamas.es/arduino-motor-corriente-continua-l298n/}} (Figura \ref{fig:l298n}) capaz de controlar la dirección y la velocidad de los motores anteriormente citados. La tensión de alimentación es de un mínimo de 6 voltios, lo que hace imposible alimentarla con la placa \textit{NVIDIA Jetson Nano} por lo que es necesario una batería externa. Otra posibilidad para utilizar una única batería sería utilizar la salida de 5 voltios (V) que nos ofrece la controladora, sin embargo, dicha salida nunca ofrecerá los 3 amperios (A) requeridos. Este componente permite invertir el sentido de la corriente lo que proporciona un control para mover los motores en el sentido de las agujas del reloj (CW) y en el sentido contrario a las agujas del reloj (CCW). La principal limitación de esta placa es que solo permite controlar dos motores, por lo que si se dispone de 4 motores, se podrán conectar a pares dependiendo del comportamiento deseado. El control se realiza a través de la técnica modulación por ancho de pulso, \textit{pulse with modulation (PWM)}\footnote{\url{https://circuitdigest.com/tutorial/what-is-pwm-pulse-width-modulation}}, que permite enviar de forma precisa la velocidad deseada a través de una señal digital.\\
 
 \begin{figure} [h!]
 	\begin{center}
@@ -56,7 +89,7 @@ Se trata de una cámara USB, disponible en la Figura \ref{fig:xiaomicamera}, que
 
 \subsection{Batería 10000mAh}
 \label{subsection:battery}
-Su capacidad es de 10000 miliamperios hora (mAh), el voltaje de funcionamiento es 5 voltios (V) y su intensidad teórica es 3 amperios (A) por lo que permite alimentar la placa \textit{NVIDIA Jetson Nano}.\\
+Es una batería (Figura \ref{fig:battery}) con una capacidad de 10000 miliamperios hora (mAh), el voltaje de funcionamiento es 5 voltios (V) y su intensidad teórica es 3 amperios (A) por lo que permite alimentar la placa \textit{NVIDIA Jetson Nano}.\\
 
 \begin{figure} [h!]
 	\begin{center}
@@ -86,7 +119,7 @@ Se trata de un chasis de bajo coste muy común en proyectos relacionados con Ard
 
 \subsection{\textit{Blender}}
 \label{subsection:blender}
-\textit{Blender}\footnote{\url{https://www.blender.org/}} es una plataforma de código abierto dedicada a la creación, simulación, renderizado y animación de modelos 3D con todo tipo de texturas, sombras etc.. Es un desarrollo de la \textit{Blender Foundation} y está escrito principalmente en \textit{C}. Permite crear diseños de robots desde cero de una forma relativamente rápida y con \textit{add-ons} como \textit{Phobos}, es posible exportar el modelo a \textit{URDF} con el fin de realizar una simulación\cite{phobos}.\\
+\textit{Blender}\footnote{\url{https://www.blender.org/}} es una plataforma de código abierto dedicada a la creación, simulación, renderizado y animación de modelos 3D (Figura \ref{fig:blender}) con todo tipo de texturas, sombras etc.. Es un desarrollo de la \textit{Blender Foundation} y está escrito principalmente en \textit{C}. Permite crear diseños de robots desde cero de una forma relativamente rápida y con \textit{add-ons} como \textit{Phobos}, es posible exportar el modelo a \textit{URDF} con el fin de realizar una simulación\cite{phobos}.\\
 
 \begin{figure} [h!]
 	\begin{center}
@@ -110,7 +143,7 @@ Se trata de un chasis de bajo coste muy común en proyectos relacionados con Ard
 
 \subsection{\textit{SDF}}
 \label{subsection:sdf}
-El formato \textit{SDF} (\textit{Simulation Description Format})\footnote{\url{https://github.com/gazebosim/sdformat}} o \textit{SDFormat} permite describir entornos, objetos dinámicos o robots de una manera sencilla. Está basado en \textit{XML} y escrito en \textit{C++}. El objetivo de este formato es ejecutar comportamientos en un simulador. Originalmente fue desarrollado como parte de \textit{Gazebo} por lo que existen numerosas bibliotecas donde se encuentran modelos o mundos desarrollados en \textit{SDF} para este simulador\footnote{\url{https://github.com/HuyPhamG/simulatedswarm}}. Cabe destacar también, el formato \textit{URDF} que, a diferencia de \textit{SDF}, únicamente puede describir un objeto o robot, pero no el mundo en el que vive\footnote{\url{https://newscrewdriver.com/2018/07/31/ros-notes-urdf-vs-gazebo-sdf/}}.\\
+El formato \textit{SDF} (\textit{Simulation Description Format})\footnote{\url{https://github.com/gazebosim/sdformat}} o \textit{SDFormat} permite describir entornos, objetos dinámicos o robots (Figura \ref{fig:spot}) de una manera sencilla. Está basado en \textit{XML} y escrito en \textit{C++}. El objetivo de este formato es ejecutar comportamientos en un simulador. Originalmente fue desarrollado como parte de \textit{Gazebo} por lo que existen numerosas bibliotecas donde se encuentran modelos o mundos desarrollados en \textit{SDF} para este simulador\footnote{\url{https://github.com/HuyPhamG/simulatedswarm}}. Cabe destacar también, el formato \textit{URDF} que, a diferencia de \textit{SDF}, únicamente puede describir un objeto o robot, pero no el mundo en el que vive\footnote{\url{https://newscrewdriver.com/2018/07/31/ros-notes-urdf-vs-gazebo-sdf/}}.\\
 
 \begin{figure} [h!]
 	\begin{center}
@@ -131,7 +164,7 @@ El formato \textit{SDF} (\textit{Simulation Description Format})\footnote{\url{h
 \subsection{YOLO}
 \label{sec:yolo}
 
-Uno de los algoritmos más populares, capaz de detectar y clasificar objetos provenientes de una imagen es \textit{YOLO} (\textit{You Only Look Once})\cite{yolov3}. Sus principales ventajas son una gran precisión y la posibilidad, con el hardware adecuado, de ejecutar en tiempo real. Este algoritmo hace honor a su nombre y, por tanto, solo realiza una \textit{propagación hacia delante} en cada ejecución.\\
+Uno de los algoritmos más populares, capaz de detectar y clasificar objetos (Figura \ref{fig:yolo}) provenientes de una imagen es \textit{YOLO} (\textit{You Only Look Once})\cite{yolov3}. Sus principales ventajas son una gran precisión y la posibilidad, con el hardware adecuado, de ejecutar en tiempo real. Este algoritmo hace honor a su nombre y, por tanto, solo realiza una \textit{propagación hacia delante} en cada ejecución.\\
 
 \begin{figure} [h!]
 	\begin{center}
@@ -141,13 +174,13 @@ Uno de los algoritmos más populares, capaz de detectar y clasificar objetos pro
 	\label{fig:yolo}
 \end{figure}\
 
-Se basa en el uso de redes neuronales convolucionales, \textit{Convolutional neural network} (CNN). Se diferencia de una red neuronal tradicional, en que la operación de multiplicación de matrices, se sustituye por una operación matemática llamada convolución, consistente en mezclar dos fuentes de información para producir una tercera, en este caso dos funciones.\\
+Se basa en el uso de redes neuronales convolucionales (Figura \ref{fig:yololayers}), \textit{Convolutional neural network} (CNN). Se diferencia de una red neuronal tradicional, en que la operación de multiplicación de matrices, se sustituye por una operación matemática llamada convolución, consistente en mezclar dos fuentes de información para producir una tercera, en este caso dos funciones.\\
 
 \textit{YOLO} hace uso, esencialmente, de tres técnicas para conseguir reconocer objetos:\\
 \begin{itemize}
-	\item División de la imagen en celdas: de esta forma se pueden detectar multitud de objetos en una imagen
-	\item Creación de \textit{bounding boxes}: cajas dibujando el contorno del objeto detectado y fijando la probabilidad de que el objeto detectado sea correcto
-	\item Intersección sobre la unión: consiste en seleccionar el \textit{bounding box} con mayor probabilidad cuando hay varios superpuestos
+	\item División de la imagen en celdas: de esta forma se pueden detectar multitud de objetos en una imagen.
+	\item Creación de \textit{bounding boxes}: cajas dibujando el contorno del objeto detectado y fijando la probabilidad de que el objeto detectado sea correcto.
+	\item Intersección sobre la unión: consiste en seleccionar el \textit{bounding box} con mayor probabilidad cuando hay varios superpuestos.
 \end{itemize}\
 
 \begin{figure} [h!]
@@ -180,7 +213,7 @@ Además, existen versiones reducidas de este algoritmo como, \textit{Tiny-YOLO} 
 
 \subsection{\textit{PyQt}}
 \label{subsection:pyqt}
-\textit{PyQt}\footnote{\url{https://pythonpyqt.com/what-is-pyqt/}} es una plataforma de código abierto que permite crear interfaces gráficas (\textit{GUI}) con el \textit{framework Qt} utilizando \textit{Python}, lo que simplifica mucho el desarrollo. Existen multitud de aplicaciones, desde un navegador\footnote{\url{https://github.com/qutebrowser/qutebrowser}} controlado únicamente con el teclado al estilo \textit{VIM}\footnote{\url{https://github.com/vim/vim}}, hasta un software de impresión 3D como \textit{Cura}.\\
+\textit{PyQt}\footnote{\url{https://pythonpyqt.com/what-is-pyqt/}} es una plataforma de código abierto que permite crear interfaces gráficas (\textit{GUI}) con el \textit{framework Qt} utilizando \textit{Python}, lo que simplifica mucho el desarrollo. Existen multitud de aplicaciones, desde un navegador\footnote{\url{https://github.com/qutebrowser/qutebrowser}} controlado únicamente con el teclado al estilo \textit{VIM}\footnote{\url{https://github.com/vim/vim}}, hasta un software de impresión 3D como \textit{Cura} (Figura \ref{fig:cura}).\\
 
 \begin{figure} [h!]
 	\begin{center}

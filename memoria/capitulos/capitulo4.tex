@@ -503,12 +503,12 @@ Para proceder al entrenamiento, además del \textit{dataset} y sus ficheros de e
 
 También es necesario modificar una serie de archivos entre los que se encuentra el \textit{cfg} que contiene los parámetros de la red. Las principales modificaciones a realizar son las siguientes:
 \begin{itemize}
-	\item El número de \textit{batch} deberá ser 64
-	\item El número de \textit{subdivisions} deberá ser 2
-	\item El número de \textit{max\_batches} deberá ser el número de clases multiplicado por 2000. Y este número no debe ser inferior al número total de imágenes
-	\item El número de \textit{steps} deberá ser fijado al 80\% y al 90\% de \textit{max\_batches}
-	\item La anchura y altura de la imagen con la que entrena la red deberá ser como mínimo 416. En el caso de querer detectar objetos muy pequeños dicho parámetro deberá ser modificado a 608 o 832
-	\item En cada parámetro \textit{[yolo]} el número de clases de objetos a detectar deberá ser fijado y el número de \textit{filters} deberá fijarse atendiendo a la siguiente fórmula: \textit{(classes + 5) x 3}
+	\item El número de \textit{batch} deberá ser 64.
+	\item El número de \textit{subdivisions} deberá ser 2.
+	\item El número de \textit{max\_batches} deberá ser el número de clases multiplicado por 2000. Y este número no debe ser inferior al número total de imágenes.
+	\item El número de \textit{steps} deberá ser fijado al 80\% y al 90\% de \textit{max\_batches}.
+	\item La anchura y altura de la imagen con la que entrena la red deberá ser como mínimo 416. En el caso de querer detectar objetos muy pequeños dicho parámetro deberá ser modificado a 608 o 832.
+	\item En cada parámetro \textit{[yolo]} el número de clases de objetos a detectar deberá ser fijado y el número de \textit{filters} deberá fijarse atendiendo a la siguiente fórmula: \textit{(classes + 5) x 3}.
 \end{itemize}\
 
 Se deberán crear los ficheros \textit{train.txt} y \textit{test.txt} donde deben estar las rutas absolutas a cada fichero de etiquetado. Y otro fichero llamado \textit{obj.data} que contenga las rutas de los archivos anteriormente descritos, dicho contenido está presente en el Código \ref{cod:objdata}.\\
@@ -610,3 +610,4 @@ El diseño del software se ha realizado a partir de un diagrama de clases, utili
 % \textit{Over-fitting}
 % muestra el número de imágenes??????? y causas
 % Salir de sección screenshotsreal
+% screenshot red hsv traffic light

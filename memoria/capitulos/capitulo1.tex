@@ -2,53 +2,15 @@
 \label{cap:capitulo1}
 \setcounter{page}{1}
 
-En la actualidad los vehículos autónomos están en auge, cada vez tenemos más ejemplos de tareas típicamente realizadas por humanos que ya, es posible realizar sin un humano al mando. La conducción autónoma tiene el potencial para cambiar la forma en que nos movemos, aportando seguridad y confort, si bien es cierto que aún no vemos vehículos circulando sin conductor, mucha de la tecnología necesaria para hacerlo ya está presente en los vehículos actuales. La conducción autónoma va mucho más allá de, únicamente los vehículos que transitan las ciudades, es aplicable a muchos otros ámbitos, por ejemplo entornos industriales, de inspección o incluso de exploración donde el vehículo se enfrenta a situaciones impredecibles y ante las que debe saber reaccionar correctamente.\\
+En la actualidad, los vehículos autónomos están en auge; cada vez tenemos más ejemplos de tareas realizadas por humanos que pueden ser realizadas por máquinas. Un ejemplo de ello lo encontramos en la conducción autónoma. Esta tiene el potencial de cambiar la forma en que nos movemos, aportando seguridad y confort. Si bien es cierto que aún no vemos vehículos circulando sin conductor (también por cuestiones legales), mucha de la tecnología necesaria para hacerlo ya está presente en los vehículos actuales. La conducción autónoma no solo se aplica a los vehículos que transitan las ciudades, sino que también es aplicable a muchos otros ámbitos, por ejemplo entornos industriales, de inspección o incluso de exploración, donde el vehículo se enfrenta a situaciones impredecibles y ante las que debe saber reaccionar correctamente.\\
 
-\section{Coches autónomos}
-\label{sec:cochesautonomos} % etiqueta para luego referenciar esta sección
-Cuando se nos viene a la cabeza el concepto de vehículo autónomo, se suele relacionar con coches autónomos, es decir, los vehículos que circulan a diario por las ciudades; coches, autobuses, furgonetas pero sin una persona al volante. Todavía no está presente en las ciudades pero en un corto plazo de tiempo lo estará, el principal inconveniente actual es la regulación, a diferencia de, por ejemplo, el entorno de la aviación, donde desde hace décadas el control de la aeronave es automático a excepción de tareas como el despegue, el aterrizaje o situaciones de emergencia.\\
+\section{Inteligencia artificial}
+\label{sec:ia}
+La inteligencia artificial (o \textit{Artifical Intelligence}, (\textit{IA})) es la disciplina que intenta entender y emular el comportamiento humano. Tiene como objetivo dotar a sistemas, entre los que se encuentran los robots, de cierta inteligencia y de la capacidad de aprender. Existen multitud de ramas que parten de la inteligencia artificial, como por ejemplo, la visión artificial, el aprendizaje autómatico o el aprendizaje profundo. Estas técnicas permiten tomar decisiones o clasificar datos en base a una información de entrada que, en algunos casos, requiere de un entrenamiento previo mediante un conjunto grande de datos conocidos como \textit{datasets}. A través de esta información, los algoritmos que integran este tipo de técnicas obtienen lo necesario para poder inferir, por ejemplo, los objetos presentes en una imagen.\\  
 
-Actualmente coches de última generación como \textit{Tesla}, ya incorporan un grado de autonomía elevado en determinadas situaciones, pero siempre con un conductor al volante que debe permanecer atento para poder reaccionar.\\
-
-\begin{figure} [h!]
-	\begin{center}
-		\includegraphics[width=12cm]{figs/teslaobjectdetection}
-	\end{center}
-	\caption{\textit{Tesla AutoPilot}.}
-	\label{fig:teslaobjectdetection}
-\end{figure}\
-
-Atendiendo al estándar \textit{SAE J3016} los niveles de autonomía se pueden dividir en cinco:
-
-\begin{enumerate}
-	\item Sin automatización: avisos y asistencia puntualmente
-	\item Asistencia a la conducción: centrado de carril \textbf{o} control de crucero
-	\item Automatización parcial: centrado de carril \textbf{y} control de crucero
-	\item Automatización condicionada: conducción automática en atascos
-	\item Automatización elevada: conducción automática en algunas situaciones
-	\item Automatización completa: conducción automática en cualquier situación
-\end{enumerate}\
-\cite{saej3016}
-
-\section{AMRs}
-\label{sec:amr}
-Los  \textit{AMRs} son robots móviles autónomos, capaces de navegar por entornos dinámicos, conviviendo con humanos a su alrededor y sabiendo sobreponerse a situaciones para las que no habían sido programados explícitamente. Son los sucesores de los  \textit{AGVs}, vehículos guiados automatizados, este tipo de vehículos requieren una cierta infraestructura dependiendo del tipo de guiado, ya sea filo-guiados, a través de pintura o a través de cualquier otra técnica que haga que ese vehículo sólo pueda funcionar cuando se sabe la infraestructura previa que estará presente en el entorno de trabajo.\\
-
-Además, presentan muchas dificultades para relacionarse con obstáculos o humanos, donde ante un cambio pequeño del entorno, el robot se detendrá por seguridad. A diferencia de estos, los  \textit{AMRs}, son capaces de realizar multitud de tareas en entornos donde la infraestructura necesaria es casi nula, quizá tengan una serie de requisitos en cuanto a conectividad, pero con esa excepción, son robots que pueden ser diseñados para navegar por cualquier tipo de ambiente.\\
-
-Un ejemplo muy representativo de  \textit{AMRs}, es \textit{Kiva Systems}, empresa comprada por \textit{Amazon} para automatizar sus almacenes en tareas de logística a nivel interno, maximizando la productividad y el almacenamiento, tanto en profundidad como en altura y minimizando el coste en personal.\\
-
-\begin{figure} [h!]
-	\begin{center}
-		\includegraphics[width=8cm]{figs/kivasystems}
-	\end{center}
-	\caption{\textit{AMRs Kiva Systems} en almacenes de \textit{Amazon}.}
-	\label{fig:kivasystems}
-\end{figure}\
-
-\section{Visión como sensor principal}
+\section{Visión artificial}
 \label{sec:vision}
-Gracias a un sensor como la cámara podemos obtener una información muy completa del entorno que rodea al robot y con ello poder actuar en consecuencia. La cámara se presenta como el sensor más interesante que puede equipar un robot, cuentan con un tamaño y peso muy reducido, como es el caso de la \ref{fig:picamera}, además de un coste muy reducido. Sin embargo, presenta algunas dificultades cuando nos disponemos a tratar la imagen recibida; en cuanto a potencia del dispositivo, para procesar una imagen, y dependiendo de su resolución, es necesario un mínimo de requerimientos técnicos a nivel de \textit{hardware}, para poder conseguir un procesamiento con un nivel adecuado de \textit{FPS}, por otra parte, la imagen recibida deberá haber sido captada en un entorno con buenas condiciones lumínicas. Para ello existen diferentes tipos de sensores \textit{EO/IR}, como por ejemplo, cámaras de visión nocturna, donde el espectro utilizado es \textit{FIR}, con ello se consigue resaltar en la imagen lo que realmente es necesario.\\
+Cualquier robot necesita sensores para percibir el entorno; uno de ellos es el sensor de visión. Gracias a una cámara podemos obtener mucha información del entorno que rodea al robot y, con ello, este puede actuar en consecuencia. La cámara se presenta como el sensor más interesante que puede equipar un robot, cuentan con un tamaño y peso muy reducido, como es el caso de la cámara \textit{PiCamera} (Figura \ref{fig:picamera}), además de un coste muy bajo. Sin embargo, presenta algunas dificultades cuando nos disponemos a tratar la imagen recibida. Para procesar una imagen, y dependiendo de su resolución, es necesario un mínimo de requerimientos técnicos a nivel de \textit{hardware}, para poder conseguir un procesamiento con un nivel adecuado de fotogramas por segundo (o \textit{Frames Per Second}, \textit{FPS}), por otra parte, la imagen recibida deberá haber sido captada en un entorno con buenas condiciones lumínicas. Por ello, existen diferentes tipos de sensores electroópticos/infrarrojos (o \textit{Electro-Optical and Infrared Sensors}, \textit{EO/IR}), como por ejemplo, las cámaras de visión nocturna, donde el espectro utilizado es el conocido como infrarrojo lejano (o \textit{Far Infrared}, \textit{FIR}). Con ello se consigue resaltar en la imagen lo que realmente es necesario y se obtiene un mejor funcionamiento en situaciones de niebla.\\
 
 \begin{figure} [h!]
 	\begin{center}
@@ -58,7 +20,7 @@ Gracias a un sensor como la cámara podemos obtener una información muy complet
 	\label{fig:picamera}
 \end{figure}\
 
-Un ejemplo es \textit{BMW's FIR-based Autoliv Night Vision System} \cite{nightvision}, trabaja con imágenes de 320 por 240 píxeles y cuenta con un rango de 300 metros.\\
+Un ejemplo de \textit{FIR} es \textit{BMW's FIR-based Autoliv Night Vision System} \cite{nightvision} (Figura \ref{fig:nightvision}), que trabaja con imágenes de 320 por 240 píxeles y cuenta con un rango de 300 metros. Este sistema utiliza lentes de gran angular que le permiten percibir la imagen con un mayor ángulo de visión.\\
 
 \begin{figure} [h!]
 	\begin{center}
@@ -68,84 +30,74 @@ Un ejemplo es \textit{BMW's FIR-based Autoliv Night Vision System} \cite{nightvi
 	\label{fig:nightvision}
 \end{figure}\
 
-Cuando se realiza el procesamiento de una imagen, es interesante conocer la distancia, por ejemplo, a la que se encuentra un objeto en concreto, para ello existen soluciones para poder conocer dicha información con una \textbf{única} cámara tradicional, es el caso de \textit{cite Open Vision System for Low-Cost Robotics Education} o \cite{distanceopencv}, sin embargo, estos algoritmos se basan en la suposición de que todos los objetos se encuentras situados en un plano imaginario situado en el suelo. Para eliminar esta restricción, y poder conocer distancias de objetos que no se encuentran situados en el suelo, surgen las \textit{cámaras RGBD}, en las que cada píxel de la imagen proporciona, además del color RGB, una tercera componente llamada \textit{depth}. Una de las primeras \textit{cámaras RGBD} comerciales es la \textit{Kinect} desarrollada por \textit{Microsoft} para su consola \textit{Xbox 360}.\\
+Una información de la imagen que puede resultar de interés es la distancia a la que se encuentra un objeto en concreto. Para calcularla, existen diversas soluciones. Por ejemplo, encontamos una solución con una única cámara, basada en la suposición de que todos los objetos se encuentran situados en el suelo en \cite{vega19d} o \cite{distanceopencv}. Para eliminar esta restricción y poder conocer distancias de objetos que no se encuentran situados en el suelo surgen las \textit{cámaras RGBD}, en las que cada píxel de la imagen proporciona, además del color RGB, una tercera componente, la profundidad o \textit{depth}. Una de las primeras cámaras \textit{RGBD} comerciales es la \textit{Kinect}, desarrollada por \textit{Microsoft} para su consola \textit{Xbox 360} (Figura \ref{fig:kinect}).\\
 
 \begin{figure} [h!]
 	\begin{center}
-		\begin{minipage}{0.45\textwidth}
-			\begin{center}
-				\includegraphics[width=0.9\textwidth]{figs/kinect}
-			\end{center}
-			\caption{Imagen de profundidad \textit{Kinect}.}
-		\end{minipage}\hfill
-		\begin{minipage}{0.35\textwidth}
-			\begin{center}
-				\includegraphics[width=0.9\textwidth]{figs/depth}
-			\end{center}
-			\caption{\textit{Kinect} desarrollada por \textit{Microsoft}.}
-		\end{minipage}
+		\includegraphics[width=6cm]{figs/kinect}\hspace{0.5cm}\includegraphics[width=6cm]{figs/depth}
 	\end{center}
+	\caption{Cámara \textit{RGBD Microsoft Kinect} e imagen de profundidad obtenida por esta.}
+	\label{fig:kinect}
 \end{figure}\
 
-La visión artificial ofrece multitud de posibilidades, no solo en robótica, tiene una gran de aplicaciones en campos tan dispares como la medicina, la realidad aumentada, el procesamiento de señales o la agricultura.\\
-
-\section{Arquitectura}
-\label{sec:arquitectura}
-La decisión de qué arquitectura utilizar en un robot es determinante. Es necesario evaluar multitud de factores; consumo de energía, potencia requerida, tamaño y peso, sistema operativo a utilizar, posibilidad de recibir respuesta en \textit{real time}, precio etc...\\
-
-Existen multitud de arquitecturas utilizadas en proyectos robóticos \textit{x86}, \textit{x86\_64}, \textit{ARMv6}, \textit{ARMv7} o \textit{AArch64}. Pero, actualmente hay dos arquitecturas predominantes \textit{x86\_64} y \textit{AArch64}, ambas de \textit{64 bits}, ya que los 32 bits han quedado desfasados para la gran mayoría de aplicaciones, además, los nuevos sistemas operativos comienzan a no soportarlos.\\ \cite{canonical32bits}
-
-Estas dos arquitecturas tienen grandes diferencias en cuanto al diseño de los procesadores y las instrucciones que utilizan:
-\begin{itemize}
-	\item Reduced Instruction Set Computer (\textit{RISC})
-	\item Complex Instruction Set Computer (\textit{CISC})
-\end{itemize}\
-
-El conjunto de instrucciones utilizado por \textit{AArch64} es \textit{CISC}, este conjunto se compone de gran cantidad de instrucciones y muchas de ellas complejas para realizar tareas que, el conjunto \textit{RISC}, puede realizar con varias instrucciones. Este último conjunto es utilizado por la arquitectura \textit{x86\_64}.\\
-
-Ejemplos representativos de \textit{AArch64}:
-\begin{figure} [h!]
-	\begin{center}
-		\begin{minipage}{0.45\textwidth}
-			\begin{center}
-				\includegraphics[width=0.9\textwidth]{figs/raspberrypi}
-			\end{center}
-			\caption{\textit{Raspberry Pi 4}.}
-		\end{minipage}\hfill
-		\begin{minipage}{0.45\textwidth}
-			\begin{center}
-				\includegraphics[width=0.9\textwidth]{figs/jetsonnano}
-			\end{center}
-			\caption{\textit{NVIDIA Jetson Nano}.}
-		\end{minipage}
-	\end{center}
-	\label{fig:aarch64}
-\end{figure}\
-
-Ejemplos representativos de \textit{x86\_64}:
-\begin{figure} [h!]
-	\begin{center}
-		\begin{minipage}{0.45\textwidth}
-			\begin{center}
-				\includegraphics[width=0.9\textwidth]{figs/lattepanda}
-			\end{center}
-			\caption{\textit{LattePanda Alpha 864s}.}
-		\end{minipage}\hfill
-		\begin{minipage}{0.45\textwidth}
-			\begin{center}
-				\includegraphics[width=0.9\textwidth]{figs/teslazenrdna2}
-			\end{center}
-			\caption{\textit{AMD Zen} como CPU y \textit{Navi 23} como GPU, usado en Tesla Model S \cite{teslazenrdna2}.}
-		\end{minipage}
-	\end{center}
-	\label{fig:x86}
-\end{figure}\
-
+La visión artificial ofrece multitud de posibilidades, más allá de la robótica, ofrece numerosas aplicaciones en campos tan dispares como la medicina, la realidad aumentada, el procesamiento de señales o la agricultura.\\
 
 \section{Deep Learning}
 \label{sec:deeplearning}
-El Aprendizaje Profundo, \textit{Deep Learning} se basa en redes neuronales que parten del aprendizaje automático, \textit{Machine Learning}, que a su vez surge de la Inteligencia Artificial, \textit{Artificial Intelligence} (\textit{AI}). Sus inicios se remontan al año 1979 cuando \textit{Kunihiko Fukushima} desarrolló una red neuronal de entre 5 y 6 capas llamada \textit{neocognitrón}\cite{neocognitron}, con el objetivo de reconocer caracteres japoneses.\\
+El Aprendizaje Profundo, se basa en el uso de redes neuronales artificales (o {\textit{Artificial Neural Network}}, (\textit{ANN})) que parten del aprendizaje automático, \textit{Machine Learning} que a su vez surge de la Inteligencia Artificial, \textit{Artificial Intelligence} (\textit{AI}). Las red neuronales está inspiradas en el cerebro humano donde una neurona se comunica con otra mediante señales. En el caso de su abstracción al mundo de la computación, una red está formada por una capa de entrada, una o más capas internas y una capa de salida (Figura \ref{fig:neuralnetwork}\footnote{\url{https://www.ibm.com/cloud/learn/neural-networks}}). Estas redes neuronales necesitan ser entrenadas mediante el concepto anteriormente introducido, de \textit{dataset}. A partir de este entrenamiento, la red es capaz de aprender y aumentar su precisión para que el resultado obtenido tenga fiabilidad.\\
 
-Este tipo de redes neuronales tiene multitud de aplicaciones, pero todas comparten grandes cantidades de datos, conocidos como \textit{datasets}, en cualquier formato; vídeo, imagen, sonido. Algunas de ellas son: clasificación de objetos, procesamiento natural del lenguaje, \textit{Big Data}, análisis médico, conversión de imágenes en blanco y negro a color etc...\\
+\begin{figure} [h!]
+	\begin{center}
+		\includegraphics[width=10cm]{figs/neuralnetwork}
+	\end{center}
+	\caption{Red neuronal con tres capas internas.}
+	\label{fig:neuralnetwork}
+\end{figure}\
 
-Mapa
+Los inicios del \textit{Deep Learning} se remontan al año 1979 cuando \textit{Kunihiko Fukushima} desarrolló una red neuronal de entre 5 y 6 capas llamada \textit{neocognitrón}\cite{neocognitron}, con el objetivo de reconocer caracteres japoneses.\\
+
+Este tipo de redes neuronales tiene multitud de aplicaciones, pero todas comparten grandes cantidades de datos, en cualquier formato; vídeo, imagen, sonido. Algunas de ellas son: clasificación de objetos, procesamiento natural del lenguaje, \textit{Big Data}, análisis médico, conversión de imágenes en blanco y negro a color etc...\\
+
+\section{Coches autónomos}
+\label{sec:cochesautonomos}
+Cuando pensamos en un vehículo autónomo, pensamos en vehículos que circulan a diario por las ciudades (coches, autobuses, furgonetas) aunque cabría esperar que sin una persona al volante. Pero a día de hoy, todavía no está presente en las ciudades pero cabe esperar que en un corto plazo de tiempo lo estará, el principal inconveniente que actualmente está frenando su implantación es la legislación, a diferencia de, por ejemplo, el entorno de la aviación, donde desde hace décadas el control de la aeronave es automático a excepción de tareas como el despegue, el aterrizaje o situaciones de emergencia.\\
+
+Actualmente, coches de última generación como \textit{Tesla} (Figura \ref{fig:teslaobjectdetection}), ya incorporan un grado de autonomía elevado en determinadas situaciones, pero siempre con un conductor al volante que debe permanecer atento para poder reaccionar.\\
+
+\begin{figure} [h!]
+	\begin{center}
+		\includegraphics[width=12cm]{figs/teslaobjectdetection}
+	\end{center}
+	\caption{Sistema de conducción autónoma \textit{Tesla AutoPilot}.}
+	\label{fig:teslaobjectdetection}
+\end{figure}\
+
+Atendiendo al estándar \textit{SAE J3016} \cite{saej3016} los niveles de autonomía se pueden dividir en cinco:
+\begin{enumerate}
+	\item Sin automatización: avisos y asistencia puntualmente.
+	\item Asistencia a la conducción: centrado de carril o control de crucero.
+	\item Automatización parcial: centrado de carril y control de crucero.
+	\item Automatización condicionada: conducción automática en atascos.
+	\item Automatización elevada: conducción automática en algunas situaciones.
+	\item Automatización completa: conducción automática en cualquier situación.
+\end{enumerate}\
+
+\subsection{AMRs}
+\label{sec:amr}
+Los robots móviles autónomos (o \textit{Autonomous Mobile Robot}, \textit{AMR}) son aquellos capaces de navegar por entornos dinámicos, conviviendo con humanos a su alrededor y sabiendo sobreponerse a situaciones para las que no habían sido programados explícitamente. Son los sucesores de los vehículos de guiado automático (o \textit{Automated Guided Vehicle}, \textit{AGV}), los cuales requieren una cierta infraestructura dependiendo del tipo de guiado, ya sea filo-guiados, a través de pintura o a través de cualquier otra técnica que haga que ese vehículo sólo pueda funcionar cuando se sabe la infraestructura previa que estará presente en el entorno de trabajo.\\
+
+Por otro lados, estos \textit{AGVs} presentan muchas dificultades para relacionarse con obstáculos o humanos, donde ante un cambio pequeño del entorno, el robot se detendrá por seguridad. A diferencia de estos, los \textit{AMRs} son capaces de realizar multitud de tareas en entornos donde la infraestructura necesaria es casi nula, quitando alguna necesidad de conectividad. Salvo por esa excepción, son robots que pueden ser diseñados para navegar por cualquier tipo de ambiente.\\
+
+Un ejemplo muy representativo de \textit{AMRs}, son los robots de \textit{Kiva Systems}\footnote{\url{https://www.aboutamazon.es/noticias/innovacion/los-robots-en-numeros-datos-y-cifras-sobre-los-robots-en-amazon}} (Figura \ref{fig:kivasystems}), empresa comprada por \textit{Amazon} en 2012\footnote{\url{https://www.eleconomista.es/tecnologia/noticias/3833220/03/12/Amazon-compra-la-empresa-robotica-Kyva-Systems-por-775-millones-de-dolares.html}} para automatizar sus almacenes en tareas de logística a nivel interno, maximizando la productividad y el almacenamiento, tanto en profundidad como en altura y minimizando el coste en personal.\\
+
+\begin{figure} [h!]
+	\begin{center}
+		\includegraphics[width=8cm]{figs/kivasystems}
+	\end{center}
+	\caption{\textit{AMRs} de \textit{Kiva Systems} en almacenes de \textit{Amazon}.}
+	\label{fig:kivasystems}
+\end{figure}\
+
+El presente trabajo se enmarca dentro del campo de la robótica y la visión artificial. En estas disciplinas se hace uso de todas estas tecnologías con el objetivo de dotar a robots de una cierta inteligencia. En los próximos capítulos se detallarán los objetivos a cumplir, las plataformas utilizadas y el diseño implementado.\\
+
+%Mapa
