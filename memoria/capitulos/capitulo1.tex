@@ -44,7 +44,7 @@ La visión artificial ofrece multitud de posibilidades, más allá de la robóti
 
 \section{Deep Learning}
 \label{sec:deeplearning}
-El Aprendizaje Profundo, se basa en el uso de redes neuronales artificiales (o {\textit{Artificial Neural Network}}, (\textit{ANN})) que parten del aprendizaje automático, \textit{Machine Learning} que a su vez surge de la Inteligencia Artificial, \textit{Artificial Intelligence} (\textit{AI}). Las red neuronales está inspiradas en el cerebro humano donde una neurona se comunica con otra mediante señales. En el caso de su abstracción al mundo de la computación, una red está formada por una capa de entrada, una o más capas internas y una capa de salida (Figura \ref{fig:neuralnetwork}\footnote{\url{https://www.ibm.com/cloud/learn/neural-networks}}). Estas redes neuronales necesitan ser entrenadas mediante el concepto anteriormente introducido, de \textit{dataset}. A partir de este entrenamiento, la red es capaz de aprender y aumentar su precisión para que el resultado obtenido tenga fiabilidad.\\
+El Aprendizaje Profundo, se basa en el uso de redes neuronales artificiales (o {\textit{Artificial Neural Network}}, \textit{ANN}) que parten del aprendizaje automático, \textit{Machine Learning} que a su vez surge de la Inteligencia Artificial (o, \textit{Artificial Intelligence}, \textit{AI}). Las red neuronales está inspiradas en el cerebro humano donde una neurona se comunica con otra mediante señales. En el caso de su abstracción al mundo de la computación; una red está formada por una capa de entrada, una o más capas internas y una capa de salida (Figura \ref{fig:neuralnetwork})\footnote{\url{https://www.ibm.com/cloud/learn/neural-networks}}. Estas redes neuronales necesitan ser entrenadas mediante el concepto anteriormente introducido, de \textit{dataset}. A partir de este entrenamiento, la red es capaz de aprender y aumentar su precisión para que el resultado obtenido tenga fiabilidad.\\
 
 \begin{figure} [h!]
 	\begin{center}
@@ -60,7 +60,7 @@ Este tipo de redes neuronales tiene multitud de aplicaciones, pero todas compart
 
 \section{Coches autónomos}
 \label{sec:cochesautonomos}
-Cuando pensamos en un vehículo autónomo, pensamos en vehículos que circulan a diario por las ciudades (coches, autobuses, furgonetas) aunque cabría esperar que sin una persona al volante. Pero a día de hoy, todavía no está presente en las ciudades pero cabe esperar que en un corto plazo de tiempo lo estará, el principal inconveniente que actualmente está frenando su implantación es la legislación, a diferencia de, por ejemplo, el entorno de la aviación, donde desde hace décadas el control de la aeronave es automático a excepción de tareas como el despegue, el aterrizaje o situaciones de emergencia.\\
+Cuando pensamos en un vehículo autónomo, pensamos en vehículos que circulan a diario por las ciudades (coches, autobuses, furgonetas) aunque cabría esperar que sin una persona al volante (Figura \ref{fig:volvovera})\footnote{\url{https://www.volvogroup.com/en/news-and-media/news/2019/jun/news-3336083.html}}. Pero a día de hoy, todavía no está presente en las ciudades pero cabe esperar que en un corto plazo de tiempo lo estará, el principal inconveniente que actualmente está frenando su implantación es la legislación, a diferencia de, por ejemplo, el entorno de la aviación, donde desde hace décadas el control de la aeronave es automático a excepción de tareas como el despegue, el aterrizaje o situaciones de emergencia.\\
 
 Actualmente, coches de última generación como \textit{Tesla} (Figura \ref{fig:teslaobjectdetection}), ya incorporan un grado de autonomía elevado en determinadas situaciones, pero siempre con un conductor al volante que debe permanecer atento para poder reaccionar.\\
 
@@ -82,11 +82,19 @@ Atendiendo al estándar \textit{SAE J3016} \cite{saej3016} los niveles de autono
 	\item Automatización completa: conducción automática en cualquier situación.
 \end{enumerate}\
 
+\begin{figure} [h!]
+	\begin{center}
+		\includegraphics[width=12cm]{figs/volvovera}
+	\end{center}
+	\caption{Camión autónomo nivel 5 de la marca \textit{Volvo}.}
+	\label{fig:volvovera}
+\end{figure}\
+
 \subsection{AMRs}
 \label{sec:amr}
-Los robots móviles autónomos (o \textit{Autonomous Mobile Robot}, \textit{AMR}) son aquellos capaces de navegar por entornos dinámicos, conviviendo con humanos a su alrededor y sabiendo sobreponerse a situaciones para las que no habían sido programados explícitamente. Son los sucesores de los vehículos de guiado automático (o \textit{Automated Guided Vehicle}, \textit{AGV}), los cuales requieren una cierta infraestructura dependiendo del tipo de guiado, ya sea filo-guiados, a través de pintura o a través de cualquier otra técnica que haga que ese vehículo solo pueda funcionar cuando se sabe la infraestructura previa que estará presente en el entorno de trabajo.\\
+Los robots móviles autónomos (o \textit{Autonomous Mobile Robot}, \textit{AMR}) son aquellos capaces de navegar por entornos dinámicos, conviviendo con humanos a su alrededor y sabiendo sobreponerse a situaciones para las que no habían sido programados explícitamente. Son los sucesores de los vehículos de guiado automático (o \textit{Automated Guided Vehicle}, \textit{AGV}), los cuales requieren una cierta infraestructura dependiendo del tipo de guiado, ya sea filo-guiados, a través de pintura o a través de cualquier otra técnica que haga que ese vehículo solo pueda funcionar cuando se conoce la infraestructura previa que estará presente en el entorno de trabajo.\\
 
-Por otro lados, estos \textit{AGVs} presentan muchas dificultades para relacionarse con obstáculos o humanos, donde ante un cambio pequeño del entorno, el robot se detendrá por seguridad. A diferencia de estos, los \textit{AMRs} son capaces de realizar multitud de tareas en entornos donde la infraestructura necesaria es casi nula, quitando alguna necesidad de conectividad. Salvo por esa excepción, son robots que pueden ser diseñados para navegar por cualquier tipo de ambiente.\\
+Por otro lados, estos \textit{AGVs}\footnote{\url{https://mobilerobotguide.com/2021/08/06/whats-the-difference-between-an-amr-and-an-agv/}} presentan muchas dificultades para relacionarse con obstáculos o humanos, donde ante un cambio pequeño del entorno, el robot se detendrá por seguridad. A diferencia de estos, los \textit{AMRs} son capaces de realizar multitud de tareas en entornos donde la infraestructura necesaria es casi nula, quitando alguna necesidad de conectividad. Salvo por esa excepción, son robots que pueden ser diseñados para navegar por cualquier tipo de ambiente.\\
 
 Un ejemplo muy representativo de \textit{AMRs}, son los robots de \textit{Kiva Systems}\footnote{\url{https://www.aboutamazon.es/noticias/innovacion/los-robots-en-numeros-datos-y-cifras-sobre-los-robots-en-amazon}} (Figura \ref{fig:kivasystems}), empresa comprada por \textit{Amazon} en 2012\footnote{\url{https://www.eleconomista.es/tecnologia/noticias/3833220/03/12/Amazon-compra-la-empresa-robotica-Kyva-Systems-por-775-millones-de-dolares.html}} para automatizar sus almacenes en tareas de logística a nivel interno, maximizando la productividad y el almacenamiento, tanto en profundidad como en altura y minimizando el coste en personal.\\
 
@@ -98,4 +106,4 @@ Un ejemplo muy representativo de \textit{AMRs}, son los robots de \textit{Kiva S
 	\label{fig:kivasystems}
 \end{figure}\
 
-El presente trabajo se enmarca dentro del campo de la robótica y la visión artificial. En estas disciplinas se hace uso de todas estas tecnologías con el objetivo de dotar a robots de una cierta inteligencia. En los próximos capítulos se detallarán los objetivos a cumplir, las plataformas utilizadas y el diseño implementado.\\
+El presente trabajo se enmarca dentro del campo de la robótica y la visión artificial. En estas disciplinas se hace uso de todas estas tecnologías con el objetivo de dotar a robots de una cierta inteligencia. En los próximos capítulos se detallarán los objetivos a cumplir, las plataformas utilizadas y el diseño implementado.
