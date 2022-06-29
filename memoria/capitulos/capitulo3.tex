@@ -1,12 +1,12 @@
 \chapter{Plataforma de desarrollo}
 \label{cap:capitulo3}
-En este capítulo, se explica el hardware y software elegido para desarrollar el trabajo y los motivos de dicha elección.\\
+En este capítulo se explica el hardware y software elegido para desarrollar el trabajo y los motivos de dicha elección.\\
 
 \section{Hardware}
 \label{sec:arquitectura}
-La decisión de qué arquitectura utilizar en un robot es determinante. Es necesario evaluar multitud de factores; consumo de energía, potencia requerida, tamaño y peso, sistema operativo a utilizar, posibilidad de recibir respuesta en \textit{real time}, precio, etc.\\
+La decisión de qué arquitectura utilizar en un robot es determinante. Es necesario evaluar multitud de factores: consumo de energía, potencia requerida, tamaño y peso, sistema operativo a utilizar, posibilidad de recibir respuesta en \textit{real time}, precio, etc.\\
 
-Existen multitud de arquitecturas utilizadas en proyectos robóticos \textit{x86}, \textit{x86\_64}, \textit{ARMv6}, \textit{ARMv7} o \textit{AArch64}. Pero, actualmente hay dos arquitecturas predominantes \textit{x86\_64} y \textit{AArch64}, ambas de 64 \textit{bits}, ya que los 32 \textit{bits} han quedado desfasados para la gran mayoría de aplicaciones, además, los nuevos sistemas operativos comienzan a no soportarlos \cite{canonical32bits}.\\ 
+Existen multitud de arquitecturas utilizadas en proyectos robóticos \textit{x86}, \textit{x86\_64}, \textit{ARMv6}, \textit{ARMv7} o \textit{AArch64}. Pero actualmente hay dos arquitecturas predominantes, \textit{x86\_64} y \textit{AArch64}, ambas de 64 \textit{bits}, ya que los 32 \textit{bits} han quedado desfasados para la gran mayoría de aplicaciones, además de que los nuevos sistemas operativos comienzan a no soportarlos \cite{canonical32bits}.\\ 
 
 Estas dos arquitecturas tienen grandes diferencias en cuanto al diseño de los procesadores y las instrucciones que utilizan:
 \begin{itemize}
@@ -14,7 +14,7 @@ Estas dos arquitecturas tienen grandes diferencias en cuanto al diseño de los p
 	\item Complex Instruction Set Computer (\textit{CISC}).
 \end{itemize}\
 
-El conjunto de instrucciones utilizado por \textit{AArch64} es \textit{CISC}, este conjunto se compone de gran cantidad de instrucciones y muchas de ellas complejas para realizar tareas que, el conjunto \textit{RISC}, puede realizar con varias instrucciones. Este último conjunto es utilizado por la arquitectura \textit{x86\_64}. En el mercado actual existen multitud de placas de desarrollo disponibles para realizar equipar a todo tipo de robots, algunas de ellas se encuentran en las Figuras \ref{fig:aarch64} y \ref{fig:x86}.\\
+El conjunto de instrucciones utilizado por \textit{AArch64} es \textit{CISC}. Este conjunto se compone de gran cantidad de instrucciones y muchas de ellas complejas para realizar tareas que el conjunto \textit{RISC} puede realizar con varias instrucciones. Este último conjunto es utilizado por la arquitectura \textit{x86\_64}. En el mercado actual existen multitud de placas de desarrollo disponibles para equipar a todo tipo de robots, algunas de ellas se encuentran en las Figuras \ref{fig:aarch64} y \ref{fig:x86}.\\
 
 \begin{figure} [h!]
 	\begin{center}
@@ -34,7 +34,7 @@ El conjunto de instrucciones utilizado por \textit{AArch64} es \textit{CISC}, es
 
 \subsection{\textit{NVIDIA Jetson Nano}}
 \label{subsection:jetsonnano}
-La placa de desarrollo \textit{NVIDIA Jetson Nano}\footnote{\url{https://developer.nvidia.com/embedded/jetson-nano}} (Figura \ref{fig:jetsonnano}) es una plataforma de bajo coste con grandes capacidades computacionales para implementar técnicas de inteligencia artificial gracias a su \textit{GPU} dedicada, \textit{NVIDIA Maxwell}\footnote{\url{https://developer.nvidia.com/maxwell-compute-architecture}}, con 128 \textit{NVIDIA CUDA cores}\footnote{\url{https://developer.nvidia.com/cuda-gpus}}; además, dispone de una \textit{CPU Quad-core} basada en la arquitectura \textit{Aarch64} (o \textit{ARM64}), lo que permite ejecutar \textit{GNU/Linux} sin dificultades y ser compatible con numerosas bibliotecas de código. La placa dispone además de pines \textit{GPIO}, (\textit{General Purpose Input/Output}) lo que permite de forma muy sencilla conectar todo tipo de sensores y actuadores.\\
+La placa de desarrollo \textit{NVIDIA Jetson Nano}\footnote{\url{https://developer.nvidia.com/embedded/jetson-nano}} (Figura \ref{fig:jetsonnano}) es una plataforma de bajo coste con grandes capacidades computacionales para implementar técnicas de inteligencia artificial, gracias a su \textit{GPU} dedicada, \textit{NVIDIA Maxwell}\footnote{\url{https://developer.nvidia.com/maxwell-compute-architecture}}, con 128 \textit{NVIDIA CUDA cores}\footnote{\url{https://developer.nvidia.com/cuda-gpus}}; además, dispone de una \textit{CPU Quad-core} basada en la arquitectura \textit{Aarch64} (o \textit{ARM64}), lo que permite ejecutar \textit{GNU/Linux} sin dificultades y ser compatible con numerosas bibliotecas de código. La placa dispone, además, de pines \textit{GPIO} (\textit{General Purpose Input/Output}), lo que permite de forma muy sencilla conectar todo tipo de sensores y actuadores.\\
 
 Los requisitos en cuanto a alimentación no son excesivos; requiere un mínimo de 5 voltios (V) y 3 amperios (A), lo que permite que una \textit{powerbank} de reducido tamaño sea capaz de alimentar la placa, si bien es cierto que la batería debe poder ofrecer tres amperios de forma estable, y no solo como intensidad pico. Existen numerosos proyectos en los que esta placa está presente, tales como \textit{JetBot}\footnote{\url{https://github.com/NVIDIA-AI-IOT/jetbot}} o \textit{JetRacer}, que se detallará en la Sección \ref{subsection:jetracer}.\\
 
@@ -74,7 +74,7 @@ La principal limitación de esta placa es que solo permite controlar dos motores
 
 \subsection{Cámara \textit{Xiaomi}}
 \label{subsection:xiaomicamera}
-Se trata de una cámara USB, que permite recibir la imagen a través de dicho puerto con una tasa de 30 \textit{frames} por segundo (\textit{FPS}). Su resolución es de 1080p\footnote{\url{https://xiaomiplanets.com/xiaovv-6320s-webcam-5/}} pero permite obtener una imagen de menor resolución (Cuadro \ref{table:camera}) a través de su \textit{driver}.\\
+Se trata de una cámara USB, que permite recibir la imagen a través de dicho puerto con una tasa de 30 \textit{frames} por segundo (\textit{FPS}). Su resolución es de 1080p\footnote{\url{https://xiaomiplanets.com/xiaovv-6320s-webcam-5/}}, pero permite obtener una imagen de menor resolución (Cuadro \ref{table:camera}) a través de su \textit{driver}.\\
 
 \begin{table}[H]
 	\begin{center}
@@ -104,7 +104,7 @@ Es una batería (Figura \ref{fig:battery}) con una capacidad de 10500 miliamperi
 	\begin{center}
 		\includegraphics[width=3cm]{figs/battery2}
 	\end{center}
-	\caption{Batería 10000mAh.}
+	\caption{Batería 10500mAh.}
 	\label{fig:battery}
 \end{figure}\
 
@@ -114,7 +114,7 @@ Se trata de un chasis de bajo coste muy común en proyectos relacionados con Ard
 
 \begin{figure} [h!]
 	\begin{center}
-		\includegraphics[width=4cm]{figs/chasis}
+		\includegraphics[width=6cm]{figs/chasis}
 	\end{center}
 	\caption{Chasis.}
 	\label{fig:chasis}
@@ -125,15 +125,16 @@ A continuación, se describe el lenguaje de programación y las bibliotecas de c
 
 \subsection{\textit{Python}}
 \label{subsection:python}
-\textit{Python} es un lenguaje de programación de código abierto, interpretado, orientado a objetos y de alto nivel. En la actualidad es el lenguaje más usado a nivel mundial\footnote{\url{https://pypl.github.io/PYPL.html}}. Está considerado como un lenguaje fácil de aprender gracias a su sintaxis simple (Figura \ref{fig:helloworldpython}), lo que le ha llevado a crecer mucho en popularidad durante los últimos años. Además, al ser interpretado, no es necesario utilizar un compilador, lo que provoca un desarrollo mucho más rápido. \textit{Python} cuenta con una enorme cantidad de bibliotecas y clientes para utilizar software desarrollado en otros lenguajes. Algunas de ellas se describirán a continuación.\\
+\textit{Python} es un lenguaje de programación de código abierto, interpretado, orientado a objetos y de alto nivel. En la actualidad es el lenguaje más usado a nivel mundial\footnote{\url{https://pypl.github.io/PYPL.html}}. Está considerado como un lenguaje fácil de aprender gracias a su sintaxis simple (Código \ref{cod:helloworldpython}), lo que le ha llevado a crecer mucho en popularidad durante los últimos años. Además, al ser interpretado, no es necesario utilizar un compilador, lo que provoca un desarrollo mucho más rápido. \textit{Python} cuenta con una enorme cantidad de bibliotecas y clientes para utilizar software desarrollado en otros lenguajes. Algunas de ellas se describirán a continuación.\\
 
-\begin{figure} [h!]
-	\begin{center}
-		\includegraphics[width=8cm]{figs/helloworldpython}
-	\end{center}
-	\caption{Hola mundo en \textit{Python 3}.}
-	\label{fig:helloworldpython}
-\end{figure}\
+\begin{code}[h]
+	\begin{lstlisting}[language=Python]
+		def sayHello():
+			print("Hello World")
+	\end{lstlisting}
+	\caption[Hola mundo en \textit{Python 3}.]{Hola mundo en \textit{Python 3}.}
+	\label{cod:helloworldpython}
+\end{code}
 
 \subsection{\textit{Blender}}
 \label{subsection:blender}
@@ -141,7 +142,7 @@ A continuación, se describe el lenguaje de programación y las bibliotecas de c
 
 \begin{figure} [h!]
 	\begin{center}
-		\includegraphics[width=10cm, height=6cm]{figs/blender}
+		\includegraphics[width=12cm, height=8cm]{figs/blender}
 	\end{center}
 	\caption{Creación de una animación 3D con \textit{Blender}.}
 	\label{fig:blender}
@@ -177,7 +178,7 @@ El formato \textit{SDF} (\textit{Simulation Description Format})\footnote{\url{h
 
 \subsection{\textit{OpenCV}}
 \label{subsection:opencv}
-\textit{OpenCV}\footnote{\url{https://github.com/opencv/opencv}} es una librería de visión artificial de código abierto desarrollado por \textit{Intel}\footnote{\url{https://opencv.org/opencv-platinum-membership/}}. Está escrita en \textit{C/C++} y cuenta con soporte para aceleración por \textit{GPU} basadas en \textit{CUDA}\footnote{\url{https://developer.nvidia.com/cuda-zone}} y \textit{OpenCL}\footnote{\url{https://www.khronos.org/opencl/}} y procesamiento de imagen en tiempo real. Es usada en todo tipo de aplicaciones en las que interviene la visión por ordenador, tales como: detección de objetos, realidad aumentada o reconocimiento de gestos. Además, está disponible en multitud de lenguajes de programación; \textit{C++}, \textit{Python}, \textit{Java}, etc.\\
+\textit{OpenCV}\footnote{\url{https://github.com/opencv/opencv}} es una librería de visión artificial de código abierto desarrollado por \textit{Intel}\footnote{\url{https://opencv.org/opencv-platinum-membership/}}. Está escrita en \textit{C/C++} y cuenta con soporte para aceleración por \textit{GPU} basadas en \textit{CUDA}\footnote{\url{https://developer.nvidia.com/cuda-zone}} y \textit{OpenCL}\footnote{\url{https://www.khronos.org/opencl/}} y procesamiento de imagen en tiempo real. Es usada en todo tipo de aplicaciones en las que interviene la visión por ordenador, tales como: detección de objetos, realidad aumentada o reconocimiento de gestos. Además, está disponible en multitud de lenguajes de programación: \textit{C++}, \textit{Python}, \textit{Java}, etc.\\
 
 \subsection{YOLO}
 \label{sec:yolo}
@@ -237,8 +238,7 @@ Uno de los principales problemas de \textit{YOLO} es la baja de probabilidad de 
 \end{figure}\
 \subsection{\textit{JetRacer}}
 \label{subsection:jetracer}
-La biblioteca \textit{JetRacer}\footnote{\url{https://github.com/NVIDIA-AI-IOT/jetracer}} permite entrenar una red neuronal para seguir un circuito o una ruta determinada. Utiliza \textit{notebooks} de \textit{Jupyter} para poder reducir la complejidad en el entrenamiento de la red y en el ajuste del controlador, tal y como representa la Figura \ref{fig:livejetracer}.\\
-A su vez, esta librería utiliza otras tres cruciales para poder implementar su software:
+La biblioteca \textit{JetRacer}\footnote{\url{https://github.com/NVIDIA-AI-IOT/jetracer}} permite entrenar una red neuronal para seguir un circuito o una ruta determinada. Utiliza \textit{notebooks} de \textit{Jupyter} para poder reducir la complejidad en el entrenamiento de la red y en el ajuste del controlador, tal y como representa la Figura \ref{fig:livejetracer}. A su vez, esta librería utiliza otras tres cruciales para poder implementar su software:
 \begin{itemize}
 	\item PyTorch\footnote{\url{https://github.com/pytorch/pytorch}}: es una librería de código abierto con multitud de herramientas para implementar algoritmos de \textit{Deep Learning} basada en \textit{Python} \cite{autopilottesla}. Es un desarrollo del \textit{Facebook's AI Research Lab}. Soporta aceleración por \textit{GPU}, lo que es esencial para poder ejecutar redes neuronales. Junto a \textit{Tensorflow} y \textit{Keras}, son los tres \textit{frameworks} de referencia en lo que a \textit{Deep Learning} se refiere.
 	\item \textit{PyTorch to TensorRT}\footnote{\url{https://github.com/NVIDIA-AI-IOT/torch2trt}}: permite convertir modelos de \textit{PyTorch} a modelos optimizados aprovechando los tensores de las gráficas dedicadas y realizando inferencia utilizando operaciones con \textit{FP16} y \textit{FP32}.

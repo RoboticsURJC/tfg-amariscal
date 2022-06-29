@@ -1,11 +1,10 @@
-\chapter{Diseño}
+\chapter{Sistema de conducción autónoma}
 \label{cap:capitulo4}
 En este capítulo se describe el trabajo realizado y los experimentos llevados a cabo para validar el desarrollo.\\
 
-El trabajo, como se explicó en el Capítulo 2, se ha dividido en dos fases: primero se realiza una simulación del coche autónomo en una ciudad simplificada para, a continuación, reproducir ese mismo escenario en un entorno real. En la siguiente sección se detalla el diseño del software implementado de forma común (con ligeras diferencias) en los dos entornos.\\
+El trabajo, como se explicó en el Capítulo \ref{cap:capitulo2}, se ha dividido en dos fases: primero se realiza una simulación del coche autónomo en una ciudad simplificada para, a continuación, reproducir ese mismo escenario en un entorno real. En la siguiente sección se detalla el diseño del software implementado de forma común (con ligeras diferencias) en los dos entornos.\\
 
-\section{Diseño del software a partir de un diagrama de clases}
-El diseño del software se ha realizado a partir de un diagrama de clases, utilizando la herramienta \textit{UMLET}\footnote{\url{hhttps://www.umlet.com/}}, que permite crear clases, dependencias entre ellas, y los atributos y funciones que contiene. El presente diseño, representado en la Figura \ref{fig:diagram}, contiene una clase principal llamada \textit{AutonomousVehicle}, que tiene instancias de la clase \textit{LaneFollower}, la cual implementa el seguimiento de carril. La clase \textit{JetRacer}, que implementa el controlador del vehículo y la comunicación con los motores del mismo. También contiene una instancia de la clase \textit{ObjectDetector} que implementa la detección de objetos y hace uso del flujo de vídeo proveniente de un \textit{topic} de \textit{ROS}.
+El diseño del software se ha realizado a partir de un diagrama de clases, utilizando la herramienta \textit{UMLET}\footnote{\url{hhttps://www.umlet.com/}}, que permite crear clases, dependencias entre ellas, y los atributos y funciones que contiene. El presente diseño, representado en la Figura \ref{fig:diagram}, contiene una clase principal llamada \textit{AutonomousVehicle}, que tiene instancias de la clase \textit{LaneFollower}, la cual implementa el seguimiento de carril. La clase \textit{JetRacer}, que implementa el controlador del vehículo y la comunicación con los motores del mismo. También contiene una instancia de la clase \textit{ObjectDetector}, que implementa la detección de objetos y hace uso del flujo de vídeo proveniente de un \textit{topic} de \textit{ROS}.
 \begin{figure} [h!]
 	\begin{center}
 		\includegraphics[width=16cm]{figs/diagram5}
@@ -43,7 +42,7 @@ El modelo de esta ciudad es estático, es decir, no contiene elementos dinámico
 	\label{cod:trafficlight}
 \end{code}
 
-El segundo \textit{plugin} proporciona movimiento a un modelo de un humano (que se denomina actor). Este está disponible en otro repositorio\footnote{\url{https://github.com/BruceChanJianLe/gazebo-plugin-autonomous-actor}} de \textit{GitHub} y permite que el humano se desplace en el mundo de forma realista. Este \textit{plugin} se puede configurar para especificar la ruta de puntos o \textit{waypoints} que el peatón ha de seguir, así como su velocidad o la distancia mínima a la que debe situarse respecto a un obstáculo. Dicha configuración se realiza directamente en el fichero \textit{SDF}, como muestra el Código \ref{cod:pedestrianconfiguration}.\\
+El segundo \textit{plugin} proporciona movimiento a un modelo de un humano (que se denomina actor). Este está disponible en otro repositorio\footnote{\url{https://github.com/BruceChanJianLe/gazebo-plugin-autonomous-actor}} de \textit{GitHub}, y permite que el humano se desplace en el mundo de forma realista. Este \textit{plugin} se puede configurar para especificar la ruta de puntos o \textit{waypoints} que el peatón ha de seguir, así como su velocidad o la distancia mínima a la que debe situarse respecto a un obstáculo. Dicha configuración se realiza directamente en el fichero \textit{SDF}, como muestra el Código \ref{cod:pedestrianconfiguration}.\\
 
 \begin{code}[h]
 	\begin{lstlisting}
@@ -79,14 +78,13 @@ Ambos modelos se sitúan en una paso de peatones, creado a partir de láminas bl
 
 \subsection{Modelo del coche autónomo}
 \label{subsection:vehiclemodel}
-El primer paso para desarrollar un modelo es diseñar las piezas a utilizar; para ello, como se explicó en el Capítulo 2, se utilizará \textit{FreeCAD}. El segundo paso es ensamblar el robot con \textit{Blender} utilizando el \textit{add-on} \textit{Phobos} para definir los \textit{links} y \textit{joints} del robot con el objetivo de dotar al robot de movimiento, generando un fichero \textit{URDF}. Por último, es necesario modificar el \textit{URDF} para añadir cámaras y controladores para los motores que serán usados en el simulador \textit{Gazebo}.\\
+El primer paso para desarrollar un modelo es diseñar las piezas a utilizar; para ello, como se explicó en el Capítulo \ref{cap:capitulo2}, se utilizará \textit{FreeCAD}. El segundo paso es ensamblar el robot con \textit{Blender} utilizando el \textit{add-on} \textit{Phobos} para definir los \textit{links} y \textit{joints} del robot con el objetivo de dotar al robot de movimiento, generando un fichero \textit{URDF}. Por último, es necesario modificar el \textit{URDF} para añadir cámaras y controladores para los motores que serán usados en el simulador \textit{Gazebo}.\\
 
 \subsubsection{Diseño de las piezas en \textit{FreeCAD}}
 A través de la herramienta \textit{Sketcher}\footnote{\url{https://wiki.freecadweb.org/Sketcher_Workbench}}, disponible en \textit{FreeCAD}, es posible realizar un diseño de piezas en 2D con restricciones de horizontalidad, verticalidad, igualdad entre rectas, medidas, ángulos, etc. Y después convertir dicha pieza en 3D proporcionando un volumen a la pieza. Utilizando dicha herramienta se diseña el chasis y las ruedas del vehículo tomando las medidas reales, lo que da como resultado el diseño de las piezas en 2D de la Figura \ref{fig:designfreecad}.\\
-
 \begin{figure} [h!]
 	\begin{center}
-		\includegraphics[width=7cm]{figs/sketchFreecad}\hspace{0.1cm}\includegraphics[width=7cm]{figs/freecad}
+		\includegraphics[height=5cm]{figs/sketchFreecad}\hspace{0.1cm}\includegraphics[height=5cm]{figs/freecad}
 	\end{center}
 	\caption{Diseño del chasis 2D y 3D en \textit{FreeCAD}.}
 	\label{fig:designfreecad}
@@ -117,7 +115,6 @@ Por último, se definen los \textit{joints} de cada rueda. A través de está fu
 \textit{joints} en \textit{Phobos}: \textit{fixed}, \textit{revolute}, \textit{continuous}, \textit{prismatic}, etc. En este caso, son necesarios \textit{joints} de tipo \textit{continuous}, ya que las ruedas realizan un giro sin un límite fijado, y no un movimiento transversal.\\
 
 Una vez definidos todos los elementos del modelo y su jerarquía, en el menú lateral de \textit{Blender} se encontrará el diagrama del modelo (Figura \ref{fig:blenderdiagram}).\\
-
 \begin{figure} [h!]
 	\begin{center}
 		\includegraphics[width=6cm]{figs/phobosDiagram}
@@ -205,7 +202,7 @@ Con todo ello, se implementa un \textit{launcher} que lanza el modelo dińamico 
 
 \subsection{Seguimiento de carril}
 \label{subsection:lanefollower}
-Como se explicó en el Capítulo 2, la biblioteca elegida para realizar el seguimiento de carril es \textit{JetRacer}, tal y como se expuso en la Sección \ref{subsection:jetracer}. Dicha biblioteca se basa en la utilización de una red \textit{ResNet-18} preentrenada, consistente en una red neuronal convolucional de 18 capas con bloques residuales que permiten incrementar el número de capas sin perder rendimiento ni precisión. Sobre esta red se entrena con un \textit{dataset} de un reducido número de imágenes. Esta proporciona diversos \textit{notebooks}\footnote{\url{https://github.com/NVIDIA-AI-IOT/jetracer/tree/master/notebooks}} de \textit{Jupyter} que hacen más la sencilla la obtención del \textit{dataset}, el entrenamiento y el ajuste del controlador.\\
+Como se explicó en el Capítulo \ref{cap:capitulo2}, la biblioteca elegida para realizar el seguimiento de carril es \textit{JetRacer}, tal y como se expuso en la Sección \ref{subsection:jetracer}. Dicha biblioteca se basa en la utilización de una red \textit{ResNet-18} preentrenada, consistente en una red neuronal convolucional de 18 capas con bloques residuales que permiten incrementar el número de capas sin perder rendimiento ni precisión. Sobre esta red se entrena con un \textit{dataset} de un reducido número de imágenes. Esta proporciona diversos \textit{notebooks}\footnote{\url{https://github.com/NVIDIA-AI-IOT/jetracer/tree/master/notebooks}} de \textit{Jupyter} que hacen más la sencilla la obtención del \textit{dataset}, el entrenamiento y el ajuste del controlador.\\
 
 El primer paso es la obtención del \textit{dataset} para posteriormente entrenar la red. Para ello, es necesario asociar cada imagen con el centro del carril, definido a partir de una coordenada en el eje x y otra en eje y. La librería utiliza un \textit{widget} para \textit{Jupyter} llamado \textit{Jupyter Clickable Image Widget}\footnote{\url{https://github.com/jaybdub/jupyter_clickable_image_widget}}, lo que permite que al hacer click sobre la imagen recibida a partir de un flujo de vídeo, esta se guarde con un nombre atendiendo al siguiente formato: \textit{x\_y\_identificador\_unico.jpg}. Es importante entrenar también con imágenes donde el ángulo del giro del robot sea elevado, tal y como muestra la Figura \ref{fig:traineddifficult} ya que de esa forma el robot sabrá reaccionar ante situaciones difíciles.\\
 
@@ -224,7 +221,6 @@ Una vez obtenido el \textit{dataset} se descarga el modelo preentrenado \textit{
 El siguiente paso es el entrenamiento de la red. Para ello, en cada \textit{epoch} se calcula el error cuadrático medio (\textit{Mean Squared Error, MSE loss}) entre una de las imágenes del \textit{dataset} y la salida actual de la red. Una vez calculado este \textit{loss} se realiza la propagación hacia detrás (o \textit{backpropagation}), consistente en la propagación de los errores desde la capa de salida hasta la primera capa. Además, se realiza una optimización de los pesos a través del algoritmo \textit{Adam} \cite{adam}, el cual es un método de optimización estocástica basado en el cálculo de las tasas individuales adaptables de entrenamiento, (\textit{individual adaptive learning rates}) a partir de estimaciones del primer y segundo momento del gradiente.\\
 
 Para realizar el entrenamiento hay que fijar un número de \textit{epochs}, que será el momento en el que el entrenamiento finalizará. En cada \textit{epoch} el error va bajando hasta llegar a un valor cercano a 0; dependiendo del número de imágenes del \textit{dataset}, el tiempo invertido en realizar una \textit{epoch} será mayor o menor. En el caso del entrenamiento realizado, en 7 \textit{epochs} el \textit{loss} alcanzó el valor de 0.0068, tal y como se muestra en la Figura \ref{fig:simgraphepoch}.\\
-
 \begin{figure} [h!]
 	\begin{center}
 		\includegraphics[width=14cm]{figs/simgraphepoch}
@@ -353,7 +349,7 @@ Todo ello se puede observar en capturas de la ejecución representadas en la Fig
 Con el objetivo de realizar un control sencillo de la simulación, se ha realizado una interfaz gráfica desarrollada con la biblioteca \textit{PyQT}. Dicha interfaz dispone de un manipulador que permite realizar un control manual del robot. Incluye también un botón para iniciar la simulación y, otro, para reiniciarla, volviendo el robot al punto inicial, así como un botón para activar las dos cámaras. Dispone de una cámara alojada en el propio robot llamada \textit{onboard}, y otra que se desplaza cuando el robot avanza, de modo que aporta una visión del recorrido que realiza el robot. La interfaz descrita se puede observar en la Figura \ref{fig:gui}.\\
 \begin{figure} [h!]
 	\begin{center}
-		\includegraphics[width=10cm]{figs/GUI}
+		\includegraphics[width=12cm]{figs/GUI}
 	\end{center}
 	\caption{Interfaz de usuario desarrollada para controlar la simulación.}
 	\label{fig:gui}
@@ -376,14 +372,13 @@ El entorno real se compone de diversos objetos: un circuito elaborado con pistas
 
 \begin{figure} [h!]
 	\begin{center}
-		\includegraphics[width=4cm, height=5cm]{figs/realstopsign}\hspace{0.5cm}\includegraphics[width=4cm]{figs/realtrafficlight}\hspace{0.5cm}\includegraphics[width=4cm, height=5cm]{figs/realpedestrian}
+		\includegraphics[width=3.5cm, height=5cm]{figs/realstopsign}\hspace{0.5cm}\includegraphics[width=3.5cm, height=5cm]{figs/realtrafficlight}\hspace{0.5cm}\includegraphics[width=3.5cm, height=5cm]{figs/realpedestrian}
 	\end{center}
 	\caption{Objetos reales dinámicos y estáticos.}
 	\label{fig:objects}
 \end{figure}\
 
 Al comienzo del desarrollo se construyó un circuito inicial, representado en la Figura \ref{fig:circuit}, en el que se entrenó la red neuronal de seguimiento de carril. Posteriormente, se fue agrandando en el espacio, introduciendo rectas más largas para poder interactuar mejor con los objetos.\\
-
 \begin{figure} [h!]
 	\begin{center}
 		\includegraphics[width=8cm]{figs/circuit}
@@ -407,7 +402,7 @@ El entrenamiento de la red neuronal \textit{ResNet-18} se realiza de igual forma
 
 \begin{figure} [h!]
 	\begin{center}
-		\includegraphics[width=4cm]{figs/imagedataset}\hspace{1cm}\includegraphics[width=6cm]{figs/epoch}
+		\includegraphics[height=4cm]{figs/imagedataset}\hspace{1cm}\includegraphics[height=4cm]{figs/epoch}
 	\end{center}
 	\caption{Imagen del \textit{dataset} utilizado entrenado con luz artificial y \textit{loss} al finalizar el entrenamiento.}
 	\label{fig:imagedataset}
@@ -426,8 +421,6 @@ Una vez probada la red neuronal \textit{YOLO V3 Tiny} utilizada en el entorno si
 			\\
 			NVIDIA MX330					& Pascal								& 6.1														& 384												& 2 GB
 			\\
-			NVIDIA AGX Xavier			& Volta									& 7.2														& 384 con 48 Tensor Cores		& 64 GB
-			\\
 			\hline
 		\end{tabular}
 		\parbox[t]{\textwidth}{\footnotesize C.C$^*$: capacidad de cómputo.}
@@ -436,8 +429,8 @@ Una vez probada la red neuronal \textit{YOLO V3 Tiny} utilizada en el entorno si
 	\end{center}
 \end{table}
 
-\subsection{Entrenamiento de la red \textit{YOLO V3 Tiny} para detección de objetos propios}
-El objetivo es entrenar la red \textit{YOLO V3 Tiny} para poder detectar objetos propios o mejorar la probabilidad de detección de objetos ya detectados por la red.\\
+\subsection{Detección de objetos propios}
+Aquí el objetivo es entrenar la red \textit{YOLO V3 Tiny} para poder detectar objetos propios o mejorar la probabilidad de detección de objetos ya detectados por la red.\\
 
 Para ello, es pertinente saber qué \textit{dataset} se ha utilizado para generar los pesos actualmente usados. Atendiendo a la página oficial de \textit{YOLO}\footnote{\url{https://pjreddie.com/darknet/yolo/}}, el \textit{dataset} utilizado es \textit{COCO}. Por lo que será necesario obtener las imágenes y sus ficheros de etiquetado donde se asocian los objetos presentes en las imágenes. Existe un repositorio\footnote{\url{https://github.com/KaranJagtiani/YOLO-Coco-Dataset-Custom-Classes-Extractor}} que permite la extracción, a partir del \textit{dataset} mencionado, de las clases de objetos deseadas.\\
 
@@ -473,8 +466,7 @@ El formato del archivo de etiquetado de los objetos es muy relevante. El formato
 	\label{cod:formatyolo}
 \end{code}
 
-Como se mencionó en el Capítulo 2, se ha utilizado la librería \textit{LabelIMG} para realizar el etiquetado de los objetos y generar el archivo en formato compatible con \textit{YOLO}. En la Figura \ref{fig:customlabelimg} se representa el etiquetado de uno de los objetos reales con dicha librería.\\
-
+Como se mencionó en el Capítulo \ref{cap:capitulo2}, se ha utilizado la librería \textit{LabelIMG} para realizar el etiquetado de los objetos y generar el archivo en formato compatible con \textit{YOLO}. En la Figura \ref{fig:customlabelimg} se representa el etiquetado de uno de los objetos reales con dicha librería.\\
 \begin{figure} [h!]
 	\begin{center}
 		\includegraphics[width=14cm]{figs/customlabelimg}
@@ -487,7 +479,7 @@ El gráfico representado en la Figura \ref{fig:graphcoco} \cite{graphcoco}, mues
 
 \begin{figure} [h!]
 	\begin{center}
-		\includegraphics[width=14cm]{figs/graphcoco}
+		\includegraphics[width=16cm]{figs/graphcoco}
 	\end{center}
 	\caption{Distribución de las clases de objetos del \textit{dataset} COCO.}
 	\label{fig:graphcoco}
@@ -531,9 +523,8 @@ Durante el entrenamiento, se irá mostrando una gráfica que indica el progreso,
 	\label{fig:chart}
 \end{figure}\
 
-\subsection{Controlador diseñado para el seguimiento de carril a partir de la salida de la red neuronal}
+\subsection{Controlador para el seguimiento de carril}
 Una vez obtenida la salida de la red neuronal que indica el centro del carril, es necesario elaborar un controlador que comande velocidades lineales y angulares al robot. Para ello, se ha realizado un controlador proporcional (P) con una serie de constantes para lograr un comportamiento adecuado. Dicho controlador se muestra en el Código \ref{cod:controller}.\\ 
-
 \begin{code}[h]
 	\begin{lstlisting}[language=Python]
 		def setSteering(self, steering):
@@ -559,10 +550,16 @@ Una vez obtenida la salida de la red neuronal que indica el centro del carril, e
 	\caption[Controlador P realizado para el seguimiento de carril.]{Controlador P realizado para el seguimiento de carril.}
 	\label{cod:controller}
 \end{code}
+\begin{figure} [h!]
+	\begin{center}
+		\includegraphics[width=6cm]{figs/screenshottrafficlight}\hspace{0.5cm}\includegraphics[width=6cm]{figs/screenshotstopsign}
+	\end{center}
+	\caption{Visión del robot durante la ejecución en el entorno real.}
+	\label{fig:screenshotsreal}
+\end{figure}\
 
 \subsection{Transformación del modelo de \textit{PyTorch a TensorRT}}
-Como se expuso en el Capítulo 3, existe una librería llamada \textit{PyTorch to TensorRT} capaz de convertir modelos de \textit{PyTorch} a modelos optimizados aprovechando los tensores de las gráficas dedicadas. Si bien la placa \textit{NVIDIA Jetson Nano} no dispone de una \textit{GPU} con tensores\footnote{\url{https://connecttech.com/jetson/jetson-module-comparison/}}, sí permite realizar inferencia utilizando operaciones con \textit{FP16}, lo que aumenta el rendimiento en gran medida. Esta conversión se realiza de forma muy sencilla llamando a la función \verb|torch2trt()|, tal y como se representa en el Código \ref{cod:torch2trt}.\\
-
+Como se expuso en el Capítulo \ref{cap:capitulo3}, existe una librería llamada \textit{PyTorch to TensorRT} capaz de convertir modelos de \textit{PyTorch} a modelos optimizados aprovechando los tensores de las gráficas dedicadas. Si bien la placa \textit{NVIDIA Jetson Nano} no dispone de una \textit{GPU} con tensores\footnote{\url{https://connecttech.com/jetson/jetson-module-comparison/}}, sí permite realizar inferencia utilizando operaciones con \textit{FP16}, lo que aumenta el rendimiento en gran medida. Esta conversión se realiza de forma muy sencilla llamando a la función \verb|torch2trt()|, tal y como se representa en el Código \ref{cod:torch2trt}.\\
 \begin{code}[h]
 	\begin{lstlisting}[language=Python]
 		data = torch.zeros((1, 3, 224, 224)).cuda().half()
@@ -573,16 +570,11 @@ Como se expuso en el Capítulo 3, existe una librería llamada \textit{PyTorch t
 	\label{cod:torch2trt}
 \end{code}
 
-\begin{figure} [h!]
-	\begin{center}
-		\includegraphics[width=6cm]{figs/screenshottrafficlight}\hspace{0.5cm}\includegraphics[width=6cm]{figs/screenshotstopsign}
-	\end{center}
-	\caption{Visión del robot durante la ejecución en el entorno real.}
-	\label{fig:screenshotsreal}
-\end{figure}\
-
 % Resnet
 % NN siempre yxy?
 % yolov3-tiny.conv.15 15 convolución 15 preentrenada por qué? y con qué dataset?
 % \textit{Over-fitting}, current avg loss incluye el error del set de entrenamiento y el de validación?
 % Salir de sección screenshotsreal
+% 7 epochs 
+% Controller problems and function
+% Small city text
