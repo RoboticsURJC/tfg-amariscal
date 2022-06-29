@@ -19,7 +19,7 @@ Para poder probar el comportamiento deseado en un entorno simulado es necesario 
 
 \subsection{Modelo de la ciudad}
 \label{subsection:citymodel}
-Existen numerosos mundos diseñados para \textit{Gazebo} disponibles en repositorios de \textit{GitHub}\footnote{\url{https://github.com/chaolmu/gazebo_models_worlds_collection}}$^{,\thinspace}$\footnote{\url{https://github.com/mlherd/Dataset-of-Gazebo-Worlds-Models-and-Maps}}. En el caso que se plantea en este trabajo, es necesario una ciudad, pero no de tamaño natural, por lo que, partiendo de una ciudad\footnote{\url{https://github.com/chaolmu/gazebo_models_worlds_collection/blob/master/worlds/small_city.world}} de tamaño natural se reduce su tamaño para, posteriormente, poder reproducir ese mismo escenario en el mundo real. En la Figura \ref{fig:cityversus} se observan ambas ciudades.\\
+Existen numerosos mundos diseñados para \textit{Gazebo} disponibles en repositorios de \textit{GitHub}\footnote{\url{https://github.com/chaolmu/gazebo_models_worlds_collection}}$^{,\thinspace}$\footnote{\url{https://github.com/mlherd/Dataset-of-Gazebo-Worlds-Models-and-Maps}}. En el caso que se plantea en este trabajo, es necesario una ciudad, pero no de grandes dimensiones, por lo que, partiendo de una ciudad\footnote{\url{https://github.com/chaolmu/gazebo_models_worlds_collection/blob/master/worlds/small_city.world}} de grandes dimensiones se reduce su tamaño para, posteriormente, poder reproducir ese mismo escenario en el mundo real. En la Figura \ref{fig:cityversus} se observan ambas ciudades.\\
 
 \begin{figure} [h!]
 	\begin{center}
@@ -86,11 +86,11 @@ A través de la herramienta \textit{Sketcher}\footnote{\url{https://wiki.freecad
 	\begin{center}
 		\includegraphics[height=5cm]{figs/sketchFreecad}\hspace{0.1cm}\includegraphics[height=5cm]{figs/freecad}
 	\end{center}
-	\caption{Diseño del chasis 2D y 3D en \textit{FreeCAD}.}
+	\caption{Diseño de las piezas 2D y 3D en \textit{FreeCAD}.}
 	\label{fig:designfreecad}
 \end{figure}\
 
-A continuación se proporciona un grosor al chasis de 3mm y a las ruedas de 26mm, obteniendo el modelo 3D de la Figura \ref{fig:designfreecad}.\\
+A continuación se proporciona un grosor al chasis de 2mm y a las ruedas de 26mm, obteniendo el modelo 3D de la Figura \ref{fig:designfreecad}.\\
 
 El siguiente paso es exportar las piezas diseñadas a formato \textit{STL}, para poder ser utilizadas en \textit{Blender}.\\
 
@@ -497,13 +497,13 @@ También es necesario modificar una serie de archivos, entre los que se encuentr
 	\item En cada parámetro \textit{[yolo]} el número de clases de objetos a detectar deberá ser fijado y el número de \textit{filters} deberá fijarse atendiendo a la siguiente fórmula: \textit{(classes + 5) x 3}.
 \end{itemize}\
 
-Se deberán crear los ficheros \textit{train.txt} y \textit{test.txt}, donde deben estar las rutas absolutas a cada fichero de etiquetado. Y otro fichero llamado \textit{obj.data} que contenga las rutas de los archivos anteriormente descritos. Dicho contenido está presente en el Código \ref{cod:objdata}.\\
+Se deberán crear los ficheros \textit{train.txt} y \textit{valid.txt}, donde deben estar las rutas absolutas a cada fichero de etiquetado. Y otro fichero llamado \textit{obj.data} que contenga las rutas de los archivos anteriormente descritos. Dicho contenido está presente en el Código \ref{cod:objdata}.\\
 
 \begin{code}[h]
 	\begin{lstlisting}
 		classes = 9
 		train  = data/train.txt
-		valid  = data/test.txt
+		valid  = data/valid.txt
 		names = data/obj.names
 		backup = backup/
 	\end{lstlisting}
@@ -511,15 +511,15 @@ Se deberán crear los ficheros \textit{train.txt} y \textit{test.txt}, donde deb
 	\label{cod:objdata}
 \end{code}
 
-Otro factor importante es el porcentaje de imágenes con el que no se entrena la red pero sí es utilizado para comprobar la validez de la misma. Estas imágenes componen el \textit{dataset} de validación, y debe estar compuesto por un 20\% de las imágenes totales del \textit{dataset}.\\
+Otro factor importante es el porcentaje de imágenes con el que no se entrena la red pero sí es utilizado para comprobar la validez de la misma. Estas imágenes componen el \textit{dataset} de validación, y debe estar compuesto por entre un 10\% y un 15\%\footnote{\url{https://www.ccoderun.ca/programming/2020-01-04_neural_network_training/}} de las imágenes totales del \textit{dataset}.\\
 
-Durante el entrenamiento, se irá mostrando una gráfica que indica el progreso, representada en la Figura \ref{fig:chart}. En dicha gráfica se muestra el \textit{current avg loss} de la red; se puede observar que al finalizar el entrenamiento es de 0.663. Atendiendo a la guía\footnote{\url{https://github.com/AlexeyAB/darknet\#how-to-train-to-detect-your-custom-objects}} utilizada para entrenar la red, el \textit{loss} deberá estar entre 0.05 -en el caso de un \textit{dataset} pequeño y simple- a 3.0, en el caso de un \textit{dataset} grande y difícil, como es el caso de la clase persona.\\
+Durante el entrenamiento, se irá mostrando una gráfica que indica el progreso, representada en la Figura \ref{fig:chart}. En dicha gráfica se muestra el \textit{current avg loss} de la red; se puede observar que al finalizar el entrenamiento es de 0.449. Atendiendo a la guía\footnote{\url{https://github.com/AlexeyAB/darknet\#how-to-train-to-detect-your-custom-objects}} utilizada para entrenar la red, el \textit{loss} deberá estar entre 0.05 -en el caso de un \textit{dataset} pequeño y simple- a 3.0, en el caso de un \textit{dataset} grande y difícil, como es el caso de la clase persona.\\
 
 \begin{figure} [h!]
 	\begin{center}
 		\includegraphics[width=12cm]{figs/chart}
 	\end{center}
-	\caption{Gráfica de entrenamiento mostrando el \textit{loss} de la red \textit{YOLO V3 Tiny}.}
+	\caption{Gráfica de entrenamiento mostrando \textit{loss} y \textit{mAP} de la red \textit{YOLO V3 Tiny}.}
 	\label{fig:chart}
 \end{figure}\
 
@@ -527,15 +527,16 @@ Durante el entrenamiento, se irá mostrando una gráfica que indica el progreso,
 Una vez obtenida la salida de la red neuronal que indica el centro del carril, es necesario elaborar un controlador que comande velocidades lineales y angulares al robot. Para ello, se ha realizado un controlador proporcional (P) con una serie de constantes para lograr un comportamiento adecuado. Dicho controlador se muestra en el Código \ref{cod:controller}.\\ 
 \begin{code}[h]
 	\begin{lstlisting}[language=Python]
-		def setSteering(self, steering):
-			if steering > self.FORWARD_RANGE:
-				rightSpeed = self.STEERING_OFFSET + abs(steering * self.STEERING_GAIN)
+		def controller(self, output, throttle):
+			self.throttleMotor = throttle
+			if output > self.FORWARD_RANGE:
+				rightSpeed = self.STEERING_OFFSET + abs(output * self.STEERING_GAIN)
 				if rightSpeed < self.MIN_SPEED:
 					rightSpeed = self.MIN_SPEED
 				leftSpeed = self.TURNING_SPEED
 				self.goRight()
-			elif steering < -self.FORWARD_RANGE:
-				leftSpeed = self.STEERING_OFFSET + abs(steering * self.STEERING_GAIN)
+			elif output < -self.FORWARD_RANGE:
+				leftSpeed = self.STEERING_OFFSET + abs(output * self.STEERING_GAIN)
 				if leftSpeed < self.MIN_SPEED:
 					leftSpeed = self.MIN_SPEED
 				rightSpeed = self.TURNING_SPEED
@@ -547,12 +548,12 @@ Una vez obtenida la salida de la red neuronal que indica el centro del carril, e
 			
 			self.setSpeed(leftSpeed, rightSpeed)
 	\end{lstlisting}
-	\caption[Controlador P realizado para el seguimiento de carril.]{Controlador P realizado para el seguimiento de carril.}
+	\caption[Controlador P para el seguimiento de carril.]{Controlador P para el seguimiento de carril.}
 	\label{cod:controller}
 \end{code}
 \begin{figure} [h!]
 	\begin{center}
-		\includegraphics[width=6cm]{figs/screenshottrafficlight}\hspace{0.5cm}\includegraphics[width=6cm]{figs/screenshotstopsign}
+		\includegraphics[width=5cm, height=4cm]{figs/screenshottrafficlight}\hspace{0.1cm}\includegraphics[width=5cm, height=4cm]{figs/screenshotstopsign}\hspace{0.1cm}\includegraphics[width=5cm, height=4cm]{figs/screenshotpedestrian}
 	\end{center}
 	\caption{Visión del robot durante la ejecución en el entorno real.}
 	\label{fig:screenshotsreal}
@@ -570,11 +571,14 @@ Como se expuso en el Capítulo \ref{cap:capitulo3}, existe una librería llamada
 	\label{cod:torch2trt}
 \end{code}
 
-% Resnet
-% NN siempre yxy?
-% yolov3-tiny.conv.15 15 convolución 15 preentrenada por qué? y con qué dataset?
-% \textit{Over-fitting}, current avg loss incluye el error del set de entrenamiento y el de validación?
-% Salir de sección screenshotsreal
-% 7 epochs 
-% Controller problems and function
-% Small city text
+% \textit{Over-fitting}
+% mAP num images why not coco images 3h 2000 iterations 1 Epoch = images_in_train_txt / batch iterations
+% Greetings
+% Abstract
+
+% Other
+% NN always yxy?
+% yolov3-tiny.conv.15 15 convolution 15 pretrained why? what dataset? what is network pretrained?
+% what is batch
+% real time
+% parameter width from calculated path
