@@ -361,7 +361,7 @@ En esta sección se exponen los elementos utilizados para componer un entorno re
 
 \begin{figure} [h!]
 	\begin{center}
-		\includegraphics[width=8cm]{figs/robot}
+		\includegraphics[width=10cm]{figs/robot}
 	\end{center}
 	\caption{Robot con \textit{NVIDIA Jetson Nano}.}
 	\label{fig:realrobot}
@@ -466,7 +466,7 @@ El formato del archivo de etiquetado de los objetos es muy relevante. El formato
 	\label{cod:formatyolo}
 \end{code}
 
-Como se mencionó en el Capítulo \ref{cap:capitulo2}, se ha utilizado la librería \textit{LabelIMG} para realizar el etiquetado de los objetos y generar el archivo en formato compatible con \textit{YOLO}. En la Figura \ref{fig:customlabelimg} se representa el etiquetado de uno de los objetos reales con dicha librería.\\
+Como se mencionó en el Capítulo \ref{cap:capitulo2}, se ha utilizado la librería \textit{LabelIMG} para realizar el etiquetado de los objetos y generar el archivo en formato compatible con \textit{YOLO}. En la Figura \ref{fig:customlabelimg} se representa el etiquetado de uno de los objetos reales con dicha librería. Este proceso se ha realizado con 600 imágenes que son las que componen el \textit{dataset} de objetos propios. Dichas imágenes se han tomado en diferentes ubicaciones y condiciones de luz ambiental. Un gran porcentaje de ellas han sido tomadas en el propio circuito.\\
 \begin{figure} [h!]
 	\begin{center}
 		\includegraphics[width=14cm]{figs/customlabelimg}
@@ -523,6 +523,10 @@ Durante el entrenamiento, se irá mostrando una gráfica que indica el progreso,
 	\label{fig:chart}
 \end{figure}\
 
+En la Figura \ref{fig:chart} también se muestra el \textit{mAP} (\textit{mean Average Precision}), valor que alcanza el 98\%. Esto es una métrica de precisión que se calcula cada 4 \textit{epochs} (a partir de 1000 iteraciones) usando el \textit{dataset} de validación. Una \textit{epoch} es un número de iteraciones atendiendo a la siguiente fórmula: \textit{número\_imágenes\_entrenamiento / batch}. En el caso de que este valor (expresado en porcentaje en la gráfica) se decrementara y el \textit{loss} siguiese bajando, la red se estaría sobreajustando. Es lo que se conoce como \textit{overfitting}. Este efecto es producido por un sobreentrenamiento de la red y provoca pérdidas de precisión en datos nuevos para la red como los que se encuentran en el \textit{dataset} de validación. Por ello, es muy importante detener el entrenamiento antes de que este efecto se produzca o, alternativamente, guardar los mejores pesos de la red, tal y como hace el \textit{framework Darknet}.\\
+
+Tras la realización de una serie de pruebas de entrenamiento combinando el \textit{dataset} de \textit{COCO} y el \textit{dataset} de objetos propios, se decidió entrenar únicamente con este último debido al gran volumen de datos que compone la clase persona lo que provoca un tiempo de entrenamiento demasiado elevado para el hardware disponible.\\
+
 \subsection{Controlador para el seguimiento de carril}
 Una vez obtenida la salida de la red neuronal que indica el centro del carril, es necesario elaborar un controlador que comande velocidades lineales y angulares al robot. Para ello, se ha realizado un controlador proporcional (P) con una serie de constantes para lograr un comportamiento adecuado. Dicho controlador se muestra en el Código \ref{cod:controller}.\\ 
 \begin{code}[h]
@@ -570,15 +574,3 @@ Como se expuso en el Capítulo \ref{cap:capitulo3}, existe una librería llamada
 	\caption[Conversión del modelo para realizar optimización y aumentar el rendimiento.]{Conversión del modelo para realizar optimización y aumentar el rendimiento.}
 	\label{cod:torch2trt}
 \end{code}
-
-% \textit{Over-fitting}
-% mAP num images why not coco images 3h 2000 iterations 1 Epoch = images_in_train_txt / batch iterations
-% Greetings
-% Abstract
-
-% Other
-% NN always yxy?
-% yolov3-tiny.conv.15 15 convolution 15 pretrained why? what dataset? what is network pretrained?
-% what is batch
-% real time
-% parameter width from calculated path
