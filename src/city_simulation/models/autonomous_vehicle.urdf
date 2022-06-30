@@ -9,13 +9,13 @@
 		<visual>
 			<origin xyz="0 0 0" rpy="0 0 0" />
 			<geometry>
-				<mesh filename="/home/alvaro/github/Programas-Modelado/Blender/Entrega/meshes/dae/chas-Cut.003.dae" scale="0.02678 0.02678 0.02678" />
+				<mesh filename="model://autonomous_vehicle/meshes/dae/chas-Cut.003.dae" scale="0.02678 0.02678 0.02678" />
 			</geometry>
 		</visual>
 		<collision>
 			<origin xyz="0 0 0" rpy="0 0 0" />
 			<geometry>
-				<mesh filename="/home/alvaro/github/Programas-Modelado/Blender/Entrega/meshes/dae/chas-Cut.004.dae" scale="1.0 1.0 1.0" />
+				<mesh filename="model://autonomous_vehicle/meshes/dae/chas-Cut.004.dae" scale="1.0 1.0 1.0" />
 			</geometry>
 		</collision>
 	</link>
@@ -29,13 +29,13 @@
 		<visual>
 			<origin xyz="0 0 0" rpy="0 0 0" />
 			<geometry>
-				<mesh filename="/home/alvaro/github/Programas-Modelado/Blender/Entrega/meshes/dae/chas-Cut.dae" scale="0.02678 0.02678 0.02678" />
+				<mesh filename="model://autonomous_vehicle/meshes/dae/chas-Cut.dae" scale="0.02678 0.02678 0.02678" />
 			</geometry>
 		</visual>
 		<collision>
 			<origin xyz="0 0 0" rpy="0 0 0" />
 			<geometry>
-				<mesh filename="/home/alvaro/github/Programas-Modelado/Blender/Entrega/meshes/dae/chas-Cut.006.dae" scale="1.0 1.0 1.0" />
+				<mesh filename="model://autonomous_vehicle/meshes/dae/chas-Cut.006.dae" scale="1.0 1.0 1.0" />
 			</geometry>
 		</collision>
 	</link>
@@ -49,13 +49,13 @@
 		<visual>
 			<origin xyz="0 0 0" rpy="0 0 0" />
 			<geometry>
-				<mesh filename="/home/alvaro/github/Programas-Modelado/Blender/Entrega/meshes/dae/chas-Cut.001.dae" scale="0.02678 0.02678 0.02678" />
+				<mesh filename="model://autonomous_vehicle/meshes/dae/chas-Cut.001.dae" scale="0.02678 0.02678 0.02678" />
 			</geometry>
 		</visual>
 		<collision>
 			<origin xyz="0 0 0" rpy="0 0 0" />
 			<geometry>
-				<mesh filename="/home/alvaro/github/Programas-Modelado/Blender/Entrega/meshes/dae/chas-Cut.007.dae" scale="1.0 1.0 1.0" />
+				<mesh filename="model://autonomous_vehicle/meshes/dae/chas-Cut.007.dae" scale="1.0 1.0 1.0" />
 			</geometry>
 		</collision>
 	</link>
@@ -69,13 +69,13 @@
 		<visual>
 			<origin xyz="0 0 0" rpy="0 0 0" />
 			<geometry>
-				<mesh filename="/home/alvaro/github/Programas-Modelado/Blender/Entrega/meshes/dae/chas-Cut.002.dae" scale="0.02678 0.02678 0.02678" />
+				<mesh filename="model://autonomous_vehicle/meshes/dae/chas-Cut.002.dae" scale="0.02678 0.02678 0.02678" />
 			</geometry>
 		</visual>
 		<collision>
 			<origin xyz="0 0 0" rpy="0 0 0" />
 			<geometry>
-				<mesh filename="/home/alvaro/github/Programas-Modelado/Blender/Entrega/meshes/dae/chas-Cut.005.dae" scale="1.0 1.0 1.0" />
+				<mesh filename="model://autonomous_vehicle/meshes/dae/chas-Cut.005.dae" scale="1.0 1.0 1.0" />
 			</geometry>
 		</collision>
 	</link>
@@ -89,13 +89,13 @@
 		<visual>
 			<origin xyz="0 0 0" rpy="0 0 0" />
 			<geometry>
-				<mesh filename="/home/alvaro/github/Programas-Modelado/Blender/Entrega/meshes/dae/Bottom.002.dae" scale="0.01431 0.01431 0.01431" />
+				<mesh filename="model://autonomous_vehicle/meshes/dae/Bottom.002.dae" scale="0.01431 0.01431 0.01431" />
 			</geometry>
 		</visual>
 		<collision>
 			<origin xyz="0 0 0" rpy="0 0 0" />
 			<geometry>
-				<mesh filename="/home/alvaro/github/Programas-Modelado/Blender/Entrega/meshes/dae/Bottom.003.dae" scale="1.0 1.0 1.0" />
+				<mesh filename="model://autonomous_vehicle/meshes/dae/Bottom.003.dae" scale="1.0 1.0 1.0" />
 			</geometry>
 		</collision>
 	</link>

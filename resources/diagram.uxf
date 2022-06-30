@@ -34,8 +34,8 @@ m2=1&lt;/panel_attributes&gt;&lt;additional_attributes&gt;10;10;10;200;210;200&l
 --
 - trainedModel
 --
-- preprocess()
-+ getLaneCenter()
+- preprocess(image)
++ getLaneCenter(image)
 
 </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>280</x><y>202</y><w>210</w><h>130</h></coordinates><panel_attributes>ObjectDetector
 --

@@ -1,5 +1,9 @@
+import torchvision.transforms as transforms
 import numpy as np
+import torchvision
+import PIL.Image
 import random
+import torch
 import rospy
 import time
 import cv2
@@ -20,15 +24,15 @@ class MapCamera:
     def __init__(self, topic, gridLayout, layoutMapCamera):
         self.imageQT = np.zeros((3, 3, 3),
                                 np.uint8)
-        self.imageWidth = 320
-        self.imageHeight = 240
+        self.imageWidth = rospy.get_param("/simParams/imageWidth")
+        self.imageHeight = rospy.get_param("/simParams/imageHeight")
         self.bridge = CvBridge()
         rospy.Subscriber(
             topic, ImageCamera, self.imageCallback)
         self.layoutMapCamera = layoutMapCamera
         self.gridLayout = gridLayout
 
-    def update(self):  # Update map camera
+    def update(self):
         imageResized = cv2.resize(
             self.imageQT, (self.imageWidth, self.imageHeight))
         image = QImage(
@@ -36,33 +40,32 @@ class MapCamera:
         self.layoutMapCamera.setPixmap(QPixmap.fromImage(image))
         self.gridLayout.addWidget(self.layoutMapCamera, 3, 0)
 
-    def imageCallback(self, img):  # Map camera callback
+    def imageCallback(self, img):
         self.imageQT = self.bridge.imgmsg_to_cv2(img, "bgr8")
 
 
 class OnboardCamera:
-    def __init__(self, topic, gridLayout, layoutOnboardCamera):
+    def __init__(self, topic):
         self.imageQT = np.zeros((3, 3, 3),
                                 np.uint8)
-        self.imageWidth = 320
-        self.imageHeight = 240
-        # self.croppedImage = np.zeros(
-        #     [self.imageWidth, self.imageHeight, 3], dtype=np.uint8)
+        self.imageWidth = rospy.get_param("/simParams/imageWidth")
+        self.imageHeight = rospy.get_param("/simParams/imageHeight")
         self.bridge = CvBridge()
         rospy.Subscriber(
             topic, ImageCamera, self.imageCallback)
-        # self.imageWithObjectsPublisher = rospy.Publisher(
-        #     "/image_with_objects", ImageCamera, queue_size=10)
-        self.layoutOnboardCamera = layoutOnboardCamera
-        self.gridLayout = gridLayout
+        self.incrementBBoxX = rospy.get_param("/simParams/incrementBBoxX")
+        self.incrementBBoxY = rospy.get_param("/simParams/incrementBBoxY")
+        self.textBBox = rospy.get_param("/simParams/textBBox")
+        self.firstRedMask = rospy.get_param("/simParams/firstRedMask")
+        self.secondRedMask = rospy.get_param("/simParams/secondRedMask")
 
-    def getCroppedImage(self, boundingBoxes):  # Get traffic light cropped image
+    def getCroppedImage(self, boundingBoxes):
         for boundingBox in boundingBoxes:
             if boundingBox.Class == "traffic light":
-                return self.imageQT[boundingBox.ymin - 10:boundingBox.ymax + 10,
-                                    boundingBox.xmin - 7:boundingBox.xmax + 7]
+                return self.imageQT[boundingBox.ymin - self.incrementBBoxY:boundingBox.ymax + self.incrementBBoxY,
+                                    boundingBox.xmin - self.incrementBBoxX:boundingBox.xmax + self.incrementBBoxX]
 
-    def update(self, boundingBoxes):  # Update onboard camera
+    def update(self, boundingBoxes):
         imageResized = cv2.resize(
             self.imageQT, (self.imageWidth, self.imageHeight))
         for boundingBox in boundingBoxes:
@@ -70,38 +73,39 @@ class OnboardCamera:
                 cv2.rectangle(imageResized, (boundingBox.xmin, boundingBox.ymin), (
                     boundingBox.xmax, boundingBox.ymax), (0, 255, 0), 2)
                 cv2.putText(imageResized, boundingBox.Class, (
-                    boundingBox.xmin, boundingBox.ymin - 5), cv2.FONT_HERSHEY_PLAIN, 1, (0, 255, 0), 2)
+                    boundingBox.xmin, boundingBox.ymin - self.textBBox), cv2.FONT_HERSHEY_PLAIN, 1, (0, 255, 0), 2)
             if boundingBox.Class == "traffic light" or boundingBox.Class == "traffic light green" and boundingBox.Class == "traffic light red":
-                cv2.rectangle(imageResized, (boundingBox.xmin - 7, boundingBox.ymin - 7), (
-                    boundingBox.xmax + 7, boundingBox.ymax + 7), (0, 255, 0), 2)
+                cv2.rectangle(imageResized, (boundingBox.xmin - self.incrementBBoxX, boundingBox.ymin - self.incrementBBoxY), (
+                    boundingBox.xmax + self.incrementBBoxX, boundingBox.ymax + self.incrementBBoxY), (0, 255, 0), 2)
                 cv2.putText(imageResized, boundingBox.Class, (
-                    boundingBox.xmin - 7, boundingBox.ymin - 5 - 7), cv2.FONT_HERSHEY_PLAIN, 1, (0, 255, 0), 2)
+                    boundingBox.xmin - self.incrementBBoxX, boundingBox.ymin - self.textBBox - self.incrementBBoxY), cv2.FONT_HERSHEY_PLAIN, 1, (0, 255, 0), 2)
 
-        # imageWithObjectsMsg = self.bridge.cv2_to_imgmsg(imageResized, "bgr8")
-        # self.imageWithObjectsPublisher.publish(imageWithObjectsMsg)
-        image = QImage(
-            imageResized.data, imageResized.shape[1], imageResized.shape[0], imageResized.shape[1] * imageResized.shape[2], QImage.Format_BGR888)
-        self.layoutOnboardCamera.setPixmap(QPixmap.fromImage(image))
-        self.gridLayout.addWidget(self.layoutOnboardCamera, 3, 4)
+        return imageResized
 
-    def imageCallback(self, img):  # Camera onboard callback
+    def imageCallback(self, img):
         self.imageQT = self.bridge.imgmsg_to_cv2(img, "bgr8")
 
 
 class ObjectDetector:
-    def __init__(self, gridLayout, layoutOnboardCamera):
+    def __init__(self):
         rospy.Subscriber(
             "/darknet_ros/bounding_boxes", BoundingBoxes, self.darknetCallback)
-        self.onboardCamera = OnboardCamera("/onboard_camera/image_raw",
-                                           gridLayout, layoutOnboardCamera)
+        self.onboardCamera = OnboardCamera("/onboard_camera/image_raw")
         self.boundingBoxes = []
         self.objectsDetected = []
+        self.firstRedMask = rospy.get_param("/simParams/firstRedMask")
+        self.secondRedMask = rospy.get_param("/simParams/secondRedMask")
+        self.greenMask = rospy.get_param("/simParams/greenMask")
+        self.trafficLightProb = rospy.get_param("/simParams/trafficLightProb")
+        self.stopSignProb = rospy.get_param("/simParams/stopSignProb")
+        self.personProb = rospy.get_param("/simParams/personProb")
 
     def searchRed(self, hsvImage):
-        firstMask = cv2.inRange(hsvImage, (0, 170, 170), (10, 255, 255))
-        secondMask = cv2.inRange(hsvImage, (170, 170, 170), (180, 255, 255))
+        firstMask = cv2.inRange(hsvImage, (self.firstRedMask[0], self.firstRedMask[1], self.firstRedMask[2]), (
+            self.firstRedMask[3], self.firstRedMask[4], self.firstRedMask[5]))
+        secondMask = cv2.inRange(hsvImage, (self.secondRedMask[0], self.secondRedMask[1], self.secondRedMask[2]), (
+            self.secondRedMask[3], self.secondRedMask[4], self.secondRedMask[5]))
         maskRed = firstMask | secondMask
-        # cv2.imshow("Red", maskRed)
 
         if cv2.countNonZero(maskRed) > 0:
             return True
@@ -109,8 +113,8 @@ class ObjectDetector:
         return False
 
     def searchGreen(self, hsvImage):
-        maskGreen = cv2.inRange(hsvImage, (55, 199, 209), (133, 255, 255))
-        # cv2.imshow("Green", maskGreen)
+        maskGreen = cv2.inRange(hsvImage, (self.greenMask[0], self.greenMask[1], self.greenMask[2]), (
+            self.greenMask[3], self.greenMask[4], self.greenMask[5]))
 
         if cv2.countNonZero(maskGreen) > 0:
             return True
@@ -121,12 +125,10 @@ class ObjectDetector:
         return self.objectsDetected
 
     def update(self):
-        self.onboardCamera.update(self.getBoundingBoxes())
+        return self.onboardCamera.update(self.getBoundingBoxes())
 
     def getBoundingBoxes(self):
         boundingBoxes = self.boundingBoxes
-        if random.randrange(0, 50) == 1:
-            self.boundingBoxes = []  # ??
 
         return boundingBoxes
 
@@ -134,25 +136,291 @@ class ObjectDetector:
         self.objectsDetected = []
         self.boundingBoxes = msg.bounding_boxes
         for boundingBox in self.boundingBoxes:
-            if boundingBox.Class == "traffic light" and boundingBox.probability >= 0.9:
+            if boundingBox.Class == "traffic light" and boundingBox.probability >= self.trafficLightProb:
                 try:
                     croppedImage = self.onboardCamera.getCroppedImage(
                         self.getBoundingBoxes())
-                    # cv2.imshow("Original", croppedImage)
                     hsvImage = cv2.cvtColor(croppedImage, cv2.COLOR_BGR2HSV)
-
                     if self.searchRed(hsvImage):
+                        rospy.loginfo("traffic light red")
                         boundingBox.Class = "traffic light red"
                     elif self.searchGreen(hsvImage):
                         boundingBox.Class = "traffic light green"
+                        rospy.loginfo("traffic light green")
                 except:
-                    print("An exception occurred")
-            elif boundingBox.Class == "stop sign" and boundingBox.probability < 0.97:
+                    rospy.logerr("An exception occurred")
+            elif boundingBox.Class == "stop sign" and boundingBox.probability < self.stopSignProb:
                 pass
-            elif boundingBox.Class == "person" and boundingBox.probability < 0.9:
+            elif boundingBox.Class == "person" and boundingBox.probability < self.personProb:
                 pass
 
             self.objectsDetected.append(boundingBox.Class)
+
+
+class JetRacer:
+    def __init__(self):
+        super().__init__()
+        self.turnVel = rospy.get_param("/simParams/turnVel")
+        self.straightVel = rospy.get_param("/simParams/straightVel")
+
+        # Node frequency ?? # queue_size 10 ??????????
+        self.frontRightVelPublisher = rospy.Publisher(
+            '/autonomous_vehicle/rear_right_wheel_velocity_controller/command', Float64, queue_size=10)
+        self.frontLeftVelPublisher = rospy.Publisher(
+            '/autonomous_vehicle/rear_left_wheel_velocity_controller/command', Float64, queue_size=10)
+        self.rearRightVelPublisher = rospy.Publisher(
+            '/autonomous_vehicle/front_right_wheel_velocity_controller/command', Float64, queue_size=10)
+        self.rearLeftVelPublisher = rospy.Publisher(
+            '/autonomous_vehicle/front_left_wheel_velocity_controller/command', Float64, queue_size=10)
+
+    def forward(self):
+        rightVelMsg = Float64()
+        rightVelMsg.data = self.straightVel
+        leftVelMsg = Float64()
+        leftVelMsg.data = -self.straightVel
+        self.frontRightVelPublisher.publish(rightVelMsg)
+        self.frontLeftVelPublisher.publish(leftVelMsg)
+        self.rearRightVelPublisher.publish(rightVelMsg)
+        self.rearLeftVelPublisher.publish(leftVelMsg)
+
+    def backward(self):
+        rightVelMsg = Float64()
+        rightVelMsg.data = -self.straightVel
+        leftVelMsg = Float64()
+        leftVelMsg.data = self.straightVel
+        self.frontRightVelPublisher.publish(rightVelMsg)
+        self.frontLeftVelPublisher.publish(leftVelMsg)
+        self.rearRightVelPublisher.publish(rightVelMsg)
+        self.rearLeftVelPublisher.publish(leftVelMsg)
+
+    def right(self):
+        rightVelMsg = Float64()
+        rightVelMsg.data = -self.turnVel
+        self.frontRightVelPublisher.publish(rightVelMsg)
+        self.frontLeftVelPublisher.publish(rightVelMsg)
+        self.rearRightVelPublisher.publish(rightVelMsg)
+        self.rearLeftVelPublisher.publish(rightVelMsg)
+
+    def left(self):
+        leftVelMsg = Float64()
+        leftVelMsg.data = self.turnVel
+        self.frontRightVelPublisher.publish(leftVelMsg)
+        self.frontLeftVelPublisher.publish(leftVelMsg)
+        self.rearRightVelPublisher.publish(leftVelMsg)
+        self.rearLeftVelPublisher.publish(leftVelMsg)
+
+    def stop(self):
+        stopVelMsg = Float64()
+        stopVelMsg.data = 0
+        self.frontRightVelPublisher.publish(stopVelMsg)
+        self.frontLeftVelPublisher.publish(stopVelMsg)
+        self.rearRightVelPublisher.publish(stopVelMsg)
+        self.rearLeftVelPublisher.publish(stopVelMsg)
+
+
+class LaneFollower:
+    def __init__(self):
+        rospy.loginfo("Loading model...")
+        device = torch.device('cuda')
+        self.model = torchvision.models.resnet18(pretrained=True)
+        self.model.fc = torch.nn.Linear(512, 2)
+        self.model = self.model.to(device)
+        self.model.load_state_dict(torch.load(
+            rospy.get_param("/simParams/modelPath")))
+        self.model = self.model.cuda().eval().half()
+        self.mean = torch.Tensor([0.485, 0.456, 0.406]).cuda()
+        self.std = torch.Tensor([0.229, 0.224, 0.225]).cuda()
+
+        self.imageWidth = rospy.get_param("/simParams/imageWidth")
+        self.imageHeight = rospy.get_param("/simParams/imageHeight")
+        self.imageLaneWidth = rospy.get_param("/simParams/imageLaneWidth")
+        self.imageLaneHeight = rospy.get_param("/simParams/imageLaneHeight")
+
+        rospy.loginfo("Model loaded")
+
+    def preprocess(self, image):
+        device = torch.device('cuda')
+        image = PIL.Image.fromarray(image)
+        image = transforms.functional.to_tensor(image).to(device)
+        image.sub_(self.mean[:, None, None]).div_(self.std[:, None, None])
+        return image[None, ...]
+
+    def getLaneCenter(self, image):
+        imageResized = cv2.resize(
+            image, (self.imageLaneWidth, self.imageLaneHeight))
+        imageResolution = int(imageResized.shape[0])
+        image = self.preprocess(imageResized).half()
+        output = self.model(image).detach().cpu().numpy().flatten()
+
+        steering = float(output[0])
+        imagePixel = int(imageResolution * (steering / 2.0 + 0.5))
+        prediction = cv2.circle(
+            imageResized, (imagePixel, imagePixel), 8, (255, 0, 0), 3)
+        image = cv2.resize(
+            prediction, (self.imageWidth, self.imageHeight))
+
+        return image
+
+
+class AutonomousVehicle:
+    def __init__(self, gridLayout, layoutOnboardCamera):
+        super().__init__()
+        self.stopTime = rospy.get_param("/simParams/stopTime")
+        self.timeBetweenStop = rospy.get_param("/simParams/timeBetweenStop")
+        self.thirteenthState = rospy.get_param("/simParams/thirteenthState")
+        self.twelfthState = rospy.get_param("/simParams/twelfthState")
+        self.eleventhState = rospy.get_param("/simParams/eleventhState")
+        self.tenthState = rospy.get_param("/simParams/tenthState")
+        self.ninthState = rospy.get_param("/simParams/ninthState")
+        self.eighthState = rospy.get_param("/simParams/eighthState")
+        self.seventhState = rospy.get_param("/simParams/seventhState")
+        self.sixthState = rospy.get_param("/simParams/sixthState")
+        self.fifthState = rospy.get_param("/simParams/fifthState")
+        self.fourthState = rospy.get_param("/simParams/fourthState")
+        self.thirdState = rospy.get_param("/simParams/thirdState")
+        self.secondState = rospy.get_param("/simParams/secondState")
+        self.firstState = rospy.get_param("/simParams/firstState")
+
+        self.robotName = rospy.get_param("/simParams/robotName")
+
+        rospy.Subscriber(
+            "/gazebo/model_states", ModelStates, self.getStateRobot)
+
+        self.state = 0
+
+        self.gridLayout = gridLayout
+        self.layoutOnboardCamera = layoutOnboardCamera
+
+        self.timeStart = 0
+        self.timeStop = 0
+        self.timeRedStop = 0
+
+        self.stopSignDetected = False
+        self.stopSignTime = False
+        self.redLightDetected = False
+
+        self.objectDetector = ObjectDetector()
+        self.objectDetector.update()
+        self.laneFolower = LaneFollower()
+        self.jetRacer = JetRacer()
+
+    def setStartTime(self):
+        self.timeStart = rospy.get_time()
+
+    def updateCamera(self):
+        image = self.objectDetector.update()
+        image = self.laneFolower.getLaneCenter(image)
+        imageWidget = QImage(
+            image.data, image.shape[1], image.shape[0], image.shape[1] * image.shape[2], QImage.Format_BGR888)
+        self.layoutOnboardCamera.setPixmap(QPixmap.fromImage(imageWidget))
+        self.gridLayout.addWidget(self.layoutOnboardCamera, 3, 4)
+
+    def getStateRobot(self, msg):
+        for i in range(0, len(msg.name)):
+            if msg.name[i] == self.robotName:
+                self.robotOrientation = round(msg.pose[i].orientation.z, 2)
+                self.robotOrientationW = round(msg.pose[i].orientation.w, 2)
+
+    def execute(self):
+        objectsDetected = self.objectDetector.getObjects()
+
+        if "stop sign" in objectsDetected and not self.stopSignDetected and not self.stopSignTime:
+            self.stopSignDetected = True
+            self.stop()
+            self.timeStop = time.time()
+            rospy.loginfo("Stop due to stop sign")
+        elif "traffic light red" in objectsDetected and not self.redLightDetected:
+            self.redLightDetected = True
+            self.stop()
+            self.timeRedStop = time.time()
+            rospy.loginfo("Stop due to traffic light red")
+        elif "traffic light green" in objectsDetected and self.redLightDetected:
+            self.redLightDetected = False
+            self.deleteActor()
+            rospy.loginfo("Actor deleted")
+            rospy.loginfo("Green light detected, continue...")
+            self.timeStart = self.timeStart + (time.time() - self.timeRedStop)
+        elif self.stopSignDetected:
+            if time.time() - self.timeStop > self.stopTime:
+                self.stopSignDetected = False
+                self.stopSignTime = True
+                self.timeStart = self.timeStart + (time.time() - self.timeStop)
+        elif self.stopSignTime and time.time() - self.timeStop > self.timeBetweenStop:
+            self.stopSignTime = False
+            rospy.loginfo("40 seconds")
+        elif not self.stopSignDetected and not self.redLightDetected:
+            if self.state == 13 and rospy.get_time() - self.timeStart > self.thirteenthState:
+                self.stop()
+                rospy.loginfo("Finished")
+                time.sleep(2)
+                sys.exit()
+            elif self.state == 12 and rospy.get_time() - self.timeStart > self.twelfthState[0] and self.robotOrientationW <= self.twelfthState[1]:
+                self.jetRacer.forward()
+                self.state = 13
+                rospy.loginfo("thirteenthState")
+            elif self.state == 11 and rospy.get_time() - self.timeStart > self.eleventhState:
+                self.jetRacer.right()
+                self.state = 12
+                rospy.loginfo("twelfthState")
+            elif self.state == 10 and rospy.get_time() - self.timeStart > self.tenthState[0] and self.robotOrientation <= self.tenthState[1]:
+                self.jetRacer.forward()
+                self.state = 11
+                rospy.loginfo("eleventhState")
+            elif self.state == 9 and rospy.get_time() - self.timeStart > self.ninthState:
+                self.jetRacer.right()
+                self.state = 10
+                rospy.loginfo("tenthState")
+            elif self.state == 8 and rospy.get_time() - self.timeStart > self.eighthState[0] and self.robotOrientation < self.eighthState[1]:
+                self.jetRacer.forward()
+                self.state = 9
+                rospy.loginfo("ninthState")
+            elif self.state == 7 and rospy.get_time() - self.timeStart > self.seventhState:
+                self.jetRacer.right()
+                self.state = 8
+                rospy.loginfo("eighthState")
+            elif self.state == 6 and rospy.get_time() - self.timeStart > self.sixthState[0] and self.robotOrientation <= self.sixthState[1]:
+                self.jetRacer.forward()
+                self.state = 7
+                rospy.loginfo("seventhState")
+            elif self.state == 5 and rospy.get_time() - self.timeStart > self.fifthState:
+                self.jetRacer.right()
+                self.state = 6
+                rospy.loginfo("sixthState")
+            elif self.state == 4 and rospy.get_time() - self.timeStart > self.fourthState[0] and self.robotOrientation <= self.fourthState[1]:
+                self.jetRacer.forward()
+                self.state = 5
+                rospy.loginfo("fifthState")
+            elif self.state == 3 and rospy.get_time() - self.timeStart > self.thirdState:
+                self.jetRacer.right()
+                self.state = 4
+                rospy.loginfo("fourthState")
+            elif self.state == 2 and rospy.get_time() - self.timeStart > self.secondState[0] and self.robotOrientation < self.secondState[1]:
+                self.jetRacer.forward()
+                self.state = 3
+                rospy.loginfo("thirdState")
+            elif self.state == 1 and rospy.get_time() - self.timeStart > self.firstState:
+                self.jetRacer.right()
+                self.state = 2
+                rospy.loginfo("secondState")
+            elif self.state == 0 and rospy.get_time() - self.timeStart > 0:
+                self.jetRacer.forward()
+                rospy.loginfo("firstState")
+                self.state = 1
+
+    def forward(self):
+        self.jetRacer.forward()
+
+    def backward(self):
+        self.jetRacer.backward()
+
+    def right(self):
+        self.jetRacer.right()
+
+    def left(self):
+        self.jetRacer.left()
+
+    def stop(self):
+        self.jetRacer.stop()
 
 
 class AppUI(QMainWindow):
@@ -163,53 +431,70 @@ class AppUI(QMainWindow):
         centralWidget.setLayout(gridLayout)
         self.setCentralWidget(centralWidget)
         layoutWidget = QWidget(centralWidget)
-
         layoutOnboardCamera = QLabel(layoutWidget)
-        self.objectDetector = ObjectDetector(
+
+        self.autonomousVehicle = AutonomousVehicle(
             gridLayout, layoutOnboardCamera)
 
         layoutMapCamera = QLabel(layoutWidget)
         self.mapCamera = MapCamera("/map_camera/image_raw",
                                    gridLayout, layoutMapCamera)
-
-        self.objectDetector.update()
         self.mapCamera.update()
+        self.autonomousVehicle.updateCamera()
+
+        titleWidth = rospy.get_param("/simParams/titleWidth")
+        buttonWidth = rospy.get_param("/simParams/buttonWidth")
+        stopButtonWidth = rospy.get_param("/simParams/stopButtonWidth")
+        stopButtonHeight = rospy.get_param("/simParams/stopButtonHeight")
+
+        self.robotName = rospy.get_param("/simParams/robotName")
+        self.startPoseX = rospy.get_param("/simParams/startPoseX")
+        self.startPoseY = rospy.get_param("/simParams/startPoseY")
+        self.startPoseZ = rospy.get_param("/simParams/startPoseZ")
+        self.startOrientationZ = rospy.get_param(
+            "/simParams/startOrientationZ")
+        self.startOrientationW = rospy.get_param(
+            "/simParams/startOrientationW")
+        self.actorName = rospy.get_param("/simParams/actorName")
+        self.deleteActorPoseX = rospy.get_param("/simParams/deleteActorPoseX")
+        self.deleteActorPoseY = rospy.get_param("/simParams/deleteActorPoseY")
+        self.deleteActorPoseZ = rospy.get_param("/simParams/deleteActorPoseZ")
 
         simulatorControllerButton = QPushButton('Simulator Controller')
         simulatorControllerButton.setProperty('class', 'warning')
         simulatorControllerButton.setCheckable(True)
         simulatorControllerButton.setChecked(True)
-        simulatorControllerButton.setFixedWidth(200)
+        simulatorControllerButton.setFixedWidth(titleWidth)
         gridLayout.addWidget(simulatorControllerButton, 0, 0, 3, 0,
                              alignment=Qt.AlignHCenter)
 
         forwardButton = QToolButton()
         forwardButton.setArrowType(Qt.UpArrow)
-        forwardButton.setFixedWidth(75)
+        forwardButton.setFixedWidth(buttonWidth)
         forwardButton.clicked.connect(self.goForward)
         gridLayout.addWidget(forwardButton, 10, 2)
         backwardButton = QToolButton()
-        backwardButton.setFixedWidth(75)
+        backwardButton.setFixedWidth(buttonWidth)
         backwardButton.setArrowType(Qt.DownArrow)
         backwardButton.clicked.connect(self.goBackward)
         gridLayout.addWidget(backwardButton, 12, 2)
 
         rightButton = QToolButton()
-        rightButton.setFixedWidth(75)
+        rightButton.setFixedWidth(buttonWidth)
         rightButton.setArrowType(Qt.RightArrow)
         rightButton.clicked.connect(self.goRight)
         gridLayout.addWidget(rightButton, 11, 3)
 
         leftButton = QToolButton()
-        leftButton.setFixedWidth(75)
+        leftButton.setFixedWidth(buttonWidth)
         leftButton.setArrowType(Qt.LeftArrow)
         leftButton.clicked.connect(self.goLeft)
         gridLayout.addWidget(leftButton, 11, 1)
 
         stopButton = QPushButton()
         stopButton.setProperty('class', 'danger')
-        stopButton.setFixedWidth(15)
-        stopButton.setFixedHeight(15)
+        stopButton.setFixedWidth(stopButtonWidth)
+        stopButton.setFixedHeight(stopButtonHeight)
         stopButton.clicked.connect(self.stop)
         gridLayout.addWidget(stopButton, 11, 2,
                              alignment=Qt.AlignHCenter)
@@ -234,28 +519,10 @@ class AppUI(QMainWindow):
         self.cameraTimer = QTimer()
         self.cameraTimer.timeout.connect(self.updateCameraTimer)
         self.simulationTimer = QTimer()
-
-        # Node frequency ?? # 10 ?????????? # One publisher instead of four??
-        self.frontRightVelPublisher = rospy.Publisher(
-            '/autonomous_vehicle/rear_right_wheel_velocity_controller/command', Float64, queue_size=10)
-        self.frontLeftVelPublisher = rospy.Publisher(
-            '/autonomous_vehicle/rear_left_wheel_velocity_controller/command', Float64, queue_size=10)
-        self.rearRightVelPublisher = rospy.Publisher(
-            '/autonomous_vehicle/front_right_wheel_velocity_controller/command', Float64, queue_size=10)
-        self.rearLeftVelPublisher = rospy.Publisher(
-            '/autonomous_vehicle/front_left_wheel_velocity_controller/command', Float64, queue_size=10)
         self.actorPositionPublisher = rospy.Publisher(
             '/gazebo/set_model_state', ModelState, queue_size=10)
-        rospy.Subscriber(
-            "/gazebo/model_states", ModelStates, self.getStateRobot)
 
-        self.timeStart = 0
-        self.timeStop = 0
-        self.timeRedStop = 0
         self.simulationStarted = False
-        self.stopSignDetected = False
-        self.stopSignTime = False
-        self.redLightDetected = False
 
     def onPress(self):
         self.cameraTimer.start(1)
@@ -263,150 +530,59 @@ class AppUI(QMainWindow):
 
     # Update camera while camera button is pressed
     def updateCameraTimer(self):
-        self.objectDetector.update()
+        self.autonomousVehicle.updateCamera()
         self.mapCamera.update()
 
-    def getStateRobot(self, msg):
-        for i in range(0, len(msg.name)):
-            if msg.name[i] == "autonomous_vehicle":
-                self.robotOrientation = round(msg.pose[i].orientation.z, 2)
-                self.robotOrientationW = round(msg.pose[i].orientation.w, 2)
+    def deleteActor(self):
+        deleteActorMsg = ModelState()
+        deleteActorMsg.model_name = self.actorName
+        deleteActorMsg.pose.position.x = self.deleteActorPoseX
+        deleteActorMsg.pose.position.y = self.deleteActorPoseY
+        deleteActorMsg.pose.position.z = self.deleteActorPoseZ
+        self.actorPositionPublisher.publish(deleteActorMsg)
 
     def executeSimulation(self):
-        objectsDetected = self.objectDetector.getObjects()
-
-        if "stop sign" in objectsDetected and not self.stopSignDetected and not self.stopSignTime:
-            self.stopSignDetected = True
-            self.stop()
-            self.timeStop = time.time()
-            print("Stop due to stop sign")
-        elif "traffic light red" in objectsDetected and not self.redLightDetected:
-            self.redLightDetected = True
-            self.stop()
-            self.timeRedStop = time.time()
-            print("Stop due to traffic light red")
-        elif "traffic light green" in objectsDetected and self.redLightDetected:
-            self.redLightDetected = False
-            deleteActorMsg = ModelState()
-            deleteActorMsg.model_name = 'actor'
-            deleteActorMsg.pose.position.x = 0.0
-            deleteActorMsg.pose.position.y = 0.0
-            deleteActorMsg.pose.position.z = -100.0
-            self.actorPositionPublisher.publish(deleteActorMsg)
-            print("Actor deleted")
-            print("Green light detected, continue...")
-            print("self.timeStart -= 5" + str(self.timeStart) +
-                  " " + str(self.timeStart - (time.time() - self.timeRedStop)))
-            self.timeStart = self.timeStart + (time.time() - self.timeRedStop)
-        elif self.stopSignDetected:
-            if time.time() - self.timeStop > 5:
-                self.stopSignDetected = False
-                self.stopSignTime = True
-                print("self.timeStart -= 5" + str(self.timeStart) +
-                      " " + str(self.timeStart - (time.time() - self.timeStop)))
-                self.timeStart = self.timeStart + (time.time() - self.timeStop)
-        elif self.stopSignTime and time.time() - self.timeStop > 40:
-            self.stopSignTime = False
-            print("40 seconds")
-        elif not self.stopSignDetected and not self.redLightDetected:
-            if rospy.get_time() - self.timeStart > 153.5:
-                self.stop()
-                print("Finished")
-                time.sleep(2)
-                sys.exit()
-            elif rospy.get_time() - self.timeStart > 123 and self.robotOrientationW <= 0.0:
-                self.goForward()
-            elif rospy.get_time() - self.timeStart > 121:
-                self.goRight()
-            elif rospy.get_time() - self.timeStart > 116 and self.robotOrientation <= -0.85:
-                self.goForward()
-            elif rospy.get_time() - self.timeStart > 115.5:
-                self.goRight()
-            elif rospy.get_time() - self.timeStart > 77 and self.robotOrientation < -0.7:
-                self.goForward()
-            elif rospy.get_time() - self.timeStart > 74:
-                self.goRight()
-            elif rospy.get_time() - self.timeStart > 71 and self.robotOrientation <= 0.4:
-                self.goForward()
-            elif rospy.get_time() - self.timeStart > 69:
-                self.goRight()
-            elif rospy.get_time() - self.timeStart > 42 and self.robotOrientation <= 0.02:
-                self.goForward()
-            elif rospy.get_time() - self.timeStart > 40:
-                self.goRight()
-            elif self.robotOrientation < 0.4 and rospy.get_time() - self.timeStart > 34:
-                self.goForward()
-            elif rospy.get_time() - self.timeStart > 33:
-                self.goRight()
-            elif rospy.get_time() - self.timeStart > 0:
-                self.goForward()
+        self.autonomousVehicle.execute()
 
     def startSimulation(self):
         if not self.simulationStarted:
-            self.timeStart = rospy.get_time()
+            self.autonomousVehicle.setStartTime()
             self.simulationTimer.timeout.connect(self.executeSimulation)
-            self.simulationTimer.start(10)
+            self.simulationTimer.start(10)  # msec
             self.simulationStarted = True
 
     def restartSimulation(self):
         stateMsg = ModelState()
-        stateMsg.model_name = 'autonomous_vehicle'
-        stateMsg.pose.position.x = -10.0
-        stateMsg.pose.position.y = 45.0
-        stateMsg.pose.position.z = 4.0
-        stateMsg.pose.orientation.z = 0.7
-        stateMsg.pose.orientation.w = 0.7
+        stateMsg.model_name = self.robotName
+        stateMsg.pose.position.x = self.startPoseX
+        stateMsg.pose.position.y = self.startPoseY
+        stateMsg.pose.position.z = self.startPoseZ
+        stateMsg.pose.orientation.z = self.startOrientationZ
+        stateMsg.pose.orientation.w = self.startOrientationW
         self.actorPositionPublisher.publish(stateMsg)
 
     def goForward(self):
-        rightVelMsg = Float64()
-        rightVelMsg.data = 2.0
-        leftVelMsg = Float64()
-        leftVelMsg.data = -2.0
-        self.frontRightVelPublisher.publish(rightVelMsg)
-        self.frontLeftVelPublisher.publish(leftVelMsg)
-        self.rearRightVelPublisher.publish(rightVelMsg)
-        self.rearLeftVelPublisher.publish(leftVelMsg)
+        self.autonomousVehicle.forward()
 
     def goBackward(self):
-        rightVelMsg = Float64()
-        rightVelMsg.data = -2.0
-        leftVelMsg = Float64()
-        leftVelMsg.data = 2.0
-        self.frontRightVelPublisher.publish(rightVelMsg)
-        self.frontLeftVelPublisher.publish(leftVelMsg)
-        self.rearRightVelPublisher.publish(rightVelMsg)
-        self.rearLeftVelPublisher.publish(leftVelMsg)
+        self.autonomousVehicle.backward()
 
     def goRight(self):
-        rightVelMsg = Float64()
-        rightVelMsg.data = -0.75
-        self.frontRightVelPublisher.publish(rightVelMsg)
-        self.frontLeftVelPublisher.publish(rightVelMsg)
-        self.rearRightVelPublisher.publish(rightVelMsg)
-        self.rearLeftVelPublisher.publish(rightVelMsg)
+        self.autonomousVehicle.right()
 
     def goLeft(self):
-        leftVelMsg = Float64()
-        leftVelMsg.data = 0.75
-        self.frontRightVelPublisher.publish(leftVelMsg)
-        self.frontLeftVelPublisher.publish(leftVelMsg)
-        self.rearRightVelPublisher.publish(leftVelMsg)
-        self.rearLeftVelPublisher.publish(leftVelMsg)
+        self.autonomousVehicle.left()
 
     def stop(self):
-        stopVelMsg = Float64()
-        stopVelMsg.data = 0
-        self.frontRightVelPublisher.publish(stopVelMsg)
-        self.frontLeftVelPublisher.publish(stopVelMsg)
-        self.rearRightVelPublisher.publish(stopVelMsg)
-        self.rearLeftVelPublisher.publish(stopVelMsg)
+        self.autonomousVehicle.stop()
 
 
 rospy.init_node("simulator_controller")
 app = QApplication([])
 apply_stylesheet(app, theme='dark_blue.xml')
 appUI = AppUI()
-appUI.setMinimumSize(910, 512)
+appMinWidth = rospy.get_param("/simParams/appMinWidth")
+appMinHeight = rospy.get_param("/simParams/appMinHeight")
+appUI.setMinimumSize(appMinWidth, appMinHeight)
 appUI.show()
 sys.exit(app.exec_())

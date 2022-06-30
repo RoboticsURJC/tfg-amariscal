@@ -1697,7 +1697,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <scale>0.0254 0.0254 0.0254</scale>
+              <scale>0.0154 0.0154 0.0154</scale>
               <uri>model://ambulance/meshes/ambulance.obj</uri>
             </mesh>
           </geometry>
