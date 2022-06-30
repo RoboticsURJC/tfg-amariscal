@@ -1,0 +1,6 @@
+classes= 3
+train  = custom-objects/train.txt
+valid  = custom-objects/valid.txt
+names = custom-objects/obj.names
+backup = custom-objects/backup
+

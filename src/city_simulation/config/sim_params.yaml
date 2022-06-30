@@ -1,38 +1,32 @@
 simParams:
-  imageWidth: 320
-  imageHeight: 240
-  imageLaneWidth: 224
-  imageLaneHeight: 224
-  incrementBBoxX: 7
-  incrementBBoxY: 10
-  textBBox: 5
-  firstRedMask: [0, 170, 170, 10, 255, 255]
-  secondRedMask: [170, 170, 170, 180, 255, 255]
-  greenMask: [155, 199, 209, 133, 255, 255]
-  trafficLightProb: 0.8
-  stopSignProb: 0.97
-  personProb: 0.8
-  titleWidth: 200
-  buttonWidth: 75
-  stopButtonWidth: 15
-  stopButtonHeight: 15
-  robotName: "autonomous_vehicle"
-  actorName: "actor"
-  modelPath: "/home/alvaro/github/tfg-amariscal/models/road_following_model_sim.pth"
-  appMinWidth: 910
-  appMinHeight: 512
-  turnVel: 0.75
-  straightVel: 2
-  startPoseX: -10.0
-  startPoseY: 45.0
-  startPoseZ: 4.0
-  startOrientationZ: 0.7
-  startOrientationW: 0.7
-  deleteActorPoseX: 0.0
-  deleteActorPoseY: 0.0
-  deleteActorPoseZ: -100.0
-  stopTime: 5
-  timeBetweenStop: 20
+  IMAGE_WIDTH: 320
+  IMAGE_HEIGHT: 240
+  IMAGE_LANE_WIDTH: 224
+  IMAGE_LANE_HEIGHT: 224
+  INCREMENT_BBOX_X: 7
+  INCREMENT_BBOX_Y: 10
+  TEXT_BBOX: 5
+  TRAFFIC_LIGHT_PROB: 0.8
+  STOP_SIGN_PROB: 0.97
+  PERSON_PROB: 0.8
+  TITLE_WIDTH: 200
+  BUTTON_WIDTH: 75
+  STOP_BUTTON_WIDTH: 15
+  STOP_BUTTON_HEIGHT: 15
+  APP_MIN_WIDTH: 910
+  APP_MIN_HEIGHT: 512
+  TURN_VEL: 0.75
+  STRAIGHT_VEL: 2
+  STOP_TIME: 5
+  TIME_BETWEEN_STOP: 10
+  START_POSE_X: -10.0
+  START_POSE_Y: 45.0
+  START_POSE_Z: 4.0
+  START_ORIENTATION_Z: 0.7
+  START_ORIENTATION_W: 0.7
+  DELETE_ACTOR_POSE_X: 0.0
+  DELETE_ACTOR_POSE_Y: 0.0
+  DELETE_ACTOR_POSE_Z: -100.0
   thirteenthState: 153.5
   twelfthState: [123, 0.0]
   eleventhState: 121
@@ -46,3 +40,9 @@ simParams:
   thirdState: 40
   secondState: [34, 0.4]
   firstState: 33
+  firstRedMask: [0, 170, 170, 10, 255, 255]
+  secondRedMask: [170, 170, 170, 180, 255, 255]
+  greenMask: [55, 199, 209, 133, 255, 255]
+  robotName: "autonomous_vehicle"
+  actorName: "actor"
+  modelPath: /home/alvaro/github/tfg-amariscal/models/road_following_model_sim.pth"

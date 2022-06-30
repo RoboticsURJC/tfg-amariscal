@@ -19,6 +19,6 @@ catkin_package(
 	darknet_ros_msgs
 )
 
-catkin_install_python(PROGRAMS src/interface.py src/controller.py
+catkin_install_python(PROGRAMS src/autonomous_vehicle.py src/camera_interface.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )

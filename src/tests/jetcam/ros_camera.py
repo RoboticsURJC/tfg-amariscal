@@ -2,9 +2,7 @@ from sensor_msgs.msg import Image as ImageCamera
 from cv_bridge import CvBridge
 from .camera import Camera
 import numpy as np
-import threading
 import traitlets
-import atexit
 import rospy
 import cv2
 
@@ -33,7 +31,7 @@ class ROSCamera(Camera):
             raise RuntimeError(
                 'Could not initialize camera.  Please see error trace.')
 
-    def _callback(self, img):  # Callback camera
+    def _callback(self, img):
         self.image = np.frombuffer(img.data, dtype=np.uint8).reshape(
             img.height, img.width, -1)
 

@@ -1,0 +1,540 @@
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_11_07.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_11_12.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_11_17.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_11_22.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_11_27.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_11_32.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_11_37.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_11_42.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_11_52.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_11_57.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_12_07.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_12_12.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_12_17.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_12_22.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_15_22.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_15_27.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_15_32.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_15_37.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_13_47.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_13_52.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_13_57.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_14_02.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_14_07.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_14_12.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_14_17.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_14_27.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_14_32.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_14_37.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_15_42.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_15_47.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_15_52.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_15_57.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_16_02.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_16_07.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_16_12.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_16_17.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_16_22.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_17_32.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_17_37.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_17_42.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_17_47.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_17_52.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_17_57.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_18_02.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_18_07.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_18_12.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_18_22.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_18_27.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_18_32.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_18_37.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_18_42.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_18_47.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_18_52.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_18_57.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_19_02.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_19_07.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_19_12.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_19_17.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_19_27.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_19_32.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_19_42.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_19_47.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_19_57.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_20_07.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_20_12.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_20_17.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_20_22.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_20_27.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_20_32.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_20_37.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_20_42.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_20_47.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_20_57.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_21_02.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_21_07.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_21_12.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_21_17.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_21_22.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_21_27.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_21_32.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_21_42.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_21_47.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_21_52.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_21_57.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_22_02.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_22_07.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_22_12.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_22_17.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_22_22.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_22_27.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_22_32.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_22_37.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_23_32.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_23_37.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_23_42.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_23_52.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_23_57.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_24_02.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_24_07.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_24_26.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_24_31.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_24_36.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_28_26.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_28_31.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_28_36.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_28_41.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_28_46.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_28_51.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_28_56.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_29_01.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_29_06.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_29_11.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_29_21.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_29_26.png
+/home/alvaro/Documents/custom_dataset/2022-06-02 12_29_31.png
+/home/alvaro/Documents/custom_dataset/100_2031.JPG
+/home/alvaro/Documents/custom_dataset/100_2032.JPG
+/home/alvaro/Documents/custom_dataset/100_2033.JPG
+/home/alvaro/Documents/custom_dataset/100_2034.JPG
+/home/alvaro/Documents/custom_dataset/100_2035.JPG
+/home/alvaro/Documents/custom_dataset/100_2036.JPG
+/home/alvaro/Documents/custom_dataset/100_2037.JPG
+/home/alvaro/Documents/custom_dataset/100_2038.JPG
+/home/alvaro/Documents/custom_dataset/100_2039.JPG
+/home/alvaro/Documents/custom_dataset/100_2040.JPG
+/home/alvaro/Documents/custom_dataset/100_2041.JPG
+/home/alvaro/Documents/custom_dataset/100_2042.JPG
+/home/alvaro/Documents/custom_dataset/100_2043.JPG
+/home/alvaro/Documents/custom_dataset/100_2044.JPG
+/home/alvaro/Documents/custom_dataset/100_2045.JPG
+/home/alvaro/Documents/custom_dataset/100_2046.JPG
+/home/alvaro/Documents/custom_dataset/100_2047.JPG
+/home/alvaro/Documents/custom_dataset/100_2048.JPG
+/home/alvaro/Documents/custom_dataset/100_2049.JPG
+/home/alvaro/Documents/custom_dataset/100_2050.JPG
+/home/alvaro/Documents/custom_dataset/100_2051.JPG
+/home/alvaro/Documents/custom_dataset/100_2052.JPG
+/home/alvaro/Documents/custom_dataset/100_2053.JPG
+/home/alvaro/Documents/custom_dataset/100_2054.JPG
+/home/alvaro/Documents/custom_dataset/100_2055.JPG
+/home/alvaro/Documents/custom_dataset/100_2056.JPG
+/home/alvaro/Documents/custom_dataset/100_2057.JPG
+/home/alvaro/Documents/custom_dataset/100_2058.JPG
+/home/alvaro/Documents/custom_dataset/100_2059.JPG
+/home/alvaro/Documents/custom_dataset/100_2060.JPG
+/home/alvaro/Documents/custom_dataset/100_2061.JPG
+/home/alvaro/Documents/custom_dataset/100_2062.JPG
+/home/alvaro/Documents/custom_dataset/100_2063.JPG
+/home/alvaro/Documents/custom_dataset/100_2064.JPG
+/home/alvaro/Documents/custom_dataset/100_2065.JPG
+/home/alvaro/Documents/custom_dataset/100_2066.JPG
+/home/alvaro/Documents/custom_dataset/100_2067.JPG
+/home/alvaro/Documents/custom_dataset/100_2068.JPG
+/home/alvaro/Documents/custom_dataset/100_2069.JPG
+/home/alvaro/Documents/custom_dataset/100_2070.JPG
+/home/alvaro/Documents/custom_dataset/100_2071.JPG
+/home/alvaro/Documents/custom_dataset/100_2072.JPG
+/home/alvaro/Documents/custom_dataset/100_2073.JPG
+/home/alvaro/Documents/custom_dataset/100_2074.JPG
+/home/alvaro/Documents/custom_dataset/100_2075.JPG
+/home/alvaro/Documents/custom_dataset/100_2076.JPG
+/home/alvaro/Documents/custom_dataset/100_2077.JPG
+/home/alvaro/Documents/custom_dataset/100_2078.JPG
+/home/alvaro/Documents/custom_dataset/100_2079.JPG
+/home/alvaro/Documents/custom_dataset/100_2080.JPG
+/home/alvaro/Documents/custom_dataset/100_2081.JPG
+/home/alvaro/Documents/custom_dataset/100_2082.JPG
+/home/alvaro/Documents/custom_dataset/100_2083.JPG
+/home/alvaro/Documents/custom_dataset/100_2084.JPG
+/home/alvaro/Documents/custom_dataset/100_2085.JPG
+/home/alvaro/Documents/custom_dataset/100_2086.JPG
+/home/alvaro/Documents/custom_dataset/100_2087.JPG
+/home/alvaro/Documents/custom_dataset/100_2088.JPG
+/home/alvaro/Documents/custom_dataset/100_2089.JPG
+/home/alvaro/Documents/custom_dataset/100_2090.JPG
+/home/alvaro/Documents/custom_dataset/100_2091.JPG
+/home/alvaro/Documents/custom_dataset/100_2092.JPG
+/home/alvaro/Documents/custom_dataset/100_2093.JPG
+/home/alvaro/Documents/custom_dataset/100_2094.JPG
+/home/alvaro/Documents/custom_dataset/100_2095.JPG
+/home/alvaro/Documents/custom_dataset/100_2096.JPG
+/home/alvaro/Documents/custom_dataset/100_2097.JPG
+/home/alvaro/Documents/custom_dataset/100_2098.JPG
+/home/alvaro/Documents/custom_dataset/100_2099.JPG
+/home/alvaro/Documents/custom_dataset/100_2100.JPG
+/home/alvaro/Documents/custom_dataset/100_2101.JPG
+/home/alvaro/Documents/custom_dataset/100_2102.JPG
+/home/alvaro/Documents/custom_dataset/100_2103.JPG
+/home/alvaro/Documents/custom_dataset/100_2104.JPG
+/home/alvaro/Documents/custom_dataset/100_2105.JPG
+/home/alvaro/Documents/custom_dataset/100_2106.JPG
+/home/alvaro/Documents/custom_dataset/100_2107.JPG
+/home/alvaro/Documents/custom_dataset/100_2108.JPG
+/home/alvaro/Documents/custom_dataset/100_2109.JPG
+/home/alvaro/Documents/custom_dataset/100_2110.JPG
+/home/alvaro/Documents/custom_dataset/100_2111.JPG
+/home/alvaro/Documents/custom_dataset/100_2112.JPG
+/home/alvaro/Documents/custom_dataset/100_2113.JPG
+/home/alvaro/Documents/custom_dataset/100_2114.JPG
+/home/alvaro/Documents/custom_dataset/100_2115.JPG
+/home/alvaro/Documents/custom_dataset/100_2116.JPG
+/home/alvaro/Documents/custom_dataset/100_2117.JPG
+/home/alvaro/Documents/custom_dataset/100_2118.JPG
+/home/alvaro/Documents/custom_dataset/100_2119.JPG
+/home/alvaro/Documents/custom_dataset/100_2120.JPG
+/home/alvaro/Documents/custom_dataset/100_2121.JPG
+/home/alvaro/Documents/custom_dataset/100_2123.JPG
+/home/alvaro/Documents/custom_dataset/100_2124.JPG
+/home/alvaro/Documents/custom_dataset/100_2126.JPG
+/home/alvaro/Documents/custom_dataset/100_2127.JPG
+/home/alvaro/Documents/custom_dataset/100_2128.JPG
+/home/alvaro/Documents/custom_dataset/100_2129.JPG
+/home/alvaro/Documents/custom_dataset/100_2130.JPG
+/home/alvaro/Documents/custom_dataset/100_2132.JPG
+/home/alvaro/Documents/custom_dataset/100_2133.JPG
+/home/alvaro/Documents/custom_dataset/100_2134.JPG
+/home/alvaro/Documents/custom_dataset/100_2135.JPG
+/home/alvaro/Documents/custom_dataset/100_2136.JPG
+/home/alvaro/Documents/custom_dataset/100_2137.JPG
+/home/alvaro/Documents/custom_dataset/100_2138.JPG
+/home/alvaro/Documents/custom_dataset/100_2139.JPG
+/home/alvaro/Documents/custom_dataset/100_2140.JPG
+/home/alvaro/Documents/custom_dataset/100_2141.JPG
+/home/alvaro/Documents/custom_dataset/100_2142.JPG
+/home/alvaro/Documents/custom_dataset/100_2144.JPG
+/home/alvaro/Documents/custom_dataset/100_2145.JPG
+/home/alvaro/Documents/custom_dataset/100_2146.JPG
+/home/alvaro/Documents/custom_dataset/100_2147.JPG
+/home/alvaro/Documents/custom_dataset/100_2148.JPG
+/home/alvaro/Documents/custom_dataset/100_2149.JPG
+/home/alvaro/Documents/custom_dataset/100_2150.JPG
+/home/alvaro/Documents/custom_dataset/100_2151.JPG
+/home/alvaro/Documents/custom_dataset/100_2152.JPG
+/home/alvaro/Documents/custom_dataset/100_2153.JPG
+/home/alvaro/Documents/custom_dataset/100_2154.JPG
+/home/alvaro/Documents/custom_dataset/100_2155.JPG
+/home/alvaro/Documents/custom_dataset/100_2157.JPG
+/home/alvaro/Documents/custom_dataset/100_2158.JPG
+/home/alvaro/Documents/custom_dataset/100_2159.JPG
+/home/alvaro/Documents/custom_dataset/100_2160.JPG
+/home/alvaro/Documents/custom_dataset/100_2161.JPG
+/home/alvaro/Documents/custom_dataset/100_2162.JPG
+/home/alvaro/Documents/custom_dataset/100_2163.JPG
+/home/alvaro/Documents/custom_dataset/100_2164.JPG
+/home/alvaro/Documents/custom_dataset/100_2165.JPG
+/home/alvaro/Documents/custom_dataset/100_2166.JPG
+/home/alvaro/Documents/custom_dataset/100_2167.JPG
+/home/alvaro/Documents/custom_dataset/100_2168.JPG
+/home/alvaro/Documents/custom_dataset/100_2169.JPG
+/home/alvaro/Documents/custom_dataset/100_2170.JPG
+/home/alvaro/Documents/custom_dataset/100_2171.JPG
+/home/alvaro/Documents/custom_dataset/100_2172.JPG
+/home/alvaro/Documents/custom_dataset/100_2173.JPG
+/home/alvaro/Documents/custom_dataset/100_2174.JPG
+/home/alvaro/Documents/custom_dataset/100_2175.JPG
+/home/alvaro/Documents/custom_dataset/100_2176.JPG
+/home/alvaro/Documents/custom_dataset/100_2177.JPG
+/home/alvaro/Documents/custom_dataset/100_2178.JPG
+/home/alvaro/Documents/custom_dataset/100_2179.JPG
+/home/alvaro/Documents/custom_dataset/100_2180.JPG
+/home/alvaro/Documents/custom_dataset/100_2181.JPG
+/home/alvaro/Documents/custom_dataset/100_2182.JPG
+/home/alvaro/Documents/custom_dataset/100_2183.JPG
+/home/alvaro/Documents/custom_dataset/100_2184.JPG
+/home/alvaro/Documents/custom_dataset/100_2185.JPG
+/home/alvaro/Documents/custom_dataset/100_2186.JPG
+/home/alvaro/Documents/custom_dataset/100_2187.JPG
+/home/alvaro/Documents/custom_dataset/100_2188.JPG
+/home/alvaro/Documents/custom_dataset/100_2189.JPG
+/home/alvaro/Documents/custom_dataset/100_2190.JPG
+/home/alvaro/Documents/custom_dataset/100_2191.JPG
+/home/alvaro/Documents/custom_dataset/100_2192.JPG
+/home/alvaro/Documents/custom_dataset/100_2193.JPG
+/home/alvaro/Documents/custom_dataset/100_2194.JPG
+/home/alvaro/Documents/custom_dataset/100_2195.JPG
+/home/alvaro/Documents/custom_dataset/100_2196.JPG
+/home/alvaro/Documents/custom_dataset/100_2197.JPG
+/home/alvaro/Documents/custom_dataset/100_2198.JPG
+/home/alvaro/Documents/custom_dataset/100_2199.JPG
+/home/alvaro/Documents/custom_dataset/100_2200.JPG
+/home/alvaro/Documents/custom_dataset/100_2201.JPG
+/home/alvaro/Documents/custom_dataset/100_2202.JPG
+/home/alvaro/Documents/custom_dataset/100_2203.JPG
+/home/alvaro/Documents/custom_dataset/100_2204.JPG
+/home/alvaro/Documents/custom_dataset/100_2205.JPG
+/home/alvaro/Documents/custom_dataset/100_2206.JPG
+/home/alvaro/Documents/custom_dataset/100_2207.JPG
+/home/alvaro/Documents/custom_dataset/100_2208.JPG
+/home/alvaro/Documents/custom_dataset/100_2209.JPG
+/home/alvaro/Documents/custom_dataset/100_2210.JPG
+/home/alvaro/Documents/custom_dataset/100_2211.JPG
+/home/alvaro/Documents/custom_dataset/100_2212.JPG
+/home/alvaro/Documents/custom_dataset/100_2213.JPG
+/home/alvaro/Documents/custom_dataset/100_2214.JPG
+/home/alvaro/Documents/custom_dataset/100_2215.JPG
+/home/alvaro/Documents/custom_dataset/100_2216.JPG
+/home/alvaro/Documents/custom_dataset/100_2217.JPG
+/home/alvaro/Documents/custom_dataset/100_2218.JPG
+/home/alvaro/Documents/custom_dataset/100_2219.JPG
+/home/alvaro/Documents/custom_dataset/100_2220.JPG
+/home/alvaro/Documents/custom_dataset/100_2221.JPG
+/home/alvaro/Documents/custom_dataset/100_2222.JPG
+/home/alvaro/Documents/custom_dataset/100_2224.JPG
+/home/alvaro/Documents/custom_dataset/100_2225.JPG
+/home/alvaro/Documents/custom_dataset/100_2226.JPG
+/home/alvaro/Documents/custom_dataset/100_2227.JPG
+/home/alvaro/Documents/custom_dataset/100_2228.JPG
+/home/alvaro/Documents/custom_dataset/100_2229.JPG
+/home/alvaro/Documents/custom_dataset/100_2230.JPG
+/home/alvaro/Documents/custom_dataset/100_2231.JPG
+/home/alvaro/Documents/custom_dataset/100_2232.JPG
+/home/alvaro/Documents/custom_dataset/100_2233.JPG
+/home/alvaro/Documents/custom_dataset/100_2234.JPG
+/home/alvaro/Documents/custom_dataset/100_2235.JPG
+/home/alvaro/Documents/custom_dataset/100_2236.JPG
+/home/alvaro/Documents/custom_dataset/100_2237.JPG
+/home/alvaro/Documents/custom_dataset/100_2238.JPG
+/home/alvaro/Documents/custom_dataset/100_2239.JPG
+/home/alvaro/Documents/custom_dataset/100_2240.JPG
+/home/alvaro/Documents/custom_dataset/100_2241.JPG
+/home/alvaro/Documents/custom_dataset/100_2242.JPG
+/home/alvaro/Documents/custom_dataset/100_2243.JPG
+/home/alvaro/Documents/custom_dataset/100_2244.JPG
+/home/alvaro/Documents/custom_dataset/100_2245.JPG
+/home/alvaro/Documents/custom_dataset/100_2246.JPG
+/home/alvaro/Documents/custom_dataset/100_2247.JPG
+/home/alvaro/Documents/custom_dataset/100_2248.JPG
+/home/alvaro/Documents/custom_dataset/100_2249.JPG
+/home/alvaro/Documents/custom_dataset/100_2250.JPG
+/home/alvaro/Documents/custom_dataset/100_2251.JPG
+/home/alvaro/Documents/custom_dataset/100_2252.JPG
+/home/alvaro/Documents/custom_dataset/100_2253.JPG
+/home/alvaro/Documents/custom_dataset/100_2255.JPG
+/home/alvaro/Documents/custom_dataset/100_2256.JPG
+/home/alvaro/Documents/custom_dataset/100_2257.JPG
+/home/alvaro/Documents/custom_dataset/100_2258.JPG
+/home/alvaro/Documents/custom_dataset/100_2259.JPG
+/home/alvaro/Documents/custom_dataset/100_2260.JPG
+/home/alvaro/Documents/custom_dataset/100_2262.JPG
+/home/alvaro/Documents/custom_dataset/100_2263.JPG
+/home/alvaro/Documents/custom_dataset/100_2264.JPG
+/home/alvaro/Documents/custom_dataset/100_2265.JPG
+/home/alvaro/Documents/custom_dataset/100_2266.JPG
+/home/alvaro/Documents/custom_dataset/100_2267.JPG
+/home/alvaro/Documents/custom_dataset/100_2268.JPG
+/home/alvaro/Documents/custom_dataset/100_2269.JPG
+/home/alvaro/Documents/custom_dataset/100_2270.JPG
+/home/alvaro/Documents/custom_dataset/100_2272.JPG
+/home/alvaro/Documents/custom_dataset/100_2273.JPG
+/home/alvaro/Documents/custom_dataset/100_2274.JPG
+/home/alvaro/Documents/custom_dataset/100_2275.JPG
+/home/alvaro/Documents/custom_dataset/100_2276.JPG
+/home/alvaro/Documents/custom_dataset/100_2277.JPG
+/home/alvaro/Documents/custom_dataset/100_2278.JPG
+/home/alvaro/Documents/custom_dataset/100_2279.JPG
+/home/alvaro/Documents/custom_dataset/100_2280.JPG
+/home/alvaro/Documents/custom_dataset/100_2281.JPG
+/home/alvaro/Documents/custom_dataset/100_2282.JPG
+/home/alvaro/Documents/custom_dataset/100_2283.JPG
+/home/alvaro/Documents/custom_dataset/100_2284.JPG
+/home/alvaro/Documents/custom_dataset/100_2285.JPG
+/home/alvaro/Documents/custom_dataset/100_2286.JPG
+/home/alvaro/Documents/custom_dataset/100_2287.JPG
+/home/alvaro/Documents/custom_dataset/100_2288.JPG
+/home/alvaro/Documents/custom_dataset/100_2289.JPG
+/home/alvaro/Documents/custom_dataset/100_2290.JPG
+/home/alvaro/Documents/custom_dataset/100_2291.JPG
+/home/alvaro/Documents/custom_dataset/100_2293.JPG
+/home/alvaro/Documents/custom_dataset/100_2294.JPG
+/home/alvaro/Documents/custom_dataset/100_2295.JPG
+/home/alvaro/Documents/custom_dataset/100_2296.JPG
+/home/alvaro/Documents/custom_dataset/100_2297.JPG
+/home/alvaro/Documents/custom_dataset/100_2298.JPG
+/home/alvaro/Documents/custom_dataset/100_2299.JPG
+/home/alvaro/Documents/custom_dataset/100_2300.JPG
+/home/alvaro/Documents/custom_dataset/100_2301.JPG
+/home/alvaro/Documents/custom_dataset/100_2302.JPG
+/home/alvaro/Documents/custom_dataset/100_2303.JPG
+/home/alvaro/Documents/custom_dataset/100_2304.JPG
+/home/alvaro/Documents/custom_dataset/100_2305.JPG
+/home/alvaro/Documents/custom_dataset/100_2306.JPG
+/home/alvaro/Documents/custom_dataset/100_2307.JPG
+/home/alvaro/Documents/custom_dataset/100_2308.JPG
+/home/alvaro/Documents/custom_dataset/100_2309.JPG
+/home/alvaro/Documents/custom_dataset/100_2310.JPG
+/home/alvaro/Documents/custom_dataset/100_2311.JPG
+/home/alvaro/Documents/custom_dataset/100_2312.JPG
+/home/alvaro/Documents/custom_dataset/100_2313.JPG
+/home/alvaro/Documents/custom_dataset/100_2314.JPG
+/home/alvaro/Documents/custom_dataset/100_2315.JPG
+/home/alvaro/Documents/custom_dataset/100_2317.JPG
+/home/alvaro/Documents/custom_dataset/100_2318.JPG
+/home/alvaro/Documents/custom_dataset/100_2319.JPG
+/home/alvaro/Documents/custom_dataset/100_2320.JPG
+/home/alvaro/Documents/custom_dataset/100_2321.JPG
+/home/alvaro/Documents/custom_dataset/100_2322.JPG
+/home/alvaro/Documents/custom_dataset/100_2323.JPG
+/home/alvaro/Documents/custom_dataset/100_2324.JPG
+/home/alvaro/Documents/custom_dataset/100_2325.JPG
+/home/alvaro/Documents/custom_dataset/100_2326.JPG
+/home/alvaro/Documents/custom_dataset/100_2327.JPG
+/home/alvaro/Documents/custom_dataset/100_2328.JPG
+/home/alvaro/Documents/custom_dataset/100_2330.JPG
+/home/alvaro/Documents/custom_dataset/100_2331.JPG
+/home/alvaro/Documents/custom_dataset/100_2332.JPG
+/home/alvaro/Documents/custom_dataset/100_2333.JPG
+/home/alvaro/Documents/custom_dataset/100_2334.JPG
+/home/alvaro/Documents/custom_dataset/100_2336.JPG
+/home/alvaro/Documents/custom_dataset/100_2337.JPG
+/home/alvaro/Documents/custom_dataset/100_2338.JPG
+/home/alvaro/Documents/custom_dataset/100_2339.JPG
+/home/alvaro/Documents/custom_dataset/100_2340.JPG
+/home/alvaro/Documents/custom_dataset/100_2341.JPG
+/home/alvaro/Documents/custom_dataset/100_2342.JPG
+/home/alvaro/Documents/custom_dataset/100_2343.JPG
+/home/alvaro/Documents/custom_dataset/100_2344.JPG
+/home/alvaro/Documents/custom_dataset/100_2345.JPG
+/home/alvaro/Documents/custom_dataset/100_2346.JPG
+/home/alvaro/Documents/custom_dataset/100_2347.JPG
+/home/alvaro/Documents/custom_dataset/100_2348.JPG
+/home/alvaro/Documents/custom_dataset/100_2349.JPG
+/home/alvaro/Documents/custom_dataset/100_2350.JPG
+/home/alvaro/Documents/custom_dataset/100_2351.JPG
+/home/alvaro/Documents/custom_dataset/100_2352.JPG
+/home/alvaro/Documents/custom_dataset/100_2353.JPG
+/home/alvaro/Documents/custom_dataset/100_2354.JPG
+/home/alvaro/Documents/custom_dataset/100_2355.JPG
+/home/alvaro/Documents/custom_dataset/100_2356.JPG
+/home/alvaro/Documents/custom_dataset/100_2357.JPG
+/home/alvaro/Documents/custom_dataset/100_2358.JPG
+/home/alvaro/Documents/custom_dataset/100_2359.JPG
+/home/alvaro/Documents/custom_dataset/100_2360.JPG
+/home/alvaro/Documents/custom_dataset/100_2361.JPG
+/home/alvaro/Documents/custom_dataset/100_2363.JPG
+/home/alvaro/Documents/custom_dataset/100_2364.JPG
+/home/alvaro/Documents/custom_dataset/100_2365.JPG
+/home/alvaro/Documents/custom_dataset/100_2366.JPG
+/home/alvaro/Documents/custom_dataset/100_2367.JPG
+/home/alvaro/Documents/custom_dataset/100_2368.JPG
+/home/alvaro/Documents/custom_dataset/100_2369.JPG
+/home/alvaro/Documents/custom_dataset/100_2370.JPG
+/home/alvaro/Documents/custom_dataset/100_2371.JPG
+/home/alvaro/Documents/custom_dataset/100_2372.JPG
+/home/alvaro/Documents/custom_dataset/100_2373.JPG
+/home/alvaro/Documents/custom_dataset/100_2374.JPG
+/home/alvaro/Documents/custom_dataset/100_2375.JPG
+/home/alvaro/Documents/custom_dataset/100_2376.JPG
+/home/alvaro/Documents/custom_dataset/100_2377.JPG
+/home/alvaro/Documents/custom_dataset/100_2378.JPG
+/home/alvaro/Documents/custom_dataset/100_2380.JPG
+/home/alvaro/Documents/custom_dataset/100_2381.JPG
+/home/alvaro/Documents/custom_dataset/100_2382.JPG
+/home/alvaro/Documents/custom_dataset/100_2384.JPG
+/home/alvaro/Documents/custom_dataset/100_2385.JPG
+/home/alvaro/Documents/custom_dataset/100_2386.JPG
+/home/alvaro/Documents/custom_dataset/100_2387.JPG
+/home/alvaro/Documents/custom_dataset/100_2390.JPG
+/home/alvaro/Documents/custom_dataset/100_2391.JPG
+/home/alvaro/Documents/custom_dataset/100_2392.JPG
+/home/alvaro/Documents/custom_dataset/100_2393.JPG
+/home/alvaro/Documents/custom_dataset/100_2394.JPG
+/home/alvaro/Documents/custom_dataset/100_2395.JPG
+/home/alvaro/Documents/custom_dataset/100_2396.JPG
+/home/alvaro/Documents/custom_dataset/100_2397.JPG
+/home/alvaro/Documents/custom_dataset/100_2398.JPG
+/home/alvaro/Documents/custom_dataset/100_2399.JPG
+/home/alvaro/Documents/custom_dataset/100_2400.JPG
+/home/alvaro/Documents/custom_dataset/100_2401.JPG
+/home/alvaro/Documents/custom_dataset/100_2402.JPG
+/home/alvaro/Documents/custom_dataset/100_2403.JPG
+/home/alvaro/Documents/custom_dataset/100_2404.JPG
+/home/alvaro/Documents/custom_dataset/100_2405.JPG
+/home/alvaro/Documents/custom_dataset/100_2406.JPG
+/home/alvaro/Documents/custom_dataset/100_2407.JPG
+/home/alvaro/Documents/custom_dataset/100_2409.JPG
+/home/alvaro/Documents/custom_dataset/100_2410.JPG
+/home/alvaro/Documents/custom_dataset/100_2411.JPG
+/home/alvaro/Documents/custom_dataset/100_2412.JPG
+/home/alvaro/Documents/custom_dataset/100_2413.JPG
+/home/alvaro/Documents/custom_dataset/100_2414.JPG
+/home/alvaro/Documents/custom_dataset/100_2482.JPG
+/home/alvaro/Documents/custom_dataset/100_2483.JPG
+/home/alvaro/Documents/custom_dataset/100_2484.JPG
+/home/alvaro/Documents/custom_dataset/100_2485.JPG
+/home/alvaro/Documents/custom_dataset/100_2486.JPG
+/home/alvaro/Documents/custom_dataset/100_2488.JPG
+/home/alvaro/Documents/custom_dataset/100_2489.JPG
+/home/alvaro/Documents/custom_dataset/100_2490.JPG
+/home/alvaro/Documents/custom_dataset/100_2491.JPG
+/home/alvaro/Documents/custom_dataset/100_2492.JPG
+/home/alvaro/Documents/custom_dataset/100_2493.JPG
+/home/alvaro/Documents/custom_dataset/100_2494.JPG
+/home/alvaro/Documents/custom_dataset/100_2495.JPG
+/home/alvaro/Documents/custom_dataset/100_2496.JPG
+/home/alvaro/Documents/custom_dataset/100_2497.JPG
+/home/alvaro/Documents/custom_dataset/100_2498.JPG
+/home/alvaro/Documents/custom_dataset/100_2499.JPG
+/home/alvaro/Documents/custom_dataset/100_2500.JPG
+/home/alvaro/Documents/custom_dataset/100_2501.JPG
+/home/alvaro/Documents/custom_dataset/100_2502.JPG
+/home/alvaro/Documents/custom_dataset/100_2503.JPG
+/home/alvaro/Documents/custom_dataset/100_2505.JPG
+/home/alvaro/Documents/custom_dataset/100_2506.JPG
+/home/alvaro/Documents/custom_dataset/100_2507.JPG
+/home/alvaro/Documents/custom_dataset/100_2508.JPG
+/home/alvaro/Documents/custom_dataset/100_2509.JPG
+/home/alvaro/Documents/custom_dataset/100_2510.JPG
+/home/alvaro/Documents/custom_dataset/100_2514.JPG
+/home/alvaro/Documents/custom_dataset/100_2515.JPG
+/home/alvaro/Documents/custom_dataset/100_2517.JPG
+/home/alvaro/Documents/custom_dataset/100_2446.JPG
+/home/alvaro/Documents/custom_dataset/100_2447.JPG
+/home/alvaro/Documents/custom_dataset/100_2449.JPG
+/home/alvaro/Documents/custom_dataset/100_2451.JPG
+/home/alvaro/Documents/custom_dataset/100_2452.JPG
+/home/alvaro/Documents/custom_dataset/100_2453.JPG
+/home/alvaro/Documents/custom_dataset/100_2454.JPG
+/home/alvaro/Documents/custom_dataset/100_2455.JPG
+/home/alvaro/Documents/custom_dataset/100_2456.JPG
+/home/alvaro/Documents/custom_dataset/100_2458.JPG
+/home/alvaro/Documents/custom_dataset/100_2459.JPG
+/home/alvaro/Documents/custom_dataset/100_2461.JPG
+/home/alvaro/Documents/custom_dataset/100_2462.JPG
+/home/alvaro/Documents/custom_dataset/100_2463.JPG
+/home/alvaro/Documents/custom_dataset/100_2464.JPG
+/home/alvaro/Documents/custom_dataset/100_2465.JPG
+/home/alvaro/Documents/custom_dataset/100_2466.JPG
+/home/alvaro/Documents/custom_dataset/100_2467.JPG
+/home/alvaro/Documents/custom_dataset/100_2468.JPG
+/home/alvaro/Documents/custom_dataset/100_2469.JPG
+/home/alvaro/Documents/custom_dataset/100_2470.JPG
+/home/alvaro/Documents/custom_dataset/100_2472.JPG
+/home/alvaro/Documents/custom_dataset/100_2473.JPG
+/home/alvaro/Documents/custom_dataset/100_2474.JPG
+/home/alvaro/Documents/custom_dataset/100_2475.JPG
+/home/alvaro/Documents/custom_dataset/100_2476.JPG
+/home/alvaro/Documents/custom_dataset/100_2477.JPG
+/home/alvaro/Documents/custom_dataset/100_2426.JPG
+/home/alvaro/Documents/custom_dataset/100_2427.JPG
+/home/alvaro/Documents/custom_dataset/100_2428.JPG

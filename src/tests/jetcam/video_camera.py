@@ -1,13 +1,10 @@
 from .camera import Camera
+import traitlets
 import atexit
 import cv2
-import numpy as np
-import threading
-import traitlets
 
 
 class VideoCamera(Camera):
-
     capture_fps = traitlets.Integer(default_value=30)
     capture_width = traitlets.Integer(default_value=640)
     capture_height = traitlets.Integer(default_value=480)

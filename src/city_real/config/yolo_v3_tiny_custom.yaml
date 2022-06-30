@@ -3,7 +3,7 @@ config_file:
 weight_file:
   name: yolov3-tiny-custom.weights
 threshold:
-  value: 0.5
+  value: 0.6
 detection_classes:
   names:
     - traffic light

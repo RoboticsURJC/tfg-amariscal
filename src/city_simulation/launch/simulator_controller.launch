@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch>
-		<rosparam command="load"
-	file="$(find city_simulation)/config/sim_params.yaml" />
 
-	<node pkg="city_simulation" name="simulator_controller" type="simulator_controller.py" output="screen"> 
-	</node>
+	<rosparam command="load" file="$(find city_simulation)/config/sim_params.yaml" />
+
+	<node pkg="city_simulation" name="simulator_controller" type="simulator_controller.py" output="screen"></node>
 
 </launch>

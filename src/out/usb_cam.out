@@ -1,0 +1,18 @@
+Listing available frame formats for device video0:
+Pixel format: MJPG (Motion-JPEG; MIME type: image/jpeg)
+  Frame size: 1920x1080
+    Frame rates: 30
+  Frame size: 1280x720
+    Frame rates: 30
+  Frame size: 640x360
+    Frame rates: 30
+Pixel format: YUYV (YUYV 4:2:2; MIME type: video/x-raw-yuv)
+  Frame size: 640x360
+    Frame rates: 30
+Pixel format: H264 (H.264)
+  Frame size: 1920x1080
+    Frame rates: 30
+  Frame size: 1280x720
+    Frame rates: 30
+  Frame size: 640x360
+    Frame rates: 30

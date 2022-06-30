@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+
+	<rosparam command="load" file="$(find city_real)/config/real_params.yaml" />
+
+	<node pkg="city_real" name="autonomous_vehicle" type="autonomous_vehicle.py" output="screen"></node>
+
+</launch>
