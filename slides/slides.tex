@@ -3,10 +3,10 @@
 % "tecla p": para pausar el cronometro
 \mode<presentation> {
 	\usetheme{CambridgeUS}
-	\usecolortheme{crane} % color naranja
+	\usecolortheme{crane}
 }
 
-\setbeamercolor{titlelike}{parent=structure,bg=yellow!85!orange} % Cambia el color de la caja del título de la página inicial
+\setbeamercolor{titlelike}{parent=structure,bg=yellow!85!orange}
 
 \setbeamertemplate{navigation symbols}{} % ocultar iconos de navegación
 \setbeamerfont{subsection in toc}{size=\small} % reducir tamaño en TOC
@@ -21,14 +21,14 @@
 \usepackage{listings}
 \usepackage{multimedia}
 \usepackage[export]{adjustbox}
-\usepackage{outlines} % Para poner bullets tabulados (\1 \2 \3 ...) y no items
+\usepackage{outlines}
 
-\usepackage{array,tabularx} % para tabular leyenda de ecuaciones
-\newenvironment{conditions*} % entorno de "leyenda de ecuación"
-	{\par\vspace{\abovedisplayskip}\noindent
-	 \tabularx{\columnwidth}{>{$}l<{$} @{\ : } >{\raggedright\arraybackslash}X}}
-	{\endtabularx\par\vspace{\belowdisplayskip}}
-	
+\usepackage{array,tabularx}
+\newenvironment{conditions*}
+{\par\vspace{\abovedisplayskip}\noindent
+\tabularx{\columnwidth}{>{$}l<{$} @{\ : } >{\raggedright\arraybackslash}X}}
+{\endtabularx\par\vspace{\belowdisplayskip}}
+
 % USO DE NOTAS
 \setbeameroption{hide notes} % Para mostrar u ocultar (hide/show)
 % \setbeameroption{show only notes} % Mostrar solo las notas
@@ -41,104 +41,113 @@
 	pdftitle={Defensa de trabajo de fin de grado de Álvaro Mariscal Ávila},
 	pdfauthor={Álvaro Mariscal Ávila},
 	pdfsubject={Conducción autónoma sobre plataforma real y simulada con seguimiento de carril e identificación de señales de tráfico y peatones mediante redes neuronales},
-	pdfkeywords={robotics, vision, sensors, actuators, neural networks},
+	pdfkeywords={robotics, vision, neural networks},
 	pdfproducer={pdfLaTeX},
 	colorlinks=true,
 	linkcolor=blue
 }
 % =========
 
-\title[Conducción autónoma con redes neuronales]{Conducción autónoma sobre plataforma real y simulada con seguimiento de carril e identificación de señales de tráfico y peatones mediante redes neuronales} % El título reducido aparece en la parte inferior de todas las diapositivas
-% El título completo aparece solo en la diapositiva de portada
+\title[Conducción autónoma con redes neuronales]{Conducción autónoma sobre plataforma real y simulada con seguimiento de carril e identificación de señales de tráfico y peatones
+	mediante redes neuronales}
 \author[Álvaro Mariscal Ávila]{Álvaro Mariscal Ávila}
 \institute[URJC]
 {
-\textit{\href{mailto:a.mariscal.2018@alumnos.urjc.es}{\color{blue}{\underline{a.mariscal.2018@alumnos.urjc.es}}}}\\
-\vspace{0.5cm}
-\includegraphics[width=3cm]{figs/logo-urjc}\\
-\vspace{1cm}
-Trabajo fin de grado
+	\textit{\href{mailto:a.mariscal.2018@alumnos.urjc.es}{\color{blue}{\underline{a.mariscal.2018@alumnos.urjc.es}}}}\\
+	\vspace{0.5cm}
+	\includegraphics[width=3cm]{figs/logo-urjc}\\
+	\vspace{1cm}
+	Trabajo fin de grado
 }
-\date{xx de xxxxxxx de 2022}
+\date{5 de julio de 2022}
 % =========
 
 % ========= COMIENZO DEL DOCUMENTO
 \begin{document}
 
 % ========= Portada inicial con notas
-\begin{frame}[plain] % plain: quita header y footer
+\begin{frame}[plain]
 	\large{\titlepage}
-	\note[item]{En esta presentación voy a hablar sobre...}
-	\note[item]{En primer lugar...}
+	\note[item]{El trabajo se enmarca en la robótica y la visión artificial.}
+	\note[item]{En primer lugar }
 \end{frame}
 
 % ========= Licencia
 \begin{frame}
-\input{licencia.tex}
+	\input{licencia.tex}
 \end{frame}
 
 % ========= Índice o tabla de contenidos (TOC)
 \begin{frame}
-\frametitle{Contenidos}
-% \begin{multicols}{2} % si tengo muchas secciones, lo parte en dos columnas
-	\tableofcontents[hideallsubsections] % no muestra subsecciones
-% \end{multicols}
-\note[item]{La presentaci\'on esta dividida en cuatro partes.}
+	\frametitle{Contenidos}
+	% \begin{multicols}{2} % si tengo muchas secciones, lo parte en dos columnas
+	\tableofcontents[hideallsubsections]
+	% \end{multicols}
+	\note[item]{La presentación esta dividida en cinco partes.}
 \end{frame}
 
-% ========= Diapositiva "vacía" de comienzo de sección:
 \section*{}
 \begin{frame}{}
 	\centering \Huge
 	\emph{Introducción}
-\note[item]{Comencemos con la introducción.}
+	\note[item]{Para empezar tenemos la introducción para hablar acerca del contexto.}
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Capítulo 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Capítulo 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 \section{Introducción}
 \subsection{Contexto general}
 \begin{frame}
 	\frametitle{Inteligencia artificial}
-	\begin{figure}
-	\centering
-	\includegraphics[width=8cm]{figs/roomba}
-	\end{figure}
+	\begin{itemize}
+		\item \textcolor{red}{Entender} y \textcolor{red}{emular} el comportamiento humano.
+		\item Dotar a sistemas de cierta \textcolor{red}{inteligencia} y de la capacidad de \textcolor{red}{aprender}.
+		\item Visión artificial, aprendizaje automático o aprendizaje profundo.
+	\end{itemize}
+	\note[item]{Inteligencia artificial.}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Visión artificial}
-	\begin{itemize}
-	\item La \textcolor{red}{tecnología} está cada vez más presente en la vida cotidiana.
-	\item Los robots de servicio aparecen en el \textcolor{blue}{mercado}.
-	\item La \textcolor{red}{domótica} presenta cada vez más aplicaciones domésticas.
-	\end{itemize}
+	\begin{figure}
+		\centering
+		\includegraphics[width=10cm]{figs/yolo}
+	\end{figure}
+	\note[item]{Visión artificial con aplicaciones como la detección de objetos. Para ello se utilizan técnicas de Deep Learning que explicaremos a continuación.}
 \end{frame}
 
 \begin{frame}
-	\frametitle{Deep Learning}
+	\frametitle{\textit{Deep Learning}}
+	\begin{outline}
+		\1 \textcolor{red}{Neocognitrón} (1979): Red neuronal con 5 o 6 capas para \textcolor{red}{reconocer caracteres japoneses}
+	\end{outline}
 	\begin{figure}
-	\centering
-	\includegraphics[width=8cm]{figs/roomba}
+		\centering
+		\includegraphics[width=6cm]{figs/neuralnetwork}
 	\end{figure}
+	\note[item]{Deep Learning No existe límite claro para definir red neuronal Deep Learning.}
 \end{frame}
 
 \subsection{Contexto específico}
 \begin{frame}
-	\frametitle{Coches autónomos}
-	\begin{block}{Primera revolución industrial de 1800}
-	Productos fabricados por \textcolor{blue}{máquinas}. La \textcolor{red}{máquina de vapor} fue clave.
-	\end{block}
+	\frametitle{Vehículos autónomos}
+	\begin{figure}
+		\centering
+		\includegraphics[width=10cm]{figs/volvovera}
+	\end{figure}
+	\note[item]{Nivel de autonomía 5.}
 \end{frame}
 
 \begin{frame}
-	\frametitle{AMRs}
-	\begin{block}{Primera revolución industrial de 1800}
-	Productos fabricados por \textcolor{blue}{máquinas}. La \textcolor{red}{máquina de vapor} fue clave.
-	\end{block}
+	\frametitle{\textit{AMRs}}
+	\begin{figure}
+		\centering
+		\includegraphics[width=8cm]{figs/kivasystems}
+	\end{figure}
+	\note[item]{Kiva Systems.}
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Capítulo 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Capítulo 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 \section*{}
 \begin{frame}{}
@@ -152,55 +161,122 @@ Trabajo fin de grado
 \begin{frame}
 	\frametitle{Descripción del problema}
 	\begin{outline}
-	\1 relación
+		\1 Desarrollar un \textcolor{red}{coche autónomo }capaz de circular por un \textcolor{red}{circuito} en un entorno dinámico, interactuando con objetos propios de
+		una ciudad en dos entornos
+		distintos:
+		\2 Entorno \textcolor{red}{simulado} con \textcolor{red}{\textit{Gazebo}}.
+		\2 Entorno \textcolor{red}{real} usando un robot con \textcolor{red}{\textit{Jetson Nano}}.
+		\1 En ambos entornos se han de cumplir dos subobjetivos:
+		\2 \textcolor{red}{Seguimiento de carril}
+		\2 \textcolor{red}{Detección de objetos}
 	\end{outline}
+	\note[item]{Descripción.}
 \end{frame}
 
 \subsection{Requisitos}
 \begin{frame}
 	\frametitle{Requisitos}
-	\begin{outline}
-	\1 relación
-	\end{outline}
+	\begin{itemize}
+		\item El sistema operativo utilizado será \textcolor{red}{\textit{GNU/Linux}}, concretamente la distribución \textcolor{red}{\textit{Ubuntu 18.04 LTS}}.
+		\item El entorno simulado requerirá la presencia de una tarjeta gráfica dedicada: \textcolor{red}{\textit{NVIDIA}} y \textcolor{red}{\textit{CUDA}}.
+		\item El entorno real requerirá un robot con la placa de desarrollo \textcolor{red}{\textit{NVIDIA Jetson Nano}}, ya que esta es una de las placas con
+		      \textcolor{red}{\textit{GPU}} más económicas.
+		\item El lenguaje de programación utilizado será \textcolor{red}{\textit{Python}}.
+	\end{itemize}
+	\note[item]{Requisitos.}
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Capítulo 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Capítulo 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 \section*{}
 \begin{frame}{}
 	\centering \Huge
 	\emph{Plataforma de desarrollo}
-	\note[item]{Pasemos ahora a comentar los objetivos que nos hemos con este trabajo.}
+	\note[item]{Plataforma de desarrollo.}
 \end{frame}
 
 \section{Plataforma de desarrollo}
 \subsection{Hardware}
 \begin{frame}
-		\frametitle{Hardware}
-	\begin{enumerate}
-	\item Crear una herramienta multiplataforma.
-	\item Sin necesidad de instalación.
-	\item Toda ejecución vía web.
-	\end{enumerate}
+	\frametitle{NVIDIA Jetson Nano}
+	\begin{outline}
+		\1 Placa de desarrollo de \textcolor{red}{bajo coste} con \textcolor{red}{GPU} dedicada.
+		\1 Arquitectura \textcolor{red}{\textit{Aarch64}}, soporte para \textcolor{red}{\textit{GNU/Linux}} y puertos \textcolor{red}{\textit{GPIO}}.
+	\end{outline}
+	\begin{figure}
+		\centering
+		\includegraphics[width=6cm]{figs/jetsonnano}
+	\end{figure}
+	\note[item]{NVIDIA Jetson Nano.}
+\end{frame}
+\begin{frame}
+	\frametitle{Componentes}
+	\begin{figure}
+		\centering
+		\includegraphics[width=3cm]{figs/motorTT}
+		\includegraphics[width=3cm]{figs/l298n}
+		\includegraphics[width=2.5cm]{figs/battery2}
+		\includegraphics[width=3cm]{figs/tarantula}
+		\includegraphics[width=3cm]{figs/camera}
+		\includegraphics[width=1.5cm]{figs/tplink}
+		\includegraphics[width=3.5cm]{figs/chasis}
+	\end{figure}
+	\note[item]{Componentes.}
+	\note[item]{Motores de bajo coste sin odometría.}
+	\note[item]{Controlador de motores. Limitaciones motores a pares.}
+	\note[item]{Batería 10000mAh para alimentar Jetson Nano.}
+	\note[item]{Batería 7.4V para alimentar motores.}
+	\note[item]{Cámara USB como sensor principal.}
+	\note[item]{Adaptador Wi-Fi para conexión mediante SSH con el robot.}
+	\note[item]{Chasis muy usado en proyectos relacionados con Arduino.}
 \end{frame}
 
 \subsection{Software}
 \begin{frame}
 	\frametitle{Software}
-	\begin{enumerate}
-	\item Crear una herramienta multiplataforma.
-	\item Sin necesidad de instalación.
-	\item Toda ejecución vía web.
-	\end{enumerate}
+	\begin{figure}
+		\centering
+		\includegraphics[width=2cm]{figs/pythonlogo}\hspace{0.5cm}
+		\includegraphics[width=2cm]{figs/freecadlogo}\hspace{0.3cm}
+		\includegraphics[width=2.3cm]{figs/blenderlogo}\hspace{0.5cm}
+		\includegraphics[width=1.7cm]{figs/gazebologo}\\
+		\vspace{1cm}\includegraphics[width=4.3cm]{figs/roslogo}\hspace{0.5cm}
+		\includegraphics[width=4cm]{figs/pyqtlogo}
+	\end{figure}
+	\note[item]{Software.}
+	\note[item]{Python.}
+	\note[item]{FreeCAD.}
+	\note[item]{Blender.}
+	\note[item]{Gazebo.}
+	\note[item]{ROS.}
+	\note[item]{PyQT.}
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Capítulo 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\begin{frame}
+	\frametitle{Software relacionado con visión}
+	\begin{figure}
+		\centering
+		\includegraphics[height=2cm]{figs/opencvlogo}\hspace{0.8cm}
+		\includegraphics[height=1.5cm]{figs/yolologo}\hspace{0.6cm}
+		\includegraphics[width=3.3cm]{figs/labelimg}\hspace{0.8cm}\\
+		\vspace{1cm}\includegraphics[width=2.8cm]{figs/darknetlogo}\hspace{0.8cm}
+		\includegraphics[width=2.8cm]{figs/jetracerframe}
+	\end{figure}
+	\note[item]{Software relacionado con visión.}
+	\note[item]{OpenCV.}
+	\note[item]{YOLO.}
+	\note[item]{LabelIMG.}
+	\note[item]{Darknet.}
+	\note[item]{JetRacer.}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Capítulo 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 \section*{}
 \begin{frame}{}
 	\centering \Huge
 	\emph{Sistema de conducción autónoma}
-	\note[item]{Una vez descritos los objetivos, veamos qué hemos hecho para alcanzarlos.}
+	\note[item]{Una vez descritos los objetivos y las plataformas utilizadas veamos el desarrollo en sí del proyecto.}
 \end{frame}
 
 \section{Sistema de conducción autónoma}
@@ -208,23 +284,14 @@ Trabajo fin de grado
 \begin{frame}
 	\frametitle{Modelo}
 	\begin{itemize}
-	\item Se usa una matriz $RT (4x4)$ en lugar de $R$ y $T$.
-	\item La matriz $RT$ rota $\theta$ grados en los ejes $X$, $Y$ y $Z$:
+		\item One
 	\end{itemize}
 \end{frame}
 
 \begin{frame}
-	\frametitle{Resistencia de un material}
+	\frametitle{Ensamblado}
 	\begin{outline}
-	\1 Si material piezoresistivo se deforma, cambia su resistencia eléctrica.
-	donde:
-	\begin{conditions*}
-	R & resistencia del material $[\Omega]$\\
-	\rho & resistividad $[\Omega-m]$\\
-	l & longitud $[m]$\\
-	A & área de sección transversal $[m^2]$
-	\end{conditions*}
-	\1 El cambio de resistencia se obtiene a partir de:
+		\1 One
 	\end{outline}
 \end{frame}
 
@@ -232,27 +299,26 @@ Trabajo fin de grado
 \begin{frame}
 	\frametitle{Circuito}
 	\begin{itemize}
-	\item Se usa una matriz $RT (4x4)$ en lugar de $R$ y $T$.
-	\item La matriz $RT$ rota $\theta$ grados en los ejes $X$, $Y$ y $Z$:
+		\item One
+		\item Two
 	\end{itemize}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Redes neuronales en el entorno real}
 	\begin{outline}
-	\1 Si material piezoresistivo se deforma, cambia su resistencia eléctrica.
-	donde:
-	\begin{conditions*}
-	R & resistencia del material $[\Omega]$\\
-	\rho & resistividad $[\Omega-m]$\\
-	l & longitud $[m]$\\
-	A & área de sección transversal $[m^2]$
-	\end{conditions*}
-	\1 El cambio de resistencia se obtiene a partir de:
+		\1 Redes
 	\end{outline}
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Capítulo 5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% \begin{conditions*}
+% 	R & resistencia del material $[\Omega]$\\
+% 	\rho & resistividad $[\Omega-m]$\\
+% 	l & longitud $[m]$\\
+% 	A & área de sección transversal $[m^2]$
+% \end{conditions*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Capítulo 5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 \section*{}
 \begin{frame}{}
@@ -262,27 +328,35 @@ Trabajo fin de grado
 \end{frame}
 
 \section{Conclusiones}
-	\begin{frame}
+\begin{frame}
 	\frametitle{Conclusiones}
-	\begin{itemize}
-	\item Se usa una matriz $RT (4x4)$ en lugar de $R$ y $T$.
-	\item La matriz $RT$ rota $\theta$ grados en los ejes $X$, $Y$ y $Z$:
-	\end{itemize}
+	\begin{outline}
+		\1 Se han utilizado dos \textcolor{red}{redes neuronales}:
+		\2 Seguimiento de carril: librería \textcolor{red}{\textit{JetRacer}} que implementa una red residual \textcolor{red}{\textit{ResNet-18}} combinada con un
+		controlador.
+		\2 Detección de objetos: red \textcolor{red}{convolucional} \textit{YOLO V3 Tiny} mediante el \textit{framework} \textit{Darknet}. Entrenada con \textit{dataset}
+		propio con los
+		objetos reales para aumentar la fiabilidad.
+		\1 Limitaciones: \textcolor{red}{ángulo} de la cámara y \textcolor{red}{resolución} de imagen en las redes neuronales.
+	\end{outline}
+	\note[item]{Conclusiones.}
 \end{frame}
 
 \subsection{Líneas futuras}
 \begin{frame}
 	\frametitle{Líneas futuras}
-	\begin{itemize}
-	\item Se usa una matriz $RT (4x4)$ en lugar de $R$ y $T$.
-	\item La matriz $RT$ rota $\theta$ grados en los ejes $X$, $Y$ y $Z$:
-	\end{itemize}
+	\begin{figure}
+		\centering
+		\includegraphics[width=5cm]{figs/tunel}\hspace{0.5cm}
+		\includegraphics[width=5cm]{figs/forest}
+	\end{figure}
+	\note[item]{Líneas futuras: mayor dataset, túnes, bosques, todo entorno donde exista algo similar a un camino a seguir. También sería interesante obtener los límites en
+		izquierda y derecha del carril y no solo el punto central.}
 \end{frame}
 
 \begin{frame}[plain]
 	\large{\titlepage}
-	\note[item]{Y hasta aquí mi exposición.}
-	\note[item]{Quedo a disposición del tribunal...}
+	\note[item]{Eso es todo. Muchas gracias por su atención.}
 \end{frame}
 
 \end{document}
