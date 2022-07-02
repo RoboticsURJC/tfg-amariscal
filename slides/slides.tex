@@ -119,7 +119,7 @@
 \begin{frame}
 	\frametitle{\textit{Deep Learning}}
 	\begin{outline}
-		\1 \textcolor{red}{Neocognitrón} (1979): Red neuronal con 5 o 6 capas para \textcolor{red}{reconocer caracteres japoneses}
+		\1 \textcolor{red}{Neocognitrón} (1979): Red neuronal con 5 o 6 capas para \textcolor{red}{reconocer caracteres japoneses}.
 	\end{outline}
 	\begin{figure}
 		\centering
@@ -139,6 +139,9 @@
 \end{frame}
 
 \begin{frame}
+	\begin{outline}
+		\1 Sucesores de los \textcolor{red}{AGVs}.
+	\end{outline}
 	\frametitle{\textit{AMRs}}
 	\begin{figure}
 		\centering
@@ -167,8 +170,8 @@
 		\2 Entorno \textcolor{red}{simulado} con \textcolor{red}{\textit{Gazebo}}.
 		\2 Entorno \textcolor{red}{real} usando un robot con \textcolor{red}{\textit{Jetson Nano}}.
 		\1 En ambos entornos se han de cumplir dos subobjetivos:
-		\2 \textcolor{red}{Seguimiento de carril}
-		\2 \textcolor{red}{Detección de objetos}
+		\2 Seguimiento de \textcolor{red}{carril}
+		\2 Detección de \textcolor{red}{objetos}
 	\end{outline}
 	\note[item]{Descripción.}
 \end{frame}
@@ -282,33 +285,236 @@
 \section{Sistema de conducción autónoma}
 \subsection{Entorno simulado}
 \begin{frame}
-	\frametitle{Modelo}
+	\frametitle{Modelo de la ciudad en \textit{Gazebo}}
+	\includegraphics[height=3cm]{figs/smallcity}
+	\includegraphics[height=3cm]{figs/trafficlightpedestrian}\vspace{1cm}
 	\begin{itemize}
-		\item One
+		\item Reproducible en el entorno real
+		\item Semáforo y peatón dinámico
 	\end{itemize}
+	\note[item]{Modelo.}
 \end{frame}
 
 \begin{frame}
-	\frametitle{Ensamblado}
+	\frametitle{Modelo del vehículo en \textit{FreeCAD}}
+	\begin{figure}
+		\centering
+		\includegraphics[height=4cm]{figs/sketchFreecad}\hspace{0.1cm}
+		\includegraphics[height=4cm]{figs/freecad}
+	\end{figure}
+	\note[item]{Modelo del coche autónomo.}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Modelo y jerarquía del vehículo en \textit{Blender}}
+	\begin{figure}
+		\centering
+		\includegraphics[height=7cm]{figs/phobosDiagram}\hspace{0.1cm}
+		\includegraphics[width=6cm]{figs/blenderModel}
+	\end{figure}
+	\note[item]{Modelo y jerarquía en Blender.}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Modelo del vehículo en \textit{Gazebo}}
+	\begin{figure}
+		\centering
+		\includegraphics[width=8cm]{figs/modelGazebo}
+	\end{figure}
 	\begin{outline}
-		\1 One
+		\1 \textcolor{red}{\textit{Plugins}} para movimiento y cámara conectados con \textcolor{red}{\textit{ROS}}
 	\end{outline}
+	\note[item]{Modelo del vehículo en Gazebo.}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Diagrama de clases}
+	\begin{figure}
+		\centering
+		\includegraphics[width=10cm]{figs/diagram6}
+	\end{figure}
+	\note[item]{Diagrama de clases.}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Seguimiento de carril}
+	\begin{figure}
+		\centering
+		\includegraphics[width=6cm]{figs/trainedDifficult}
+	\end{figure}
+	\begin{outline}
+		\1 Red \textcolor{red}{\textit{ResNet-18}} preentrenada: convolucional de \textcolor{red}{18} capas con \textcolor{red}{bloques residuales}.
+		\1 \textit{Notebook} de \textcolor{red}{\textit{Jupyter}}.
+		\1 Guardado de cada imagen: \textcolor{red}{\textit{x\_y\_identificador\_unico.jpg}}.
+		\1 Dataset con situaciones \textcolor{red}{difíciles}.
+	\end{outline}
+	\note[item]{PyTorch.}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Entrenamiento red seguimiento de carril}
+	\begin{figure}
+		\centering
+		\includegraphics[width=10cm]{figs/simgraphepoch}
+	\end{figure}
+	\begin{outline}
+		\1 En cada \textcolor{red}{\textit{epoch}} se calcula el error cuadrático medio \textcolor{red}{(\textit{loss})}.
+		\1 \textcolor{red}{Propagación hacia atrás} de los errores desde la capa de salida hasta la primera capa.
+		\1 Error disminuye hasta \textcolor{red}{0.0068}.
+	\end{outline}
+	\note[item]{Entrenamiento red seguimiento de carrill.}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Salida red seguimiento de carril}
+	\begin{figure}
+		\centering
+		\includegraphics[width=5cm]{figs/outputNNsim}
+	\end{figure}
+	\begin{outline}
+		\1 \textcolor{red}{224} píxeles.
+		\1 Entorno experimental: \textcolor{red}{autómata}.
+	\end{outline}
+	\note[item]{Entrenamiento red seguimiento de carril.}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Detección de objetos}
+	\begin{figure}
+		\centering
+		\includegraphics[width=5cm]{figs/darknetSimulator}
+	\end{figure}
+	\begin{outline}
+		\1 \textcolor{red}{\textit{YOLO V3 Tiny}}.
+		\1 Objetos muy \textcolor{red}{\textit{genéricos}}: alta probabilidad de detección.
+		\1 \textcolor{red}{\textit{Bounding Box}}: clase y probabilidad.
+	\end{outline}
+	\note[item]{Detección de objetos.}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Detección de semáforo}
+	\begin{figure}
+		\centering
+		\includegraphics[width=2cm, height=4cm]{figs/cropped}\hspace{2cm}\includegraphics[width=2cm, height=4cm]{figs/hsv}\hspace{2cm}\includegraphics[width=2cm,
+			height=4cm]{figs/mask}
+	\end{figure}
+	\note[item]{Detección de semáforo.}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Ejecución en el simulador}
+	\begin{figure}
+		\centering
+		\includegraphics[width=3.25cm]{figs/simRed}\\\vspace{0.5cm}
+		\includegraphics[width=3.25cm]{figs/simGreen}\hspace{1cm}\includegraphics[width=3.25cm]{figs/simStop}
+	\end{figure}
+	\note[item]{Ejecución en el simulador.}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Interfaz de usuario}
+	\begin{figure}
+		\centering
+		\includegraphics[width=10cm]{figs/GUI}
+	\end{figure}
+	\note[item]{Interfaz de usuario.}
 \end{frame}
 
 \subsection{Entorno real}
 \begin{frame}
-	\frametitle{Circuito}
-	\begin{itemize}
-		\item One
-		\item Two
-	\end{itemize}
+	\frametitle{Entorno real}
+	\begin{figure}
+		\centering
+		\includegraphics[width=6cm]{figs/robot}\vspace{0.5cm}\\
+		\includegraphics[width=2cm, height=2.5cm]{figs/realstopsign}\hspace{0.7cm}\includegraphics[width=2cm,
+			height=2.5cm]{figs/realtrafficlight}\hspace{0.7cm}\includegraphics[width=2cm, height=2.5cm]{figs/realpedestrian}
+	\end{figure}
+	\note[item]{Entorno real.}
 \end{frame}
 
 \begin{frame}
-	\frametitle{Redes neuronales en el entorno real}
+	\frametitle{Circuito inicial}
+	\begin{figure}
+		\centering
+		\includegraphics[width=6cm]{figs/circuit}
+	\end{figure}
 	\begin{outline}
-		\1 Redes
+		\1 Entrenamiento con luz \textcolor{red}{\textit{artificial}}.
 	\end{outline}
+	\note[item]{Circuito incial.}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Circuito con objetos}
+	\begin{figure}
+		\centering
+		\includegraphics[width=10cm]{figs/circuitwithobjects2}
+	\end{figure}
+	\note[item]{Circuito con objetos.}
+\end{frame}
+
+\begin{frame}
+	\frametitle{\textit{Dataset} objetos reales}
+	\begin{figure}
+		\centering
+		\includegraphics[height=3cm]{figs/datasetone}\hspace{0.5cm}
+		\includegraphics[width=4cm]{figs/datasettwo}\hspace{0.5cm}\\
+		\vspace{1cm}\includegraphics[width=4cm]{figs/datasetthree}\hspace{0.5cm}
+		\includegraphics[width=4cm]{figs/datasetfour}
+	\end{figure}
+	\note[item]{Dataset objetos reales.}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Entrenamiento red de detección de objetos}
+	\begin{figure}
+		\centering
+		\includegraphics[width=6cm]{figs/datasetone}
+	\end{figure}
+	\begin{outline}
+		\1 Portátil con \textcolor{red}{\textit{NVIDIA MX330}} $\simeq 95^\circ C$.
+		\1 2000 iteraciones $\simeq$ 3 horas.
+		\1 Únicamente con \textcolor{red}{\textit{dataset}} propio.
+	\end{outline}
+	\note[item]{Entrenamiento red de detección de objetos.}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Entrenamiento red de detección de objetos}
+	\begin{figure}
+		\centering
+		\includegraphics[width=7cm]{figs/chart}
+	\end{figure}
+	\begin{outline}
+		\1 One
+	\end{outline}
+	\note[item]{Entrenamiento red de detección de objetos.}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Comparación probabilidad de detección}
+	\begin{outline}
+		\1 Imagen nueva para ambas redessssssssssssssssssssssssssssss.
+	\end{outline}
+	\begin{figure}
+		\centering
+		\includegraphics[width=5.5cm]{figs/predictionsoriginal}\hspace{0.1cm}
+		\includegraphics[width=5.5cm]{figs/predictionscustom}
+	\end{figure}
+	\note[item]{Comparación probabilidad de detección.}
+	\note[item]{Marca la diferencia entre detectar o no al peatón cuando el robot está en movimiento.}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Ejecución en el entorno real}
+	\begin{figure}
+		\centering
+		\includegraphics[width=4.5cm, height=3cm]{figs/screenshottrafficlight}\\\vspace{0.5cm}
+		\includegraphics[width=4.5cm,
+			height=3cm]{figs/screenshotstopsign}\hspace{1cm}\includegraphics[width=4.5cm, height=3cm]{figs/screenshotpedestrian}
+	\end{figure}
+	\note[item]{Ejecución en el entorno real.}
 \end{frame}
 
 % \begin{conditions*}
@@ -331,12 +537,12 @@
 \begin{frame}
 	\frametitle{Conclusiones}
 	\begin{outline}
-		\1 Se han utilizado dos \textcolor{red}{redes neuronales}:
-		\2 Seguimiento de carril: librería \textcolor{red}{\textit{JetRacer}} que implementa una red residual \textcolor{red}{\textit{ResNet-18}} combinada con un
-		controlador.
-		\2 Detección de objetos: red \textcolor{red}{convolucional} \textit{YOLO V3 Tiny} mediante el \textit{framework} \textit{Darknet}. Entrenada con \textit{dataset}
-		propio con los
-		objetos reales para aumentar la fiabilidad.
+		\1 Para lograr los objetivos se han utilizado dos \textcolor{red}{redes neuronales}:
+		\2 Seguimiento de carril: librería \textcolor{red}{\textit{JetRacer}} que implementa una red \textcolor{red}{\textit{residual}} \textit{ResNet-18} combinada con un
+		\textcolor{red}{controlador}.
+		\2 Detección de objetos: \textit{framework} \textcolor{red}{\textit{Darknet}} que permite ejecutar una red \textcolor{red}{\textit{convolucional}} \textit{YOLO V3
+			Tiny} previamente entrenada mediante un \textcolor{red}{\textit{dataset}} propio con los objetos reales para aumentar la fiabilidad.
+		\1 Todo ello ha sido combinado en dos paquetes \textcolor{red}{\textit{ROS}}, diferenciando entorno simulado y real.
 		\1 Limitaciones: \textcolor{red}{ángulo} de la cámara y \textcolor{red}{resolución} de imagen en las redes neuronales.
 	\end{outline}
 	\note[item]{Conclusiones.}
@@ -356,7 +562,8 @@
 
 \begin{frame}[plain]
 	\large{\titlepage}
-	\note[item]{Eso es todo. Muchas gracias por su atención.}
+	\note[item]{Vídeo.}
+	\note[item]{Eso sería todo. Muchas gracias por su atención.}
 \end{frame}
 
 \end{document}
