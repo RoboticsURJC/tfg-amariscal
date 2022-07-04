@@ -68,10 +68,10 @@
 % ========= Portada inicial con notas
 \begin{frame}[plain]
 	\large{\titlepage}
-	\note[item]{Nombre}
-	\note[item]{Título: Conducción autónoma sobre plataforma real y simulada con seguimiento de carril e identificación de señales de tráfico y peatones mediante redes
+	\note[item]{Mi nombre es ...}
+	\note[item]{Voy a presentar mi trabajo titulado: Conducción autónoma sobre plataforma real y simulada con seguimiento de carril e identificación de señales de tráfico y
+		peatones mediante redes
 		neuronales.}
-	\note[item]{El trabajo se enmarca en la robótica y la visión artificial.}
 \end{frame}
 
 % ========= Licencia
@@ -92,7 +92,7 @@
 \begin{frame}{}
 	\centering \Huge
 	\emph{Introducción}
-	\note[item]{Para empezar tenemos la introducción para hablar acerca del contexto.}
+	\note[item]{Para empezar tenemos la introducción para hablar acerca del contexto general.}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Capítulo 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
@@ -106,9 +106,9 @@
 		\item Dotar a sistemas de cierta \textcolor{red}{inteligencia} y de la capacidad de \textcolor{red}{aprender}.
 		\item Visión artificial, aprendizaje automático o aprendizaje profundo.
 	\end{itemize}
-	\note[item]{Inteligencia artificial: es la disciplina .....}
-	\note[item]{Dotar a sistemas entre los que se encuentran los robots ....}
-	\note[item]{Multitud de ramas que parten de la IA .....}
+	\note[item]{Inteligencia artificial: es la disciplina que trata de entender y emular el comportamiento humano.}
+	\note[item]{Permite dotar a sistemas, entre los que se encuentran los robots, de cierta inteligencia y de la capacidad de aprender.}
+	\note[item]{Multitud de ramas que parten de la IA como visión artificial, aprendizaje automático o aprendizaje profundo.}
 \end{frame}
 
 \begin{frame}
@@ -117,8 +117,8 @@
 		\centering
 		\includegraphics[width=10cm]{figs/yolo}
 	\end{figure}
-	\note[item]{Visión artificial utilizando sensores como las cámaras permite obtener una información muy completa del entorno.}
-	\note[item]{Tiene multitud de aplicaciones entre las que se encuentra la detección de objetos.}
+	\note[item]{Visión artificial utiliza sensores como las cámaras permiten obtener una información muy completa del entorno.}
+	\note[item]{Tiene multitud de aplicaciones entre las que se encuentra la detección de objetos tal y como se observa en la imagen.}
 	\note[item]{Para ello es necesario técnicas como Deep Learning o aprendizaje profundo.}
 \end{frame}
 
@@ -135,7 +135,9 @@
 	\note[item]{Estas están inspiradas en el cerebro humano.}
 	\note[item]{En el caso de la abstracción al mundo de la computación, una red está formada por una capa de entrada, una de salida y varias internas u ocultas.}
 	\note[item]{Estas redes se entrenan previamente mediante lo conocido como datasets. Que son grandes volúmenes de datos, ya sean imágenes, vídeos, sonidos etc.}
-	\note[item]{Neocognitrón. Además, decir que no existe límite claro para definir número de capas que debe tener una red neuronal para considerarla Deep Learning.}
+	\note[item]{Neocognitrón se considera el inicio del Deep Learning en 1979, que es una red neuronal con 5 o 6 capas para reconocer caracteres japoneses}.
+	\note[item]{Además, decir que no existe límite claro para definir número de capas que debe tener una red neuronal
+		para considerarla Deep Learning.}
 \end{frame}
 
 \subsection{Contexto específico}
@@ -145,7 +147,7 @@
 		\centering
 		\includegraphics[width=10cm]{figs/volvovera}
 	\end{figure}
-	\note[item]{En cuanto al contexto específico en el que se enmarca el trabajo, encontramos los vehículos aútonomos que se permiten circular sin conductor.}
+	\note[item]{En cuanto al contexto específico en el que se enmarca el trabajo, encontramos los vehículos aútonomos que permiten circular sin conductor.}
 	\note[item]{Si bien es cierto que aún no vemos este tipo de vehículos circulando por las ciudades, mucha de la tecnología necesaria ya está disponible en los vehículos
 		actuales}
 	\note[item]{Existen diferentes niveles de autonomía. En el caso de la fotografía es un camión autónomo de la marca Volvo con nivel de autonomía 5, es decir, automatización
@@ -186,7 +188,7 @@
 \begin{frame}
 	\frametitle{Descripción del problema}
 	\begin{outline}
-		\1 Desarrollar un \textcolor{red}{coche autónomo }capaz de circular por un \textcolor{red}{circuito} en un entorno dinámico, interactuando con objetos propios de
+		\1 Desarrollar un \textcolor{red}{coche autónomo} capaz de circular por un \textcolor{red}{circuito} en un entorno dinámico, interactuando con objetos propios de
 		una ciudad en dos entornos
 		distintos:
 		\2 Entorno \textcolor{red}{simulado} con \textcolor{red}{\textit{Gazebo}}.
@@ -195,7 +197,14 @@
 		\2 Seguimiento de \textcolor{red}{carril}
 		\2 Detección de \textcolor{red}{objetos}
 	\end{outline}
-	\note[item]{Descripción.}
+	\note[item]{En cuanto a la descripción del problema.}
+	\note[item]{Desarrollar coche autónomo capaz de circular por un circuito en un entorno dinámico, interactuando con objetos propios de una ciudad en dos entornos
+		distintos:}
+	\note[item]{Entorno simulado con Gazebo.}
+	\note[item]{Entorno real usando un robot con Jetson Nano}
+	\note[item]{En ambos entornos se han de cumplir dos subobjetivos:}
+	\note[item]{Seguimiento de carril}
+	\note[item]{Detección de objetos}
 \end{frame}
 
 \subsection{Requisitos}
@@ -208,7 +217,12 @@
 		      \textcolor{red}{\textit{GPU}} más económicas.
 		\item El lenguaje de programación utilizado será \textcolor{red}{\textit{Python}}.
 	\end{itemize}
-	\note[item]{Requisitos.}
+	\note[item]{En cuanto a los requisitos.}
+	\note[item]{El sistema operativo utilizado será GNU/Linux, concretamente la distribución Ubuntu 18.04 LTS}.
+	\note[item]{El entorno simulado requerirá la presencia de una tarjeta gráfica dedicada: NVIDIA y CUDA}.
+	\note[item]{El entorno real requerirá un robot con la placa de desarrollo NVIDIA Jetson Nano, ya que esta es una de las placas con
+		GPU más económicas.}
+	\note[item]{El lenguaje de programación utilizado será Python}.
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Capítulo 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
@@ -232,8 +246,10 @@
 		\centering
 		\includegraphics[width=6cm]{figs/jetsonnano}
 	\end{figure}
-	\note[item]{NVIDIA Jetson Nano.}
+	\note[item]{La placa de desarrollo utilizada es NVIDIA Jetson Nano por su bajo coste y por tener una GPU dedicada.}
+	\note[item]{Arquitectura Aarch64, soporte para GNU/Linux y puertos GPIO}.
 \end{frame}
+
 \begin{frame}
 	\frametitle{Componentes}
 	\begin{figure}
@@ -246,10 +262,10 @@
 		\includegraphics[width=1.5cm]{figs/tplink}
 		\includegraphics[width=3.5cm]{figs/chasis}
 	\end{figure}
-	\note[item]{Componentes.}
+	\note[item]{En cuanto a los componentes utilizados para ensamblar el robot real.}
 	\note[item]{Motores de bajo coste sin odometría.}
 	\note[item]{Controlador de motores. Limitaciones motores a pares.}
-	\note[item]{Batería 10000mAh para alimentar Jetson Nano.}
+	\note[item]{Batería 10500mAh para alimentar Jetson Nano.}
 	\note[item]{Batería 7.4V para alimentar motores.}
 	\note[item]{Cámara USB como sensor principal.}
 	\note[item]{Adaptador Wi-Fi para conexión mediante SSH con el robot.}
@@ -268,13 +284,13 @@
 		\vspace{1cm}\includegraphics[width=4.3cm]{figs/roslogo}\hspace{0.5cm}
 		\includegraphics[width=4cm]{figs/pyqtlogo}
 	\end{figure}
-	\note[item]{Software.}
-	\note[item]{Python.}
-	\note[item]{FreeCAD.}
-	\note[item]{Blender.}
-	\note[item]{Gazebo.}
-	\note[item]{ROS.}
-	\note[item]{PyQT.}
+	\note[item]{Software utilizado.}
+	\note[item]{Python: Lenguaje de programación interpretado que permite una programación rápida y tiene multitud de librerías compatibles.}
+	\note[item]{FreeCAD para diseño de piezas en 2D y 3D.}
+	\note[item]{Blender permite ensamblar robots y tiene plugins como Phobos que permiten definir su jerarquía.}
+	\note[item]{Gazebo como simulador.}
+	\note[item]{ROS como middleware para implementar el software utilizando la abstracción que proporciona.}
+	\note[item]{PyQT para desarrollar interfaces de usuario.}
 \end{frame}
 
 \begin{frame}
@@ -288,11 +304,11 @@
 		\includegraphics[width=2.8cm]{figs/jetracerframe}
 	\end{figure}
 	\note[item]{Software relacionado con visión.}
-	\note[item]{OpenCV.}
-	\note[item]{YOLO.}
-	\note[item]{LabelIMG.}
-	\note[item]{Darknet.}
-	\note[item]{JetRacer.}
+	\note[item]{OpenCV: librería de visión artificial con multitud de aplicaciones.}
+	\note[item]{YOLO: es un algoritmo de detección de objetos muy popular.}
+	\note[item]{LabelIMG: permite etiquetar imágenes componer un dataset y entrenar con él.}
+	\note[item]{Darknet: framework que permite entrenar y ejecutar redes neuronales.}
+	\note[item]{JetRacer: librería que permite entrenar y ejecutar una red para realizar seguimiento de carril.}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Capítulo 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
@@ -314,7 +330,10 @@
 		\item Reproducible en el entorno real
 		\item Semáforo y peatón dinámico
 	\end{itemize}
-	\note[item]{Modelo.}
+	\note[item]{Modelo de la ciudad.}
+	\note[item]{Uno de los requisitos es que sea reproducible en el entorno real, por eso partiendo de una ciudad de grandes dimensiones se reduce hasta conseguir lo que
+		muestra la imagen.}
+	\note[item]{La ciudad dispone de elementos dinámicos como un semáforo y un peatón y elementos estáticos como una señal de stop}
 \end{frame}
 
 \begin{frame}
@@ -324,7 +343,9 @@
 		\includegraphics[height=4cm]{figs/sketchFreecad}\hspace{0.1cm}
 		\includegraphics[height=4cm]{figs/freecad}
 	\end{figure}
-	\note[item]{Modelo del coche autónomo.}
+	\note[item]{Modelo del coche autónomo diseñado en FreeCAD utilizando la herramienta Sketcher para realizar el diseño con cotas y restricciones de verticalidad y
+		horizontalidad.}
+	\note[item]{A continuación, se proporciona volumen a las piezas.}
 \end{frame}
 
 \begin{frame}
@@ -334,7 +355,9 @@
 		\includegraphics[height=7cm]{figs/phobosDiagram}\hspace{0.1cm}
 		\includegraphics[width=6cm]{figs/blenderModel}
 	\end{figure}
-	\note[item]{Modelo y jerarquía en Blender.}
+	\note[item]{Una vez diseñadas las piezas en FreeCAD se exportan en STL para utilizarlas en Blender.}
+	\note[item]{Se ensambla el robot y se compone su jerarquía con un link principal que es el cuerpo del robot y cuatro links dependientes de este que son las ruedas.}
+	\note[item]{Se utilizan joints de tipo continuous para que las ruedas giren y así dotar de movimiento al robot.}
 \end{frame}
 
 \begin{frame}
@@ -346,7 +369,8 @@
 	\begin{outline}
 		\1 \textcolor{red}{\textit{Plugins}} para movimiento y cámara conectados con \textcolor{red}{\textit{ROS}}
 	\end{outline}
-	\note[item]{Modelo del vehículo en Gazebo.}
+	\note[item]{Teniendo el modelo de la ciudad y el modelo del robot se ejecuta en Gazebo.}
+	\note[item]{El robot se puede mover a través de topics de ROS y recibe la imagen que ve el robot a través de un subscriptor.}
 \end{frame}
 
 \begin{frame}
@@ -366,11 +390,14 @@
 	\end{figure}
 	\begin{outline}
 		\1 Red \textcolor{red}{\textit{ResNet-18}} preentrenada: convolucional de \textcolor{red}{18} capas con \textcolor{red}{bloques residuales}.
-		\1 \textit{Notebook} de \textcolor{red}{\textit{Jupyter}}.
+		\1 \textit{Notebooks} de \textcolor{red}{\textit{Jupyter}}.
 		\1 Guardado de cada imagen: \textcolor{red}{\textit{x\_y\_identificador\_unico.jpg}}.
 		\1 Dataset de 200 imágenes incluyendo situaciones \textcolor{red}{difíciles}.
 	\end{outline}
-	\note[item]{PyTorch.}
+	\note[item]{En cuanto al seguimiento de carril se utiliza un red ResNet-18 preentrenada que es una red convolucional de 18 capas con bloques residuales.}
+	\note[item]{Utiliza notebooks de Jupyter.}
+	\note[item]{Para entrenar, se guarda cada imagen haciendo click y se guarda con el siguiente nombre: x\_y\_identificador\_unico.jpg.}
+	\note[item]{ Se utiliza un dataset de 200 imágenes incluyendo situaciones difíciles.}
 \end{frame}
 
 \begin{frame}
@@ -384,7 +411,7 @@
 		\1 \textcolor{red}{Propagación hacia atrás} de los errores desde la capa de salida hasta la primera capa.
 		\1 Error disminuye hasta \textcolor{red}{0.0068}.
 	\end{outline}
-	\note[item]{Entrenamiento red seguimiento de carrill.}
+	\note[item]{Entrenamiento red seguimiento de carril.}
 \end{frame}
 
 \begin{frame}
