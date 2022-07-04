@@ -32,7 +32,7 @@
 % USO DE NOTAS
 \setbeameroption{hide notes} % Para mostrar u ocultar (hide/show)
 % \setbeameroption{show only notes} % Mostrar solo las notas
-% \setbeameroption{show notes on second screen=right} % Mostrar notas en otra pantalla
+\setbeameroption{show notes on second screen=right} % Mostrar notas en otra pantalla
 \setbeamertemplate{note page}{ % asi solo muestro el texto de las notas
 	\insertnote%
 }
@@ -68,8 +68,10 @@
 % ========= Portada inicial con notas
 \begin{frame}[plain]
 	\large{\titlepage}
+	\note[item]{Nombre}
+	\note[item]{Título: Conducción autónoma sobre plataforma real y simulada con seguimiento de carril e identificación de señales de tráfico y peatones mediante redes
+		neuronales.}
 	\note[item]{El trabajo se enmarca en la robótica y la visión artificial.}
-	\note[item]{En primer lugar }
 \end{frame}
 
 % ========= Licencia
@@ -104,7 +106,9 @@
 		\item Dotar a sistemas de cierta \textcolor{red}{inteligencia} y de la capacidad de \textcolor{red}{aprender}.
 		\item Visión artificial, aprendizaje automático o aprendizaje profundo.
 	\end{itemize}
-	\note[item]{Inteligencia artificial.}
+	\note[item]{Inteligencia artificial: es la disciplina .....}
+	\note[item]{Dotar a sistemas entre los que se encuentran los robots ....}
+	\note[item]{Multitud de ramas que parten de la IA .....}
 \end{frame}
 
 \begin{frame}
@@ -113,19 +117,25 @@
 		\centering
 		\includegraphics[width=10cm]{figs/yolo}
 	\end{figure}
-	\note[item]{Visión artificial con aplicaciones como la detección de objetos. Para ello se utilizan técnicas de Deep Learning que explicaremos a continuación.}
+	\note[item]{Visión artificial utilizando sensores como las cámaras permite obtener una información muy completa del entorno.}
+	\note[item]{Tiene multitud de aplicaciones entre las que se encuentra la detección de objetos.}
+	\note[item]{Para ello es necesario técnicas como Deep Learning o aprendizaje profundo.}
 \end{frame}
 
 \begin{frame}
 	\frametitle{\textit{Deep Learning}}
-	\begin{outline}
-		\1 \textcolor{red}{Neocognitrón} (1979): Red neuronal con 5 o 6 capas para \textcolor{red}{reconocer caracteres japoneses}.
-	\end{outline}
 	\begin{figure}
 		\centering
 		\includegraphics[width=6cm]{figs/neuralnetwork}
 	\end{figure}
-	\note[item]{Deep Learning No existe límite claro para definir red neuronal Deep Learning.}
+	\begin{outline}
+		\1 \textcolor{red}{Neocognitrón} (1979): Red neuronal con 5 o 6 capas para \textcolor{red}{reconocer caracteres japoneses}.
+	\end{outline}
+	\note[item]{Deep Learning se basa en el uso de redes neuronales artificiales.}
+	\note[item]{Estas están inspiradas en el cerebro humano.}
+	\note[item]{En el caso de la abstracción al mundo de la computación, una red está formada por una capa de entrada, una de salida y varias internas u ocultas.}
+	\note[item]{Estas redes se entrenan previamente mediante lo conocido como datasets. Que son grandes volúmenes de datos, ya sean imágenes, vídeos, sonidos etc.}
+	\note[item]{Neocognitrón. Además, decir que no existe límite claro para definir número de capas que debe tener una red neuronal para considerarla Deep Learning.}
 \end{frame}
 
 \subsection{Contexto específico}
@@ -135,19 +145,31 @@
 		\centering
 		\includegraphics[width=10cm]{figs/volvovera}
 	\end{figure}
-	\note[item]{Nivel de autonomía 5.}
+	\note[item]{En cuanto al contexto específico en el que se enmarca el trabajo, encontramos los vehículos aútonomos que se permiten circular sin conductor.}
+	\note[item]{Si bien es cierto que aún no vemos este tipo de vehículos circulando por las ciudades, mucha de la tecnología necesaria ya está disponible en los vehículos
+		actuales}
+	\note[item]{Existen diferentes niveles de autonomía. En el caso de la fotografía es un camión autónomo de la marca Volvo con nivel de autonomía 5, es decir, automatización
+		completa en cualquier situación. Actualmente se están desarrollando pruebas en el puerto de Gotenburgoooooo}
+	\note[item]{Y además, decir que la posibilidad de automatizar transportes de mercancías, sería un gran avance por las grandes distancias que recorren, incluyendo en
+		algunos casos transporte internacional durante grandes intervalos de tiempo}
 \end{frame}
 
 \begin{frame}
-	\begin{outline}
-		\1 Sucesores de los \textcolor{red}{AGVs}.
-	\end{outline}
-	\frametitle{\textit{AMRs}}
+	\frametitle{\textit{Autonomous Mobile Robots}, \textit{AMRs}}
 	\begin{figure}
 		\centering
 		\includegraphics[width=8cm]{figs/kivasystems}
 	\end{figure}
-	\note[item]{Kiva Systems.}
+	\begin{outline}
+		\1 Sucesores de los \textcolor{red}{AGVs}.
+	\end{outline}
+	\note[item]{Son aquellos capaces de navegar por entornos dinámicos, conviviendo con humanos y sabiendo sobreponerse a situaciones para las que no habían sido programados
+		explícitamente.}
+	\note[item]{Son los sucesores de los AGVs. Estos requieren una cierta infraestructura
+		dependiendo del tipo de guiado, ya sea filo-guiados, a través de pintura o a través de cualquier otra técnica que haga que ese vehículo solo pueda funcionar cuando
+		se conoce la infraestructura previa que estará presente en el entorno de trabajo.}
+	\note[item]{Kiva Systems: comprada por Amazon en 2012. Permiten automatizar sus almacenes en tareas de logística a nivel interno, maximizando la productividad y el
+		almacenamiento, tanto en profundidad como en altura, y obviamente minimizando el coste en personal..}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Capítulo 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
@@ -346,7 +368,7 @@
 		\1 Red \textcolor{red}{\textit{ResNet-18}} preentrenada: convolucional de \textcolor{red}{18} capas con \textcolor{red}{bloques residuales}.
 		\1 \textit{Notebook} de \textcolor{red}{\textit{Jupyter}}.
 		\1 Guardado de cada imagen: \textcolor{red}{\textit{x\_y\_identificador\_unico.jpg}}.
-		\1 Dataset con situaciones \textcolor{red}{difíciles}.
+		\1 Dataset de 200 imágenes incluyendo situaciones \textcolor{red}{difíciles}.
 	\end{outline}
 	\note[item]{PyTorch.}
 \end{frame}
@@ -492,7 +514,7 @@
 \begin{frame}
 	\frametitle{Comparación probabilidad de detección}
 	\begin{outline}
-		\1 Imagen nueva para ambas redes.
+		\1 Imagen \textcolor{red}{desconocida} para ambas redes.
 	\end{outline}
 	\begin{figure}
 		\centering
