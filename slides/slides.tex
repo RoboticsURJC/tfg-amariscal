@@ -164,7 +164,7 @@
 	\note[item]{Si bien es cierto que aún no vemos este tipo de vehículos circulando por las ciudades, mucha de la tecnología necesaria ya está disponible en los vehículos
 		actuales}
 	\note[item]{Existen diferentes niveles de autonomía. En el caso de la fotografía es un camión autónomo de la marca Volvo con nivel de autonomía 5, es decir, automatización
-		completa en cualquier situación. Actualmente se están desarrollando pruebas en el puerto de Gotenburgoooooo}
+		completa en cualquier situación. Se han desarrollado pruebas en el puerto de Gotemburgo}
 	\note[item]{Y además, decir que la posibilidad de automatizar transportes de mercancías, sería un gran avance por las grandes distancias que recorren, incluyendo en
 		algunos casos transporte internacional durante grandes intervalos de tiempo}
 \end{frame}
@@ -207,8 +207,8 @@
 		\2 Entorno \textcolor{red}{simulado} con \textcolor{red}{\textit{Gazebo}}.
 		\2 Entorno \textcolor{red}{real} usando un robot con \textcolor{red}{\textit{Jetson Nano}}.
 		\1 En ambos entornos se han de cumplir dos subobjetivos:
-		\2 Seguimiento de \textcolor{red}{carril}
-		\2 Detección de \textcolor{red}{objetos}
+		\2 Seguimiento de \textcolor{red}{carril}.
+		\2 Detección de \textcolor{red}{objetos}.
 	\end{outline}
 	\note[item]{En cuanto a la descripción del problema.}
 	\note[item]{Desarrollar coche autónomo capaz de circular por un circuito en un entorno dinámico, interactuando con objetos propios de una ciudad en dos entornos
@@ -224,11 +224,10 @@
 \begin{frame}
 	\frametitle{Requisitos}
 	\begin{itemize}
-		\item El sistema operativo utilizado será \textcolor{red}{\textit{GNU/Linux}}, concretamente la distribución \textcolor{red}{\textit{Ubuntu 18.04 LTS}}.
-		\item El entorno simulado requerirá la presencia de una tarjeta gráfica dedicada: \textcolor{red}{\textit{NVIDIA}} y \textcolor{red}{\textit{CUDA}}.
-		\item El entorno real requerirá un robot con la placa de desarrollo \textcolor{red}{\textit{NVIDIA Jetson Nano}}, ya que esta es una de las placas con
-		      \textcolor{red}{\textit{GPU}} más económicas.
-		\item El lenguaje de programación utilizado será \textcolor{red}{\textit{Python}}.
+		\item \textit{GNU/Linux}: \textcolor{red}{\textit{Ubuntu 18.04 LTS}}.
+		\item Entorno simulado tarjeta gráfica dedicada: \textcolor{red}{\textit{NVIDIA}} y \textcolor{red}{\textit{CUDA}}.
+		\item Entorno real \textcolor{red}{\textit{NVIDIA Jetson Nano}}, económica con \textcolor{red}{\textit{GPU}}.
+		\item Lenguaje de programación \textcolor{red}{\textit{Python}}.
 	\end{itemize}
 	\note[item]{En cuanto a los requisitos.}
 	\note[item]{El sistema operativo utilizado será GNU/Linux, concretamente la distribución Ubuntu 18.04 LTS.}
@@ -340,8 +339,8 @@
 	\includegraphics[height=3cm]{figs/smallcity}
 	\includegraphics[height=3cm]{figs/trafficlightpedestrian}\vspace{1cm}
 	\begin{itemize}
-		\item Reproducible en el entorno real
-		\item Semáforo y peatón dinámico
+		\item Reproducible en el entorno real.
+		\item Semáforo y peatón dinámico.
 	\end{itemize}
 	\note[item]{Modelo de la ciudad.}
 	\note[item]{Uno de los requisitos es que sea reproducible en el entorno real, por eso partiendo de una ciudad de grandes dimensiones se reduce hasta conseguir lo que
@@ -380,7 +379,7 @@
 		\includegraphics[width=8cm]{figs/modelGazebo}
 	\end{figure}
 	\begin{outline}
-		\1 \textcolor{red}{\textit{Plugins}} para movimiento y cámara conectados con \textcolor{red}{\textit{ROS}}
+		\1 \textcolor{red}{\textit{Plugins}} para movimiento y cámara conectados con \textcolor{red}{\textit{ROS}}.
 	\end{outline}
 	\note[item]{Teniendo el modelo de la ciudad y el modelo del robot se ejecuta en Gazebo.}
 	\note[item]{El robot se puede mover a través de topics de ROS y recibe la imagen que ve el robot a través de un subscriptor.}
@@ -402,12 +401,13 @@
 		\includegraphics[width=6cm]{figs/trainedDifficult}
 	\end{figure}
 	\begin{outline}
-		\1 Red \textcolor{red}{\textit{ResNet-18}} preentrenada: convolucional de \textcolor{red}{18} capas con \textcolor{red}{bloques residuales}.
+		\1 Red \textcolor{red}{\textit{ResNet-18}}: convolucional de \textcolor{red}{18} capas con \textcolor{red}{bloques residuales}.
 		\1 \textit{Notebooks} de \textcolor{red}{\textit{Jupyter}}.
 		\1 Guardado de cada imagen: \textcolor{red}{\textit{x\_y\_identificador\_unico.jpg}}.
 		\1 Dataset de 200 imágenes incluyendo situaciones \textcolor{red}{difíciles}.
 	\end{outline}
-	\note[item]{En cuanto al seguimiento de carril se utiliza un red ResNet-18 preentrenada que es una red convolucional de 18 capas con bloques residuales.}
+	\note[item]{En cuanto al seguimiento de carril se utiliza un red ResNet-18 preentrenada que es una red convolucional de 18 capas con bloques residuales que permiten
+		incrementar el número de capas sin perder rendimiento ni precisión.}
 	\note[item]{Utiliza notebooks de Jupyter.}
 	\note[item]{Para entrenar, se guarda cada imagen haciendo click y se guarda con el siguiente nombre: x\_y\_identificador\_unico.jpg.}
 	\note[item]{ Se utiliza un dataset de 200 imágenes incluyendo situaciones difíciles.}
@@ -425,6 +425,7 @@
 		\1 Error disminuye hasta \textcolor{red}{0.0068}.
 	\end{outline}
 	\note[item]{Entrenamiento red seguimiento de carril.}
+	\note[item]{Batch: número de ejemplos que se introducen en la red para que entrene de cada vez. Mayor más precisión más tiempo.}
 \end{frame}
 
 \begin{frame}
@@ -460,6 +461,7 @@
 		\centering
 		\includegraphics[width=2cm, height=4cm]{figs/cropped}\hspace{2cm}\includegraphics[width=2cm, height=4cm]{figs/hsv}\hspace{2cm}\includegraphics[width=2cm,
 			height=4cm]{figs/mask}
+		\caption{Imagen original Bounding Box, HSV y filtro de color.}
 	\end{figure}
 	\note[item]{Detección de semáforo.}
 \end{frame}
@@ -502,7 +504,7 @@
 		\includegraphics[width=6cm]{figs/circuit}
 	\end{figure}
 	\begin{outline}
-		\1 Entrenamiento con luz \textcolor{red}{\textit{artificial}}.
+		\1 Entrenamiento con luz \textcolor{red}{artificial}.
 	\end{outline}
 	\note[item]{Circuito incial.}
 \end{frame}
@@ -514,6 +516,7 @@
 		\includegraphics[width=10cm]{figs/circuitwithobjects2}
 	\end{figure}
 	\note[item]{Circuito con objetos.}
+	\note[item]{Alrededor de 2 metros de largo.}
 \end{frame}
 
 \begin{frame}
@@ -549,6 +552,11 @@
 		\includegraphics[width=7cm]{figs/chart}
 	\end{figure}
 	\note[item]{Entrenamiento red de detección de objetos.}
+	\note[item]{Se muestra el \textit{mAP} (\textit{mean Average Precision}), valor que alcanza el 98\%. Esto es una métrica de precisión que se calcula cada 4 \textit{epochs}
+		(a partir de 1000 iteraciones) usando el \textit{dataset} de validación. Una \textit{epoch} es un número de iteraciones atendiendo a la siguiente fórmula:
+		\textit{número\_imágenes\_entrenamiento / batch}. En el caso de que este valor (expresado en porcentaje en la gráfica) se decrementara y el \textit{loss} siguiese
+		bajando, la red
+		se estaría sobreajustando. Es lo que se conoce como \textit{overfitting}.}
 \end{frame}
 
 \begin{frame}
@@ -597,12 +605,10 @@
 	\frametitle{Conclusiones}
 	\begin{outline}
 		\1 Para lograr los objetivos se han utilizado dos \textcolor{red}{redes neuronales}:
-		\2 Seguimiento de carril: librería \textcolor{red}{\textit{JetRacer}} que implementa una red \textcolor{red}{\textit{residual}} \textit{ResNet-18} combinada con un
-		\textcolor{red}{controlador}.
-		\2 Detección de objetos: \textit{framework} \textcolor{red}{\textit{Darknet}} que permite ejecutar una red \textcolor{red}{\textit{convolucional}} \textit{YOLO V3
-			Tiny} previamente entrenada mediante un \textcolor{red}{\textit{dataset}} propio con los objetos reales para aumentar la fiabilidad.
-		\1 Todo ello ha sido combinado en dos paquetes \textcolor{red}{\textit{ROS}}, diferenciando entorno simulado y real.
-		\1 Limitaciones: \textcolor{red}{ángulo} de la cámara y \textcolor{red}{resolución} de imagen en las redes neuronales.
+		\2 Seguimiento de carril: \textit{ResNet-18} combinada con un \textcolor{red}{controlador}.
+		\2 Detección de objetos: \textit{YOLO V3 Tiny} con \textcolor{red}{\textit{dataset}} propio para aumentar la fiabilidad.
+		\1 Implementado en dos paquetes \textcolor{red}{\textit{ROS}}, entorno simulado y real.
+		\1 Limitaciones: \textcolor{red}{ángulo} de la cámara y \textcolor{red}{resolución} de imagen en las \textit{NN}.
 	\end{outline}
 	\note[item]{Conclusiones.}
 \end{frame}
@@ -622,7 +628,7 @@
 \begin{frame}[plain]
 	\large{\titlepage}
 	\note[item]{Vídeo.}
-	\note[item]{Con la lectura de las conclusiones doy por terminada mi presentación y espero sus preguntas.}
+	\note[item]{Con las conclusiones doy por terminada mi presentación y quedo a su disposición.}
 \end{frame}
 
 \end{document}

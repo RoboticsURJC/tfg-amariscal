@@ -30,4 +30,4 @@ realParams:
   firstRedMask: [0, 170, 170, 10, 255, 255]
   secondRedMask: [170, 170, 170, 180, 255, 255]
   greenMask: [55, 199, 209, 133, 255, 255]
-  modelPath: "/home/jetson/github/tfg-amariscal/models/road_following_model_trt.pth"
+  modelPath: "/home/jetson/github/tfg-amariscal/models/road_following_model_real_trt.pth"
